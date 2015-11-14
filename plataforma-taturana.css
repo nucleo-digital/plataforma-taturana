@@ -1,0 +1,30 @@
+body{
+	font-family: Roboto;
+  background: #232e4d url("images/triangles-background.png") repeat-y;
+  background-size: 100% auto;
+}
+
+footer{
+  background: url("images/footer-background.png") center top no-repeat;
+  background-size: 100% auto;
+  height: 200px;
+}
+#top-menu-logo{
+	background: url("images/top-menu-logo.png") center top no-repeat;
+  background-size: 100% auto;
+	height: 200px;
+}
+.navbar{
+	background: url("images/top-menu-background.png") center top no-repeat;
+  background-size: 100% auto;
+}
+.navbar-nav a, .navbar-nav a:hover{
+  color: #fff;
+  background: none !important;
+  margin-top: 10px;
+}
+#home{
+  background: url("images/home-background.png") center top no-repeat;
+  background-size: 100% auto;
+  height: 600px;
+}
