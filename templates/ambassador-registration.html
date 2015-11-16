@@ -1,0 +1,115 @@
+<template name="ambassadorRegistration">
+  {{>Nav}}
+  <div class="container">
+    <div class="row" style="margin-top:200px">
+      <div class="col-md-6 pull-right">
+        <h1>CADASTRE-SE</h1>
+        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio.</p>
+        <form class="new-ambassador" role="form" data-toggle="validator">
+          <div class="form-group col-md-12">
+            <label class="control-label" for="name">Nome completo<span class="red">*</span></label>
+            <input type="text" name="name" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <label class="control-label" for="email">E-mail<span class="red">*</span></label>
+            <input type="email" name="email" class="form-control email" required>
+            <span class="help-block with-errors"></span>
+          </div>
+          <div class="form-group col-md-6">
+            <label class="control-label" for="email-validation">Repita seu e-mail<span class="red">*</span></label>
+            <input type="email" data-match=".email" name="email-validation" class="form-control email-validation" data-match-error="Ops, verifique se digitou corretamente." required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-5">
+            <label class="control-label" for="password">Senha<span class="red">*</span></label>
+            <input type="password" data-minlength="8" name="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-5">
+            <label class="control-label" for="password-validation">Repita a senha<span class="red">*</span></label>
+            <input type="password" data-match=".password" data-minlength="8" name="password-validation" class="form-control" data-match-error="Ops, verifique se digitou corretamente." data-error="Verifique se digitou 8 caracteres" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-5">
+            <label class="control-label" for="phone">Telefone<span class="red">*</span></label>
+            <input type="number" name="phone" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-5">
+            <label class="control-label" for="cpf">CPF<span class="red">*</span></label>
+            <input type="number" name="cpf" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-10">
+            <label class="control-label" for="institution ">Você faz parte de alguma instituição, coletivo ou grupo?<span class="red">*</span></label>
+            <input type="text" name="institution" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-10">
+            <label class="control-label" for="category ">Qual a sua área de atuação?</label>
+            <select name="category" class="form-control no-radius">
+              <option>Cineclube</option>
+              <option>Coletivo</option>
+              <option>Organização Social</option>
+              <option>Universidade</option>
+              <option>Escola Pública</option>
+              <option>Escola Privada</option>
+              <option>Instituição Governamental</option>
+              <option>Espaços e Centros Culturais</option>
+              <option>Equipamento Público</option>
+              <option>Mídia/Blog/Site</option>
+              <option>Formador de Opinião/Especialista</option>
+              <option>Empresa</option>
+              <option>Grupo Religioso</option>
+              <option>Parque</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group col-md-10">
+            <label class="control-label" for="subcategory">Com quais temáticas vocês trabalham?</label>
+            <select name="subcategory" class="form-control">
+              <option>Audiovisual</option>
+              <option>Artes Plásticas</option>
+              <option>Cultura</option>
+              <option>Educação/Ensino/Pedagogia</option>
+              <option>Música</option>
+              <option>Grafite</option>
+              <option>Saúde</option>
+              <option>SESC</option>
+              <option>Meio Ambiente</option>
+              <option>Gênero</option>
+              <option>Ponto de Cultura</option>
+              <option>Comunicação</option>
+              <option>Direito</option>
+              <option>Cidadania</option>
+              <option>Psicologia/Psicanálise</option>
+              <option>Juventude</option>
+              <option>Dança</option>
+              <option>Teatro</option>
+              <option>Infância</option>
+              <option>Política</option>
+              <option>Maternidade</option>
+              <option>Cidade</option>
+              <option>Literatura</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h1 style="margin-bottom:3em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
+        <img src="images/user-registration-image-1.svg" class="img-responsive center-block" alt="Responsive image">
+        <p class="image-description">articula a exibição em espaços<br/>públicos ou de interesse público</p>
+        <img src="images/user-registration-image-2.svg" class="img-responsive center-block" alt="Responsive image">
+        <p class="image-description">realiza a sessão/atividade</p>
+        <img src="images/user-registration-image-3.svg" class="img-responsive center-block" alt="Responsive image">
+        <p class="image-description">conecta o ponto local a rede gerada<br/>em torno da obra audiovisual exibida</p>
+      </div>
+    </div>
+  </div>
+  {{>Footer}}
+</template>

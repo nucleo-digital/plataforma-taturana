@@ -1,17 +1,40 @@
+Ambassadors = new Mongo.Collection("ambassadors");
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+  Template.ambassadorRegistration.rendered = function() {
+    $('.new-ambassador').validator()
+  }
+  
+  Template.ambassadorRegistration.events({
+    "submit .new-ambassador": function (event) {
+      console.log("Pã!");
+      
+      event.preventDefault();
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
+      var name = event.target.name.value;
+      var email = event.target.email.value;
+      var email = event.target.email.value;
+      var password = event.target.password.value;
+      var password = event.target.password.value;
+      var phone = event.target.phone.value;
+      var cpf = event.target.cpf.value;
+      var institution = event.target.institution.value;
+      var category = event.target.category.value;
+      var subcategory = event.target.subcategory.value;
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+      Ambassadors.insert({
+        name: name,
+        email: email,
+        //password: password,
+        phone: phone,
+        cpf: cpf,
+        institution: institution,
+        category: category,
+        subcategory: subcategory,
+        createdAt: new Date()
+      });
+ 
+      event.target.reset();
     }
   });
 }
@@ -21,3 +44,8 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+Router.route('/', function () {
+  this.render('home');
+});
+Router.route('/ambassador-registration');
