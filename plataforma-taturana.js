@@ -29,13 +29,14 @@ if (Meteor.isClient) {
         subcategory: subcategory,
         createdAt: new Date()
       }, function(err) {
-        if (err)
-          console.log(err);
-        else
-          console.log('success!');
-      });
-      event.target.reset();
-      Router.go('/');  
+        if (err){
+          messageError(err.reason);
+        }
+        else{
+          event.target.reset();
+          Router.go('/');
+        }
+      });      
     }
   });
 }
@@ -50,3 +51,14 @@ Router.route('/', function () {
   this.render('home');
 });
 Router.route('/register');
+
+function messageError(reason) {
+  if (reason == 'Email already exists.'){
+    message = 'Já existe um cadastro vinculado a este e-mail!'
+  }
+  else{
+    message = 'Ocorreu um erro na criação do seu usuário!'
+  }
+  $(".form-errors").append(message);
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
+}
