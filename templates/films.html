@@ -1,0 +1,11 @@
+<template name="films">
+  {{>Nav}}
+  <div id="films" class="container">
+    <h3>FILMES</h3>
+    <p class="section-description">Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio.</p>
+    {{#each films}}
+      {{> film}}
+    {{/each}}
+  </div>
+  {{>Footer}}
+</template>

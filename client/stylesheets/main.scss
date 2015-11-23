@@ -1,0 +1,60 @@
+@import '{reywood:bootstrap3-sass}/bootstrap';
+@import 'films';
+@import 'nav';
+@import 'home';
+
+body{
+	font-family: Roboto;
+  font-weight: 400;
+  background: #232e4d url("images/triangles-background.png") repeat-y;
+  background-size: 100% auto;
+}
+footer{
+  background: url("images/footer-background.png") center top no-repeat;
+  background-size: 100% auto;
+  height: 200px;
+}
+.red{
+  color: #df4944;
+}
+h1, h3{
+  color:#df4944;
+}
+p, label{
+  color: #fff;
+  line-height: 20pt;
+}
+
+input, button, textarea{
+  border-radius: 0 !important;
+}
+select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url("images/select-arrow.png");
+  background-size: 5%;
+}
+button{
+  margin-top: 1em;
+  background-color: #df4944;
+  color:#fff;
+}
+.form-group{
+  padding-left: 0px;
+}
+
+#ambassador-registration, #films, #adm-films{
+  margin-top:10em;
+}
+
+.image-description{
+  text-align: center;
+  margin-bottom: 5em;
+  margin-top: 1em;
+}
+.section-description{
+  width:70%;
+}
+

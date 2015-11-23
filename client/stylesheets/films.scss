@@ -1,0 +1,39 @@
+.film-box div{
+  padding: 0;
+}
+.film-box{
+  border: 1px solid #df4944;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-top:1em; 
+  margin-bottom:1em;
+  @media (max-width: 992px){
+    width: 100%;
+  }
+  @media (min-width: 992px){
+    width: 49%;
+    img{
+      padding-right: 1em;
+    }
+  }
+  &:nth-child(even){
+    float:right;
+  }
+  img{
+    width:100%;
+    margin-bottom: 1em;
+  }
+}
+table{
+  opacity: 0.4;
+  width: 100%;
+}
+table, td{
+  border: 1px solid #fff;
+  color: #fff;
+  border-collapse: collapse;
+  padding: 0.7em;
+}
+
+
+

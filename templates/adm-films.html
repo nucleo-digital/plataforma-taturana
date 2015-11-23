@@ -1,0 +1,131 @@
+<template name="admFilms">
+  {{>Nav}}
+  <div id="adm-films" class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>CADASTRO DE FILMES</h1>
+        <div class="help-block with-errors form-errors"></div>
+        <form class="new-film">
+          <div class="col-md-12">
+            <div class="form-group col-md-10">
+            <label class="control-label" for="status">Qual a sua área de atuação?</label>
+            <select name="status" class="form-control no-radius">
+              <option>Portfolio</option>
+              <option>Difusão</option>
+            </select>
+          </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="title">Titulo do filme</label>
+              <input type="text" name="title" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="title_pt">Titulo do filme traduzido</label>
+              <input type="text" name="title_pt" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="synopsis">Sinopse</label>
+              <textarea name="synopsis" rows="2" class="form-control"></textarea>
+              <span class="help-block with-errors"></span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h3>MÍDIA</h3>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="poster_url">Poster</label>
+              {{> upload_bootstrap contentType='image' multiple=false}}
+              <span class="help-block with-errors"></span>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="trailer_url">Url do trailer</label>
+              <input type="text" name="trailer_url" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="press_kit_url">Press kit</label>
+              {{> upload_bootstrap contentType='file' multiple=false }}
+              <span class="help-block with-errors"></span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h3>DADOS DO FILME</h3>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="year">Ano</label>
+              <input type="text" name="year" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="genre">Gênero</label>
+              <input type="text" name="genre" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="length">Duração</label>
+              <input type="text" name="length" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="country">País</label>
+              <input type="text" name="country" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="distributor">Distribuidora</label>
+              <input type="text" name="distributor" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h3>INFORMAÇÕES TÉCNICAS</h3>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="director">Diretor</label>
+              <input type="text" name="director" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="editor">Montagem</label>
+              <input type="text" name="editor" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="producer">Produtor</label>
+              <input type="text" name="producer" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="coproducer">Co-Produtor</label>
+              <input type="text" name="coproducer" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="associate_producer">Produtor associado</label>
+              <input type="text" name="associate_producer" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="executive_producer">Produtor executivo</label>
+              <input type="text" name="executive_producer" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="soundtrack">Trilha Sonora</label>
+              <input type="text" name="soundtrack" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h1>FILMES CADASTRADOS</h1>
+        {{#each films}}
+          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailes: {{trailer_url}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}}</p>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{>Footer}}
+</template>

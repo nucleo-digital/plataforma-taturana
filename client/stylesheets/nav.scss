@@ -1,0 +1,17 @@
+#top-menu-logo{
+  background: url("images/top-menu-logo.png") center top no-repeat;
+  background-size: 100% auto;
+  height: 200px;
+}
+.navbar{
+  background: url("images/top-menu-background.png") center top no-repeat;
+  background-size: 100% auto;
+}
+.navbar-nav a, .navbar-nav a:hover{
+  color: #fff;
+  background: none !important;
+  margin-top: 10px;
+}
+
+
+
