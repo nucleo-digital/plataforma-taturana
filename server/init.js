@@ -5,12 +5,8 @@ Meteor.startup(function () {
     checkCreateDirectories: true,
     getDirectory: function(fileInfo, formData) {
       return formData.contentType;
-      console.log("formData");
-      console.log(formData);
     },
     finished: function(fileInfo, formFields) {
-      console.log("fileInfo");
-      console.log(fileInfo);
     },
     cacheTime: 100,
     mimeTypes: {
