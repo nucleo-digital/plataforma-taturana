@@ -1,0 +1,18 @@
+image: node:0.10
+env:
+  - GOPATH=/var/cache/drone
+script:
+  - curl -o Meteor_install_script.sh https://install.meteor.com/
+  - chmod +x Meteor_install_script.sh
+  - sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" Meteor_install_script.sh
+  - ./Meteor_install_script.sh
+  - export PATH=$PATH:$HOME/.meteor
+  - npm install -g mup
+  - mup deploy
+notify:
+  email:
+    recipients:
+      - hacker@nucleodigital.cc
+    on_success: change
+    on_failure: blame
+
