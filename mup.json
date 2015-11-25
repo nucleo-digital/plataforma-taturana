@@ -3,7 +3,7 @@
   "servers": [
     {
       "host": "testes.taturanamobi.com.br",
-      "username": "admin",
+      "username": "root",
       // "password": "password"
       // or pem file (ssh based authentication)
       "pem": "~/.ssh/id_rsa"
@@ -17,7 +17,7 @@
   "setupNode": true,
 
   // WARNING: If nodeVersion omitted will setup 0.10.36 by default. Do not use v, only version number.
-  "nodeVersion": "0.10.36",
+  "nodeVersion": "0.10.40",
 
   // Install PhantomJS in the server
   "setupPhantom": true,
@@ -34,6 +34,7 @@
 
   // Configure environment
   "env": {
+	"PORT": 80,
     "ROOT_URL": "http://testes.taturanamobi.com.br"
   },
 
