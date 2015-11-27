@@ -8,7 +8,7 @@
         <form class="new-film">
           <div class="col-md-12">
             <div class="form-group col-md-10">
-            <label class="control-label" for="status">Qual a sua área de atuação?</label>
+            <label class="control-label" for="status">Qual a categoria deste filme?</label>
             <select name="status" class="form-control no-radius">
               <option>Portfolio</option>
               <option>Difusão</option>
@@ -43,7 +43,7 @@
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-12">
-              <label class="control-label" for="press_kit_path">Press kit(.zip)</label>
+              <label class="control-label" for="press_kit_path">Press kit (.zip/.rar)</label>
               {{> upload_bootstrap contentType='file' multiple=false }}
               <span class="help-block with-errors"></span>
             </div>
@@ -71,7 +71,7 @@
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-6">
-              <label class="control-label" for="distributor">Distribuidora</label>
+              <label class="control-label" for="distributor">Produtora</label>
               <input type="text" name="distributor" class="form-control">
               <div class="help-block with-errors"></div>
             </div>
