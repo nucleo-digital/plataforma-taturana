@@ -20,6 +20,12 @@ footer{
 h1, h3{
   color:#df4944;
 }
+h5{
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
 p, label{
   color: #fff;
   line-height: 20pt;
@@ -45,7 +51,7 @@ button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films{
+#ambassador-registration, #films, #adm-films, #home{
   margin-top:10em;
 }
 
@@ -56,5 +62,9 @@ button{
 }
 .section-description{
   width:70%;
+}
+.divider{
+  margin-top: 5em;
+  margin-bottom: 5em;
 }
 

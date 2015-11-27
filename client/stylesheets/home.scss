@@ -1,7 +1,40 @@
 #home{
   background: url("images/home-background.png") center top no-repeat;
   background-size: 100% auto;
-  height: 600px;
 }
-
+#home .container{
+	background: url("images/home-background.svg") center top no-repeat;
+  background-size: 100% auto;
+  height: 540px;
+  display: table;
+  position: relative;
+  overflow: hidden;
+  @media (max-width: 992px){
+  	height: 400px;
+  }
+  @media (max-width: 600px){
+  	height: 300px;
+  	display: block;
+  }
+}
+.home-text-box{
+	position: absolute;
+	top: 35%;
+	display:table-cell;
+	vertical-align: middle;
+}
+.home-text{
+	font-size:3em;
+	color:#fff;
+	font-weight: 300;
+	text-align:center;
+	@media (max-width: 992px){
+		font-size:2em;
+  	top: 20%;
+  }
+  @media (max-width: 600px){
+  	font-size:1.5em;
+  	top: 10%;
+  }
+}
 

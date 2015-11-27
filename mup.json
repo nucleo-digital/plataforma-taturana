@@ -34,7 +34,7 @@
 
   // Configure environment
   "env": {
-	"PORT": 80,
+  "PORT": 80,
     "ROOT_URL": "http://testes.taturanamobi.com.br"
   },
 
