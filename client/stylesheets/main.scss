@@ -3,6 +3,7 @@
 @import 'nav';
 @import 'home';
 
+
 body{
 	font-family: Roboto;
   font-weight: 400;
@@ -25,6 +26,13 @@ h5{
   color: white;
   font-weight: bold;
   text-align: center;
+}
+h6{
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  
 }
 p, label{
   color: #fff;
@@ -51,14 +59,16 @@ button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films, #home{
+#ambassador-registration, #films, #adm-films, #home, #agenda{
   margin-top:10em;
 }
 
 .image-description{
   text-align: center;
-  margin-bottom: 5em;
   margin-top: 1em;
+}
+#ambassador-registration .image-description{
+  margin-bottom: 5em;
 }
 .section-description{
   width:70%;
@@ -66,5 +76,8 @@ button{
 .divider{
   margin-top: 5em;
   margin-bottom: 5em;
+}
+.float-none{
+  float: none;
 }
 

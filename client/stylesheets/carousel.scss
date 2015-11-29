@@ -6,8 +6,42 @@
 }
 .carousel-box{
 	height:25em;
-}
-.imagem-corousel{
 	margin-top:2em;
-	margin-bottom:2em;
 }
+.icon-box{
+	height: 60%;
+  padding-top: 3em;
+  display: flex;
+  align-items: center;
+}
+.icon-box img{
+	width:40%;
+}
+.numbers{
+	padding: 2.6em 0;
+	h5{
+	  font-size: 2.8em;
+	}
+}
+
+.slick-next, .slick-prev{
+	&:before {
+		font-family: 'icomoon';
+  	font-size:45px;
+  }
+}
+.slick-next{
+  right: 18px;
+  &:before {
+	  content: "\e901";
+	}
+}
+.slick-prev{
+  left: -7px;
+  &:before {
+  	content: "\e900";
+  }
+}
+
+
+
