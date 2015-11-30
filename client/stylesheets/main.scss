@@ -59,7 +59,7 @@ button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films, #home, #agenda{
+#ambassador-registration, #films, #adm-films, #home, #agenda, #contact{
   margin-top:10em;
 }
 
@@ -80,4 +80,9 @@ button{
 .float-none{
   float: none;
 }
-
+.triangle-bullets{
+  list-style-image: url("images/triangle-bullet.svg");
+}
+li{
+  color:#fff;
+}
