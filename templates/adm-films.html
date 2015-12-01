@@ -34,7 +34,7 @@
             <h3>MÍDIA</h3>
             <div class="form-group col-md-12">
               <label class="control-label" for="poster_path">Poster</label>
-              {{> upload_bootstrap contentType='image' multiple=false}}
+              {{> upload_bootstrap contentType='images' multiple=false}}
               <span class="help-block with-errors"></span>
             </div>
             <div class="form-group col-md-12">
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="press_kit_path">Press kit (.zip/.rar)</label>
-              {{> upload_bootstrap contentType='file' multiple=false }}
+              {{> upload_bootstrap contentType='files' multiple=false }}
               <span class="help-block with-errors"></span>
             </div>
           </div>
@@ -122,7 +122,8 @@
       <div class="col-md-6">
         <h1>FILMES CADASTRADOS</h1>
         {{#each films}}
-          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}}</p>
+          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}} <a class="destroy" href="#">Excluir</a></p>
+
         {{/each}}
       </div>
     </div>
