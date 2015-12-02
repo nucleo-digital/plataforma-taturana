@@ -1,14 +1,14 @@
-// Meteor.methods({
-//   sendEmail: function (text) {
-//     this.unblock();
-//     Email.send({
-//       to: '',
-//       from: '',
-//       subject: '',
-//       text: text
-//     });
-//   }
-// });
+Meteor.methods({
+  sendEmail: function (text) {
+    this.unblock();
+    Email.send({
+      to: '',
+      from: '',
+      subject: '',
+      text: text
+    });
+  }
+});
 Meteor.startup(function () {
   UploadServer.init({
     tmpDir: process.env.PWD + '/uploads/tmp',

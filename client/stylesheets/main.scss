@@ -59,13 +59,18 @@ button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films, #home, #agenda, #contact{
+#ambassador-registration, #films, #adm-films, #home, #agenda, #contact, #about{
   margin-top:10em;
 }
 
 .image-description{
   text-align: center;
   margin-top: 1em;
+}
+.home-section-description{
+  text-align: center;
+  margin: 1em 0 4em 0;
+  line-height: 2em;
 }
 #ambassador-registration .image-description{
   margin-bottom: 5em;
@@ -88,4 +93,10 @@ li{
 }
 #contact img{
   width:75%;
+}
+.full{
+  width: 100%;
+}
+section{
+  margin-bottom:5em;
 }
