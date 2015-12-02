@@ -1,0 +1,57 @@
+<template name="showFilm">
+  {{>nav}}
+  <div id="show-film" class="container">
+    <div class="col-md-12">
+      <h3><span>FILMES</span> {{title}}</h3>
+      <div class="col-md-8 reset-div">
+        <table>
+          <tr>
+            <td>{{genre}}</td>
+            <td>{{length}}</td>
+            <td>{{producer}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-lg center-block">QUERO ORGANIZAR UMA SESSÃO</button>
+      </div>
+    </div>
+    <div class="col-md-12 synopsis">
+      <p>{{synopsis}}</p>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <h5 class="red">POSTER</h5>
+        <a src="/upload/{{poster_path}}" class="fancybox" title="Sample title">
+          <img class="full" src="/images/error_film.png">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <h5 class="red">TRAILER</h5>
+        <img class="full" src="/images/error_film.png">
+      </div>
+      <div class="col-md-4">
+        <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
+        <div class="row box">
+          <div class="col-md-12 reset-div">
+            <div class="col-md-5 field-name reset-div">Direção:</div>
+            <div class="col-md-7 reset-div">{{director}}</div>
+          </div>
+          <div class="col-md-12 reset-div">
+            <div class="col-md-5 field-name reset-div">Produção:</div>
+            <div class="col-md-7 reset-div">{{Produção}}</div>
+          </div>
+          <div class="col-md-12 reset-div">
+            <div class="col-md-5 field-name reset-div">Distribuição:</div>
+            <div class="col-md-7 reset-div">{{distributor}}</div>
+          </div>
+          <div class="col-md-12 reset-div">
+            <div class="col-md-5 field-name reset-div">Codistribuição:</div>
+            <div class="col-md-7 reset-div">{{coproducer}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{>footer}}
+</template>

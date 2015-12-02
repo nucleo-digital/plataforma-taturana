@@ -1,0 +1,39 @@
+#show-film {
+  & h3{
+    font-weight:300;
+    font-size:3em;
+    text-transform:uppercase;
+    margin-bottom:1em;
+  }
+  & h3 span{
+    font-weight:300;
+    font-size:0.6em;
+    color: #fff;
+  }
+  & button{
+    margin-top: 0;
+  }
+  & h5{
+    text-align: left;
+    font-weight:300;
+    font-size:1.6em;
+  }
+
+}
+.field-name{
+  opacity: 0.6;
+  margin-bottom: 0.8em;
+}
+.synopsis{
+  margin-top: 2.5em;
+  margin-bottom: 6em;
+}
+.box{
+  margin-bottom: 1.5em;
+  border: 1px solid #df4944;
+  padding: 1.2em 1.4em 0.4em 1.4em;
+  color:#fff;
+}
+
+
+

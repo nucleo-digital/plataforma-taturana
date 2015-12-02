@@ -1,0 +1,26 @@
+footer{
+  background: url("images/footer-background.png") center top no-repeat;
+  background-size: auto auto;
+  min-height: 200px;
+	& .container{
+	padding-top:1em;
+	}
+}
+footer .col-md-5, footer .col-md-7{
+	padding-right: 5%;
+  padding-left: 5%;
+}
+footer .col-md-5:nth-child(odd){
+	& p{
+		text-align:center;
+	}
+	& img{
+		width: 100%;
+	}
+}
+footer .col-md-7:nth-child(even){
+	margin-top: 2.2em;
+	& img{
+		margin-left: 0.5em;
+	}
+}
