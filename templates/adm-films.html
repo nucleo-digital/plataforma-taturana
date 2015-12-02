@@ -122,7 +122,7 @@
       <div class="col-md-6">
         <h1>FILMES CADASTRADOS</h1>
         {{#each films}}
-          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}} <a class="destroy" href="#">Excluir</a></p>
+          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}} ((<a class="destroy red" href="#"><strong>Excluir</strong></a> - <a class="red" href="/film/{{_id}}"><strong>Ver Detalhes</strong></a>))</p>
 
         {{/each}}
       </div>

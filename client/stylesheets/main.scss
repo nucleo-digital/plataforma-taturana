@@ -10,7 +10,9 @@ body{
   background: #232e4d url("images/triangles-background.png") repeat-y;
   background-size: 100% auto;
 }
-
+.reset-div{
+  padding:0;
+}
 .red{
   color: #df4944;
 }
@@ -57,9 +59,10 @@ button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films, #home, #agenda, #contact, #about{
+#ambassador-registration, #films, #adm-films, #home, #agenda, #contact, #about, #show-film{
   margin-top:10em;
 }
+
 
 .image-description{
   text-align: center;
