@@ -10,11 +10,7 @@ body{
   background: #232e4d url("images/triangles-background.png") repeat-y;
   background-size: 100% auto;
 }
-footer{
-  background: url("images/footer-background.png") center top no-repeat;
-  background-size: 100% auto;
-  height: 200px;
-}
+
 .red{
   color: #df4944;
 }
@@ -38,7 +34,9 @@ p, label{
   color: #fff;
   line-height: 20pt;
 }
-
+a, a:hover, a:visited, a:link{
+  color:#fff;
+}
 input, button, textarea{
   border-radius: 0 !important;
 }
