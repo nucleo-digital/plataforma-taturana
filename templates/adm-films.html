@@ -26,7 +26,7 @@
             </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="synopsis">Sinopse</label>
-              <textarea name="synopsis" rows="2" class="form-control"></textarea>
+              <textarea name="synopsis" rows="5" class="form-control"></textarea>
               <span class="help-block with-errors"></span>
             </div>
           </div>
@@ -77,40 +77,9 @@
             </div>
           </div>
           <div class="col-md-12">
-            <h3>INFORMAÇÕES TÉCNICAS</h3>
             <div class="form-group col-md-12">
-              <label class="control-label" for="director">Diretor</label>
-              <input type="text" name="director" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="editor">Montagem</label>
-              <input type="text" name="editor" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="producer">Produtor</label>
-              <input type="text" name="producer" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="coproducer">Co-Produtor</label>
-              <input type="text" name="coproducer" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="associate_producer">Produtor associado</label>
-              <input type="text" name="associate_producer" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="executive_producer">Produtor executivo</label>
-              <input type="text" name="executive_producer" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="soundtrack">Trilha Sonora</label>
-              <input type="text" name="soundtrack" class="form-control">
+              <label class="control-label" for="technical_information">Informações técnicas</label>
+              <textarea type="text" name="technical_information" rows="5" class="form-control"></textarea>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-6">
@@ -122,7 +91,7 @@
       <div class="col-md-6">
         <h1>FILMES CADASTRADOS</h1>
         {{#each films}}
-          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Diretor: {{director}}, Editor: {{editor}}, Produtor: {{producer}}, Co-Produtor: {{coproducer}}, Produtor Associado: {{associate_producer}}, Produtor Executivo: {{executive_producer}}, Trilha Sonora: {{soundtrack}} ((<a class="destroy red" href="#"><strong>Excluir</strong></a> - <a class="red" href="/film/{{_id}}"><strong>Ver Detalhes</strong></a>))</p>
+          <p>Titulo: {{title}}, Titulo traduzido: {{title_pt}},  Status: {{status}}, Sinopse: {{synopsis}}, URL Trailer: {{trailer_url}}, Poster: {{poster_path}}, Press Kit: {{press_kit_path}}, Ano: {{year}}, Gênero: {{genre}}, Duração: {{length}}, País: {{country}}, Distribuidor: {{distributor}}, Informações técnicas: {{technical_information}}((<a class="destroy red" href="#"><strong>Excluir</strong></a> - <a class="red" href="/film/{{_id}}"><strong>Ver Detalhes</strong></a>))</p>
 
         {{/each}}
       </div>
