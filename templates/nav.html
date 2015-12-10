@@ -1,3 +1,6 @@
+<template name="logout">
+	<a class="logout-ambassador" href="#">LOGOUT</a>
+</template>
 <template name="nav">
 	<nav class="navbar navbar-fixed-top">
 	  	<div class="container">
@@ -7,6 +10,7 @@
 				      <li><a href="/">HOME</a></li>
 				      <li><a href="/films">FILMES</a></li>
 				      <li><a href="/screenings">AGENDA</a></li>
+				      {{#if currentUser}}<li><a href="/ambassador">EMBAIXADOR</a></li>{{/if}}
 				    </ul>
 				  </div>
 				  <div id="top-menu-logo" class="col-md-4">
@@ -15,7 +19,10 @@
 					  <ul class="nav navbar-nav navbar-right">
 				      <li><a href="/contact">CONTATO</a></li>
 				      <li><a href="/register">CADASTRE-SE</a></li>
-				      <li><a href="#">LOGIN</a></li>
+				      <li><a href="/login">LOGIN</a></li>
+				      {{#if currentUser}}
+        				 <li>{{>logout}}</li>
+      				  {{/if}}
 				    </ul>
 				  </div>
 			  </div>
