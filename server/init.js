@@ -11,6 +11,10 @@ Meteor.methods({
 });
 Meteor.startup(function () {
 
+  Meteor.publish("films",function(){
+      return Films.find({});
+  });
+ 
   var name = "admin"
   var email = "admin@plataforma.taturana.com.br"
   var password = "12345678";
