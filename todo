@@ -5,3 +5,6 @@
 - corrigir home em iphone
 - unificar metodos de error message
 - Adicionar estado "oculto" aos filmes
+
+#fixed
+- remover da maquina de teste pastas upload geradas em teste 

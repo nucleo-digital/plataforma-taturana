@@ -7,6 +7,19 @@ Meteor.methods({
       subject: '',
       text: text
     });
+  },
+  updateOrCreateFilm: function (film) {
+    var film_id = film.id.value
+    if(film_id === undefined){
+      Films.insert(film);
+    }else{
+      Films.update(this.film_id, {
+        $set: {film: ! this}
+      });
+    }
+  },
+  removeFilm: function (id) {
+    Films.remove(id);
   }
 });
 Meteor.startup(function () {
