@@ -9,12 +9,31 @@ Meteor.methods({
     });
   },
   updateOrCreateFilm: function (film) {
-    var film_id = film.id.value
-    if(film_id === undefined){
+    var f_id = film.id;
+    delete film.id;
+    if (film.poster_path !== ''){ poster_path: film.poster_path}
+    if (film.poster_slice_path !== ''){ poster_slice_path: film.poster_slice_path}
+    if (film.poster_thumb_path !== ''){ poster_thumb_path: film.poster_thumb_path}
+    if (film.press_kit_path !== ''){ press_kit_path: film.press_kit_path}
+
+    if(f_id === undefined || f_id === ''){
       Films.insert(film);
     }else{
-      Films.update(this.film_id, {
-        $set: {film: ! this}
+      Films.update(f_id, {
+        $set: {
+          title: film.title,
+          synopsis: film.synopsis,
+          poster_path: film.poster_path,
+          poster_slice_path: film.poster_slice_path,
+          poster_thumb_path: film.poster_thumb_path,
+          trailer_url: film.trailer_url,
+          press_kit_path: film.press_kit_path,
+          genre: film.genre,
+          year: film.year,
+          length: film.length,
+          country: film.country,
+          distributor: film.distributor,
+          technical_information: film.technical_information}
       });
     }
   },
@@ -22,6 +41,7 @@ Meteor.methods({
     Films.remove(id);
   }
 });
+
 Meteor.startup(function () {
 
   Meteor.publish("films",function(){
@@ -50,6 +70,10 @@ Meteor.startup(function () {
     checkCreateDirectories: true,
     getDirectory: function(fileInfo, formData) {
       return formData.contentType;
+    },
+    getFileName: function(fileInfo, formData) { 
+      var name = fileInfo.name.replace(/\s/g, '');
+      return formData.file_type + name; 
     },
     finished: function(fileInfo, formFields) {
     },

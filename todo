@@ -2,9 +2,10 @@
 - deleção de filmes no adm films
 - deleção de imagem quando o filme é excluido
 - tornar dados estatisticos dinamicos
-- corrigir home em iphone
+- corrigir home em resoluções pequenas
 - unificar metodos de error message
-- Adicionar estado "oculto" aos filmes
+- suprimir parte da sinopse em algumas telas
 
 #fixed
 - remover da maquina de teste pastas upload geradas em teste 
+- Adicionar estado "oculto" aos filmes

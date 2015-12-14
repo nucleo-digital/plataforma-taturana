@@ -6,16 +6,25 @@
         <h1>CADASTRO DE FILMES</h1>
         <div class="help-block with-errors form-errors"></div>
         <form class="new-film">
-          <input type=hidden name="id" value="{{_id}}"/>
+          <input type="hidden" name="id" value="{{_id}}"/>
           <div class="col-md-12">
             <div class="form-group col-md-10">
-            <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
-            <select name="status" value="{{status}}" class="form-control no-radius">
-              <option>Difusão</option>
-              <option>Oculto</option>
-              <option>Portfolio</option>
-            </select>
-          </div>
+              <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
+              <select name="status" value="{{status}}" class="form-control no-radius">
+                <option>Difusão</option>
+                <option>Oculto</option>
+                <option>Portfolio</option>
+              </select>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="poster_path">Cartaz</label>
+              {{#if poster_path}}
+                <img src="/upload/{{poster_path}}" class="adm-thumb" />
+              {{else}}  
+                {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
+                <span class="help-block with-errors"></span>
+              {{/if}}
+            </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="title">Titulo do filme</label>
               <input type="text" name="title" value="{{title}}" class="form-control">
@@ -24,24 +33,6 @@
             <div class="form-group col-md-12">
               <label class="control-label" for="synopsis">Sinopse</label>
               <textarea name="synopsis" value="{{synopsis}}" rows="5" class="form-control"></textarea>
-              <span class="help-block with-errors"></span>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <h3>MÍDIA</h3>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="poster_path">Cartaz</label>
-              {{> upload_bootstrap contentType='images' multiple=false}}
-              <span class="help-block with-errors"></span>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="trailer_url">Trailer</label>
-              <input type="text" name="trailer_url" value="{{trailer_url}}" class="form-control">
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
-              {{> upload_bootstrap contentType='files' multiple=false }}
               <span class="help-block with-errors"></span>
             </div>
           </div>
@@ -72,13 +63,48 @@
               <input type="text" name="distributor" value="{{distributor}}" class="form-control">
               <div class="help-block with-errors"></div>
             </div>
-          </div>
-          <div class="col-md-12">
             <div class="form-group col-md-12">
               <label class="control-label" for="technical_information">Ficha técnicas</label>
               <textarea type="text" name="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
               <div class="help-block with-errors"></div>
             </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="trailer_url">Trailer</label>
+              <input type="text" name="trailer_url" value="{{trailer_url}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+             <div class="form-group col-md-12">
+              <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
+              {{#if poster_path}}
+                <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
+              {{else}}
+                {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
+                <span class="help-block with-errors"></span>
+              {{/if}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h3>IMAGENS</h3>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="poster_slice_path">Imagem para sessão agenda</label>
+              {{#if poster_path}}
+                <img src="/upload/{{poster_slice_path}}" class="adm-thumb" />
+              {{else}} 
+                {{> upload_bootstrap contentType='images' multiple=false formData=posterSliceData}}
+                <span class="help-block with-errors"></span>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="poster_thumb_path">Imagem para home/sobre</label>
+              {{#if poster_path}}
+                <img src="/upload/{{poster_thumb_path}}" class="adm-thumb" />
+              {{else}}  
+                {{> upload_bootstrap contentType='images' multiple=false formData=posterThumbData}}
+                <span class="help-block with-errors"></span>
+              {{/if}}
+            </div>
+          </div>
+          <div class="col-md-12">
             <div class="form-group col-md-6">
               <button class="btn btn-lg btn-block" type="submit">Enviar</button>
             </div>
