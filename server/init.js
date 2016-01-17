@@ -21,6 +21,8 @@ Meteor.methods({
     }else{
       Films.update(f_id, {
         $set: {
+          sequence_number: film.sequence_number,
+          status: film.status,
           title: film.title,
           synopsis: film.synopsis,
           poster_path: film.poster_path,
@@ -32,8 +34,16 @@ Meteor.methods({
           year: film.year,
           length: film.length,
           country: film.country,
+          age_rating: film.age_rating,
+          director: film.director,
           distributor: film.distributor,
-          technical_information: film.technical_information}
+          technical_information: film.technical_information,
+          site: film.site,
+          facebook: film.facebook,
+          twitter: film.twitter,
+          instagram: film.instagram,
+          youtube: film.youtube
+        }
       });
     }
   },

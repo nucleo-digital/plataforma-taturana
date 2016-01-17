@@ -8,7 +8,12 @@
         <form class="new-film">
           <input type="hidden" name="id" value="{{_id}}"/>
           <div class="col-md-12">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-12">
+              <label class="control-label" for="sequence_number">Ordenação</label>
+              <input type="text" name="sequence_number" value="{{sequence_number}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
               <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
               <select name="status" value="{{status}}" class="form-control no-radius">
                 <option>Difusão</option>
@@ -59,12 +64,28 @@
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-6">
+              <label class="control-label" for="director">Diretor</label>
+              <input type="text" name="director" value="{{director}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
               <label class="control-label" for="distributor">Produtora</label>
               <input type="text" name="distributor" value="{{distributor}}" class="form-control">
               <div class="help-block with-errors"></div>
             </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="status">Classificação Indicativa</label>
+              <select name="age_rating" value="{{age_rating}}" class="form-control no-radius">
+                <option>Livre</option>
+                <option>10 anos</option>
+                <option>12 anos</option>
+                <option>14 anos</option>
+                <option>16 anos</option>
+                <option>18 anos</option>
+              </select>
+            </div>
             <div class="form-group col-md-12">
-              <label class="control-label" for="technical_information">Ficha técnicas</label>
+              <label class="control-label" for="technical_information">Ficha técnica</label>
               <textarea type="text" name="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
               <div class="help-block with-errors"></div>
             </div>
@@ -105,6 +126,34 @@
             </div>
           </div>
           <div class="col-md-12">
+            <h3>REDES SOCIAIS</h3>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="site">Site</label>
+              <input type="text" name="site" value="{{site}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="facebook">Facebook</label>
+              <input type="text" name="facebook" value="{{facebook}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="twitter">Twitter</label>
+              <input type="text" name="twitter" value="{{twitter}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="instagram">Instagram</label>
+              <input type="text" name="instagram" value="{{instagram}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="youtube">Youtube</label>
+              <input type="text" name="youtube" value="{{youtube}}" class="form-control">
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-12">
             <div class="form-group col-md-6">
               <button class="btn btn-lg btn-block" type="submit">Enviar</button>
             </div>
@@ -114,7 +163,7 @@
       <div class="col-md-6">
         <h1>FILMES CADASTRADOS</h1>
         {{#each films}}
-          <p>{{title}} ((<a class="destroy" href="#"><strong>Excluir</strong></a> - <a href="/film/{{_id}}"><strong>Ver Detalhes</strong></a> - <a href="/adm-films/{{_id}}/edit"><strong>Editar</strong></a>))</p>
+          <p>{{sequence_number}} - {{title}} ((<a class="destroy" href="#"><strong>Excluir</strong></a> - <a href="/film/{{_id}}"><strong>Ver Detalhes</strong></a> - <a href="/adm-films/{{_id}}/edit"><strong>Editar</strong></a>))</p>
 
         {{/each}}
       </div>
