@@ -11,10 +11,6 @@ Meteor.methods({
   updateOrCreateFilm: function (film) {
     var f_id = film.id;
     delete film.id;
-    if (film.poster_path !== ''){ poster_path: film.poster_path}
-    if (film.poster_slice_path !== ''){ poster_slice_path: film.poster_slice_path}
-    if (film.poster_thumb_path !== ''){ poster_thumb_path: film.poster_thumb_path}
-    if (film.press_kit_path !== ''){ press_kit_path: film.press_kit_path}
 
     if(f_id === undefined || f_id === ''){
       Films.insert(film);

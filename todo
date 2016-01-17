@@ -5,6 +5,7 @@
 - corrigir home em resoluções pequenas
 - unificar metodos de error message
 - suprimir parte da sinopse em algumas telas
+- melhorar a administracao das imagens
 
 #fixed
 - remover da maquina de teste pastas upload geradas em teste 

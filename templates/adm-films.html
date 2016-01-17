@@ -24,7 +24,8 @@
             <div class="form-group col-md-12">
               <label class="control-label" for="poster_path">Cartaz</label>
               {{#if poster_path}}
-                <img src="/upload/{{poster_path}}" class="adm-thumb" />
+                <img src="/upload/{{poster_path}}" class="adm-thumb destroy-img" />
+                <input type="hidden" name="poster_path" value="{{poster_path}}"/>
               {{else}}  
                 {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
                 <span class="help-block with-errors"></span>
@@ -96,8 +97,9 @@
             </div>
              <div class="form-group col-md-12">
               <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
-              {{#if poster_path}}
+              {{#if press_kit_path}}
                 <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
+                <input type="hidden" name="press_kit_path" value="{{press_kit_path}}"/>
               {{else}}
                 {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
                 <span class="help-block with-errors"></span>
@@ -108,8 +110,9 @@
             <h3>IMAGENS</h3>
             <div class="form-group col-md-12">
               <label class="control-label" for="poster_slice_path">Imagem para sessão agenda</label>
-              {{#if poster_path}}
+              {{#if poster_slice_path}}
                 <img src="/upload/{{poster_slice_path}}" class="adm-thumb" />
+                <input type="hidden" name="poster_slice_path" value="{{poster_slice_path}}"/>
               {{else}} 
                 {{> upload_bootstrap contentType='images' multiple=false formData=posterSliceData}}
                 <span class="help-block with-errors"></span>
@@ -117,8 +120,9 @@
             </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="poster_thumb_path">Imagem para home/sobre</label>
-              {{#if poster_path}}
+              {{#if poster_thumb_path}}
                 <img src="/upload/{{poster_thumb_path}}" class="adm-thumb" />
+                <input type="hidden" name="poster_thumb_path" value="{{poster_thumb_path}}"/>
               {{else}}  
                 {{> upload_bootstrap contentType='images' multiple=false formData=posterThumbData}}
                 <span class="help-block with-errors"></span>
