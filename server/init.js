@@ -43,6 +43,10 @@ Meteor.methods({
       });
     }
   },
+  addScreening: function(film_id, new_screening){
+    console.log(film_id);
+    Films.update(film_id, {$push: {screening: new_screening}});
+  },
   removeFilm: function (id) {
     Films.remove(id);
   }

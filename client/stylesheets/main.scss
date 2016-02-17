@@ -14,10 +14,16 @@ body{
   padding:0;
 }
 .red{
-  color: #df4944;
+  color: #df4944 !important;
 }
 h1, h3{
   color:#df4944;
+}
+h1.section-title{
+  font-weight:300;
+  font-size:1.6em;
+  color: #fff;
+  text-decoration: underline;
 }
 h5{
   font-size: 16px;
@@ -35,11 +41,13 @@ h6{
 p, label{
   color: #fff;
   line-height: 20pt;
+  font-weight: 300;
+  font-size: 1.1em;
 }
 a, a:hover, a:visited, a:link{
   color:#fff;
 }
-input, button, textarea{
+a, input, button, textarea{
   border-radius: 0 !important;
 }
 select:not([multiple]) {
@@ -50,7 +58,7 @@ select:not([multiple]) {
   background-image: url("images/select-arrow.png");
   background-size: 5%;
 }
-button{
+a.btn, button{
   margin-top: 1em;
   background-color: #df4944;
   color:#fff;
@@ -62,7 +70,6 @@ button{
 #ambassador-registration, #films, #adm-films, #home, #agenda, #contact, #about, #show-film{
   margin-top:10em;
 }
-
 
 .image-description{
   text-align: center;
@@ -104,4 +111,9 @@ section{
 .adm-thumb{
   width:30%;
   display: list-item;
+}
+.sub-label{
+  font-size: 0.9em;
+  font-weight: 300;
+  line-height: 1.5em;
 }

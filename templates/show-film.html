@@ -2,39 +2,38 @@
   {{>nav}}
   <div id="show-film" class="container">
     <div class="col-md-12">
-      <h3><span>FILMES</span> {{title}}</h3>
-      <div class="col-md-8 reset-div">
-        <table>
-          <tr>
-            <td>{{genre}}</td>
-            <td>{{length}}</td>
-            <td>{{producer}}</td>
-          </tr>
-        </table>
+      <h1 class="section-title">FILMES</h1>
+      <div class="col-md-6 reset-div">
+        <h3>{{title}}</h3>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-lg center-block">QUERO ORGANIZAR UMA SESSÃO</button>
+      <div class="col-md-6 reset-div pull-right">
+        <button class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</button>
+        <button class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</button>
       </div>
-    </div>
-    <div class="col-md-12 synopsis">
-      <p>{{synopsis}}</p>
     </div>
     <div class="col-md-12">
+      <table>
+        <tr>
+          <td>{{genre}}</td>
+          <td>{{year}}</td>
+          <td>{{length}}</td>
+          <td>{{country}}</td>
+          <td>{{distributor}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-12 data-row reset-div">
       <div class="col-md-4">
-        <h5 class="red">POSTER</h5>
-        <a src="/upload/{{poster_path}}" class="fancybox" title="Sample title">
-          <img class="full" src="/images/error_film.png">
-        </a>
+        <img class="thumb-poster" src="/upload/{{poster_path}}">
       </div>
       <div class="col-md-4">
-        <h5 class="red">TRAILER</h5>
-        <img class="full" src="/images/error_film.png">
+        <p>{{synopsis}}</p>
       </div>
       <div class="col-md-4">
         <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
         <div class="row box">
-          <div class="col-md-12 reset-div">
-            <div class="col-md-5 field-name reset-div">Direção:</div>
+          <div class="col-md-12">
+            <!-- <div class="col-md-5 field-name reset-div">Direção:</div>
             <div class="col-md-7 reset-div">{{director}}</div>
           </div>
           <div class="col-md-12 reset-div">
@@ -47,7 +46,35 @@
           </div>
           <div class="col-md-12 reset-div">
             <div class="col-md-5 field-name reset-div">Codistribuição:</div>
-            <div class="col-md-7 reset-div">{{coproducer}}</div>
+            <div class="col-md-7 reset-div">{{coproducer}}</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 data-row">
+      <table>
+        <tr>
+          <td><a href="{{trailer_url}}" class="red">ASSISTA AO TRAILER</a></td>
+          <td><a href="{{site}}" class="red">VISITE O SITE OFICIAL</a></td>
+          {{#each linklist}}
+            <td><a href="{{link}}"><img src="/images/{{name}}.svg"></a></td>
+          {{/each}}
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-12 data-row">
+      <h5 class="red">FOTOS</h5>
+      <div id="carousel" class="center-block data-row">
+        <div>
+          <div class="col-md-12">
+            <img class="full photo" src="/images/photo.png"/>
+            <p class="photo-description">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi.</p>
+          </div>   
+        </div>
+        <div>
+          <div class="col-md-12">
+            <img class="full photo" src="/images/photo.png"/>
+            <p class="photo-description">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi.</p>
           </div>
         </div>
       </div>

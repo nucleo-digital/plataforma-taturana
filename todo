@@ -1,12 +1,24 @@
-#Todo
+#TODO
+
 - deleção de filmes no adm films
 - deleção de imagem quando o filme é excluido
-- tornar dados estatisticos dinamicos
 - corrigir home em resoluções pequenas
 - unificar metodos de error message
 - suprimir parte da sinopse em algumas telas
 - melhorar a administracao das imagens
+- ao salvar dados do filme dados relativos a imagem sao zerados
+- refatorar >> updateOrCreateFilm
 
-#fixed
-- remover da maquina de teste pastas upload geradas em teste 
-- Adicionar estado "oculto" aos filmes
+-------
+
+#show-films
+  - ajustar setas do carrosel
+  - desenvolver back-end de informações tecnicas
+  - desenvolver back-end de fotos da exibição
+  - desenvolver back/front de exibição de dados estatisticos
+  - faixa indicativa
+
+#new-screening
+  - revisar no layout
+  - tratar retorno do checkbox
+  - verificar quais sao as opcoes do select de atividades

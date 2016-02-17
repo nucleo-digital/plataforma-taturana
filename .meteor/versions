@@ -1,5 +1,6 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
+aldeed:template-extension@3.4.3
 anback:bootstrap-validator@0.9.0
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -42,6 +43,7 @@ iron:location@1.0.11
 iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
+jplack:bootstrap-timepicker@0.2.1
 jquery@1.11.4
 launch-screen@1.0.4
 livedata@1.0.15
@@ -60,6 +62,8 @@ npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
 promise@0.5.1
+rajit:bootstrap3-datepicker@1.5.1
+rajit:bootstrap3-datepicker-pt-br@1.5.1
 random@1.0.5
 rate-limit@1.0.0
 reactive-dict@1.1.3

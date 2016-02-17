@@ -1,38 +1,52 @@
 #show-film {
   & h3{
-    font-weight:300;
+    font-weight:400;
     font-size:3em;
     text-transform:uppercase;
-    margin-bottom:1em;
-  }
-  & h3 span{
-    font-weight:300;
-    font-size:0.6em;
-    color: #fff;
+    margin-bottom:0.9em;
   }
   & button{
-    margin-top: 0;
+    margin-top: 2em;
+    float: right;
+    margin-left: 1em;
+    font-size: 1em;
+    font-weight: 300;
   }
   & h5{
     text-align: left;
     font-weight:300;
     font-size:1.6em;
   }
-
+  & .thumb-poster{
+    width:75%;
+  }
+  & #carousel{
+    width:80%;
+  }
 }
 .field-name{
   opacity: 0.6;
   margin-bottom: 0.8em;
 }
-.synopsis{
-  margin-top: 2.5em;
-  margin-bottom: 6em;
+.data-row{
+  margin-top: 4em;
 }
 .box{
   margin-bottom: 1.5em;
   border: 1px solid #df4944;
   padding: 1.2em 1.4em 0.4em 1.4em;
   color:#fff;
+}
+.photo{
+  position: relative; 
+}
+.photo-description{
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  bottom: 17%;
+  opacity: 0.7;
+  font-size: 1.2em;
 }
 
 
