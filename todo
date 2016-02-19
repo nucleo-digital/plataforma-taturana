@@ -8,6 +8,7 @@
 - melhorar a administracao das imagens
 - ao salvar dados do filme dados relativos a imagem sao zerados
 - refatorar >> updateOrCreateFilm
+- tratar de uma forma mais elegante a chamada por filmes em diferentes templates
 
 -------
 
