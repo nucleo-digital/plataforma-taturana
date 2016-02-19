@@ -32,7 +32,7 @@ Meteor.methods({
           country: film.country,
           age_rating: film.age_rating,
           director: film.director,
-          distributor: film.distributor,
+          production_company: film.production_company,
           technical_information: film.technical_information,
           site: film.site,
           facebook: film.facebook,
