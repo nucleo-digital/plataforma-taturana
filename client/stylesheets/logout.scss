@@ -1,0 +1,48 @@
+     .userDroplet-container{
+            background-color: #df4944;
+            margin-top: 3em;
+            border-radius: 5px;
+            
+        
+        }
+        .userDroplet-avatar{
+            width: 40px; 
+            height: 40px; 
+            margin-top: 15px;
+            margin-left: 20px;
+            background-color: white;
+            border-radius: 50px;
+            z-index: 99999;
+            /*overflow: hidden; */
+        }    
+        
+        #dropletMenu{
+            margin-top: 25px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        #dropletMenu li{
+            height: 35px;
+            margin-top: 15px;
+            border-bottom: solid 1px white;
+        }
+        
+        #dropletMenu li:last-child{
+            border-bottom: none;
+        }
+        
+        .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 11px solid #df4944;
+    margin-top: -10px;
+    float: right;
+    margin-right: 28px;
+}
+
+.dropletInvisible{
+    visibility:hidden; 
+}

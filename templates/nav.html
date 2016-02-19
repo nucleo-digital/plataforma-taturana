@@ -17,7 +17,7 @@
 				      <li><a href="/contact">CONTATO</a></li>
 				      <li><a href="/register">CADASTRE-SE</a></li>
 				      	{{#if currentUser}}
-        				 	<li>{{>logout}}</li>
+        				 	{{>logout}}
         				{{else}}
 							<li><a href="/login">LOGIN</a></li>
       				  	{{/if}}
@@ -28,6 +28,3 @@
 	</nav>
 </template>
 
-<template name="logout">
-	<a class="logout-ambassador" href="#">LOGOUT</a>
-</template>
