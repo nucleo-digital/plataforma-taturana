@@ -1,12 +1,90 @@
 <template name="screenings">
   {{>nav}}
   <div id="agenda" class="container">
-    <h3>AGENDA</h3>
+    <h3>AGENDA DE EXIBIÇÕES</h3>
     <p class="section-description">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
-      {{#each films}}
-        {{>filmScreening}}
-      {{/each}}
+      <div class="row-fluid">
+        <div class="col-md-4">
+            
+            <div class="form-group col-md-3">
+                <label for="state-selector">Estado</label>
+                <select class="form-control" name="state-selector">
+                    <option>AB</option>
+                    <option>CD</option>
+                    <option>EF</option>
+                </select>
+            </div>
+            
+             <div class="form-group col-md-8">
+            <label for="city-selector">Cidade</label>
+              <select class="form-control" name="city-selector">
+                <option>Cidade</option>
+                <option>Cidade</option>
+                <option>Cidade</option>
+                <option>Cidade</option>
+              </select>
+          </div>
+        </div>
+          <div class="col-md-8">
+              <label>Selecione um mês</label>
+            <div class="datepicker-container">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-datepicker">Jan</button>
+                    <button type="button" class="btn btn-datepicker">Fev</button>
+                    <button type="button" class="btn btn-datepicker">Mar</button>
+                    <button type="button" class="btn btn-datepicker">Abr</button>
+                    <button type="button" class="btn btn-datepicker">Mai</button>
+                    <button type="button" class="btn btn-datepicker">Jun</button>
+                    <button type="button" class="btn btn-datepicker">Jul</button>
+                    <button type="button" class="btn btn-datepicker">Ago</button>
+                    <button type="button" class="btn btn-datepicker">Set</button>
+                    <button type="button" class="btn btn-datepicker">Out</button>
+                    <button type="button" class="btn btn-datepicker">Nov</button>
+                    <button type="button" class="btn btn-datepicker">Dez</button>
+                </div>  
+            </div>
+          </div>
+         
+      </div>
   </div>
+    
+    <style>
+        .datepicker-container{
+            margin-top: -14px;
+        }
+
+        .btn-datepicker{
+            background-color: transparent;
+            border: solid 1px darkgrey;
+            border-left: none;
+            color: darkgrey;
+            outline: none;
+        }
+        
+        .btn-datepicker:first-child{
+            border-left: solid 1px darkgrey;
+        }
+        
+        .btn-datepicker:hover{
+            color: white;
+            background-color: #df4944;
+        }
+        
+        .btn-datepicker.active{
+            background-color: #df4944;
+            color: white;
+            outline: none;
+        }
+
+
+    </style>
+    
+    <script>
+$(".btn-datepicker").click(function(){
+   $(".btn-datepicker").removeClass("active");
+   $(this).addClass("active");
+});
+    </script>
   {{>footer}}
 </template>
 
