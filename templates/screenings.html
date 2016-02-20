@@ -1,9 +1,9 @@
 <template name="screenings">
   {{>nav}}
   <div id="agenda" class="container">
-    <h3>AGENDA DE EXIBIÇÕES</h3>
-    <p class="section-description">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
-      <div class="row">
+    <h3 class="leftMarginHack">AGENDA DE EXIBIÇÕES</h3>
+    <p class="section-description leftMarginHack">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
+      <div class="row noLeftMargin">
         <div class="col-md-4">
             
             <div class="form-group col-md-3">
@@ -49,7 +49,7 @@
       </div>
 
 
-        <div class="row">
+        <div class="row  leftMarginHack">
           <div class="form-group col-md-4">
             <label for="filmSelector">Filme</label>
             <select class="form-control" name="filmSelector">
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row leftMarginHack">
             
             <div class="col-md-12" id="screeningDetails-container">
                 
@@ -98,7 +98,35 @@
                   </div>
                   <div class="clearfix"></div>
                   <ul id="screeningList" class="list-unstyled">
-                      <li class="screeningItem">
+                      <li class="screeningItem col-md-12">
+                        <div class="col-md-1" style="text-align: right">
+                          <img src="http://placehold.it/20x20">
+                        </div>
+                        <div class="col-md-2">
+                          <p class="screeningTime">09/11 às 19h</p>
+                        </div>
+                        <div class="col-md-5">
+                          <p class="screeningDetails">
+                            <strong>Centro Universitário Jorge Amado (Unijorge)</strong>
+                            <br>
+                            Av. Luís Viana, 6775 - Paralela São Paulo - SP
+                          </p>
+                        </div>
+                      </li><li class="screeningItem col-md-12">
+                        <div class="col-md-1" style="text-align: right">
+                          <img src="http://placehold.it/20x20">
+                        </div>
+                        <div class="col-md-2">
+                          <p class="screeningTime">09/11 às 19h</p>
+                        </div>
+                        <div class="col-md-5">
+                          <p class="screeningDetails">
+                            <strong>Centro Universitário Jorge Amado (Unijorge)</strong>
+                            <br>
+                            Av. Luís Viana, 6775 - Paralela São Paulo - SP
+                          </p>
+                        </div>
+                      </li><li class="screeningItem col-md-12">
                         <div class="col-md-1" style="text-align: right">
                           <img src="http://placehold.it/20x20">
                         </div>
@@ -114,8 +142,12 @@
                         </div>
                       </li>
                   </ul>
+
   
                 </div>
+                <a class="col-md-4 col-md-offset-4" id="loadMoreContainer">
+                  MAIS SESSÕES
+                </a>
             </div>
             
         </div>
@@ -124,7 +156,26 @@
   </div>
     
     <style>
+    .noLeftMargin{
+      margin-left: 0px;
+    }
 
+    .leftMarginHack{
+      margin-left: 15px;
+    }
+    #loadMoreContainer{
+      background-color: #df4944; bottom:-31px; z-index: 99999;
+      color: #232e4d;
+      text-align: center;
+      height: 40px;
+      padding-top: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      
+    }
+    .screeningItem{
+      margin-bottom: 30px;
+    }
     .screeningTime{
       font-size: 22px;
       color: #df4944;
@@ -188,10 +239,18 @@
     </style>
     
     <script>
-$(".btn-datepicker").click(function(){
-   $(".btn-datepicker").removeClass("active");
-   $(this).addClass("active");
-});
+    //Deixa o mês ativado.
+    $(".btn-datepicker").click(function(){
+       $(".btn-datepicker").removeClass("active");
+       $(this).addClass("active");
+    });
+
+    //Trigger pra carregar mais sessões
+    $('#loadMoreContainer').click(function(){
+     
+    });
+
+
     </script>
   {{>footer}}
 </template>
