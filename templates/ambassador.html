@@ -1,13 +1,15 @@
 <template name="ambassador">
   {{>nav}}
-  <div id="ambassador-registration" class="container">
+  <div id="ambassador" class="container">
     <div class="row">
-      <div class="col-md-6 pull-right">
-          
-      </div>
-      <div class="col-md-6">
-         <h1 style="margin-bottom:3em">EMBAIXADOR</h1>
-        <img style="margin-bottom:6em" src="images/user-registration-image-3.svg" class="img-responsive center-block">
+      <p class="section-description">Olá, {{currentUser.profile.name}}!</p>
+      <div class="col-md-12">
+        <h1 style="margin-bottom:3em">ORGANIZE UMA SESSÃO</h1>
+        <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
+        {{#each disseminate}}
+          {{title}}
+        {{/each}}
+
       </div>
     </div>
   </div>
