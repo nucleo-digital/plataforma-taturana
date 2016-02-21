@@ -1,0 +1,25 @@
+<template name="logout">
+	<!--<a class="logout-ambassador" href="#">testsasae</a>-->
+    <li>
+        <div class="userDroplet-avatar">
+            <!-- Avatar do Usuario -->
+        </div>
+        
+        
+    </li>
+    <div class="userDroplet-container col-md-9 col-md-offset-1 dropletInvisible">
+        <div class="arrow-up"></div>
+        <ul id="dropletMenu" class="list-unstyled">
+        
+            <li><a href="/ambassador">Home Embaixador</a></li>
+            <li><a href="#">Minhas Informações</a></li>
+            <li><a class="logout-ambassador" href="#">Sair</a></li>
+        </ul>
+    </div>
+    
+    <script>
+        $('.userDroplet-avatar').click(function(){
+            $('.userDroplet-container').toggleClass('dropletInvisible');
+        });
+    </script>
+</template>
