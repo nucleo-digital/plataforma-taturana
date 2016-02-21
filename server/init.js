@@ -55,7 +55,7 @@ Meteor.methods({
 Meteor.startup(function () {
 
   Meteor.publish("films",function(){
-      return Films.find({});
+    return Films.find({});
   });
  
   var name = "admin"

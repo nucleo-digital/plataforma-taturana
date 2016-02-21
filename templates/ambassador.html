@@ -1,15 +1,37 @@
 <template name="ambassador">
   {{>nav}}
   <div id="ambassador" class="container">
+    
+    <div class="col-md-12">
+      <p class="">Olá, {{currentUser.profile.name}}!</p>
+      <h1 class="section-title-lg">ORGANIZE UMA SESSÃO</h1>
+      <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
+    </div>
     <div class="row">
-      <p class="section-description">Olá, {{currentUser.profile.name}}!</p>
       <div class="col-md-12">
-        <h1 style="margin-bottom:3em">ORGANIZE UMA SESSÃO</h1>
-        <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
-        {{#each disseminate}}
-          {{title}}
+        {{#each disseminates}}
+          <a href="/new-screening/{{_id}}">
+            <div class="col-md-3">
+              <img src="/upload/{{poster_path}}" class="full" />
+              <h2 class="film-thumb-title">{{title}}</h2>
+            </div>
+          </a>
         {{/each}}
-
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="section-title-lg">EDITE SUAS SESSÕES</h1>
+        <p class="section-description">Veja aqui as sessões que estão agendadas e edite-as, caso necessário. Você também pode fazer download dos materiais de divulgação do filme. E não se esqueça de, após a sessão, preencher o relatório!</p>
+          {{#each ambassador_screenings}}
+            <div class="col-md-4">
+              <h2 class="film-thumb-title red">{{title}}</h2>
+              <p>{{place_name}} <br/>{{city}} - {{UF}}, {{date}} as {{time}}</p>
+              <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
+              <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
+              <span class="square_button"><img src="images/delete.svg"/></span>
+            </div>
+          {{/each}}
       </div>
     </div>
   </div>

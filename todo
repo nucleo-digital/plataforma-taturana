@@ -8,6 +8,8 @@
 - melhorar a administracao das imagens
 - refatorar >> updateOrCreateFilm
 - tratar de uma forma mais elegante a chamada por filmes em diferentes templates
+- refatorar css, unificando classes quando possível
+- unificar edicao/criacao de sessão
 
 -------
 

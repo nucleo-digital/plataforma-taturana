@@ -2,8 +2,8 @@
   {{>nav}}
   <div id="new-screening" class="container">
     <div class="col-md-12">
-      <h1 class="section-title">AGENDAR FILME</h1>
-      <h3>{{title}}</h3>
+      <h1 class="section-title-sm">AGENDAR FILME</h1>
+      <h1 class="section-title-lg">{{title}}</h1>
     </div>
     <div class="col-md-12">
       <div class="col-md-3">
@@ -33,6 +33,7 @@
         <div class="col-md-12">
           <h3>ENDEREÇO</h3>
           <div class="form-group col-md-12">
+            <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
             <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
             <input type="text" name="place_name" value="{{place_name}}" class="form-control" required>
             <div class="help-block with-errors"></div>
@@ -84,9 +85,6 @@
             <div class="form-group col-md-4">
               <label class="control-label sub-label" for="date">Dia<span class="red">*</span></label>
               <input id="date" type="text" name="date" value="{{date}}" class="form-control" required>
-              <!-- <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-              </span> -->
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-4">
@@ -118,7 +116,7 @@
             </div>
             <div class="col-md-12 reset-div checkbox">
               <label>
-                <input type="checkbox">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
+                <input type="checkbox" name="team_member">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
               </label>
               <p class="sub-label red">Alguns diretores e integrantes do filme muitas vezes se dispõe a participar de um bate-papo após a sessão. Pode ser bacana convida-los! Mas reforçamos que os custos de transporte e hospedagem, quando for o caso, são de responsabilidade do embaixador/instituição.</p>
             </div>
