@@ -34,6 +34,7 @@
 
           <h3>ENDEREÇO</h3>
           <div class="form-group col-md-12">
+            <input type="hidden" name="_id" value="{{screening._id}}"/>
             <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
             <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
             <input type="text" name="place_name" value="{{screening.place_name}}" class="form-control" required>
@@ -71,7 +72,7 @@
           </div>
           <div class="form-group col-md-2">
             <label class="control-label" for="zone">UF<span class="red">*</span></label>
-            <input type="text" name="zone" value="{{screening.uf}}" class="form-control" required>
+            <input type="text" name="uf" value="{{screening.uf}}" class="form-control" required>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-5">

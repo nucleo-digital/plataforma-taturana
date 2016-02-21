@@ -1,6 +1,4 @@
 #TODO
-
-- deleção de filmes no adm films
 - deleção de imagem quando o filme é excluido
 - corrigir home em resoluções pequenas
 - unificar metodos de error message
@@ -25,11 +23,35 @@
   - tratar retorno do checkbox
   - verificar quais sao as opcoes do select de atividades
 
-#home-ambassador
-  - logica de update de screening
-  - botoes aparecerem por mouse-over
+#screenings
+  - back-end
+  - botao ver mais
 
+#home-ambassador
+  x- logica de update de screening
+  - botoes aparecerem por mouse-over
+  x excluir screening
+
+#admin
+  >- listar embaixadores
+  >- lista sessões agendadas, com colunas: embaixador, filme, detalhes da sessão, suspender sessão
+  - alertas automáticos
+
+#edit-ambassador
+
+#home
+  x- adicao de texto
+  x- inserção de imagem
+  - carossel
+
+#relatorio
+
+#gestao de enderecos
+
+#nav
+  - back-end dos links do dropdown
 
 
 Feito!
 - ao salvar dados do filme dados relativos a imagem sao zerados
+- deleção de filmes no adm films

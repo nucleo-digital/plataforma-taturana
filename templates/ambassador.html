@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        {{#each disseminates}}
+        {{#each disseminate}}
           <a href="/new-screening/{{_id}}">
             <div class="col-md-3">
               <img src="/upload/{{poster_path}}" class="full" />
@@ -29,7 +29,7 @@
               <p>{{place_name}} <br/>{{city}} - {{UF}}, {{date}} as {{time}}</p>
               <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
               <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
-              <span class="square_button"><img src="images/delete.svg"/></span>
+              <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
             </div>
           {{/each}}
       </div>

@@ -3,38 +3,28 @@
 	<section id="home">
 		<div class="container">
 			<div class="col-md-12 col-sm-12 col-xs-12 home-text-box">
-				<h1 class="home-text">A PLATAFORMA TATURANA ATUA PARA A<br/>DEMOCRATIZAÇÃO DO ACESSO AO CINEMA</h1>
+				<h1 class="home-text">Bem-vindo! Aqui, você...</h1>
+        <div class="col-md-10 col-xs-12 center-block float-none">
+          <p class="home-items">1 SE CADASTRA como EMBAIXADOR e entra para a nossa rede de exibidores!</p>
+          <p class="home-items">2 ESCOLHE UM FILME para exibir e debater no seu espaço!</p>
+          <p class="home-items">3 ORGANIZA UMA SESSÃO pela própria plataforma, que aparecerá em nossa AGENDA.</p>
+          <p class="home-items">4 NOS CONTA COMO FOI a experiência e ajuda a construir um mapa da circulação do filme!</p>
+        </div>
 			</div>
 		</div>
-		<img src="images/divider-1.svg" class="img-responsive center-block divider">
+		<img src="images/home-info.svg" class="img-responsive center-block divider">
 	</section>
 	<section id="home-carousel">
 	  <div class="container">
 	  	<div class="col-md-7 col-xs-12 center-block float-none">
-	  		<h2 class="home-headers box">O QUE É DIFUSÃO SOCIAL DE FILMES</h2>
-	  	</div>
-	  	<div class="col-md-10 col-xs-12 center-block float-none">
-	  		<p class="home-section-description">Desde início de 2013, a Taturana realiza sessões paralelas ao circuito comercial de cinema que já mobilizaram milhares de espectadores em circuitos alternativos e em centenas de atividades e rodas de conversa.</p>
+	  		<h2 class="home-headers box">Cardápio de filmes</h2>
 	  	</div>
 	    {{>homeCarousel}}
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-lg center-block">AJUDE A DIFUNDIR UM FILME!</button>
+      </div>
 	  </div>
   </section>
-  <section id="home-films">
-	  <div class="container">
-	  	<div class="col-md-7 col-xs-12 center-block float-none">
-	  		<h2 class="home-headers box">FILMES EM CARTAZ</h2>
-	  	</div>
-	  	<div class="col-md-10 col-xs-12 center-block float-none">
-	  		<p class="home-section-description">Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. </p>
-	  	</div>
-	  	{{#each disseminate}}
-	      {{> listFilm}}
-	    {{/each}}
-	    <div class="col-md-12">
-	    	<button type="submit" class="btn btn-lg center-block">VER AGENDA COMPLETA</button>
-	    </div>
-	  </div>
-	</section>
 	{{>footer}}
 </template>
 

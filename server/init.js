@@ -43,12 +43,27 @@ Meteor.methods({
       });
     }
   },
+  removeFilm: function (id) {
+    Films.remove(id);
+  },
   addScreening: function(film_id, new_screening){
     console.log(film_id);
     Films.update(film_id, {$push: {screening: new_screening}});
   },
-  removeFilm: function (id) {
-    Films.remove(id);
+  updateScreening: function(f_screening){
+    var film = Films.by_screening_id(f_screening._id);
+    var screenings = film["screening"]
+    for (i = 0; i < db_scr.length; i++) { 
+      if (screenings[i]._id == f_screening._id) {
+        screenings.splice(i,1,f_screening);
+      }
+    }
+    Films.update({_id: film._id}, {$set: { screening: db_scr }});
+  },
+  removeScreening: function (screening_id) {
+    var film = Films.by_screening_id(screening_id);
+    var f_screening = Films.return_screening(screening_id);
+    Films.update({_id: film._id}, {$pull: {screening: f_screening}});
   }
 });
 
