@@ -42,7 +42,9 @@
 #home
   x- adicao de texto
   x- inserção de imagem
-  - carossel
+  x- carossel
+  - adição de novo formato de imagem nos filmes
+  - desenvolver back/front de exibição de dados
 
 #relatorio
 

@@ -1,3 +1,22 @@
+#carousel{
+  & .synopsis{
+    font-size: 1.1em;
+    font-weight: 200;
+  }
+  & .title{
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    text-align:left;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  & .btn{
+    border: 1px solid #fff;
+  }
+}
+
+
 .background-light-red{
 	background-color: #df4944;
 }
@@ -42,6 +61,8 @@
   	content: "\e900";
   }
 }
+
+
 
 
 

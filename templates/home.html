@@ -20,8 +20,8 @@
 	  		<h2 class="home-headers box">Cardápio de filmes</h2>
 	  	</div>
 	    {{>homeCarousel}}
-      <div class="col-md-12">
-        <button type="submit" class="btn btn-lg center-block">AJUDE A DIFUNDIR UM FILME!</button>
+      <div class="col-md-12 center-btn">
+        <a href="/register" class="btn btn-lg">AJUDE A DIFUNDIR UM FILME!</a>
       </div>
 	  </div>
   </section>
@@ -29,6 +29,26 @@
 </template>
 
 <template name="homeCarousel">  
+  <div id="carousel" class="col-md-12">
+    {{#each disseminate}}
+      <div>
+        <div class="col-md-4 carousel-box background-light-red reset-div">
+          <img src="images/carousel-demo.png" class="img-responsive center-block">
+        </div>
+        <div class="col-md-4 carousel-box background-dark-red">
+          <h5 class="title">{{title}}</h5>
+          <p class="synopsis max-lines">{{shortsynopsis}}</p>
+        </div>
+        <div class="col-md-4 carousel-box background-light-red center-btn">
+          <a type="submit" href="/film/{{_id}}" class="btn btn-sm">MAIS INFORMAÇÕES</a>
+          <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
+        </div>         
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<!-- <template name="homeCarousel">  
   <div id="carousel" class="col-md-12">
     <div>
       <div class="col-md-4 carousel-box background-light-red">
@@ -105,4 +125,4 @@
       </div>      
     </div>
   </div>
-</template>
+</template> -->
