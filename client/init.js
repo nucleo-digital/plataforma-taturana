@@ -3,7 +3,7 @@ Meteor.startup(function() {
     console.log(index);
     console.log(fileInfo);
     var f_type = body.data.formData.file_type;
-    
+
     if(f_type === 'poster-'){
       console.log("entrou 1");
       Session.set('poster_path', fileInfo.path);
@@ -18,4 +18,10 @@ Meteor.startup(function() {
       Session.set('press_kit_path', fileInfo.path);
     }
   }
+
+  FlashMessages.configure({
+    autoHide: true,
+    hideDelay: 4000,
+    autoScroll: true
+  });
 })

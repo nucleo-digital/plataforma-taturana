@@ -1,6 +1,7 @@
 <template name="admFilms">
   {{>nav}}
   <div id="adm-films" class="container adm">
+
     {{>admSidebar page="films"}}
 
     <div class="col-md-8 col-md-offset-1">
@@ -15,6 +16,7 @@
         <div role="tabpanel" class="tab-pane active" id="cadastro">
           <div class="row">
             <h1>CADASTRO DE FILMES</h1>
+
             <div class="help-block with-errors form-errors"></div>
             <form class="new-film">
               <input type="hidden" name="id" value="{{_id}}"/>
