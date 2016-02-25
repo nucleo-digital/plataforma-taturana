@@ -12,9 +12,10 @@ Meteor.methods({
     var f_id = film.id;
     delete film.id;
 
-    if(f_id === undefined || f_id === ''){
+
+    if (f_id === undefined || f_id === '') {
       Films.insert(film);
-    }else{
+    } else {
       Films.update(f_id, {
         $set: {
           sequence_number: film.sequence_number,
@@ -53,7 +54,7 @@ Meteor.methods({
   updateScreening: function(f_screening){
     var film = Films.by_screening_id(f_screening._id);
     var screenings = film["screening"]
-    for (i = 0; i < db_scr.length; i++) { 
+    for (i = 0; i < db_scr.length; i++) {
       if (screenings[i]._id == f_screening._id) {
         screenings.splice(i,1,f_screening);
       }
@@ -72,7 +73,7 @@ Meteor.startup(function () {
   Meteor.publish("films",function(){
     return Films.find({});
   });
- 
+
   var name = "admin"
   var email = "admin@plataforma.taturana.com.br"
   var password = "12345678";
@@ -96,9 +97,9 @@ Meteor.startup(function () {
     getDirectory: function(fileInfo, formData) {
       return formData.contentType;
     },
-    getFileName: function(fileInfo, formData) { 
+    getFileName: function(fileInfo, formData) {
       var name = fileInfo.name.replace(/\s/g, '');
-      return formData.file_type + name; 
+      return formData.file_type + name;
     },
     finished: function(fileInfo, formFields) {
     },
@@ -109,4 +110,3 @@ Meteor.startup(function () {
     }
   });
 });
-

@@ -1,0 +1,11 @@
+<template name="admSidebar">
+
+  <div class="col-md-3">
+    <ul class="adm-links">
+      <li><a href="/adm/films" class="btn btn-lg {{#if isEqual page 'films' }}active{{/if}}">Gerencie Filmes</a></li>
+      <li><a href="/adm/ambassadors" class="btn btn-lg {{#if isEqual page 'ambassadors' }}active{{/if}}">Gerencie Embaixadores</a></li>
+      <li><a href="/adm/sessions" class="btn btn-lg {{#if isEqual page 'sessions' }}active{{/if}}">Gerencie Sessões</a></li>
+    </ul>
+  </div>
+
+</template>

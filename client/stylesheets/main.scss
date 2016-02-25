@@ -3,7 +3,6 @@
 @import 'nav';
 @import 'home';
 
-
 body{
 	font-family: Roboto;
   font-weight: 400;
@@ -42,7 +41,7 @@ h6{
   color: white;
   font-weight: bold;
   text-align: left;
-  
+
 }
 p, label{
   color: #fff;
@@ -73,7 +72,7 @@ a.btn, button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #adm-films, #home, #agenda, #contact, #about, #show-film{
+#ambassador-registration, #films, #home, #agenda, #contact, #about, #show-film {
   margin-top:10em;
 }
 
