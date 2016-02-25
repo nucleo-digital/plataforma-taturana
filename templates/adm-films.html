@@ -181,10 +181,19 @@
         <div role="tabpanel" class="tab-pane" id="listagem">
           <div class="row">
             <h1>FILMES CADASTRADOS</h1>
+            <ul class="films-list">
             {{#each films}}
-            <p>{{sequence_number}} - {{title}} ((<a class="destroy" href="#"><strong>Excluir</strong></a> - <a href="/film/{{_id}}"><strong>Ver Detalhes</strong></a> - <a href="/adm-films/{{_id}}/edit"><strong>Editar</strong></a>))</p>
+              <li>
+                <small>{{sequence_number}} : </small><strong>{{title}}</strong>
+                <span class="actions">
+                  <a href="/film/{{_id}}">[ Ver Detalhes ]</a>
+                  <a href="/adm-films/{{_id}}/edit">[ Editar ]</a>
+                  <a class="destroy" href="#">[ Excluir ]</a>
+                </span>
+              </li>
 
             {{/each}}
+            </ul>
           </div>
         </div>
       </div>

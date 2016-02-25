@@ -8,6 +8,7 @@ Meteor.methods({
       text: text
     });
   },
+
   updateOrCreateFilm: function (film) {
     var f_id = film.id;
     delete film.id;
@@ -69,7 +70,6 @@ Meteor.methods({
 });
 
 Meteor.startup(function () {
-
   Meteor.publish("films",function(){
     return Films.find({});
   });

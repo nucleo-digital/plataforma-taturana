@@ -1,6 +1,7 @@
 
 $red: #df4944;
 $blue: #232e4d;
+$grey: #aaa;
 
 .adm.container {
   margin-top: 15em;
@@ -45,6 +46,30 @@ $blue: #232e4d;
 
       }
       a { color: $red; margin: 0; }
+    }
+  }
+
+  .films-list {
+    margin: 2em 0;
+    list-style: none;
+
+
+    li {
+      padding: 10px 5px;
+      margin: 10px 0;
+      border-bottom: solid 1px $grey;
+
+      small { color: $grey; }
+      strong { margin-left: 10px; }
+
+      .actions {
+        float: right;
+        a {
+          margin: 0 5px;
+          color: $grey;
+          &:hover { color: #fff; text-decoration: none; }
+        }
+      }
     }
   }
 }
