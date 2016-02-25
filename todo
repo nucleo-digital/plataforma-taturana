@@ -11,14 +11,14 @@
 
 -------
 
-#show-films
+#show-films/
   - ajustar setas do carrosel
   - desenvolver back-end de informações tecnicas
   - desenvolver back-end de fotos da exibição
   - desenvolver back/front de exibição de dados estatisticos
   - faixa indicativa
 
-#new-screening
+#new-screening/
   - revisar no layout
   - tratar retorno do checkbox
   - verificar quais sao as opcoes do select de atividades
@@ -33,11 +33,15 @@
   x excluir screening
 
 #admin
-  >- listar embaixadores
-  >- lista sessões agendadas, com colunas: embaixador, filme, detalhes da sessão, suspender sessão
+  - listar embaixadores
+  - lista sessões agendadas, com colunas: embaixador, filme, detalhes da sessão, suspender sessão
   - alertas automáticos
 
-#edit-ambassador
+#edição do embaixador
+
+#gestao de enderecos
+
+#agenda
 
 #home
   x- adicao de texto
@@ -48,10 +52,9 @@
 
 #relatorio
 
-#gestao de enderecos
 
 #nav
-  - back-end dos links do dropdown
+  x- back-end dos links do dropdown
 
 
 Feito!
