@@ -1,7 +1,7 @@
 Meteor.startup(function() {
   Uploader.finished = function(index, fileInfo, body) {
     var f_type = body.data.formData.file_type;
-    
+
     // if(f_type === 'poster-'){
     //   console.log("entrou 1");
     //   Session.set('poster_path', fileInfo.path);
@@ -17,4 +17,10 @@ Meteor.startup(function() {
     // }
     Session.set(f_type, fileInfo.path);
   }
+
+  FlashMessages.configure({
+    autoHide: true,
+    hideDelay: 4000,
+    autoScroll: true
+  });
 })
