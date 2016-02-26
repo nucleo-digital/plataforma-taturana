@@ -21,14 +21,15 @@
 #new-screening/
   - revisar no layout
   - tratar retorno do checkbox
-  - verificar quais sao as opcoes do select de atividades
+  x verificar quais sao as opcoes do select de atividades
+  - opcao salvar
 
 #screenings
   - back-end
   - botao ver mais
 
 #home-ambassador
-  x- logica de update de screening
+  x logica de update de screening
   - botoes aparecerem por mouse-over
   x excluir screening
 
@@ -51,6 +52,8 @@
   - desenvolver back/front de exibição de dados
 
 #relatorio
+  - ajuste de layout na parte de fotos
+  - opcao salvar
 
 
 #nav
