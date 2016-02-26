@@ -1,0 +1,90 @@
+<template name="report">
+  {{>nav}}
+  <div id="report" class="container">
+    <div class="col-md-12">
+      <h1 class="section-title-sm">GERAR RELATÓRIO</h1>
+      <h1 class="section-title-lg">{{film.title}}</h1>
+    </div>
+    <div class="col-md-12">
+      <p>{{screening.place_name}} <br/>{{screening.city}} - {{screening.UF}}, {{screening.date}} as {{screening.time}}</p>
+    </div>
+    <div class="col-md-6 data-row reset-div">
+      <div class="help-block with-errors form-errors"></div>
+      <form class="screening-report">
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <input type="hidden" name="_id" value="{{screening._id}}"/>
+            <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
+            <label class="control-label" for="real_quorum">Quantas pessoas viram o filme neste sessão?</label>
+            <input type="text" name="real_quorum" value="{{screening.real_quorum}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-12">
+            <label class="control-label" for="report_description">Conte como foi a sessão! Tente detalhar ao máximo, explicando por exemplo como foi a reação/retorno dos participantes, e também como foi o bate-papo e a atividade após o filme. Se puder, cite os contaúdos abordades, relate as discussões mais interessantes e reproduza frases e depoimentos relevantes.</label>
+            <textarea name="report_description" value="{{screening.report_description}}" rows="5" class="form-control"></textarea>
+            <span class="help-block with-errors"></span>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h3>FOTOS DAS SESSÕES</h3>
+          <div class="form-group col-md-12">
+            {{#if screening.report_image_1}}
+              <img src="/upload/{{screening.report_image_1}}" class="adm-thumb destroy-img" />
+              <input type="hidden" name="report_image_1" value="{{screening.report_image_1}}"/>
+            {{else}}
+              {{> upload_bootstrap contentType='images' name="testando" multiple=false formData=reportImage1}}
+              <span class="help-block with-errors"></span>
+            {{/if}}
+            <label class="control-label" for="author_1">Autor<span class="red">*</span></label>
+            <input type="text" name="author_1" value="{{screening.author_1}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-12">
+            {{#if screening.report_image_2}}
+              <img src="/upload/{{screening.report_image_2}}" class="adm-thumb destroy-img" />
+              <input type="hidden" name="report_image_2" value="{{screening.report_image_2}}"/>
+            {{else}}
+              {{> upload_bootstrap contentType='images' name="testando" multiple=false formData=reportImage1}}
+              <span class="help-block with-errors"></span>
+            {{/if}}
+            <label class="control-label" for="author_2">Autor<span class="red">*</span></label>
+            <input type="text" name="author_2" value="{{screening.author_2}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-12">
+            {{#if screening.report_image_3}}
+              <img src="/upload/{{screening.report_image_3}}" class="adm-thumb destroy-img" />
+              <input type="hidden" name="report_image_1" value="{{screening.report_image_3}}"/>
+            {{else}}
+              {{> upload_bootstrap contentType='images' name="testando" multiple=false formData=reportImage1}}
+              <span class="help-block with-errors"></span>
+            {{/if}}
+            <label class="control-label" for="author_3">Autor<span class="red">*</span></label>
+            <input type="text" name="author_3" value="{{screening.author_3}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <!-- <div class="form-group col-md-12">
+            {{> upload_bootstrap contentType='images' multiple=false formData=reportImage2}}
+            <label class="control-label" for="author_2">Autor<span class="red">*</span></label>
+            <input type="text" name="author_2" value="{{screening.author_2}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group col-md-12">
+            {{> upload_bootstrap contentType='images' multiple=false formData=reportImage3}}
+            <label class="control-label" for="author_3">Autor<span class="red">*</span></label>
+            <input type="text" name="author_3" value="{{screening.author_3}}" class="form-control" required>
+            <div class="help-block with-errors"></div>
+          </div> -->
+
+        </div>
+          <div class="col-md-12">
+            <div class="form-group col-md-6">
+              <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  {{>footer}}
+</template>
