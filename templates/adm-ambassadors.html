@@ -1,0 +1,17 @@
+<template name="admAmbassadors">
+  {{>nav}}
+  <div id="adm-ambassadors" class="container adm">
+
+    {{>admSidebar page="ambassadors"}}
+
+    <div class="col-md-8 col-md-offset-1">
+      <h2>Admin - ambassadors </h2>
+      <ul>
+      {{#each ambassadors }}
+        <li>{{profile.name}}</li>
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+  {{>footer}}
+</template>
