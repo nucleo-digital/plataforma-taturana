@@ -136,3 +136,15 @@ section{
   border: 1px solid #fff;
   font-weight: 100;
 }
+#flashMessages {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  z-index: 1080;
+  text-align: center;
+
+  .close {
+    margin-top: -5px;
+  }
+}
