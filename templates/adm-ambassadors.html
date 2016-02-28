@@ -5,10 +5,39 @@
     {{>admSidebar page="ambassadors"}}
 
     <div class="col-md-8 col-md-offset-1">
-      <h2>Admin - ambassadors </h2>
-      <ul>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 filters">
+          <div class="filters-header">Filtrar por:</div>
+          <form id="ambassadors-filters" class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-4 control-label" for="category">Área de Atuação: </label>
+              <div class="col-sm-8">
+                <select name="category" class="form-control no-radius">
+                  <option> </option>
+                  {{#each categories }}
+                    <option>{{name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label" for="subcategory">Temática: </label>
+              <div class="col-sm-8">
+                <select name="subcategory" class="form-control no-radius">
+                  <option> </option>
+                  {{#each subcategories }}
+                    <option>{{name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn pull-right">Filtrar</button>
+          </form>
+        </div>
+      </div>
+      <ul class="ambassadors-list">
       {{#each ambassadors }}
-        <li>{{profile.name}}</li>
+        <li><strong>{{profile.name}}</strong> <a class="pull-right" href="mailto: {{firstAddress emails}}">{{firstAddress emails}}</a></li>
       {{/each}}
       </ul>
     </div>

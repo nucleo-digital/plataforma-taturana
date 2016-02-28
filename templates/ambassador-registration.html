@@ -49,50 +49,17 @@
           <div class="form-group col-md-10">
             <label class="control-label" for="category ">Qual a sua área de atuação?</label>
             <select name="category" class="form-control no-radius">
-              <option>Cineclube</option>
-              <option>Coletivo</option>
-              <option>Organização Social</option>
-              <option>Universidade</option>
-              <option>Escola Pública</option>
-              <option>Escola Privada</option>
-              <option>Instituição Governamental</option>
-              <option>Espaços e Centros Culturais</option>
-              <option>Equipamento Público</option>
-              <option>Mídia/Blog/Site</option>
-              <option>Formador de Opinião/Especialista</option>
-              <option>Empresa</option>
-              <option>Grupo Religioso</option>
-              <option>Parque</option>
-              <option>Outro</option>
+              {{#each categories }}
+                <option>{{name}}</option>
+              {{/each}}
             </select>
           </div>
           <div class="form-group col-md-10">
             <label class="control-label" for="subcategory">Com quais temáticas vocês trabalham?</label>
             <select name="subcategory" class="form-control">
-              <option>Audiovisual</option>
-              <option>Artes Plásticas</option>
-              <option>Cultura</option>
-              <option>Educação/Ensino/Pedagogia</option>
-              <option>Música</option>
-              <option>Grafite</option>
-              <option>Saúde</option>
-              <option>SESC</option>
-              <option>Meio Ambiente</option>
-              <option>Gênero</option>
-              <option>Ponto de Cultura</option>
-              <option>Comunicação</option>
-              <option>Direito</option>
-              <option>Cidadania</option>
-              <option>Psicologia/Psicanálise</option>
-              <option>Juventude</option>
-              <option>Dança</option>
-              <option>Teatro</option>
-              <option>Infância</option>
-              <option>Política</option>
-              <option>Maternidade</option>
-              <option>Cidade</option>
-              <option>Literatura</option>
-              <option>Outro</option>
+              {{#each subcategories }}
+                <option>{{name}}</option>
+              {{/each}}
             </select>
           </div>
           <div class="form-group col-md-6">

@@ -73,3 +73,37 @@ $grey: #aaa;
     }
   }
 }
+
+#adm-ambassadors {
+  .filters {
+    border: solid 1px $red;
+    border-radius: 5px;
+    padding: 10px;
+    display: block;
+
+    .filters-header {
+      color: $red;
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    form {
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+  .ambassadors-list {
+    margin: 2em 0;
+    list-style: none;
+
+    li {
+      padding: 10px 5px;
+      margin: 10px 0;
+      border-bottom: solid 1px $grey;
+
+      a { color: $grey; }
+      strong { margin-left: 10px; }
+    }
+  }
+}
