@@ -19,19 +19,19 @@
   - faixa indicativa
 
 #new-screening/
-  - revisar no layout
   - tratar retorno do checkbox
   x verificar quais sao as opcoes do select de atividades
   - opcao salvar
 
-#screenings
+#agenda
   - back-end
   - botao ver mais
 
 #home-ambassador
-  x logica de update de screening
+  x logica de update das sessões
   - botoes aparecerem por mouse-over
-  x excluir screening
+  - status das sessões
+  x excluir sessões
 
 #admin
   - listar embaixadores
@@ -41,8 +41,6 @@
 #edição do embaixador
 
 #gestao de enderecos
-
-#agenda
 
 #home
   x- adicao de texto
@@ -55,10 +53,8 @@
   - ajuste de layout na parte de fotos
   - opcao salvar
 
-
 #nav
   x- back-end dos links do dropdown
-
 
 Feito!
 - ao salvar dados do filme dados relativos a imagem sao zerados
