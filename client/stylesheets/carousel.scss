@@ -13,9 +13,10 @@
   }
   & .btn{
     border: 1px solid #fff;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
-
 
 .background-light-red{
 	background-color: #df4944;
@@ -37,12 +38,18 @@
 	width:40%;
 }
 .numbers{
-	padding: 2.6em 0;
+	padding: 1.1em 0;
+  border-bottom: 2px solid #bf3c3c;
 	h5{
 	  font-size: 2.8em;
 	}
 }
-
+.button-bar{
+  padding: 1.1em 0;
+}
+.div-border{
+  border-right: 2px solid #bf3c3c;
+}
 .slick-next, .slick-prev{
 	&:before {
 		font-family: 'icomoon';
