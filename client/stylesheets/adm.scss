@@ -91,6 +91,9 @@ $grey: #aaa;
     form {
       margin: 0 auto;
       width: 90%;
+      font-size: 0.75em;
+
+      input[type=checkbox] {margin-top: 14px; }
     }
   }
   .ambassadors-list {
