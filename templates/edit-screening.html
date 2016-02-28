@@ -99,7 +99,7 @@
             </div>
             <div class="col-md-8 reset-div checkbox">
               <label>
-                <input type="checkbox" name="public_event">Aberta ao público
+                <input type="checkbox" name="public_event" checked="{{screening.public_event}}">Aberta ao público
               </label>
             </div>
             <div class="form-group col-md-12">
@@ -118,7 +118,7 @@
             </div>
             <div class="col-md-12 reset-div checkbox">
               <label>
-                <input type="checkbox" name="team_member">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
+                <input type="checkbox" name="team_member" checked="{{screening.team_member}}">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
               </label>
               <p class="sub-label red">Alguns diretores e integrantes do filme muitas vezes se dispõe a participar de um bate-papo após a sessão. Pode ser bacana convida-los! Mas reforçamos que os custos de transporte e hospedagem, quando for o caso, são de responsabilidade do embaixador/instituição.</p>
             </div>
@@ -137,7 +137,7 @@
               <p class="sub-label">Trabalhamos em rede pela democratização do acesso ao cinema e disponibilizamos o filme aos embaixadores em troca de sua difusão! Como contrapartida, esperamos que o embaixador nos ajude a medir o impacto do filme e se comprometa e enviar um reltório com: 1) contagem de participantes, 2) fotos da exibição+atividade, e 3) um breve relatório descritivo. O parceiro também se compromete a exibir o filme na ocasião acor- dada entre as partes. O filme não poderá ser fornecido a terceiros, nem ser exibido em outra ocasião ou qualquer meio sem autorização prévia. Também fica proibida a publi- cação do filme na internet.</p>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="accept_terms" required>Li e aceito os termos.
+                  <input type="checkbox" name="accept_terms" checked="{{ screening.accept_terms }}" required>Li e aceito os termos.
                 </label>
               </div>
               <span class="help-block with-errors"></span>
