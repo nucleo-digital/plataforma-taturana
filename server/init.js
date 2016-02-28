@@ -54,7 +54,7 @@ Meteor.methods({
   updateScreening: function(f_screening){
     var film = Films.by_screening_id(f_screening._id);
     var screenings = film["screening"]
-    for (i = 0; i < screenings.length; i++) { 
+    for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
         screenings.splice(i,1,f_screening);
       }
@@ -71,6 +71,10 @@ Meteor.methods({
 Meteor.startup(function () {
   Meteor.publish("films",function(){
     return Films.find({});
+  });
+
+  Meteor.publish("ambassadors", function () {
+    return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
   });
 
   var name = "admin"
