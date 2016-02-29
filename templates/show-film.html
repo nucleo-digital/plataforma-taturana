@@ -4,11 +4,11 @@
     <div class="col-md-12">
       <h1 class="section-title-sm">FILMES</h1>
       <div class="col-md-6 reset-div">
-        <h2 class="section-title-lg">{{title}}</h2>
+        <h2 class="section-title-lg red">{{title}}</h2>
       </div>
       <div class="col-md-6 reset-div pull-right">
         <button class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</button>
-        <button class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</button>
+        <a class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
       </div>
     </div>
     <div class="col-md-12">
@@ -62,6 +62,36 @@
         </tr>
       </table>
     </div>
+
+    <!-- {{#if film_inventory}}
+      <div class="col-md-6 data-row">
+        <h5 class="red">DADOS DA DIFUSÃO</h5>
+        <p><img src="/images/eye.svg" class="paragraph-icon"/>{{inventory.espectadores}} espectadores totais em {{inventory.sessoes}} sessões</p>
+        
+        <p><img src="/images/calendar.svg" class="paragraph-icon"/>{{inventory.sessoes}} sessões realizadas de {{inventory.sessoes_agendadas}} programadas</p>
+        
+      </div>
+      <div class="col-md-6 data-row">
+        <h5 class="red">EM QUANTOS ESTADOS</h5>
+        {{#each inventory.estados}}
+          <div class="zone">{{estado}}</div>
+        {{/each}}
+      </div>
+
+      <div class="col-md-6 data-row">
+        <h5 class="red">DADOS DA DIFUSÃO</h5>
+        <div id="session-chart"></div> 
+        <p>{{inventory.espectadores}} espectadores totais em {{inventory.sessoes}} sessões</p>
+      </div>
+
+      <div class="col-md-6 data-row">
+        <h5 class="red">EM QUAIS REGIÕES</h5>
+        <p>Sessões por região brasileira</p>
+        <div id="zone-chart"></div> 
+        <p>{{inventory.municipios}} municípios alcançados</p>
+      </div>
+    {{/if}} -->
+
     <div class="col-md-12 data-row">
       <h5 class="red">FOTOS</h5>
       <div id="carousel" class="center-block data-row">

@@ -33,3 +33,5 @@ matb33:bootstrap-tab-js
 mrt:flash-messages
 stevezhu:lodash
 harrison:papa-parse
+mfpierre:chartist-js
+aramk:requirejs

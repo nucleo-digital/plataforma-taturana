@@ -69,6 +69,7 @@ Meteor.methods({
 });
 
 Meteor.startup(function () {
+  
   Meteor.publish("films",function(){
     return Films.find({});
   });

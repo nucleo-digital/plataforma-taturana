@@ -15,8 +15,10 @@
   - ajustar setas do carrosel
   - desenvolver back-end de informações tecnicas
   - desenvolver back-end de fotos da exibição
-  - desenvolver back/front de exibição de dados estatisticos
+  x desenvolver back/front de exibição de dados estatisticos
   - faixa indicativa
+  - quando em difusão, mostrar numero de estados que faltam
+
 
 #new-screening/
   - tratar retorno do checkbox

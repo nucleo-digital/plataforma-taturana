@@ -2,6 +2,7 @@ accounts-base@1.2.2
 accounts-password@1.1.4
 aldeed:template-extension@3.4.3
 anback:bootstrap-validator@0.9.0
+aramk:requirejs@2.1.15_1
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -57,6 +58,7 @@ matb33:bootstrap-tab-js@10.0.0
 matb33:bootstrap-transition-js@10.0.0
 meteor@1.1.10
 meteor-base@1.0.1
+mfpierre:chartist-js@1.6.1
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
