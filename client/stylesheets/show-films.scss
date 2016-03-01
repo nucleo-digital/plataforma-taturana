@@ -1,7 +1,7 @@
 #show-film {
   & h3{
     font-weight:400;
-    font-size:3em;
+    font-size:1.8em;
     text-transform:uppercase;
     margin-bottom:0.9em;
   }
@@ -38,7 +38,7 @@
   color:#fff;
 }
 .photo{
-  position: relative; 
+  position: relative;
 }
 .photo-description{
   position: absolute;
@@ -90,8 +90,44 @@
       top: 0;
       right: 0;
   }
+}
 
+.film-graphs {
+  color: #FFF;
+  display: flex;
+  justify-content: space-between;
 
+  &__box {
+    width: 50%;
+
+    dl {
+      margin-top: 2.6em;
+      font-size: 1.5em;
+    }
+
+    dd {
+      margin-bottom: 1em;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 2.6em;
+      padding-left: 0;
+
+      li {
+        display: inline-block;
+        width: 3.7em;
+        height: 3.7em;
+        border-radius: 25px;
+        background: #FFF;
+        font-weight: 500;
+        color: #df4944;
+        text-align: center;
+        line-height: 3.8em;
+        margin-right: 1em;
+      }
+    }
+  }
 }
 
 
