@@ -11,7 +11,7 @@
         <a class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
       </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="color: white;">
       <table>
         <tr>
           <td>{{genre}}</td>
@@ -33,6 +33,7 @@
         <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
         <div class="row box">
           <div class="col-md-12">
+            {{ technical_information }}
             <!-- <div class="col-md-5 field-name reset-div">Direção:</div>
             <div class="col-md-7 reset-div">{{director}}</div>
           </div>
@@ -63,13 +64,39 @@
       </table>
     </div>
 
+    <div class="col-md-12 data-row film-graphs">
+      {{#unless is_portfolio }}
+        {{#with inventory}}
+          <div class="film-graphs__box">
+            <h3>Dados da Difusão</h3>
+            <dl>
+              <dt><!-- TODO adicionar ícone --></dt>
+              <dd>{{espectadores}} espectadores totais em {{sessoes}} sessões</dd>
+              <dt><!-- TODO adicionar ícone --></dt>
+              <dd>{{sessoes}} sessões realizadas de {{sessoes_agendadas}} programadas</dd>
+            </dl>
+          </div>
+          <div class="film-graphs__box">
+            <h3>Em quantos estados</h3>
+            <ul>
+              {{#each estados}}
+              <li>{{estado}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/with}}
+      {{else}}
+        {{! Mostrar gráficos }}
+      {{/unless}}
+    </div>
+
     <!-- {{#if film_inventory}}
       <div class="col-md-6 data-row">
         <h5 class="red">DADOS DA DIFUSÃO</h5>
         <p><img src="/images/eye.svg" class="paragraph-icon"/>{{inventory.espectadores}} espectadores totais em {{inventory.sessoes}} sessões</p>
-        
+
         <p><img src="/images/calendar.svg" class="paragraph-icon"/>{{inventory.sessoes}} sessões realizadas de {{inventory.sessoes_agendadas}} programadas</p>
-        
+
       </div>
       <div class="col-md-6 data-row">
         <h5 class="red">EM QUANTOS ESTADOS</h5>
@@ -80,14 +107,14 @@
 
       <div class="col-md-6 data-row">
         <h5 class="red">DADOS DA DIFUSÃO</h5>
-        <div id="session-chart"></div> 
+        <div id="session-chart"></div>
         <p>{{inventory.espectadores}} espectadores totais em {{inventory.sessoes}} sessões</p>
       </div>
 
       <div class="col-md-6 data-row">
         <h5 class="red">EM QUAIS REGIÕES</h5>
         <p>Sessões por região brasileira</p>
-        <div id="zone-chart"></div> 
+        <div id="zone-chart"></div>
         <p>{{inventory.municipios}} municípios alcançados</p>
       </div>
     {{/if}} -->
@@ -99,7 +126,7 @@
           <div class="col-md-12">
             <img class="full photo" src="/images/photo.png"/>
             <p class="photo-description">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi.</p>
-          </div>   
+          </div>
         </div>
         <div>
           <div class="col-md-12">
