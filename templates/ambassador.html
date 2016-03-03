@@ -1,7 +1,7 @@
 <template name="ambassador">
   {{>nav}}
   <div id="ambassador" class="container">
-    
+
     <div class="col-md-12">
       <p class="">Olá, {{currentUser.profile.name}}!</p>
       <h1 class="section-title-lg">ORGANIZE UMA SESSÃO</h1>
@@ -26,7 +26,7 @@
           {{#each ambassador_screenings}}
             <div class="col-md-4">
               <h2 class="film-thumb-title red">{{title}}</h2>
-              <p>{{place_name}} <br/>{{city}} - {{UF}}, {{date}} as {{time}}</p>
+              <p>{{place_name}} <br/>{{city}} - {{uf}}, {{date}} as {{time}}</p>
               <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
               <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
               <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>

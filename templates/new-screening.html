@@ -10,7 +10,7 @@
         <img class="thumb-poster" src="/upload/{{poster_path}}">
       </div>
       <div class="col-md-9">
-        <p><bold>{{synopsis}}</bold></p>
+        <p><strong>{{synopsis}}</strong></p>
         <table class="white-table">
           <tr>
             <td>{{genre}}</td>
@@ -54,41 +54,13 @@
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-4">
-            <label class="control-label" for="complement">Complemento<span class="red">*</span></label>
-            <input type="text" name="complement" value="{{complement}}" class="form-control" required>
+            <label class="control-label" for="complement">Complemento</label>
+            <input type="text" name="complement" value="{{complement}}" class="form-control">
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-8">
             <label class="control-label" for="zone">Bairro<span class="red">*</span></label>
-            <select name="zone" value="{{zone}}" class="form-control no-radius">
-              <option>"AC"</option>
-              <option>"AL"</option>
-              <option>"AM"</option>
-              <option>"AP"</option>
-              <option>"BA"</option>
-              <option>"CE"</option>
-              <option>"DF"</option>
-              <option>"ES"</option>
-              <option>"GO"</option>
-              <option>"MA"</option>
-              <option>"MT"</option>
-              <option>"MS"</option>
-              <option>"MG"</option>
-              <option>"PA"</option>
-              <option>"PB"</option>
-              <option>"PR"</option>
-              <option>"PE"</option>
-              <option>"PI"</option>
-              <option>"RJ"</option>
-              <option>"RN"</option>
-              <option>"RO"</option>
-              <option>"RS"</option>
-              <option>"RR"</option>
-              <option>"SC"</option>
-              <option>"SE"</option>
-              <option>"SP"</option>
-              <option>"TO"</option>
-            </select>
+            <input type="text" name="zone" value="{{zone}}" class="form-control" required>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-5">
@@ -98,7 +70,35 @@
           </div>
           <div class="form-group col-md-2">
             <label class="control-label" for="uf">UF<span class="red">*</span></label>
-            <input type="text" name="uf" value="{{uf}}" class="form-control" required>
+            <select name="uf" value="{{uf}}" class="form-control no-radius">
+              <option>AC</option>
+              <option>AL</option>
+              <option>AM</option>
+              <option>AP</option>
+              <option>BA</option>
+              <option>CE</option>
+              <option>DF</option>
+              <option>ES</option>
+              <option>GO</option>
+              <option>MA</option>
+              <option>MT</option>
+              <option>MS</option>
+              <option>MG</option>
+              <option>PA</option>
+              <option>PB</option>
+              <option>PR</option>
+              <option>PE</option>
+              <option>PI</option>
+              <option>RJ</option>
+              <option>RN</option>
+              <option>RO</option>
+              <option>RS</option>
+              <option>RR</option>
+              <option>SC</option>
+              <option>SE</option>
+              <option>SP</option>
+              <option>TO</option>
+            </select>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-5">
@@ -133,6 +133,7 @@
               <p class="sub-label red">Um filme é sempre um bom ponto de partida para uma conversa! Aproveite a sessão para trocar ideias com o público presente! Convidar pessoas para mediar e trazer mais conteúdo para a discussão pode ajudar a esquentar o bate-papo!</p>
               <div class="col-md-8 reset-div">
                 <select name="activity" value="{{activity}}" class="form-control no-radius">
+                  <option value="">Selecione</option>
                   <option>Abertura</option>
                   <option>Bate-papo</option>
                   <option>Encerramento</option>
