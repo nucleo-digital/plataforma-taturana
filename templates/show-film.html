@@ -3,22 +3,27 @@
   <div id="show-film" class="container">
     <div class="col-md-12">
       <h1 class="section-title-sm">FILMES</h1>
-      <div class="col-md-6 reset-div">
+      <div class="col-md-5 reset-div">
         <h2 class="section-title-lg red">{{title}}</h2>
       </div>
-      <div class="col-md-6 reset-div pull-right">
-        <button class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</button>
-        <a class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
+      <div class="col-md-7 reset-div pull-right film-detail-buttons">
+        <a href="/new-screening/{{_id}}" class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</a>
+        <a href="/screenings" class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
       </div>
     </div>
     <div class="col-md-12">
-      <table>
+      <table class="white-table">
         <tr>
           <td>{{genre}}</td>
           <td>{{year}}</td>
           <td>{{length}}</td>
           <td>{{country}}</td>
-          <td>{{distributor}}</td>
+          {{# if director}}
+            <td>{{director}}</td>
+          {{/if}}
+          {{# if production_company}}
+            <td>{{production_company}}</td>
+          {{/if}}
         </tr>
       </table>
     </div>
