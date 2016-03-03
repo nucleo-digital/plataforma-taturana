@@ -12,13 +12,18 @@
       </div>
     </div>
     <div class="col-md-12">
-      <table>
+      <table class="white-table">
         <tr>
           <td>{{genre}}</td>
           <td>{{year}}</td>
           <td>{{length}}</td>
           <td>{{country}}</td>
-          <td>{{distributor}}</td>
+          {{# if director}}
+            <td>{{director}}</td>
+          {{/if}}
+          {{# if production_company}}
+            <td>{{production_company}}</td>
+          {{/if}}
         </tr>
       </table>
     </div>
