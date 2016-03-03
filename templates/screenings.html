@@ -5,7 +5,7 @@
     <p class="section-description leftMarginHack">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
       <div class="row noLeftMargin">
         <div class="col-md-4">
-            
+
             <div class="form-group col-md-3">
                 <label for="state-selector">Estado</label>
                 <select class="form-control" name="state-selector">
@@ -14,7 +14,7 @@
                     <option>EF</option>
                 </select>
             </div>
-            
+
              <div class="form-group col-md-8">
             <label for="city-selector">Cidade</label>
               <select class="form-control" name="city-selector">
@@ -25,7 +25,7 @@
               </select>
           </div>
         </div>
-         
+
           <div class="col-md-8">
               <label>Selecione um mês</label>
             <div class="datepicker-container">
@@ -42,10 +42,10 @@
                     <button type="button" class="btn btn-datepicker">Out</button>
                     <button type="button" class="btn btn-datepicker">Nov</button>
                     <button type="button" class="btn btn-datepicker">Dez</button>
-                </div>  
+                </div>
             </div>
           </div>
-         
+
       </div>
 
 
@@ -53,191 +53,83 @@
           <div class="form-group col-md-4">
             <label for="filmSelector">Filme</label>
             <select class="form-control" name="filmSelector">
-                <option>Nome do Filme</option>
-                <option>Nome do Filme</option>
-                <option>Nome do Filme</option>
-                <option>Nome do Filme</option>
-                <option>Nome do Filme</option>
+              <option value="">Selecione</option>
+              {{#each films}}
+                <option>{{title}}</option>
+              {{/each}}
             </select>
           </div>
         </div>
 
         <div class="row leftMarginHack">
-            
+
+          {{#each films}}
             <div class="col-md-12" id="screeningDetails-container">
-                
                 <div id="screeningDetails-movieInfo">
-                  
+
                   <div class="col-md-3">
-                    <img src="http://placehold.it/230x340"/>
+                    <img class="screening-film-poster" src="/upload/{{poster_path}}"/>
                   </div>
-                  
+
                   <div class="col-md-9" style="padding-left: 0px">
-                    <h1>Titulo do Filme <img src="http://placehold.it/20x20"></h1>
+                    <h1>{{title}}</h1>
                   </div>
-                  
+
                   <div class="col-md-9">
                     <ul class="list-inline" id="screeningDetails-movieSpecs">
-                      <li>Gênero</li>
-                      <li>Ano</li>
-                      <li>Duração</li>
-                      <li>País</li>
-                    </ul>
-                  </div>
-                  
-                  <div class="col-md-9">
-                    <ul class="list-inline" id="screeningDetails-productionSpecs">
-                      <li>Diretor</li>
-                      <li>Produtora</li>
+                      <li>{{genre}}</li>
+                      <li>{{year}}</li>
+                      <li>{{length}}</li>
+                      <li>{{country}}</li>
                     </ul>
                   </div>
 
                   <div class="col-md-9">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
-</p>
+                    <ul class="list-inline" id="screeningDetails-productionSpecs">
+                      <li>{{director}}</li>
+                      <li>{{production_company}}</li>
+                    </ul>
                   </div>
+
+                  <div class="col-md-9">
+                    <p>{{synopsis}}</p>
+                  </div>
+
                   <div class="clearfix"></div>
                   <ul id="screeningList" class="list-unstyled">
+                    {{#each future_screenings}}
                       <li class="screeningItem col-md-12">
                         <div class="col-md-1" style="text-align: right">
+                          {{! FIXME imagem? }}
                           <img src="http://placehold.it/20x20">
                         </div>
                         <div class="col-md-2">
-                          <p class="screeningTime">09/11 às 19h</p>
+                          <p class="screeningTime">{{format_date date}} {{format_time time}}</p>
                         </div>
                         <div class="col-md-5">
                           <p class="screeningDetails">
-                            <strong>Centro Universitário Jorge Amado (Unijorge)</strong>
+                            <strong>{{place_name}}</strong>
                             <br>
-                            Av. Luís Viana, 6775 - Paralela São Paulo - SP
-                          </p>
-                        </div>
-                      </li><li class="screeningItem col-md-12">
-                        <div class="col-md-1" style="text-align: right">
-                          <img src="http://placehold.it/20x20">
-                        </div>
-                        <div class="col-md-2">
-                          <p class="screeningTime">09/11 às 19h</p>
-                        </div>
-                        <div class="col-md-5">
-                          <p class="screeningDetails">
-                            <strong>Centro Universitário Jorge Amado (Unijorge)</strong>
-                            <br>
-                            Av. Luís Viana, 6775 - Paralela São Paulo - SP
-                          </p>
-                        </div>
-                      </li><li class="screeningItem col-md-12">
-                        <div class="col-md-1" style="text-align: right">
-                          <img src="http://placehold.it/20x20">
-                        </div>
-                        <div class="col-md-2">
-                          <p class="screeningTime">09/11 às 19h</p>
-                        </div>
-                        <div class="col-md-5">
-                          <p class="screeningDetails">
-                            <strong>Centro Universitário Jorge Amado (Unijorge)</strong>
-                            <br>
-                            Av. Luís Viana, 6775 - Paralela São Paulo - SP
+                            {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
                           </p>
                         </div>
                       </li>
+                    {{/each}}
                   </ul>
 
-  
+
                 </div>
-                <a class="col-md-4 col-md-offset-4" id="loadMoreContainer">
+                <!--<a class="col-md-4 col-md-offset-4" id="loadMoreContainer">
                   MAIS SESSÕES
-                </a>
+                </a>-->
             </div>
-            
+          {{/each}}
+
         </div>
 
-    
+
   </div>
-    
-    <style>
-    .noLeftMargin{
-      margin-left: 0px;
-    }
 
-    .leftMarginHack{
-      margin-left: 15px;
-    }
-    #loadMoreContainer{
-      background-color: #df4944; bottom:-31px; z-index: 99999;
-      color: #232e4d;
-      text-align: center;
-      height: 40px;
-      padding-top: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      
-    }
-    .screeningItem{
-      margin-bottom: 30px;
-    }
-    .screeningTime{
-      font-size: 22px;
-      color: #df4944;
-    }
-    .screeningDetails{
-      color: darkgrey;
-    }
-      #screeningList{
-        margin-left: 15px;
-        margin-top: 50px;
-      }
-
-        .datepicker-container{
-            margin-top: -14px;
-        }
-
-        .btn-datepicker{
-            background-color: transparent;
-            border: solid 1px darkgrey;
-            border-left: none;
-            color: darkgrey;
-            outline: none;
-        }
-        
-        .btn-datepicker:first-child{
-            border-left: solid 1px darkgrey;
-        }
-        
-        .btn-datepicker:hover{
-            color: white;
-            background-color: #df4944;
-        }
-        
-        .btn-datepicker.active{
-            background-color: #df4944;
-            color: white;
-            outline: none;
-        }
-
-        #screeningDetails-container{
-          border: solid 1px #df4944;
-          margin-top: 20px;
-          margin-bottom: 50px;
-          padding: 30px;
-        }
-
-        #screeningDetails-movieSpecs li, #screeningDetails-productionSpecs li{
-          border: solid 1px darkgrey;
-          border-right: none;
-          margin-right: -5px;
-              padding: 5px;
-    padding-left: 25px;
-    padding-right: 25px;
-        }
-
-        #screeningDetails-movieSpecs li:last-child, #screeningDetails-productionSpecs li:last-child{
-          border-right: solid 1px darkgrey;
-
-        }
-
-    </style>
-    
     <script>
     //Deixa o mês ativado.
     $(".btn-datepicker").click(function(){
@@ -247,7 +139,7 @@
 
     //Trigger pra carregar mais sessões
     $('#loadMoreContainer').click(function(){
-     
+
     });
 
 

@@ -1,0 +1,86 @@
+.noLeftMargin{
+  margin-left: 0px;
+}
+
+.leftMarginHack{
+  margin-left: 15px;
+}
+
+.screening-film-poster {
+  max-width: 100%;
+}
+
+#loadMoreContainer{
+  background-color: #df4944; bottom:-31px; z-index: 99999;
+  color: #232e4d;
+  text-align: center;
+  height: 40px;
+  padding-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+.screeningItem{
+  margin-bottom: 30px;
+}
+.screeningTime{
+  font-size: 22px;
+  color: #df4944;
+}
+.screeningDetails{
+  color: darkgrey;
+}
+#screeningList{
+  margin-left: 15px;
+  margin-top: 50px;
+}
+
+.datepicker-container{
+  margin-top: -14px;
+}
+
+.btn-datepicker{
+  background-color: transparent;
+  border: solid 1px darkgrey;
+  border-left: none;
+  color: darkgrey;
+  outline: none;
+}
+
+.btn-datepicker:first-child{
+  border-left: solid 1px darkgrey;
+}
+
+.btn-datepicker:hover{
+  color: white;
+  background-color: #df4944;
+}
+
+.btn-datepicker.active{
+  background-color: #df4944;
+  color: white;
+  outline: none;
+}
+
+#screeningDetails-container{
+  border: solid 1px #df4944;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+
+#screeningDetails-movieSpecs li, #screeningDetails-productionSpecs li{
+  border: solid 1px darkgrey;
+  border-right: none;
+  margin-right: -5px;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#screeningDetails-movieSpecs li:last-child, #screeningDetails-productionSpecs li:last-child{
+  border-right: solid 1px darkgrey;
+
+}
+
+
