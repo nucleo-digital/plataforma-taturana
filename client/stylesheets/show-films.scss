@@ -61,9 +61,38 @@
   text-align: center;
 }
 
+.ct-chart {
+  position: relative;
+  height: 250px;
+
+}
+
+.ct-grid {
+  stroke: rgba(149,149,149,1);
+}
+
+.ct-label {
+  font-size: .75em;
+  color: #AAA;
+  background: none;
+}
+
+.ct-line {
+  stroke: #FFF !important;
+}
+
+.ct-point {
+  stroke: #df4944 !important;
+}
+
+.ct-grid.ct-vertical {
+  opacity: 0;
+}
+
 .ct-legend {
   position: relative;
   z-index: 10;
+  list-style: none;
 
   li {
       position: relative;
@@ -90,12 +119,26 @@
       top: 0;
       right: 0;
   }
+
+  $ct-series-colors: #d70206, #f05b4f, #f4c63d, #d17905;
+
+  @for $i from 0 to length($ct-series-colors) {
+    .ct-series-#{$i}:before {
+      background-color: nth($ct-series-colors, $i + 1);
+      border-color: nth($ct-series-colors, $i + 1);
+    }
+  }
 }
 
 .film-graphs {
   color: #FFF;
   display: flex;
   justify-content: space-between;
+
+  p {
+    color: #CCC;
+    text-align: center;
+  }
 
   &__box {
     width: 50%;
