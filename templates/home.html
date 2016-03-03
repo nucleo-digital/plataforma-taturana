@@ -28,7 +28,7 @@
 	{{>footer}}
 </template>
 
-<template name="homeCarousel">  
+<template name="homeCarousel">
   <div id="carousel" class="col-md-12">
     {{#each disseminate}}
       <div>
@@ -40,26 +40,27 @@
           <p class="synopsis max-lines">{{shortsynopsis}}</p>
         </div>
         <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
-          {{#if film_inventory }}
+          {{#if inventory }}
+            {{#with inventory}}
             <div class="col-md-6 numbers div-border">
-              <h5>{{inventory.sessoes}}</h5> 
+              <h5>{{sessions}}</h5>
               <p class="image-description">Sessões realizadas</p>
             </div>
             <div class="col-md-6 numbers">
-              <h5>10</h5> 
-              <!-- <h5>{{inventory.municipios}}</h5>  -->
+              <h5>{{states.length}}</h5>
               <p class="image-description">Estados</p>
             </div>
             <div class="col-md-12 numbers">
-              <h5>{{inventory.espectadores}}</h5> 
+              <h5>{{viewers}}</h5>
               <p class="image-description">Pessoas impactadas</p>
             </div>
+            {{/with}}
           {{/if}}
           <div class="col-md-12 button-bar">
             <a type="submit" href="/film/{{_id}}" class="btn btn-sm">MAIS INFORMAÇÕES</a>
             <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
           </div>
-        </div>         
+        </div>
       </div>
     {{/each}}
   </div>
