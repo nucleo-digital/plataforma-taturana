@@ -8,20 +8,21 @@
 
             <div class="form-group col-md-3">
                 <label for="state-selector">Estado</label>
-                <select class="form-control" name="state-selector">
-                    <option>AB</option>
-                    <option>CD</option>
-                    <option>EF</option>
+                <select class="form-control" name="state-selector" id="st-selector">
+                  <option value="">Selecione</option>
+                  {{#each states_options films}}
+                    <option>{{this}}</option>
+                  {{/each}}
                 </select>
             </div>
 
              <div class="form-group col-md-8">
-            <label for="city-selector">Cidade</label>
-              <select class="form-control" name="city-selector">
-                <option>Cidade</option>
-                <option>Cidade</option>
-                <option>Cidade</option>
-                <option>Cidade</option>
+              <label for="city-selector">Cidade</label>
+              <select class="form-control" name="city-selector" id="city-selector">
+                  <option value="">Selecione</option>
+                  {{#each cities_options films}}
+                    <option>{{this}}</option>
+                  {{/each}}
               </select>
           </div>
         </div>
@@ -30,18 +31,18 @@
               <label>Selecione um mês</label>
             <div class="datepicker-container">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-datepicker">Jan</button>
-                    <button type="button" class="btn btn-datepicker">Fev</button>
-                    <button type="button" class="btn btn-datepicker">Mar</button>
-                    <button type="button" class="btn btn-datepicker">Abr</button>
-                    <button type="button" class="btn btn-datepicker">Mai</button>
-                    <button type="button" class="btn btn-datepicker">Jun</button>
-                    <button type="button" class="btn btn-datepicker">Jul</button>
-                    <button type="button" class="btn btn-datepicker">Ago</button>
-                    <button type="button" class="btn btn-datepicker">Set</button>
-                    <button type="button" class="btn btn-datepicker">Out</button>
-                    <button type="button" class="btn btn-datepicker">Nov</button>
-                    <button type="button" class="btn btn-datepicker">Dez</button>
+                    <button type="button" class="btn btn-datepicker" data-month="0">Jan</button>
+                    <button type="button" class="btn btn-datepicker" data-month="1">Fev</button>
+                    <button type="button" class="btn btn-datepicker" data-month="2">Mar</button>
+                    <button type="button" class="btn btn-datepicker" data-month="3">Abr</button>
+                    <button type="button" class="btn btn-datepicker" data-month="4">Mai</button>
+                    <button type="button" class="btn btn-datepicker" data-month="5">Jun</button>
+                    <button type="button" class="btn btn-datepicker" data-month="6">Jul</button>
+                    <button type="button" class="btn btn-datepicker" data-month="7">Ago</button>
+                    <button type="button" class="btn btn-datepicker" data-month="8">Set</button>
+                    <button type="button" class="btn btn-datepicker" data-month="9">Out</button>
+                    <button type="button" class="btn btn-datepicker" data-month="10">Nov</button>
+                    <button type="button" class="btn btn-datepicker" data-month="11">Dez</button>
                 </div>
             </div>
           </div>
@@ -52,7 +53,7 @@
         <div class="row  leftMarginHack">
           <div class="form-group col-md-4">
             <label for="filmSelector">Filme</label>
-            <select class="form-control" name="filmSelector">
+            <select class="form-control" name="filmSelector" id="film-selector">
               <option value="">Selecione</option>
               {{#each films}}
                 <option>{{title}}</option>
@@ -63,7 +64,7 @@
 
         <div class="row leftMarginHack">
 
-          {{#each films}}
+          {{#each filtered_films}}
             <div class="col-md-12" id="screeningDetails-container">
                 <div id="screeningDetails-movieInfo">
 
@@ -104,7 +105,9 @@
                           <img src="http://placehold.it/20x20">
                         </div>
                         <div class="col-md-2">
-                          <p class="screeningTime">{{format_date date}} {{format_time time}}</p>
+                          {{#with format_date date_obj}}
+                          <p class="screeningTime">{{date}} {{time}}</p>
+                          {{/with}}
                         </div>
                         <div class="col-md-5">
                           <p class="screeningDetails">
@@ -124,26 +127,8 @@
                 </a>-->
             </div>
           {{/each}}
-
         </div>
-
-
   </div>
-
-    <script>
-    //Deixa o mês ativado.
-    $(".btn-datepicker").click(function(){
-       $(".btn-datepicker").removeClass("active");
-       $(this).addClass("active");
-    });
-
-    //Trigger pra carregar mais sessões
-    $('#loadMoreContainer').click(function(){
-
-    });
-
-
-    </script>
   {{>footer}}
 </template>
 
