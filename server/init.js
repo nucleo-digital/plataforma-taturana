@@ -13,7 +13,6 @@ Meteor.methods({
     var f_id = film.id;
     delete film.id;
 
-
     if (f_id === undefined || f_id === '') {
       Films.insert(film);
     } else {
@@ -65,6 +64,10 @@ Meteor.methods({
     var film = Films.by_screening_id(screening_id);
     var f_screening = Films.return_screening(screening_id);
     Films.update({_id: film._id}, {$pull: {screening: f_screening}});
+  },
+  addAddress: function(user_id, new_address){
+    console.log(new_address);
+    Meteor.users.update(user_id, {$push: {addresses: new_address}});
   }
 });
 
@@ -75,7 +78,7 @@ Meteor.startup(function () {
   });
 
   Meteor.publish("ambassadors", function () {
-    return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+    return Meteor.users.find({}, {fields: {emails: 1, profile: 1, addresses: 1 }});
   });
 
   var name = "admin"
