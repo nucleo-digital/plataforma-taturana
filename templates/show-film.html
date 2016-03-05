@@ -113,18 +113,14 @@
     <div class="col-md-12 data-row">
       <h5 class="red">FOTOS</h5>
       <div id="carousel" class="center-block data-row">
-        <div>
-          <div class="col-md-12">
-            <img class="full photo" src="/images/photo.png"/>
-            <p class="photo-description">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi.</p>
+        {{#each slideshow}}
+          <div>
+            <div class="col-md-12">
+              <img class="full photo" src="/upload/{{src}}"/>
+              <p class="photo-description">{{caption}}</p>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="col-md-12">
-            <img class="full photo" src="/images/photo.png"/>
-            <p class="photo-description">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi.</p>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </div>
   </div>

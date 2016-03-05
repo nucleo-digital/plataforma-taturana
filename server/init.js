@@ -47,6 +47,11 @@ Meteor.methods({
   removeFilm: function (id) {
     Films.remove(id);
   },
+  addToSlideshow: function(id, image) {
+    Films.update(id, {$push: {slideshow: image}});
+
+    console.log(Films.findOne(id));
+  },
   addScreening: function(film_id, new_screening){
     Films.update(film_id, {$push: {screening: new_screening}});
   },
@@ -75,7 +80,7 @@ Meteor.methods({
 });
 
 Meteor.startup(function () {
-  
+
   Meteor.publish("films",function(){
     return Films.find({});
   });

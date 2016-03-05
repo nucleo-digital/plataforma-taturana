@@ -35,8 +35,8 @@
               {{> upload_bootstrap contentType='images' name="report_image_1" multiple=false formData=reportImage1}}
               <span class="help-block with-errors"></span>
             {{/if}}
-            <label class="control-label" for="author_1">Autor<span class="red">*</span></label>
-            <input type="text" name="author_1" value="{{screening.author_1}}" class="form-control" required>
+            <label class="control-label" for="author_1">Autor</label>
+            <input type="text" name="author_1" value="{{screening.author_1}}" class="form-control">
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-12">
@@ -44,11 +44,11 @@
               <img src="/upload/{{screening.report_image_2}}" class="adm-thumb destroy-img" />
               <input type="hidden" name="report_image_2" value="{{screening.report_image_2}}"/>
             {{else}}
-              {{> upload_bootstrap contentType='images' name="report_image_2" multiple=false formData=reportImage1}}
+              {{> upload_bootstrap contentType='images' name="report_image_2" multiple=false formData=reportImage2}}
               <span class="help-block with-errors"></span>
             {{/if}}
-            <label class="control-label" for="author_2">Autor<span class="red">*</span></label>
-            <input type="text" name="author_2" value="{{screening.author_2}}" class="form-control" required>
+            <label class="control-label" for="author_2">Autor</label>
+            <input type="text" name="author_2" value="{{screening.author_2}}" class="form-control">
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-12">
@@ -56,27 +56,13 @@
               <img src="/upload/{{screening.report_image_3}}" class="adm-thumb destroy-img" />
               <input type="hidden" name="report_image_1" value="{{screening.report_image_3}}"/>
             {{else}}
-              {{> upload_bootstrap contentType='images' name="report_image_3" multiple=false formData=reportImage1}}
+              {{> upload_bootstrap contentType='images' name="report_image_3" multiple=false formData=reportImage3}}
               <span class="help-block with-errors"></span>
             {{/if}}
-            <label class="control-label" for="author_3">Autor<span class="red">*</span></label>
-            <input type="text" name="author_3" value="{{screening.author_3}}" class="form-control" required>
+            <label class="control-label" for="author_3">Autor</label>
+            <input type="text" name="author_3" value="{{screening.author_3}}" class="form-control">
             <div class="help-block with-errors"></div>
           </div>
-
-          <!-- <div class="form-group col-md-12">
-            {{> upload_bootstrap contentType='images' multiple=false formData=reportImage2}}
-            <label class="control-label" for="author_2">Autor<span class="red">*</span></label>
-            <input type="text" name="author_2" value="{{screening.author_2}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-12">
-            {{> upload_bootstrap contentType='images' multiple=false formData=reportImage3}}
-            <label class="control-label" for="author_3">Autor<span class="red">*</span></label>
-            <input type="text" name="author_3" value="{{screening.author_3}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div> -->
-
         </div>
           <div class="col-md-12">
             <div class="form-group col-md-6">
