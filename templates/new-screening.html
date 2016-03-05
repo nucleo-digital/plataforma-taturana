@@ -6,7 +6,7 @@
       <h1 class="section-title-lg">{{title}}</h1>
     </div>
     <div class="col-md-12">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="col-md-3">
           <img class="thumb-poster" src="/upload/{{poster_path}}">
         </div>
@@ -38,42 +38,42 @@
             <div class="form-group col-md-12">
               <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
               <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
-              <input type="text" name="place_name" value="{{place_name}}" class="form-control" required>
+              <input type="text" name="place_name" value="{{address.place_name}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="cep">CEP<span class="red">*</span></label>
-              <input type="text" name="cep" value="{{cep}}" class="form-control" required>
+              <input type="text" name="cep" value="{{address.cep}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-8">
               <label class="control-label" for="street">Rua<span class="red">*</span></label>
-              <input type="text" name="street" value="{{street}}" class="form-control" required>
+              <input type="text" name="street" value="{{address.street}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label" for="number">Número<span class="red">*</span></label>
-              <input type="text" name="number" value="{{number}}" class="form-control" required>
+              <input type="text" name="number" value="{{address.number}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label" for="complement">Complemento</label>
-              <input type="text" name="complement" value="{{complement}}" class="form-control">
+              <input type="text" name="complement" value="{{address.complement}}" class="form-control">
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-8">
               <label class="control-label" for="zone">Bairro<span class="red">*</span></label>
-              <input type="text" name="zone" value="{{zone}}" class="form-control" required>
+              <input type="text" name="zone" value="{{address.zone}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-5">
               <label class="control-label" for="city">Cidade<span class="red">*</span></label>
-              <input type="text" name="city" value="{{city}}" class="form-control" required>
+              <input type="text" name="city" value="{{address.city}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-2">
               <label class="control-label" for="uf">UF<span class="red">*</span></label>
-              <select name="uf" value="{{uf}}" class="form-control no-radius">
+              <select name="uf" value="{{address.uf}}" class="form-control no-radius">
                 <option>AC</option>
                 <option>AL</option>
                 <option>AM</option>
@@ -106,7 +106,7 @@
             </div>
             <div class="form-group col-md-5">
               <label class="control-label" for="s_country">País<span class="red">*</span></label>
-              <input type="text" name="s_country" value="{{s_country}}" class="form-control" required>
+              <input type="text" name="s_country" value="{{address.s_country}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="col-md-8 reset-div checkbox">
@@ -192,13 +192,13 @@
           </form>
         </div>
        
-        <div class="col-md-6">
+        <div class="col-md-6 data-row reset-div">
           <h3>SEUS ENDEREÇOS SALVOS</h3>
           {{#each user_addresses}}
-            <div class="col-md-6">
-              <p>{{place_name}}</p>
-              <p>{{street}}, {{number}} {{complement}}</p>
-              <p>{{zone}}, {{city}} - {{uf}}</p>
+            <div class="address-box">
+              <button class="remove_address">X</button>
+              <h4>{{place_name}}</h4>
+              <a href="#" class="replace_address"><p class="address-text">{{street}}, {{number}} {{complement}} <br/> {{zone}}, {{city}} - {{uf}}</p></a>
             </div>
           {{/each}}
         </div>

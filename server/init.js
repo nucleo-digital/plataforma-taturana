@@ -68,6 +68,9 @@ Meteor.methods({
   addAddress: function(user_id, new_address){
     console.log(new_address);
     Meteor.users.update(user_id, {$push: {addresses: new_address}});
+  },
+  removeAddress: function(user_id, address){
+    Meteor.users.update(user_id, {$pull: {addresses: address}});
   }
 });
 
