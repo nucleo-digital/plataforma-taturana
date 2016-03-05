@@ -1,0 +1,26 @@
+<template name="admReport">
+  {{>nav}}
+  <div id="adm-report" class="container adm">
+
+    {{>admSidebar page="films"}}
+
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row">
+        <h1>Relatório</h1>
+        {{#with screening}}
+          <p>{{date}} {{time}}</p>
+          <p>{{place_name}}</p>
+          <p>{{street}} {{number}} {{complement}}</p>
+          <p>{{zone}} - {{cep}}</p>
+          <p>{{city}} {{uf}} - {{s_country}}</p>
+          <br />
+          <p><strong>Pessoas esperadas:</strong> {{quorum_expectation}}</p>
+          <p><strong>Pessoas que foram:</strong> {{real_quorum}}</p>
+          <p><strong>Como foi:</strong></p>
+          {{report_description}}
+        {{/with}}
+      </div>
+    </div>
+  </div>
+  {{>footer}}
+</template>
