@@ -13,6 +13,43 @@
 #report, #edit-screening{
   padding-top: 10em;
 }
+.address-box{
+  background-color:#df4944;
+  color:#fff;
+  text-align:center;
+  width:45%;
+  display:inline-block;
+  padding: 1em 0 0.7em 0;
+  position: relative;
+  margin-bottom: 10px;
+
+  &:nth-child(even){
+    margin-right: 5px;
+  }
+  &:nth-child(odd){
+    margin-left: 5px;
+  }
+  & h4{
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 0.8em;
+  }
+  & .address-text{
+    color:#333333;
+    font-weight:300;
+    line-height:1.3em;
+  }
+  & .remove_address{
+    position: absolute;
+    top: 0px;
+    right: 0.2em;
+    border: none;
+    font-weight: 100;
+    color: #333333;
+    font-size: 1.3em;
+    margin-top: 0.2em;
+  }
+}
 
 
 

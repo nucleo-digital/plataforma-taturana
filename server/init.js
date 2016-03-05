@@ -23,8 +23,8 @@ Meteor.methods({
           title: film.title,
           synopsis: film.synopsis,
           poster_path: film.poster_path,
-          poster_slice_path: film.poster_slice_path,
           poster_thumb_path: film.poster_thumb_path,
+          poster_home_path: film.poster_home_path,
           trailer_url: film.trailer_url,
           press_kit_path: film.press_kit_path,
           genre: film.genre,
@@ -68,6 +68,9 @@ Meteor.methods({
   addAddress: function(user_id, new_address){
     console.log(new_address);
     Meteor.users.update(user_id, {$push: {addresses: new_address}});
+  },
+  removeAddress: function(user_id, address){
+    Meteor.users.update(user_id, {$pull: {addresses: address}});
   }
 });
 
