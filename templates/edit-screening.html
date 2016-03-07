@@ -89,12 +89,12 @@
             <p>Data de exibição</p>
             <div class="form-group col-md-4">
               <label class="control-label sub-label" for="date">Dia<span class="red">*</span></label>
-              <input id="date" type="text" name="date" value="{{screening.date}}" class="form-control" required>
+              <input id="date" type="text" name="date" value="{{format_date screening.date}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label sub-label" for="time">Horário<span class="red">*</span></label>
-              <input type="text" name="time" value="{{screening.time}}" class="timepicker form-control" required>
+              <input type="text" name="time" value="{{format_time screening.date}}" class="timepicker form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="col-md-12 reset-div">
