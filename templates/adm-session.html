@@ -1,0 +1,34 @@
+<template name="admSession">
+  {{>nav}}
+  <div id="adm-sessions" class="container adm">
+
+    {{>admSidebar page="films"}}
+
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row">
+        <h1>Sessão</h1>
+        <dl class="session-info">
+          <dt>Local:</dt>
+          <dd>{{place_name}}</dd>
+          <dt>Endereço:</dt>
+          <dd>
+            {{street}}, {{number}} {{complement}}<br />
+            {{cep}} {{zone}} - {{city}}/{{state}}<br />
+            {{s_country}}
+          </dd>
+          <dt>Data:</dt>
+          <dd>{{format_date date}} - {{format_time date}}</dd>
+          <dt>Expectativa:</dt>
+          <dd>{{quorum_expectation}}</dd>
+          <dt>Atividade:</dt>
+          <dd>{{activity}}</dd>
+          <dt>Tema da atividade</dt>
+          <dd>{{activity_theme}}</dd>
+          <dt>Comentários:</dt>
+          <dd>{{Comments}}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  {{>footer}}
+</template>
