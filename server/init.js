@@ -49,8 +49,10 @@ Meteor.methods({
   },
   addToSlideshow: function(id, image) {
     Films.update(id, {$push: {slideshow: image}});
-
-    console.log(Films.findOne(id));
+  },
+  removeFromSlideshow: function (id, src) {
+    var image = Films.get_image_by_src(id, src);
+    Films.update(id, {$pull: {slideshow: image}});
   },
   addScreening: function(film_id, new_screening){
     Films.update(film_id, {$push: {screening: new_screening}});
