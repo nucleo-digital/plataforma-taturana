@@ -131,7 +131,11 @@
                       </p>
                     </div>
                     <a class="btn" href="/adm/session/{{_id}}">Visualizar</a>
-                    <button class="btn">Marcar como rascunho</button>
+                    {{#if draft}}
+                      <button class="btn btn-unset-draft" data-session-id="{{_id}}">Desmarcar como rascunho</button>
+                    {{else}}
+                      <button class="btn btn-set-draft" data-session-id="{{_id}}">Marcar como rascunho</button>
+                    {{/if}}
                   </li>
                 {{/each}}
               </ul>

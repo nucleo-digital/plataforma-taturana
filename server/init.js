@@ -64,10 +64,20 @@ Meteor.methods({
     for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
         screenings.splice(i,1,f_screening);
-
-        console.log(screenings);
       }
     }
+    Films.update({_id: film._id}, {$set: { screening: screenings }});
+  },
+  setScreeningDraftStatus: function(id, status) {
+    var film = Films.by_screening_id(id),
+        screenings = film["screening"];
+
+    _.each(screenings, function(screening, i) {
+      if (screening._id == id) {
+        screenings[i].draft = status;
+      }
+    })
+
     Films.update({_id: film._id}, {$set: { screening: screenings }});
   },
   removeScreening: function (screening_id) {
