@@ -110,19 +110,21 @@
       {{/with}}
     {{/unless}}
 
-    <div class="col-md-12 data-row">
-      <h5 class="red">FOTOS</h5>
-      <div id="carousel" class="center-block data-row">
-        {{#each slideshow}}
-          <div>
-            <div class="col-md-12">
-              <img class="full photo" src="/upload/{{src}}"/>
-              <p class="photo-description">{{caption}}</p>
+    {{#if slideshow}}
+      <div class="col-md-12 data-row">
+        <h5 class="red">FOTOS</h5>
+        <div id="carousel" class="center-block data-row">
+          {{#each slideshow}}
+            <div>
+              <div class="col-md-12">
+                <img class="full photo" src="/upload/{{src}}"/>
+                <p class="photo-description">{{caption}} - Autor: {{author}}</p>
+              </div>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
+        </div>
       </div>
-    </div>
+    {{/if}}
   </div>
   {{>footer}}
 </template>
