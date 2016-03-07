@@ -57,11 +57,11 @@ a, input, button, textarea{
 }
 select:not([multiple]) {
   -webkit-appearance: none;
-  -moz-appearance: none;
+  -webkit-border-radius: 0px;
   background-position: right 50%;
   background-repeat: no-repeat;
   background-image: url("images/select-arrow.png");
-  background-size: 5%;
+  background-size: 30px;
 }
 a.btn, button{
   margin-top: 1em;

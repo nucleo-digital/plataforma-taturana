@@ -1,40 +1,155 @@
-<template name="ambassador">
+<template name="register">
   {{>nav}}
-  <div id="ambassador" class="container">
-
-    <div class="col-md-12">
-      <p class="">Olá, {{currentUser.profile.name}}!</p>
-      <h1 class="section-title-lg">ORGANIZE UMA SESSÃO</h1>
-      <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
-    </div>
+  <div id="ambassador-registration" class="container">
     <div class="row">
-      <div class="col-md-12">
-        {{#each disseminate}}
-          <a href="/new-screening/{{_id}}">
-            <div class="col-md-3">
-              <img src="/upload/{{poster_path}}" class="full" />
-              <h2 class="film-thumb-title">{{title}}</h2>
-            </div>
-          </a>
-        {{/each}}
+      <div class="col-md-6 pull-right">
+        <h1>CADASTRE-SE</h1>
+        <div class="help-block with-errors form-errors"></div>
+        <form class="new-ambassador">
+          {{>ambassadorFormFields}}
+          <div class="form-group col-md-6">
+            <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
+          </div>
+        </form>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="section-title-lg">EDITE SUAS SESSÕES</h1>
-        <p class="section-description">Veja aqui as sessões que estão agendadas e edite-as, caso necessário. Você também pode fazer download dos materiais de divulgação do filme. E não se esqueça de, após a sessão, preencher o relatório!</p>
-          {{#each ambassador_screenings}}
-            <div class="col-md-4">
-              <h2 class="film-thumb-title red">{{title}}</h2>
-              <p>{{place_name}} <br/>{{city}} - {{uf}}, {{date}} as {{time}}</p>
-              <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
-              <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
-              <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
-              <a href="report/{{_id}}"><span class="square_button">R</span></a>
-            </div>
-          {{/each}}
+      <div class="col-md-6">
+        <h1 style="margin-bottom:1em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
+        <img src="images/register-info.svg" style="width: 65%;margin-bottom:2em" class=" center-block red">
       </div>
     </div>
   </div>
   {{>footer}}
+</template>
+
+<template name="ambassadorEdit">
+  {{>nav}}
+  <div id="ambassador-edit" class="container">
+    <div class="col-md-12">
+      <h1 class="section-title-lg">MINHAS INFORMAÇÕES</h1>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-9 reset-div">
+        <p>Complete e mantenha atualizado seus dados como embaixador! Aqui você também pode cadastrar e salvar os endereços/locais de exibições, para facilitar o agendamento de sessões.</p>
+       <!--  <p>X sessões finalizadas</p>
+        <p>X filmes exibidos</p>
+        <p>X pessoas impactadas pela difusão de filmes</p> -->
+      </div>
+    </div>
+    <div class="col-md-12 data-row reset-div">
+      <h3>MEUS DADOS</h3>
+      <div class="help-block with-errors form-errors"></div>
+      <form class="ambassador-edit">
+        <div class="col-md-3 reset-div">
+          <label class="control-label" for="avatar_path">Avatar</label>
+          {{#if currentUser.profile.avatar_path}}
+            <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
+            <input type="hidden" name="avatar_path" value="{{currentUser.profile.avatar_path}}"/>
+          {{else}}
+            {{> upload_bootstrap contentType='images' multiple=false formData=avatarData}}
+            <span class="help-block with-errors"></span>
+          {{/if}}
+        </div>
+        <div class="col-md-6">
+          {{>ambassadorFormFields}}
+          
+          <div class="form-group col-md-5">
+            <button class="btn btn-lg btn-block" type="submit">Salvar alterações</button>
+          </div>
+        </div>
+      </form>
+  
+      <div class="col-md-12">
+        <h3>ENDEREÇOS SALVOS</h3>
+        ...
+      </div>
+    </div>
+  </div>
+  {{>footer}}
+</template>
+
+<template name="ambassadorFormFields">
+  <div class="form-group col-md-12">
+    <label class="control-label" for="name">Nome completo<span class="red">*</span></label>
+    <input type="text" name="name" value="{{currentUser.profile.name}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-6">
+    <label class="control-label" for="email">E-mail<span class="red">*</span></label>
+    <input type="email" name="email" value="{{user_email}}" class="form-control email" required>
+    <span class="help-block with-errors"></span>
+  </div>
+  <div class="form-group col-md-6">
+    <label class="control-label" for="email-validation">Repita seu e-mail<span class="red">*</span></label>
+    <input type="email" data-match=".email" name="email-validation" value="{{user_email}}" class="form-control email-validation" data-match-error="Ops, verifique se digitou corretamente." required>
+    <div class="help-block with-errors"></div>
+  </div>
+  {{#if showPassword}}
+    {{> password}}
+  {{/if}}
+  <div class="form-group col-md-5">
+    <label class="control-label" for="cell_phone">Telefone celular<span class="red">*</span></label>
+    <input type="text" name="cell_phone" value="{{currentUser.profile.cell_phone}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-5">
+    <label class="control-label" for="phone">Telefone fixo<span class="red">*</span></label>
+    <input type="text" name="phone" value="{{currentUser.profile.phone}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-10">
+    <label class="control-label" for="cpf">CPF<span class="red">*</span></label>
+    <input type="text" name="cpf" value="{{currentUser.profile.cpf}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-5">
+    <label class="control-label" for="country">País<span class="red">*</span></label>
+    <input type="text" name="country" value="{{currentUser.profile.country}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-5">
+    <label class="control-label" for="city">Cidade<span class="red">*</span></label>
+    <input type="text" name="city" value="{{currentUser.profile.city}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-2">
+    <label class="control-label" for="uf">UF<span class="red">*</span></label>
+     <select name="uf" value="{{currentUser.profile.uf}}" class="form-control no-radius">
+      {{#each ufs}}
+        <option>{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group col-md-10">
+    <label class="control-label" for="institution">Você faz parte de alguma instituição, coletivo ou grupo?<span class="red">*</span></label>
+    <input type="text" name="institution" value="{{currentUser.profile.institution}}" class="form-control" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-10">
+    <label class="control-label" for="category">Qual a sua área de atuação?</label>
+    <select name="category" class="form-control no-radius" value="{{currentUser.profile.category}}">
+      {{#each categories}}
+        <option>{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group col-md-10">
+    <label class="control-label" for="subcategory">Com quais temáticas vocês trabalham?</label>
+    <select name="subcategory"  value="{{currentUser.profile.subcategory}}" class="form-control">
+      {{#each subcategories}}
+        <option>{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+</template>
+<template name="password">
+  <div class="form-group col-md-5">
+    <label class="control-label" for="password">Senha<span class="red">*</span></label>
+    <input type="password" data-minlength="8" name="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group col-md-5">
+    <label class="control-label" for="password-validation">Repita a senha<span class="red">*</span></label>
+    <input type="password" data-match=".password" data-minlength="8" name="password-validation" class="form-control" data-match-error="Ops, verifique se digitou corretamente." data-error="Verifique se digitou 8 caracteres" required>
+    <div class="help-block with-errors"></div>
+  </div>
 </template>

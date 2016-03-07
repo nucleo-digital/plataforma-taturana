@@ -1,7 +1,7 @@
 <template name="logout">
   <li>
     <div class="userDroplet-avatar">
-        <!-- Avatar do Usuario -->
+      <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
     </div>
   </li>
   <div class="userDroplet-container col-md-9 col-md-offset-1 dropletInvisible">
@@ -11,7 +11,7 @@
       <li><a href="/adm">Home Administrador</a></li>
     {{/if}}
     <li><a href="/ambassador">Embaixador</a></li>
-    <li><a href="#">Minhas Informações</a></li>
+    <li><a href="/ambassador-edit">Minhas Informações</a></li>
     <li><a class="logout-ambassador" href="#">Sair</a></li>
   </ul>
 </div>

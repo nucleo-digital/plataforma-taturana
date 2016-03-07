@@ -73,11 +73,14 @@ Meteor.methods({
     Films.update({_id: film._id}, {$pull: {screening: f_screening}});
   },
   addAddress: function(user_id, new_address){
-    console.log(new_address);
     Meteor.users.update(user_id, {$push: {addresses: new_address}});
   },
   removeAddress: function(user_id, address){
     Meteor.users.update(user_id, {$pull: {addresses: address}});
+  },
+  updateUser:function(profile, email){
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile": profile}});
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {'emails.0.address': email}});
   }
 });
 
