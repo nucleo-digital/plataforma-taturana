@@ -58,11 +58,14 @@ Meteor.methods({
     Films.update(film_id, {$push: {screening: new_screening}});
   },
   updateScreening: function(f_screening){
-    var film = Films.by_screening_id(f_screening._id);
-    var screenings = film["screening"]
+    var film = Films.by_screening_id(f_screening._id),
+        screenings = film["screening"];
+
     for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
         screenings.splice(i,1,f_screening);
+
+        console.log(screenings);
       }
     }
     Films.update({_id: film._id}, {$set: { screening: screenings }});

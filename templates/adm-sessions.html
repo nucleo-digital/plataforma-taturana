@@ -110,9 +110,7 @@
                       <img src="http://placehold.it/20x20">
                     </div>
                     <div class="col-md-2">
-                      {{#with format_date date_obj}}
-                      <p class="screeningTime">{{date}} {{time}}</p>
-                      {{/with}}
+                      <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
                     </div>
                     <div class="col-md-5">
                       <p class="screeningDetails">
