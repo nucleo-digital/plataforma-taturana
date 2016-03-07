@@ -65,6 +65,17 @@
             </select>
           </div>
         </div>
+        <div class="row  leftMarginHack">
+          <div class="form-group col-md-4">
+            <label for="ambassador-selector">Embaixador</label>
+            <select class="form-control" name="ambassador-selector" id="ambassador-selector">
+              <option value="">Selecione</option>
+              {{#each ambassador_options films}}
+                <option value="{{_id}}">{{profile.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row leftMarginHack">
