@@ -14,13 +14,21 @@
 				  </div>
 				  <div class="col-md-4">
 					  <ul class="nav navbar-nav navbar-left pull-right">
-				      <li><a href="/contact">CONTATO</a></li>
-				      	{{#if currentUser}}
-        				 	{{>logout}}
-        				{{else}}
-        					<li><a href="/register">CADASTRE-SE</a></li>
-							<li><a href="/login">LOGIN</a></li>
-      				  	{{/if}}
+              {{#if currentUser}}
+                <li class="avatar-menu">
+                  <div class="userDroplet-avatar">
+                    {{#if currentUser.profile.avatar_path}}
+                      <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
+                    {{/if}}
+                  </div>
+                </li>
+                <li><a href="/contact">CONTATO</a></li>
+                {{>logout}}
+              {{else}}
+                <li><a href="/register">CADASTRE-SE</a></li>
+                <li><a href="/login">LOGIN</a></li>
+                <li><a href="/contact">CONTATO</a></li>
+              {{/if}}
 				    </ul>
 				  </div>
 			  </div>

@@ -12,3 +12,18 @@
   background: none !important;
   margin-top: 10px;
 }
+
+.navbar-left {
+  > li {
+    float: right;
+  }
+
+  .avatar-menu {
+    margin-right: 22px;
+  }
+
+  .submenu {
+    width: 300px;
+    clear: both;
+  }
+}
