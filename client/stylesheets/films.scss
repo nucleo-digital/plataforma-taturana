@@ -5,11 +5,15 @@
   border: 1px solid #df4944;
   padding-top: 1em;
   padding-bottom: 1em;
-  margin-top:1em; 
+  margin-top:1em;
   margin-bottom:1em;
   img{
     width:100%;
     margin-bottom: 1em;
+  }
+
+  &:nth-child(2n + 1) {
+    clear: both;
   }
 }
 .white-table{
