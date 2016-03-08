@@ -16,7 +16,9 @@
         <tr>
           <td>{{genre}}</td>
           <td>{{year}}</td>
-          <td>{{length}}</td>
+          {{# if length}}
+            <td>{{length}}</td>
+          {{/if}}
           <td>{{country}}</td>
           {{# if director}}
             <td>{{director}}</td>
@@ -34,20 +36,28 @@
       <div class="col-md-4">
         <p>{{synopsis}}</p>
       </div>
-      <div class="col-md-4">
-        <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
-        <div class="row box">
-          <div class="col-md-12">
-            {{{ tibr }}}
+      {{#if tibr}}
+        <div class="col-md-4">
+          <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
+          <div class="row box">
+            <div class="col-md-12">
+              {{{ tibr }}}
+            </div>
           </div>
         </div>
-      </div>
+      {{/if}}
     </div>
     <div class="col-md-8 data-row">
       <table class="white-table">
         <tr>
-          <td><a href="{{trailer_url}}" class="red">ASSISTA AO TRAILER</a></td>
-          <td><a href="{{site}}" class="red">VISITE O SITE OFICIAL</a></td>
+          {{#if trailer_url}}
+            <td><a href="{{trailer_url}}" class="red">ASSISTA AO TRAILER</a></td>
+          {{/if}}
+
+          {{#if site}}
+            <td><a href="{{site}}" class="red">VISITE O SITE OFICIAL</a></td>
+          {{/if}}
+
           {{#each linklist}}
             <td><a href="{{link}}"><img src="/images/{{name}}.svg"></a></td>
           {{/each}}
