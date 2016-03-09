@@ -16,14 +16,21 @@
             <tr>
               <td>{{genre}}</td>
               <td>{{year}}</td>
-              <td>{{length}}</td>
+              {{#if length}}
+                <td>{{length}}</td>
+              {{/if}}
               <td>{{country}}</td>
             </tr>
           </table>
           <table class="white-table">
             <tr>
-              <td>{{director}}</td>
-              <td>{{production_company}}</td>
+              {{#if director}}
+                <td>{{director}}</td>
+              {{/if}}
+
+              {{#if production_company}}
+                <td>{{production_company}}</td>
+              {{/if}}
             </tr>
           </table>
         </div>
