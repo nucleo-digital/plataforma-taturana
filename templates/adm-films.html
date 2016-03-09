@@ -122,16 +122,6 @@
               <div class="col-md-12">
                 <h3>IMAGENS</h3>
                 <div class="form-group col-md-12">
-                  <label class="control-label" for="poster_thumb_path">Imagem para sobre</label>
-                  {{#if poster_thumb_path}}
-                    <img src="/upload/{{poster_thumb_path}}" class="adm-thumb" />
-                    <input type="hidden" name="poster_thumb_path" value="{{poster_thumb_path}}"/>
-                  {{else}}
-                    {{> upload_bootstrap contentType='images' multiple=false formData=posterThumbData}}
-                    <span class="help-block with-errors"></span>
-                  {{/if}}
-                </div>
-                <div class="form-group col-md-12">
                   <label class="control-label" for="poster_thumb_path">Imagem para home (360x370)</label>
                   {{#if poster_thumb_path}}
                     <img src="/upload/{{poster_home_path}}" class="adm-thumb" />
