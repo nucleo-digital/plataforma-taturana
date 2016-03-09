@@ -2,7 +2,7 @@
   {{>nav}}
   <div id="show-film" class="container">
     <div class="col-md-12">
-      <h1 class="section-title-sm">FILMES</h1>
+      <a href="/films"><h1 class="section-title-sm">FILMES</h1></a>
       <div class="col-md-5 reset-div">
         <h2 class="section-title-lg red">{{title}}</h2>
       </div>
@@ -103,20 +103,21 @@
             <p>{{cities}} municipios alcançados</p>
           </div>
         </div>
-
-        <div class="col-md-12 data-row">
-          <h3>Sobre os embaixadores</h3>
-          <div class="film-graphs">
-            <div class="col-md-6">
-              <div id="institution-type-chart" class="ct-chart"></div>
-              <p>Perfil das instituições dos embaixadores</p>
-            </div>
-            <div class="col-md-6">
-              <div id="institution-area-chart" class="ct-chart"></div>
-              <p>Áreas de atuação dos embaixadores</p>
+        {{#if inventory.categories }}
+          <div class="col-md-12 data-row">
+            <h3>Sobre os embaixadores</h3>
+            <div class="film-graphs">
+              <div class="col-md-6">
+                <div id="institution-type-chart" class="ct-chart"></div>
+                <p>Perfil das instituições dos embaixadores</p>
+              </div>
+              <div class="col-md-6">
+                <div id="institution-area-chart" class="ct-chart"></div>
+                <p>Áreas de atuação dos embaixadores</p>
+              </div>
             </div>
           </div>
-        </div>
+        {{/if}}
       {{/with}}
     {{/unless}}
 
