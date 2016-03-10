@@ -30,37 +30,41 @@
 <template name="homeCarousel">
   <div id="carousel" class="col-md-12">
     {{#each disseminate}}
-      <div>
-        <div class="col-md-4 carousel-box background-light-red reset-div">
-          <img src="/upload/{{poster_home_path}}" class="img-responsive center-block">
-        </div>
-        <div class="col-md-4 carousel-box background-dark-red">
-          <h5 class="title">{{title}}</h5>
-          <p class="synopsis max-lines">{{shortsynopsis}}</p>
-        </div>
-        <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
-          {{#if inventory }}
-            {{#with inventory}}
-            <div class="col-md-6 numbers div-border">
-              <h5>{{sessions}}</h5>
-              <p class="image-description">Sessões realizadas</p>
-            </div>
-            <div class="col-md-6 numbers">
-              <h5>{{states.length}}</h5>
-              <p class="image-description">Estados</p>
-            </div>
-            <div class="col-md-12 numbers">
-              <h5>{{viewers}}</h5>
-              <p class="image-description">Pessoas impactadas</p>
-            </div>
-            {{/with}}
-          {{/if}}
-          <div class="col-md-12 button-bar">
-            <a type="submit" href="/film/{{_id}}" class="btn btn-sm">MAIS INFORMAÇÕES</a>
-            <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
-          </div>
-        </div>
-      </div>
+      {{ > carouselItem}}
     {{/each}}
+  </div>
+</template>
+
+<template name="carouselItem">
+  <div>
+    <div class="col-md-4 carousel-box background-light-red reset-div">
+      <img src="/upload/{{poster_home_path}}" class="img-responsive center-block">
+    </div>
+    <div class="col-md-4 carousel-box background-dark-red">
+      <h5 class="title">{{title}}</h5>
+      <p class="synopsis max-lines">{{shortsynopsis}}</p>
+    </div>
+    <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
+      {{#if inventory }}
+        {{#with inventory}}
+        <div class="col-md-6 numbers div-border">
+          <h5>{{sessions}}</h5>
+          <p class="image-description">Sessões realizadas</p>
+        </div>
+        <div class="col-md-6 numbers">
+          <h5>{{states.length}}</h5>
+          <p class="image-description">Estados</p>
+        </div>
+        <div class="col-md-12 numbers">
+          <h5>{{viewers}}</h5>
+          <p class="image-description">Pessoas impactadas</p>
+        </div>
+        {{/with}}
+      {{/if}}
+      <div class="col-md-12 button-bar">
+        <a type="submit" href="/film/{{_id}}" class="btn btn-sm">MAIS INFORMAÇÕES</a>
+        <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
+      </div>
+    </div>
   </div>
 </template>
