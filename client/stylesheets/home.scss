@@ -1,4 +1,5 @@
 #home{
+  padding-top: 10em;
   background: url("images/home-background.jpg") center top no-repeat;
   background-size: 100% auto;
 }
@@ -19,7 +20,7 @@
 }
 .home-text-box{
 	position: absolute;
-	top: 30%;
+	top: 20%;
 	display:table-cell;
 	vertical-align: middle;
 }
