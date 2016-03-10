@@ -6,7 +6,7 @@
 #home .container{
 	background: url("images/home-background.svg") center top no-repeat;
   background-size: 100% auto;
-  height: 660px;
+  height: 540px;
   display: table;
   position: relative;
   overflow: hidden;
@@ -20,7 +20,7 @@
 }
 .home-text-box{
 	position: absolute;
-	top: 20%;
+	top: 0;
 	display:table-cell;
 	vertical-align: middle;
 }
