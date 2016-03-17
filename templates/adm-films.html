@@ -36,12 +36,13 @@
                 </div>
                 <div class="form-group col-md-12">
                   <label class="control-label" for="poster_path">Cartaz</label>
-                  {{#if poster_path}}
-                  <img src="/upload/{{poster_path}}" class="adm-thumb destroy-img" />
-                  <input type="hidden" name="poster_path" value="{{poster_path}}"/>
+                  {{#if posterPath}}
+                    <img src="/upload/{{posterPath}}" class="adm-thumb destroy-img" />
+                    <button class="btn btn-change-poster">Alterar cartaz</button>
+                    <input type="hidden" name="poster_path" value="{{posterPath}}"/>
                   {{else}}
-                  {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
-                  <span class="help-block with-errors"></span>
+                    {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
+                    <span class="help-block with-errors"></span>
                   {{/if}}
                 </div>
                 <div class="form-group col-md-12">
