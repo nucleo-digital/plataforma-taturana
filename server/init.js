@@ -147,4 +147,16 @@ Meteor.startup(function () {
       "vcf": "text/x-vcard"
     }
   });
+
+  // Forgot Password Email
+  Accounts.emailTemplates.siteName = "Taturana Mobilização Social";
+  Accounts.emailTemplates.from = "Taturana<admin@plataforma.taturana.com.br>";
+  Accounts.emailTemplates.resetPassword.subject = function (user) {
+      return "[Taturana] Esqueci minha senha";
+  };
+  Accounts.emailTemplates.resetPassword.text = function (user, url) {
+     return "Olá,\n\n"
+       + " Para resetar sua senha, acesse o link abaixo:\n"
+       + url;
+  };
 });
