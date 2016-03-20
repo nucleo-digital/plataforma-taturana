@@ -17,9 +17,7 @@
               {{#if currentUser}}
                 <li class="avatar-menu">
                   <div class="userDroplet-avatar">
-                    {{#if currentUser.profile.avatar_path}}
-                      <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
-                    {{/if}}
+                    <img src="{{avatarPath}}" class="full" />
                   </div>
                 </li>
                 <li><a href="/contact">CONTATO</a></li>
