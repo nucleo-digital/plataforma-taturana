@@ -94,8 +94,6 @@ Meteor.methods({
   updateUser:function(profile, email){
     user = Meteor.user();
 
-    profile.roles = ['admin'];
-
     Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile": profile}});
     Meteor.users.update({_id: Meteor.userId()}, {$set: {'emails.0.address': email}});
   }
