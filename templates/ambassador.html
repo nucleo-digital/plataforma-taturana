@@ -1,3 +1,10 @@
+<!--
+Templates:
+- Register
+- Ambassador Edit
+-->
+
+
 <template name="register">
   {{>nav}}
   <div id="ambassador-registration" class="container">
@@ -53,13 +60,13 @@
         </div>
         <div class="col-md-6">
           {{>ambassadorFormFields}}
-          
+
           <div class="form-group col-md-5">
             <button class="btn btn-lg btn-block" type="submit">Salvar alterações</button>
           </div>
         </div>
       </form>
-      
+
       {{#if currentUser.addresses}}
         <div class="col-md-12">
           <h3>ENDEREÇOS SALVOS</h3>
