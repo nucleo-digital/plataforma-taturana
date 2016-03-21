@@ -159,4 +159,8 @@ Meteor.startup(function () {
        + " Para resetar sua senha, acesse o link abaixo:\n"
        + url;
   };
+
+  Accounts.urls.resetPassword = function(token) {
+    return Meteor.absoluteUrl('reset-password/' + token);
+  };
 });
