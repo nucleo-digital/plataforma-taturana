@@ -1,36 +1,38 @@
 <template name="contact">
   {{>nav}}
-  <div id="contact" class="container">
-    <h3>CONTATO</h3>
-    <p class="section-description"></p>
-    <div class="row">
-      <div class="col-md-6">
-  
-        <div class="help-block with-errors form-errors red"></div>
-        <form id="contact-form">
-          <div class="form-group col-md-5">
-            <label class="control-label" for="name">Nome<span class="red">*</span></label>
-            <input type="text" name="name" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-6">
-            <label class="control-label" for="email">Email<span class="red">*</span></label>
-            <input type="email" name="email" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-12">
-            <label class="control-label" for="message">Mensagem<span class="red">*</span></label>
-            <textarea name="message" rows="7" class="form-control" required></textarea>
-            <span class="help-block with-errors"></span>
-          </div>
-        
-          <div class="form-group col-md-6">
-            <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <img src="images/balloons.svg" class="img-responsive center-block">
+  <div id="contact">
+    <div class="container">
+      <h3>CONTATO</h3>
+      <p class="section-description"></p>
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="help-block with-errors form-errors red"></div>
+          <form id="contact-form">
+            <div class="form-group col-md-5">
+              <label class="control-label" for="name">Nome<span class="red">*</span></label>
+              <input type="text" name="name" class="form-control" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label" for="email">Email<span class="red">*</span></label>
+              <input type="email" name="email" class="form-control" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="message">Mensagem<span class="red">*</span></label>
+              <textarea name="message" rows="7" class="form-control" required></textarea>
+              <span class="help-block with-errors"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+              <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <img src="images/balloons.svg" class="img-responsive center-block">
+        </div>
       </div>
     </div>
   </div>

@@ -1,149 +1,151 @@
 <template name="admSessions">
   {{>nav}}
-  <div id="adm-sessions" class="container adm">
+  <div class="bg-wrapper">
+    <div id="adm-sessions" class="container adm">
 
-    {{>admSidebar page="films"}}
+      {{>admSidebar page="films"}}
 
-    <div class="col-md-8 col-md-offset-1">
-      <div class="row">
-        <h1>Sessões</h1>
-        <div class="row noLeftMargin">
-          <div class="col-md-4">
+      <div class="col-md-8 col-md-offset-1">
+        <div class="row">
+          <h1>Sessões</h1>
+          <div class="row noLeftMargin">
+            <div class="col-md-4">
 
-              <div class="form-group col-md-3">
-                  <label for="state-selector">Estado</label>
-                  <select class="form-control" name="state-selector" id="st-selector">
-                    <option value="">Selecione</option>
-                    {{#each states_options films}}
-                      <option>{{this}}</option>
-                    {{/each}}
+                <div class="form-group col-md-3">
+                    <label for="state-selector">Estado</label>
+                    <select class="form-control" name="state-selector" id="st-selector">
+                      <option value="">Selecione</option>
+                      {{#each states_options films}}
+                        <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                </div>
+
+                 <div class="form-group col-md-8">
+                  <label for="city-selector">Cidade</label>
+                  <select class="form-control" name="city-selector" id="city-selector">
+                      <option value="">Selecione</option>
+                      {{#each cities_options films}}
+                        <option>{{this}}</option>
+                      {{/each}}
                   </select>
               </div>
-
-               <div class="form-group col-md-8">
-                <label for="city-selector">Cidade</label>
-                <select class="form-control" name="city-selector" id="city-selector">
-                    <option value="">Selecione</option>
-                    {{#each cities_options films}}
-                      <option>{{this}}</option>
-                    {{/each}}
-                </select>
             </div>
-          </div>
 
-            <div class="col-md-8">
-                <label>Selecione um mês</label>
-              <div class="datepicker-container">
-                  <div class="btn-group">
-                      <button type="button" class="btn btn-datepicker" data-month="0">Jan</button>
-                      <button type="button" class="btn btn-datepicker" data-month="1">Fev</button>
-                      <button type="button" class="btn btn-datepicker" data-month="2">Mar</button>
-                      <button type="button" class="btn btn-datepicker" data-month="3">Abr</button>
-                      <button type="button" class="btn btn-datepicker" data-month="4">Mai</button>
-                      <button type="button" class="btn btn-datepicker" data-month="5">Jun</button>
-                      <button type="button" class="btn btn-datepicker" data-month="6">Jul</button>
-                      <button type="button" class="btn btn-datepicker" data-month="7">Ago</button>
-                      <button type="button" class="btn btn-datepicker" data-month="8">Set</button>
-                      <button type="button" class="btn btn-datepicker" data-month="9">Out</button>
-                      <button type="button" class="btn btn-datepicker" data-month="10">Nov</button>
-                      <button type="button" class="btn btn-datepicker" data-month="11">Dez</button>
-                  </div>
+              <div class="col-md-8">
+                  <label>Selecione um mês</label>
+                <div class="datepicker-container">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-datepicker" data-month="0">Jan</button>
+                        <button type="button" class="btn btn-datepicker" data-month="1">Fev</button>
+                        <button type="button" class="btn btn-datepicker" data-month="2">Mar</button>
+                        <button type="button" class="btn btn-datepicker" data-month="3">Abr</button>
+                        <button type="button" class="btn btn-datepicker" data-month="4">Mai</button>
+                        <button type="button" class="btn btn-datepicker" data-month="5">Jun</button>
+                        <button type="button" class="btn btn-datepicker" data-month="6">Jul</button>
+                        <button type="button" class="btn btn-datepicker" data-month="7">Ago</button>
+                        <button type="button" class="btn btn-datepicker" data-month="8">Set</button>
+                        <button type="button" class="btn btn-datepicker" data-month="9">Out</button>
+                        <button type="button" class="btn btn-datepicker" data-month="10">Nov</button>
+                        <button type="button" class="btn btn-datepicker" data-month="11">Dez</button>
+                    </div>
+                </div>
               </div>
-            </div>
 
-        </div>
-
-
-        <div class="row  leftMarginHack">
-          <div class="form-group col-md-4">
-            <label for="filmSelector">Filme</label>
-            <select class="form-control" name="filmSelector" id="film-selector">
-              <option value="">Selecione</option>
-              {{#each films}}
-                <option>{{title}}</option>
-              {{/each}}
-            </select>
           </div>
-        </div>
-        <div class="row  leftMarginHack">
-          <div class="form-group col-md-4">
-            <label for="ambassador-selector">Embaixador</label>
-            <select class="form-control" name="ambassador-selector" id="ambassador-selector">
-              <option value="">Selecione</option>
-              {{#each ambassador_options films}}
-                <option value="{{_id}}">{{profile.name}}</option>
-              {{/each}}
-            </select>
+
+
+          <div class="row  leftMarginHack">
+            <div class="form-group col-md-4">
+              <label for="filmSelector">Filme</label>
+              <select class="form-control" name="filmSelector" id="film-selector">
+                <option value="">Selecione</option>
+                {{#each films}}
+                  <option>{{title}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+          <div class="row  leftMarginHack">
+            <div class="form-group col-md-4">
+              <label for="ambassador-selector">Embaixador</label>
+              <select class="form-control" name="ambassador-selector" id="ambassador-selector">
+                <option value="">Selecione</option>
+                {{#each ambassador_options films}}
+                  <option value="{{_id}}">{{profile.name}}</option>
+                {{/each}}
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row leftMarginHack">
+      <div class="row leftMarginHack">
 
-      {{#each filtered_films}}
-        <div class="col-md-12" id="screeningDetails-container">
-            <div id="screeningDetails-movieInfo">
+        {{#each filtered_films}}
+          <div class="col-md-12" id="screeningDetails-container">
+              <div id="screeningDetails-movieInfo">
 
-              <div class="col-md-3">
-                <img class="screening-film-poster" src="/upload/{{poster_path}}"/>
-              </div>
+                <div class="col-md-3">
+                  <img class="screening-film-poster" src="/upload/{{poster_path}}"/>
+                </div>
 
-              <div class="col-md-9" style="padding-left: 0px">
-                <h1>{{title}}</h1>
-              </div>
+                <div class="col-md-9" style="padding-left: 0px">
+                  <h1>{{title}}</h1>
+                </div>
 
-              <div class="col-md-9">
-                <ul class="list-inline" id="screeningDetails-movieSpecs">
-                  <li>{{genre}}</li>
-                  <li>{{year}}</li>
-                  <li>{{length}}</li>
-                  <li>{{country}}</li>
+                <div class="col-md-9">
+                  <ul class="list-inline" id="screeningDetails-movieSpecs">
+                    <li>{{genre}}</li>
+                    <li>{{year}}</li>
+                    <li>{{length}}</li>
+                    <li>{{country}}</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-9">
+                  <ul class="list-inline" id="screeningDetails-productionSpecs">
+                    <li>{{director}}</li>
+                    <li>{{production_company}}</li>
+                  </ul>
+                </div>
+
+                <div class="col-md-9">
+                  <p>{{synopsis}}</p>
+                </div>
+
+                <div class="clearfix"></div>
+                <ul id="screeningList" class="list-unstyled">
+                  {{#each future_screenings}}
+                    <li class="screeningItem col-md-12">
+                      <div class="col-md-1" style="text-align: right">
+                        {{! FIXME imagem? }}
+                        <img src="http://placehold.it/20x20">
+                      </div>
+                      <div class="col-md-2">
+                        <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
+                      </div>
+                      <div class="col-md-5">
+                        <p class="screeningDetails">
+                          <strong>{{place_name}}</strong>
+                          <br>
+                          {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
+                        </p>
+                      </div>
+                      <a class="btn" href="/adm/session/{{_id}}">Visualizar</a>
+                      {{#if draft}}
+                        <button class="btn btn-unset-draft" data-session-id="{{_id}}">Desmarcar como rascunho</button>
+                      {{else}}
+                        <button class="btn btn-set-draft" data-session-id="{{_id}}">Marcar como rascunho</button>
+                      {{/if}}
+                    </li>
+                  {{/each}}
                 </ul>
+
+
               </div>
-
-              <div class="col-md-9">
-                <ul class="list-inline" id="screeningDetails-productionSpecs">
-                  <li>{{director}}</li>
-                  <li>{{production_company}}</li>
-                </ul>
-              </div>
-
-              <div class="col-md-9">
-                <p>{{synopsis}}</p>
-              </div>
-
-              <div class="clearfix"></div>
-              <ul id="screeningList" class="list-unstyled">
-                {{#each future_screenings}}
-                  <li class="screeningItem col-md-12">
-                    <div class="col-md-1" style="text-align: right">
-                      {{! FIXME imagem? }}
-                      <img src="http://placehold.it/20x20">
-                    </div>
-                    <div class="col-md-2">
-                      <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
-                    </div>
-                    <div class="col-md-5">
-                      <p class="screeningDetails">
-                        <strong>{{place_name}}</strong>
-                        <br>
-                        {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
-                      </p>
-                    </div>
-                    <a class="btn" href="/adm/session/{{_id}}">Visualizar</a>
-                    {{#if draft}}
-                      <button class="btn btn-unset-draft" data-session-id="{{_id}}">Desmarcar como rascunho</button>
-                    {{else}}
-                      <button class="btn btn-set-draft" data-session-id="{{_id}}">Marcar como rascunho</button>
-                    {{/if}}
-                  </li>
-                {{/each}}
-              </ul>
-
-
-            </div>
-        </div>
-      {{/each}}
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
   {{>footer}}

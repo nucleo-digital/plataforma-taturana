@@ -1,197 +1,198 @@
 <template name="admFilms">
   {{>nav}}
-  <div id="adm-films" class="container adm">
+  <div class="bg-wrapper">
+    <div id="adm-films" class="container adm">
 
-    {{>admSidebar page="films"}}
+      {{>admSidebar page="films"}}
 
-    <div class="col-md-8 col-md-offset-1">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="cadastro" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
-        <li role="listagem" class=""><a href="#listagem" aria-controls="listagem" role="tab" data-toggle="tab">Listagem</a></li>
-      </ul>
+      <div class="col-md-8 col-md-offset-1">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="cadastro" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
+          <li role="listagem" class=""><a href="#listagem" aria-controls="listagem" role="tab" data-toggle="tab">Listagem</a></li>
+        </ul>
 
 
-      <div class="tab-content">
+        <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane active" id="cadastro">
-          <div class="row">
-            <h1>CADASTRO DE FILMES</h1>
+          <div role="tabpanel" class="tab-pane active" id="cadastro">
+            <div class="row">
+              <h1>CADASTRO DE FILMES</h1>
 
-            <div class="help-block with-errors form-errors"></div>
-            <form class="new-film">
-              <input type="hidden" name="id" value="{{_id}}"/>
-              <div class="col-md-12">
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="sequence_number">Ordenação</label>
-                  <input type="text" name="sequence_number" value="{{sequence_number}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
-                  <select name="status" value="{{status}}" class="form-control no-radius">
-                    <option>Difusão</option>
-                    <option>Oculto</option>
-                    <option>Portfolio</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="poster_path">Cartaz</label>
-                  {{#if posterPath}}
-                    <img src="/upload/{{posterPath}}" class="adm-thumb destroy-img" />
-                    <button class="btn btn-change-poster">Alterar cartaz</button>
-                    <input type="hidden" name="poster_path" value="{{posterPath}}"/>
-                  {{else}}
-                    {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
+              <div class="help-block with-errors form-errors"></div>
+              <form class="new-film">
+                <input type="hidden" name="id" value="{{_id}}"/>
+                <div class="col-md-12">
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="sequence_number">Ordenação</label>
+                    <input type="text" name="sequence_number" value="{{sequence_number}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
+                    <select name="status" value="{{status}}" class="form-control no-radius">
+                      <option>Difusão</option>
+                      <option>Oculto</option>
+                      <option>Portfolio</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="poster_path">Cartaz</label>
+                    {{#if posterPath}}
+                      <img src="/upload/{{posterPath}}" class="adm-thumb destroy-img" />
+                      <button class="btn btn-change-poster">Alterar cartaz</button>
+                      <input type="hidden" name="poster_path" value="{{posterPath}}"/>
+                    {{else}}
+                      {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
+                      <span class="help-block with-errors"></span>
+                    {{/if}}
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="title">Titulo do filme</label>
+                    <input type="text" name="title" value="{{title}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="synopsis">Sinopse</label>
+                    <textarea name="synopsis" value="{{synopsis}}" rows="5" class="form-control"></textarea>
                     <span class="help-block with-errors"></span>
-                  {{/if}}
+                  </div>
                 </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="title">Titulo do filme</label>
-                  <input type="text" name="title" value="{{title}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="synopsis">Sinopse</label>
-                  <textarea name="synopsis" value="{{synopsis}}" rows="5" class="form-control"></textarea>
-                  <span class="help-block with-errors"></span>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <h3>DADOS DO FILME</h3>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="year">Ano</label>
-                  <input type="text" name="year" value="{{year}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="genre">Gênero</label>
-                  <input type="text" name="genre" value="{{genre}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="length">Duração</label>
-                  <input type="text" name="length" value="{{length}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="country">País</label>
-                  <input type="text" name="country" value="{{country}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="director">Diretor</label>
-                  <input type="text" name="director" value="{{director}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="production_company">Produtora</label>
-                  <input type="text" name="production_company" value="{{production_company}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="status">Classificação Indicativa</label>
-                  <select name="age_rating" value="{{age_rating}}" class="form-control no-radius">
-                    <option>Livre</option>
-                    <option>10 anos</option>
-                    <option>12 anos</option>
-                    <option>14 anos</option>
-                    <option>16 anos</option>
-                    <option>18 anos</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="technical_information">Ficha técnica (Quebras de linha serão mostradas na página)</label>
-                  <textarea type="text" name="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="trailer_url">Trailer</label>
-                  <input type="text" name="trailer_url" value="{{trailer_url}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
-                  {{#if press_kit_path}}
-                    <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
-                    <input type="hidden" name="press_kit_path" value="{{press_kit_path}}"/>
-                  {{else}}
-                    {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
-                  <span class="help-block with-errors"></span>
-                  {{/if}}
-                </div>
-              </div>
-              <div class="col-md-12">
-                <h3>IMAGENS</h3>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="poster_thumb_path">Imagem para home (360x370)</label>
-                  {{#if poster_thumb_path}}
-                    <img src="/upload/{{poster_home_path}}" class="adm-thumb" />
-                    <input type="hidden" name="poster_home_path" value="{{poster_home_path}}"/>
-                  {{else}}
-                    {{> upload_bootstrap contentType='images' multiple=false formData=posterHomeData}}
+                <div class="col-md-12">
+                  <h3>DADOS DO FILME</h3>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="year">Ano</label>
+                    <input type="text" name="year" value="{{year}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="genre">Gênero</label>
+                    <input type="text" name="genre" value="{{genre}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="length">Duração</label>
+                    <input type="text" name="length" value="{{length}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="country">País</label>
+                    <input type="text" name="country" value="{{country}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="director">Diretor</label>
+                    <input type="text" name="director" value="{{director}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="production_company">Produtora</label>
+                    <input type="text" name="production_company" value="{{production_company}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label" for="status">Classificação Indicativa</label>
+                    <select name="age_rating" value="{{age_rating}}" class="form-control no-radius">
+                      <option>Livre</option>
+                      <option>10 anos</option>
+                      <option>12 anos</option>
+                      <option>14 anos</option>
+                      <option>16 anos</option>
+                      <option>18 anos</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="technical_information">Ficha técnica (Quebras de linha serão mostradas na página)</label>
+                    <textarea type="text" name="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="trailer_url">Trailer</label>
+                    <input type="text" name="trailer_url" value="{{trailer_url}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
+                    {{#if press_kit_path}}
+                      <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
+                      <input type="hidden" name="press_kit_path" value="{{press_kit_path}}"/>
+                    {{else}}
+                      {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
                     <span class="help-block with-errors"></span>
-                  {{/if}}
+                    {{/if}}
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-12">
-                <h3>REDES SOCIAIS</h3>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="site">Site</label>
-                  <input type="text" name="site" value="{{site}}" class="form-control">
-                  <div class="help-block with-errors"></div>
+                <div class="col-md-12">
+                  <h3>IMAGENS</h3>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="poster_thumb_path">Imagem para home (360x370)</label>
+                    {{#if poster_thumb_path}}
+                      <img src="/upload/{{poster_home_path}}" class="adm-thumb" />
+                      <input type="hidden" name="poster_home_path" value="{{poster_home_path}}"/>
+                    {{else}}
+                      {{> upload_bootstrap contentType='images' multiple=false formData=posterHomeData}}
+                      <span class="help-block with-errors"></span>
+                    {{/if}}
+                  </div>
                 </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="facebook">Facebook</label>
-                  <input type="text" name="facebook" value="{{facebook}}" class="form-control">
-                  <div class="help-block with-errors"></div>
+                <div class="col-md-12">
+                  <h3>REDES SOCIAIS</h3>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="site">Site</label>
+                    <input type="text" name="site" value="{{site}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="facebook">Facebook</label>
+                    <input type="text" name="facebook" value="{{facebook}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="twitter">Twitter</label>
+                    <input type="text" name="twitter" value="{{twitter}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="instagram">Instagram</label>
+                    <input type="text" name="instagram" value="{{instagram}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label" for="youtube">Youtube</label>
+                    <input type="text" name="youtube" value="{{youtube}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                  </div>
                 </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="twitter">Twitter</label>
-                  <input type="text" name="twitter" value="{{twitter}}" class="form-control">
-                  <div class="help-block with-errors"></div>
+                <div class="col-md-12">
+                  <div class="form-group col-md-6">
+                    <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+                  </div>
                 </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="instagram">Instagram</label>
-                  <input type="text" name="instagram" value="{{instagram}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group col-md-12">
-                  <label class="control-label" for="youtube">Youtube</label>
-                  <input type="text" name="youtube" value="{{youtube}}" class="form-control">
-                  <div class="help-block with-errors"></div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group col-md-6">
-                  <button class="btn btn-lg btn-block" type="submit">Enviar</button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
+
           </div>
 
-        </div>
+          <div role="tabpanel" class="tab-pane" id="listagem">
+            <div class="row">
+              <h1>FILMES CADASTRADOS</h1>
+              <ul class="films-list">
+              {{#each films}}
+                <li>
+                  <small>{{sequence_number}} : </small><strong>{{title}}</strong>
+                  <span class="actions">
+                    <a href="/film/{{_id}}">[ Ver Detalhes ]</a>
+                    <a href="/adm/film/{{_id}}/reports">[ Ver Relatórios ]</a>
+                    <a href="/adm/films/{{_id}}/edit">[ Editar ]</a>
+                    <a class="destroy" href="#">[ Excluir ]</a>
+                  </span>
+                </li>
 
-        <div role="tabpanel" class="tab-pane" id="listagem">
-          <div class="row">
-            <h1>FILMES CADASTRADOS</h1>
-            <ul class="films-list">
-            {{#each films}}
-              <li>
-                <small>{{sequence_number}} : </small><strong>{{title}}</strong>
-                <span class="actions">
-                  <a href="/film/{{_id}}">[ Ver Detalhes ]</a>
-                  <a href="/adm/film/{{_id}}/reports">[ Ver Relatórios ]</a>
-                  <a href="/adm/films/{{_id}}/edit">[ Editar ]</a>
-                  <a class="destroy" href="#">[ Excluir ]</a>
-                </span>
-              </li>
-
-            {{/each}}
-            </ul>
+              {{/each}}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
   {{>footer}}

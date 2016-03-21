@@ -1,56 +1,58 @@
 <template name="admReport">
   {{>nav}}
-  <div id="adm-report" class="container adm">
+  <div class="bg-wrapper">
+    <div id="adm-report" class="container adm">
 
-    {{>admSidebar page="films"}}
+      {{>admSidebar page="films"}}
 
-    <div class="col-md-8 col-md-offset-1">
-      <div class="row">
-        <h1>Relatório</h1>
-        {{#with screening}}
-          <p>{{date}} {{time}}</p>
-          <p>{{place_name}}</p>
-          <p>{{street}} {{number}} {{complement}}</p>
-          <p>{{zone}} - {{cep}}</p>
-          <p>{{city}} {{uf}} - {{s_country}}</p>
-          <br />
-          <p><strong>Pessoas esperadas:</strong> {{quorum_expectation}}</p>
-          <p><strong>Pessoas que foram:</strong> {{real_quorum}}</p>
-          <p><strong>Como foi:</strong></p>
-          {{report_description}}
-          <br /><br />
-          <p>Fotos:</p>
-          <ul class="report-images" data-film-id="{{film._id}}">
-            <li class="report-image">
-              <img src="/upload/{{report_image_1}}" />
-              {{#if in_slideshow report_image_1}}
-                <button class="btn btn-image-remove" data-image-src="{{report_image_1}}">Remover do carrossel</button>
-              {{else}}
-                <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
-                <button class="btn btn-image-add" data-author="{{author_1}}" data-image-src="{{report_image_1}}">Adicionar no carrossel</button>
-              {{/if}}
-            </li>
-            <li class="report-image">
-              <img src="/upload/{{report_image_2}}" />
-              {{#if in_slideshow report_image_2}}
-                <button class="btn btn-image-remove" data-image-src="{{report_image_2}}">Remover do carrossel</button>
-              {{else}}
-                <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
-                <button class="btn btn-image-add" data-author="{{author_2}}" data-image-src="{{report_image_2}}">Adicionar no carrossel</button>
-              {{/if}}
-            </li>
-            <li class="report-image">
-              <img src="/upload/{{report_image_3}}" />
-              {{#if in_slideshow report_image_3}}
-                <button class="btn btn-image-remove" data-image-src="{{report_image_3}}">Remover do carrossel</button>
-              {{else}}
-                <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
-                <!-- TODO adicionar autor -->
-                <button class="btn btn-image-add" data-author="{{author_3}}" data-image-src="{{report_image_3}}">Adicionar no carrossel</button>
-              {{/if}}
-            </li>
-          </ul>
-        {{/with}}
+      <div class="col-md-8 col-md-offset-1">
+        <div class="row">
+          <h1>Relatório</h1>
+          {{#with screening}}
+            <p>{{date}} {{time}}</p>
+            <p>{{place_name}}</p>
+            <p>{{street}} {{number}} {{complement}}</p>
+            <p>{{zone}} - {{cep}}</p>
+            <p>{{city}} {{uf}} - {{s_country}}</p>
+            <br />
+            <p><strong>Pessoas esperadas:</strong> {{quorum_expectation}}</p>
+            <p><strong>Pessoas que foram:</strong> {{real_quorum}}</p>
+            <p><strong>Como foi:</strong></p>
+            {{report_description}}
+            <br /><br />
+            <p>Fotos:</p>
+            <ul class="report-images" data-film-id="{{film._id}}">
+              <li class="report-image">
+                <img src="/upload/{{report_image_1}}" />
+                {{#if in_slideshow report_image_1}}
+                  <button class="btn btn-image-remove" data-image-src="{{report_image_1}}">Remover do carrossel</button>
+                {{else}}
+                  <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
+                  <button class="btn btn-image-add" data-author="{{author_1}}" data-image-src="{{report_image_1}}">Adicionar no carrossel</button>
+                {{/if}}
+              </li>
+              <li class="report-image">
+                <img src="/upload/{{report_image_2}}" />
+                {{#if in_slideshow report_image_2}}
+                  <button class="btn btn-image-remove" data-image-src="{{report_image_2}}">Remover do carrossel</button>
+                {{else}}
+                  <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
+                  <button class="btn btn-image-add" data-author="{{author_2}}" data-image-src="{{report_image_2}}">Adicionar no carrossel</button>
+                {{/if}}
+              </li>
+              <li class="report-image">
+                <img src="/upload/{{report_image_3}}" />
+                {{#if in_slideshow report_image_3}}
+                  <button class="btn btn-image-remove" data-image-src="{{report_image_3}}">Remover do carrossel</button>
+                {{else}}
+                  <textarea placeholder="Adicione uma legenda para o carrossel"></textarea>
+                  <!-- TODO adicionar autor -->
+                  <button class="btn btn-image-add" data-author="{{author_3}}" data-image-src="{{report_image_3}}">Adicionar no carrossel</button>
+                {{/if}}
+              </li>
+            </ul>
+          {{/with}}
+        </div>
       </div>
     </div>
   </div>

@@ -7,21 +7,23 @@ Templates:
 
 <template name="register">
   {{>nav}}
-  <div id="ambassador-registration" class="container">
-    <div class="row">
-      <div class="col-md-6 pull-right">
-        <h1>CADASTRE-SE</h1>
-        <div class="help-block with-errors form-errors"></div>
-        <form class="new-ambassador">
-          {{>ambassadorFormFields}}
-          <div class="form-group col-md-6">
-            <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h1 style="margin-bottom:1em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
-        <img src="images/register-info.svg" style="width: 65%;margin-bottom:2em" class=" center-block red">
+  <div id="ambassador-registration">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 pull-right">
+          <h1>CADASTRE-SE</h1>
+          <div class="help-block with-errors form-errors"></div>
+          <form class="new-ambassador">
+            {{>ambassadorFormFields}}
+            <div class="form-group col-md-6">
+              <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h1 style="margin-bottom:1em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
+          <img src="images/register-info.svg" style="width: 65%;margin-bottom:2em" class=" center-block red">
+        </div>
       </div>
     </div>
   </div>
@@ -30,56 +32,58 @@ Templates:
 
 <template name="ambassadorEdit">
   {{>nav}}
-  <div id="ambassador-edit" class="container">
-    <div class="col-md-12">
-      <h1 class="section-title-lg">MINHAS INFORMAÇÕES</h1>
-    </div>
-    <div class="col-md-12">
-      <div class="col-md-9 reset-div">
-        <p>Complete e mantenha atualizado seus dados como embaixador! Aqui você também pode cadastrar e salvar os endereços/locais de exibições, para facilitar o agendamento de sessões.</p>
-        {{#if amount_film_screenings.past_scr}}
-          <p>{{amount_film_screenings.past_scr}} sessões finalizadas</p>
-          <p>{{amount_films}} filmes exibidos</p>
-          <p>{{amount_film_screenings.people}} pessoas impactadas pela difusão de filmes</p>
-        {{/if}}
+  <div class="bg-wrapper">
+    <div id="ambassador-edit" class="container">
+      <div class="col-md-12">
+        <h1 class="section-title-lg">MINHAS INFORMAÇÕES</h1>
       </div>
-    </div>
-    <div class="col-md-12 data-row">
-      <h3>MEUS DADOS</h3>
-      <div class="help-block with-errors form-errors"></div>
-      <form class="ambassador-edit">
-        <div class="col-md-3 reset-div">
-          <label class="control-label" for="avatar_path">Avatar</label>
-          {{#if currentUser.profile.avatar_path}}
-            <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
-            <input type="hidden" name="avatar_path" value="{{currentUser.profile.avatar_path}}"/>
-          {{else}}
-            {{> upload_bootstrap contentType='images' multiple=false formData=avatarData}}
-            <span class="help-block with-errors"></span>
+      <div class="col-md-12">
+        <div class="col-md-9 reset-div">
+          <p>Complete e mantenha atualizado seus dados como embaixador! Aqui você também pode cadastrar e salvar os endereços/locais de exibições, para facilitar o agendamento de sessões.</p>
+          {{#if amount_film_screenings.past_scr}}
+            <p>{{amount_film_screenings.past_scr}} sessões finalizadas</p>
+            <p>{{amount_films}} filmes exibidos</p>
+            <p>{{amount_film_screenings.people}} pessoas impactadas pela difusão de filmes</p>
           {{/if}}
         </div>
-        <div class="col-md-6">
-          {{>ambassadorFormFields}}
-
-          <div class="form-group col-md-5">
-            <button class="btn btn-lg btn-block" type="submit">Salvar alterações</button>
+      </div>
+      <div class="col-md-12 data-row">
+        <h3>MEUS DADOS</h3>
+        <div class="help-block with-errors form-errors"></div>
+        <form class="ambassador-edit">
+          <div class="col-md-3 reset-div">
+            <label class="control-label" for="avatar_path">Avatar</label>
+            {{#if currentUser.profile.avatar_path}}
+              <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
+              <input type="hidden" name="avatar_path" value="{{currentUser.profile.avatar_path}}"/>
+            {{else}}
+              {{> upload_bootstrap contentType='images' multiple=false formData=avatarData}}
+              <span class="help-block with-errors"></span>
+            {{/if}}
           </div>
-        </div>
-      </form>
+          <div class="col-md-6">
+            {{>ambassadorFormFields}}
 
-      {{#if currentUser.addresses}}
-        <div class="col-md-12">
-          <h3>ENDEREÇOS SALVOS</h3>
-          {{#each currentUser.addresses}}
-            <div class="col-md-4 reset-div">
-              <h2 class="film-thumb-title red">{{city}} - {{uf}}</h2>
-              <p>{{place_name}} <br/>{{street}}, {{number}} - {{zone}}</p>
-              <!-- <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a> -->
-              <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
+            <div class="form-group col-md-5">
+              <button class="btn btn-lg btn-block" type="submit">Salvar alterações</button>
             </div>
-          {{/each}}
-        </div>
-      {{/if}}
+          </div>
+        </form>
+
+        {{#if currentUser.addresses}}
+          <div class="col-md-12">
+            <h3>ENDEREÇOS SALVOS</h3>
+            {{#each currentUser.addresses}}
+              <div class="col-md-4 reset-div">
+                <h2 class="film-thumb-title red">{{city}} - {{uf}}</h2>
+                <p>{{place_name}} <br/>{{street}}, {{number}} - {{zone}}</p>
+                <!-- <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a> -->
+                <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
     </div>
   </div>
   {{>footer}}

@@ -1,34 +1,36 @@
 <template name="login">
   {{>nav}}
-  <div id="ambassador-registration" class="container">
-    <div class="row">
-      <div class="col-md-6 pull-right">
-        <div class="help-block with-errors form-errors"></div>
-        <form class="login-ambassador">
-          <div class="form-group col-md-10">
-            <label class="control-label" for="email">E-mail<span class="red">*</span></label>
-            <input type="email" name="email" class="form-control email" required>
-            <span class="help-block with-errors"></span>
-          </div>
-          <div class="form-group col-md-10">
-            <label class="control-label" for="password">Senha<span class="red">*</span></label>
-            <input type="password" data-minlength="8" name="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group checkbox col-md-10">
-                <label><input type="checkbox" value="">Lembrar meus dados</label>
+  <div id="ambassador-registration">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 pull-right">
+          <div class="help-block with-errors form-errors"></div>
+          <form class="login-ambassador">
+            <div class="form-group col-md-10">
+              <label class="control-label" for="email">E-mail<span class="red">*</span></label>
+              <input type="email" name="email" class="form-control email" required>
+              <span class="help-block with-errors"></span>
             </div>
-          <div class="form-group col-md-6">
-            <button class="btn btn-lg btn-block" type="submit" value="Register">ACESSAR</button>
-          </div>
-          <div class="form-group col-md-10"> 
-            <a href="/forget">ESQUECI A SENHA</a><span class="red">  |  </span><a href="/register">AINDA NÃO TENHO CONTA</a>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h1 style="margin-bottom:3em">ACESSAR SUA CONTA</h1>
-        <img style="margin-bottom:6em" src="images/user-registration-image-3.svg" class="img-responsive center-block">
+            <div class="form-group col-md-10">
+              <label class="control-label" for="password">Senha<span class="red">*</span></label>
+              <input type="password" data-minlength="8" name="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group checkbox col-md-10">
+                  <label><input type="checkbox" value="">Lembrar meus dados</label>
+              </div>
+            <div class="form-group col-md-6">
+              <button class="btn btn-lg btn-block" type="submit" value="Register">ACESSAR</button>
+            </div>
+            <div class="form-group col-md-10">
+              <a href="/forget">ESQUECI A SENHA</a><span class="red">  |  </span><a href="/register">AINDA NÃO TENHO CONTA</a>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h1 style="margin-bottom:3em">ACESSAR SUA CONTA</h1>
+          <img style="margin-bottom:6em" src="images/user-registration-image-3.svg" class="img-responsive center-block">
+        </div>
       </div>
     </div>
   </div>

@@ -72,8 +72,20 @@ a.btn, button{
   padding-left: 0px;
 }
 
-#ambassador-registration, #films, #agenda, #contact, #about, #show-film {
-  margin-top:10em;
+#home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
+  padding-top:10em;
+}
+
+.bg-wrapper {
+  background: url("images/bg-default.jpg") center top no-repeat;
+  background-size: 100% auto;
+  min-height: 880px;
+}
+
+#contact {
+  background: url("images/bg-contact.jpg") center top no-repeat;
+  background-size: 100% auto;
+  min-height: 880px;
 }
 
 .image-description{

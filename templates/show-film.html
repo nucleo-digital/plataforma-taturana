@@ -1,141 +1,143 @@
 <template name="showFilm">
   {{>nav}}
-  <div id="show-film" class="container">
-    <div class="col-md-12">
-      <a href="/films"><h1 class="section-title-sm">FILMES</h1></a>
-      <div class="col-md-5 reset-div">
-        <h2 class="section-title-lg red">{{title}}</h2>
+  <div id="show-film">
+    <div class="container">
+      <div class="col-md-12">
+        <a href="/films"><h1 class="section-title-sm">FILMES</h1></a>
+        <div class="col-md-5 reset-div">
+          <h2 class="section-title-lg red">{{title}}</h2>
+        </div>
+        <div class="col-md-7 reset-div pull-right film-detail-buttons">
+          <a href="/new-screening/{{_id}}" class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</a>
+          <a href="/screenings" class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
+        </div>
       </div>
-      <div class="col-md-7 reset-div pull-right film-detail-buttons">
-        <a href="/new-screening/{{_id}}" class="btn btn-lg">QUERO ORGANIZAR UMA SESSÃO</a>
-        <a href="/screenings" class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
+      <div class="col-md-12">
+        <table class="white-table">
+          <tr>
+            <td>{{genre}}</td>
+            <td>{{year}}</td>
+            {{# if length}}
+              <td>{{length}}</td>
+            {{/if}}
+            <td>{{country}}</td>
+            {{# if director}}
+              <td>{{director}}</td>
+            {{/if}}
+            {{# if production_company}}
+              <td>{{production_company}}</td>
+            {{/if}}
+          </tr>
+        </table>
       </div>
-    </div>
-    <div class="col-md-12">
-      <table class="white-table">
-        <tr>
-          <td>{{genre}}</td>
-          <td>{{year}}</td>
-          {{# if length}}
-            <td>{{length}}</td>
-          {{/if}}
-          <td>{{country}}</td>
-          {{# if director}}
-            <td>{{director}}</td>
-          {{/if}}
-          {{# if production_company}}
-            <td>{{production_company}}</td>
-          {{/if}}
-        </tr>
-      </table>
-    </div>
-    <div class="col-md-12 data-row reset-div">
-      <div class="col-md-4">
-        <img class="thumb-poster" src="/upload/{{poster_path}}">
-      </div>
-      <div class="col-md-4">
-        <p>{{synopsis}}</p>
-      </div>
-      {{#if tibr}}
+      <div class="col-md-12 data-row reset-div">
         <div class="col-md-4">
-          <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
-          <div class="row box">
-            <div class="col-md-12">
-              {{{ tibr }}}
-            </div>
-          </div>
+          <img class="thumb-poster" src="/upload/{{poster_path}}">
         </div>
-      {{/if}}
-    </div>
-    <div class="col-md-8 data-row">
-      <table class="white-table">
-        <tr>
-          {{#if trailer_url}}
-            <td><a href="{{trailer_url}}" class="red" target="_blank">ASSISTA AO TRAILER</a></td>
-          {{/if}}
-
-          {{#if site}}
-            <td><a href="{{site}}" class="red" target="_blank">VISITE O SITE OFICIAL</a></td>
-          {{/if}}
-
-          {{#each linklist}}
-            <td><a href="{{link}}"><img src="/images/{{name}}.svg"></a></td>
-          {{/each}}
-        </tr>
-      </table>
-    </div>
-
-    {{#unless is_portfolio }}
-      {{#with inventory}}
-        <div class="col-md-12 data-row film-graphs">
-          <div class="film-graphs__box">
-            <h3>Dados da Difusão</h3>
-            <dl>
-              <dt><!-- TODO adicionar ícone --></dt>
-              <dd>{{viewers}} espectadores totais em {{sessions}} sessões</dd>
-              <dt><!-- TODO adicionar ícone --></dt>
-              <dd>{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
-            </dl>
-          </div>
-          <div class="film-graphs__box">
-            <h3>Em quantos estados</h3>
-            <ul>
-              {{#each states}}
-              <li>{{this}}</li>
-              {{/each}}
-            </ul>
-          </div>
+        <div class="col-md-4">
+          <p>{{synopsis}}</p>
         </div>
-      {{/with}}
-    {{else}}
-      {{#with inventory}}
-        {{! Mostrar gráficos }}
-        <div class="col-md-12 data-row film-graphs">
-          <div class="col-md-6">
-            <h3>Dados da Difusão</h3>
-            <div id="viewers-chart" class="ct-chart"></div>
-            <p>{{viewers}} espectadores totais em {{scheduled_sessions}} sessões</p>
-          </div>
-
-          <div class="col-md-6">
-            <h3>Em quais regiões</h3>
-            <div id="zone-chart" class="ct-chart"></div>
-            <p>{{cities}} municipios alcançados</p>
-          </div>
-        </div>
-        {{#if inventory.categories }}
-          <div class="col-md-12 data-row">
-            <h3>Sobre os embaixadores</h3>
-            <div class="film-graphs">
-              <div class="col-md-6">
-                <div id="institution-type-chart" class="ct-chart"></div>
-                <p>Perfil das instituições dos embaixadores</p>
-              </div>
-              <div class="col-md-6">
-                <div id="institution-area-chart" class="ct-chart"></div>
-                <p>Áreas de atuação dos embaixadores</p>
+        {{#if tibr}}
+          <div class="col-md-4">
+            <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
+            <div class="row box">
+              <div class="col-md-12">
+                {{{ tibr }}}
               </div>
             </div>
           </div>
         {{/if}}
-      {{/with}}
-    {{/unless}}
+      </div>
+      <div class="col-md-8 data-row">
+        <table class="white-table">
+          <tr>
+            {{#if trailer_url}}
+              <td><a href="{{trailer_url}}" class="red" target="_blank">ASSISTA AO TRAILER</a></td>
+            {{/if}}
 
-    {{#if slideshow}}
-      <div class="col-md-12 data-row">
-        <h5 class="red">FOTOS</h5>
-        <div id="carousel" class="center-block data-row">
-          {{#each slideshow}}
-            <div>
-              <div class="col-md-12">
-                <img class="full photo" src="/upload/{{src}}"/>
-                <p class="photo-description">{{caption}} - Autor: {{author}}</p>
+            {{#if site}}
+              <td><a href="{{site}}" class="red" target="_blank">VISITE O SITE OFICIAL</a></td>
+            {{/if}}
+
+            {{#each linklist}}
+              <td><a href="{{link}}"><img src="/images/{{name}}.svg"></a></td>
+            {{/each}}
+          </tr>
+        </table>
+      </div>
+
+      {{#unless is_portfolio }}
+        {{#with inventory}}
+          <div class="col-md-12 data-row film-graphs">
+            <div class="film-graphs__box">
+              <h3>Dados da Difusão</h3>
+              <dl>
+                <dt><!-- TODO adicionar ícone --></dt>
+                <dd>{{viewers}} espectadores totais em {{sessions}} sessões</dd>
+                <dt><!-- TODO adicionar ícone --></dt>
+                <dd>{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
+              </dl>
+            </div>
+            <div class="film-graphs__box">
+              <h3>Em quantos estados</h3>
+              <ul>
+                {{#each states}}
+                <li>{{this}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        {{/with}}
+      {{else}}
+        {{#with inventory}}
+          {{! Mostrar gráficos }}
+          <div class="col-md-12 data-row film-graphs">
+            <div class="col-md-6">
+              <h3>Dados da Difusão</h3>
+              <div id="viewers-chart" class="ct-chart"></div>
+              <p>{{viewers}} espectadores totais em {{scheduled_sessions}} sessões</p>
+            </div>
+
+            <div class="col-md-6">
+              <h3>Em quais regiões</h3>
+              <div id="zone-chart" class="ct-chart"></div>
+              <p>{{cities}} municipios alcançados</p>
+            </div>
+          </div>
+          {{#if inventory.categories }}
+            <div class="col-md-12 data-row">
+              <h3>Sobre os embaixadores</h3>
+              <div class="film-graphs">
+                <div class="col-md-6">
+                  <div id="institution-type-chart" class="ct-chart"></div>
+                  <p>Perfil das instituições dos embaixadores</p>
+                </div>
+                <div class="col-md-6">
+                  <div id="institution-area-chart" class="ct-chart"></div>
+                  <p>Áreas de atuação dos embaixadores</p>
+                </div>
               </div>
             </div>
-          {{/each}}
+          {{/if}}
+        {{/with}}
+      {{/unless}}
+
+      {{#if slideshow}}
+        <div class="col-md-12 data-row">
+          <h5 class="red">FOTOS</h5>
+          <div id="carousel" class="center-block data-row">
+            {{#each slideshow}}
+              <div>
+                <div class="col-md-12">
+                  <img class="full photo" src="/upload/{{src}}"/>
+                  <p class="photo-description">{{caption}} - Autor: {{author}}</p>
+                </div>
+              </div>
+            {{/each}}
+          </div>
         </div>
-      </div>
-    {{/if}}
+      {{/if}}
+    </div>
   </div>
   {{>footer}}
 </template>

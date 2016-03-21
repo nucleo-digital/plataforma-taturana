@@ -1,3 +1,9 @@
+#ambassador-registration {
+  background: url("images/home-background.jpg") center top no-repeat;
+  background-size: 100% auto;
+  min-height: 880px;
+}
+
 #ambassador{
   padding-top: 10em;
   & .col-md-3{
@@ -16,5 +22,5 @@
   }
   & .col-md-4{
     margin-bottom: 3em !important;
-  }    
+  }
 }

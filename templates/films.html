@@ -1,11 +1,13 @@
 <template name="films">
   {{>nav}}
-  <div id="films" class="container">
-    <h1 class="section-title-lg">FILMES</h1>
-    <p class="section-description">Estes filmes estão em cartaz no circuito de difusão social da Taturana! Você pode organizar uma sessão ou participar de alguma já programada.</p>
-    {{#each films}}
-      {{> film}}
-    {{/each}}
+  <div id="films">
+    <div class="container">
+      <h1 class="section-title-lg">FILMES</h1>
+      <p class="section-description">Estes filmes estão em cartaz no circuito de difusão social da Taturana! Você pode organizar uma sessão ou participar de alguma já programada.</p>
+      {{#each films}}
+        {{> film}}
+      {{/each}}
+    </div>
   </div>
   {{>footer}}
 </template>
