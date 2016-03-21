@@ -39,7 +39,7 @@
     <div class="col-md-12">
       <div class="col-md-6 data-row reset-div">
         <div class="help-block with-errors form-errors"></div>
-        <form class="new-screening">
+        <form id="new-screening-form">
           <div class="col-md-12">
             <h3>ENDEREÇO</h3>
             <div class="form-group col-md-12">
@@ -169,8 +169,9 @@
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group col-md-6">
-                <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+              <div class="form-group">
+                <button class="btn btn-lg" id="btn-send">Enviar</button>
+                <button class="btn btn-lg" id="btn-save">Salvar como rascunho</button>
               </div>
             </div>
           </form>
