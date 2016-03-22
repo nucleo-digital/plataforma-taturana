@@ -82,7 +82,7 @@
         <div class="row">
           <ul class="ambassadors-list">
             {{#each ambassadors }}
-            <li><strong>{{profile.name}}</strong> <a class="pull-right" href="mailto: {{firstAddress emails}}">{{firstAddress emails}}</a></li>
+            <li><strong><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></strong> <a class="pull-right" href="mailto: {{firstAddress emails}}">{{firstAddress emails}}</a></li>
             {{/each}}
           </ul>
         </div>
