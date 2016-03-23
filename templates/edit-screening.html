@@ -10,148 +10,171 @@
         <img class="thumb-poster" src="/upload/{{film.poster_path}}">
       </div>
       <div class="col-md-9">
-        <p><strong>{{film.synopsis}}</strong></p>
+        {{#with film}}
+        <p><strong>{{synopsis}}</strong></p>
         <table class="white-table">
           <tr>
-            <td>{{film.genre}}</td>
-            <td>{{film.year}}</td>
-            <td>{{film.length}}</td>
-            <td>{{film.country}}</td>
+            <td>{{genre}}</td>
+            <td>{{year}}</td>
+            {{#if length}}
+              <td>{{length}}</td>
+            {{/if}}
+            <td>{{country}}</td>
           </tr>
         </table>
         <table class="white-table">
           <tr>
-            <td>{{film.director}}</td>
-            <td>{{film.distributor}}</td>
+            {{#if director}}
+              <td>{{director}}</td>
+            {{/if}}
+
+            {{#if production_company}}
+              <td>{{production_company}}</td>
+            {{/if}}
           </tr>
         </table>
+        {{/with}}
       </div>
     </div>
-    <div class="col-md-6 data-row reset-div">
-      <div class="help-block with-errors form-errors"></div>
-      <form class="new-screening">
-        <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="col-md-6 data-row reset-div">
+        <div class="help-block with-errors form-errors"></div>
+        <form class="new-screening">
+          <div class="col-md-12">
 
-          <h3>ENDEREÇO</h3>
-          <div class="form-group col-md-12">
-            <input type="hidden" name="_id" value="{{screening._id}}"/>
-            <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
-            <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
-            <input type="text" name="place_name" value="{{screening.place_name}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-12">
-            <label class="control-label" for="cep">CEP<span class="red">*</span></label>
-            <input type="text" name="cep" value="{{screening.cep}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-8">
-            <label class="control-label" for="street">Rua<span class="red">*</span></label>
-            <input type="text" name="street" value="{{screening.street}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-4">
-            <label class="control-label" for="number">Número<span class="red">*</span></label>
-            <input type="text" name="number" value="{{screening.number}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-4">
-            <label class="control-label" for="complement">Complemento</label>
-            <input type="text" name="complement" value="{{screening.complement}}" class="form-control">
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-8">
-            <label class="control-label" for="zone">Bairro<span class="red">*</span></label>
-            <input type="text" name="zone" value="{{screening.zone}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-5">
-            <label class="control-label" for="city">Cidade<span class="red">*</span></label>
-            <input type="text" name="city" value="{{screening.city}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-          <div class="form-group col-md-2">
-            <label class="control-label" for="uf">UF<span class="red">*</span></label>
-             <select name="uf" class="form-control no-radius">
-              {{#each ufs}}
-                <option>{{this}}</option>
-              {{/each}}
-            </select>
-          </div>
-          <div class="form-group col-md-5">
-            <label class="control-label" for="s_country">País<span class="red">*</span></label>
-            <input type="text" name="s_country" value="{{screening.s_country}}" class="form-control" required>
-            <div class="help-block with-errors"></div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <h3>SESSÃO</h3>
-            <p>Data de exibição</p>
-            <div class="form-group col-md-4">
-              <label class="control-label sub-label" for="date">Dia<span class="red">*</span></label>
-              <input id="date" type="text" name="date" value="{{format_date screening.date}}" class="form-control" required>
+            <h3>ENDEREÇO</h3>
+            <div class="form-group col-md-12">
+              <input type="hidden" name="_id" value="{{screening._id}}"/>
+              <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
+              <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
+              <input type="text" name="place_name" value="{{address.place_name}}" class="form-control" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="control-label" for="cep">CEP<span class="red">*</span></label>
+              <input type="text" name="cep" value="{{address.cep}}" class="form-control" required>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-8">
+              <label class="control-label" for="street">Rua<span class="red">*</span></label>
+              <input type="text" name="street" value="{{address.street}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group col-md-4">
-              <label class="control-label sub-label" for="time">Horário<span class="red">*</span></label>
-              <input type="text" name="time" value="{{format_time screening.date}}" class="timepicker form-control" required>
+              <label class="control-label" for="number">Número<span class="red">*</span></label>
+              <input type="text" name="number" value="{{address.number}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
-            <div class="col-md-12 reset-div">
-              <p class="sub-label red">Você nos diz quando e onde fará a exibição e ajudamos a divulgá-la!</p>
-            </div>
-            <div class="col-md-8 reset-div checkbox">
-              <label>
-                <input type="checkbox" name="public_event" checked="{{screening.public_event}}">Aberta ao público
-              </label>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="activity">Haverá alguma atividade antes ou depois da exibição?</label>
-              <p class="sub-label red">Um filme é sempre um bom ponto de partida para uma conversa! Aproveite a sessão para trocar ideias com o público presente! Convidar pessoas para mediar e trazer mais conteúdo para a discussão pode ajudar a esquentar o bate-papo!</p>
-              <div class="col-md-8 reset-div">
-                <select name="activity" value="{{screening.activity}}" class="form-control no-radius">
-                  <option>Livre</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="activity_theme">Esta atividade tem um tema?</label>
-              <input type="text" name="activity_theme" value="{{screening.activity_theme}}" class="form-control">
+            <div class="form-group col-md-4">
+              <label class="control-label" for="complement">Complemento</label>
+              <input type="text" name="complement" value="{{address.complement}}" class="form-control">
               <div class="help-block with-errors"></div>
             </div>
-            <div class="col-md-12 reset-div checkbox">
-              <label>
-                <input type="checkbox" name="team_member" checked="{{screening.team_member}}">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
-              </label>
-              <p class="sub-label red">Alguns diretores e integrantes do filme muitas vezes se dispõe a participar de um bate-papo após a sessão. Pode ser bacana convida-los! Mas reforçamos que os custos de transporte e hospedagem, quando for o caso, são de responsabilidade do embaixador/instituição.</p>
-            </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="quorum_expectation">Quantas pessoas você projeta que irão assistir ao filme?</label>
-              <input type="text" name="quorum_expectation" value="{{screening.quorum_expectation}}" class="form-control">
+            <div class="form-group col-md-8">
+              <label class="control-label" for="zone">Bairro<span class="red">*</span></label>
+              <input type="text" name="zone" value="{{address.zone}}" class="form-control" required>
               <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group col-md-12">
-              <label class="control-label" for="comments">Quer contar algo mais sobre a atividade ou fazer algum comentário?</label>
-              <textarea name="comments" value="{{screening.comments}}" rows="5" class="form-control"></textarea>
-              <span class="help-block with-errors"></span>
+            <div class="form-group col-md-5">
+              <label class="control-label" for="city">Cidade<span class="red">*</span></label>
+              <input type="text" name="city" value="{{address.city}}" class="form-control" required>
+              <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group col-md-12">
-              <p>Termo de compromisso<span class="red">*</span></p>
-              <p class="sub-label">Trabalhamos em rede pela democratização do acesso ao cinema e disponibilizamos o filme aos embaixadores em troca de sua difusão! Como contrapartida, esperamos que o embaixador nos ajude a medir o impacto do filme e se comprometa e enviar um reltório com: 1) contagem de participantes, 2) fotos da exibição+atividade, e 3) um breve relatório descritivo. O parceiro também se compromete a exibir o filme na ocasião acor- dada entre as partes. O filme não poderá ser fornecido a terceiros, nem ser exibido em outra ocasião ou qualquer meio sem autorização prévia. Também fica proibida a publi- cação do filme na internet.</p>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="accept_terms" checked="{{ screening.accept_terms }}" required>Li e aceito os termos.
-                </label>
-              </div>
-              <span class="help-block with-errors"></span>
+            <div class="form-group col-md-2">
+              <label class="control-label" for="uf">UF<span class="red">*</span></label>
+               <select name="uf" class="form-control no-radius">
+                {{#each ufs}}
+                <option id="{{this}}" {{is_selected this}}>
+                  {{this}}
+                </option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="form-group col-md-5">
+              <label class="control-label" for="s_country">País<span class="red">*</span></label>
+              <input type="text" name="s_country" value="{{address.s_country}}" class="form-control" required>
+              <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="form-group col-md-6">
-              <button class="btn btn-lg btn-block" type="submit">Enviar</button>
+            <h3>SESSÃO</h3>
+              <p>Data de exibição</p>
+              <div class="form-group col-md-4">
+                <label class="control-label sub-label" for="date">Dia<span class="red">*</span></label>
+                <input id="date" type="text" name="date" value="{{format_date screening.date}}" class="form-control" required>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class="control-label sub-label" for="time">Horário<span class="red">*</span></label>
+                <input type="text" name="time" value="{{format_time screening.date}}" class="timepicker form-control" required>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="col-md-12 reset-div">
+                <p class="sub-label red">Você nos diz quando e onde fará a exibição e ajudamos a divulgá-la!</p>
+              </div>
+              <div class="col-md-8 reset-div checkbox">
+                <label>
+                  <input type="checkbox" name="public_event" checked="{{screening.public_event}}">Aberta ao público
+                </label>
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label" for="activity">Haverá alguma atividade antes ou depois da exibição?</label>
+                <p class="sub-label red">Um filme é sempre um bom ponto de partida para uma conversa! Aproveite a sessão para trocar ideias com o público presente! Convidar pessoas para mediar e trazer mais conteúdo para a discussão pode ajudar a esquentar o bate-papo!</p>
+                <div class="col-md-8 reset-div">
+                  <select name="activity" value="{{screening.activity}}" class="form-control no-radius">
+                    <option>Livre</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label" for="activity_theme">Esta atividade tem um tema?</label>
+                <input type="text" name="activity_theme" value="{{screening.activity_theme}}" class="form-control">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="col-md-12 reset-div checkbox">
+                <label>
+                  <input type="checkbox" name="team_member" checked="{{screening.team_member}}">Tenho interesse em que o diretor e/ou integrante da equipe do filme participem do bate-papo após a sessão
+                </label>
+                <p class="sub-label red">Alguns diretores e integrantes do filme muitas vezes se dispõe a participar de um bate-papo após a sessão. Pode ser bacana convida-los! Mas reforçamos que os custos de transporte e hospedagem, quando for o caso, são de responsabilidade do embaixador/instituição.</p>
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label" for="quorum_expectation">Quantas pessoas você projeta que irão assistir ao filme?</label>
+                <input type="text" name="quorum_expectation" value="{{screening.quorum_expectation}}" class="form-control">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label" for="comments">Quer contar algo mais sobre a atividade ou fazer algum comentário?</label>
+                <textarea name="comments" value="{{screening.comments}}" rows="5" class="form-control"></textarea>
+                <span class="help-block with-errors"></span>
+              </div>
+              <div class="form-group col-md-12">
+                <p>Termo de compromisso<span class="red">*</span></p>
+                <p class="sub-label">Trabalhamos em rede pela democratização do acesso ao cinema e disponibilizamos o filme aos embaixadores em troca de sua difusão! Como contrapartida, esperamos que o embaixador nos ajude a medir o impacto do filme e se comprometa e enviar um reltório com: 1) contagem de participantes, 2) fotos da exibição+atividade, e 3) um breve relatório descritivo. O parceiro também se compromete a exibir o filme na ocasião acor- dada entre as partes. O filme não poderá ser fornecido a terceiros, nem ser exibido em outra ocasião ou qualquer meio sem autorização prévia. Também fica proibida a publi- cação do filme na internet.</p>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="accept_terms" checked="{{ screening.accept_terms }}" required>Li e aceito os termos.
+                  </label>
+                </div>
+                <span class="help-block with-errors"></span>
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="col-md-12">
+              <div class="form-group col-md-6">
+                <button class="btn btn-lg btn-block" type="submit">Atualizar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 data-row reset-div">
+          <h3>SEUS ENDEREÇOS SALVOS</h3>
+          {{#each user_addresses}}
+            <div class="address-box">
+              <button class="remove_address">X</button>
+              <h4>{{place_name}}</h4>
+              <a href="#" class="replace_address"><p class="address-text">{{street}}, {{number}} {{complement}} <br/> {{zone}}, {{city}} - {{uf}}</p></a>
+            </div>
+          {{/each}}
+        </div>
       </div>
     </div>
   {{>footer}}
