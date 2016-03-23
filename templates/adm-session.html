@@ -3,7 +3,7 @@
   <div class="bg-wrapper">
     <div id="adm-sessions" class="container adm">
 
-      {{>admSidebar page="films"}}
+      {{>admSidebar page="sessions"}}
 
       <div class="col-md-8 col-md-offset-1">
         <div class="row">
@@ -27,6 +27,10 @@
             <dd>{{activity_theme}}</dd>
             <dt>Comentários:</dt>
             <dd>{{Comments}}</dd>
+            <dt>Embaixador:</dt>
+            {{#with user user_id}}
+            <dd><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></dd>
+            {{/with}}
           </dl>
         </div>
       </div>
