@@ -39,7 +39,7 @@
     <div class="col-md-12">
       <div class="col-md-6 data-row reset-div">
         <div class="help-block with-errors form-errors"></div>
-        <form class="new-screening">
+        <form class="new-screening" id="edit-screening-form">
           <div class="col-md-12">
 
             <h3>ENDEREÇO</h3>
@@ -94,6 +94,11 @@
               <label class="control-label" for="s_country">País<span class="red">*</span></label>
               <input type="text" name="s_country" value="{{address.s_country}}" class="form-control" required>
               <div class="help-block with-errors"></div>
+            </div>
+            <div class="col-md-8 reset-div checkbox">
+              <label>
+                <input type="checkbox" name="add_address">Salvar esse endereço
+              </label>
             </div>
           </div>
           <div class="col-md-12">
