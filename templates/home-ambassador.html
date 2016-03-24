@@ -23,20 +23,28 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="section-title-lg">EDITE SUAS SESSÕES</h1>
-          <p class="section-description">Veja aqui as sessões que estão agendadas e edite-as, caso necessário. Você também pode fazer download dos materiais de divulgação do filme. E não se esqueça de, após a sessão, preencher o relatório!</p>
-            {{#each ambassador_screenings}}
-              <div class="col-md-4">
-                <h2 class="film-thumb-title red">{{title}}</h2>
-                <p>{{place_name}} <br/>{{city}} - {{uf}}, {{format_date date}} às {{format_time date}}</p>
-                <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
-                <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
-                <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
-                <a href="report/{{_id}}"><span class="square_button">R</span></a>
-              </div>
-            {{/each}}
+          <p class="ambassador-edit-description">Veja aqui as sessões que estão agendadas e edite-as, caso necessário. Você também pode fazer download dos materiais de divulgação do filme. E não se esqueça de, após a sessão, preencher o relatório!</p>
+          <ul class="status-meanings">
+            <li><img src="images/edit.svg" /><span>Rascunho</span></li>
+            <li><img src="images/calendar.svg" /><span>Agendada</span></li>
+            <li><img src="images/edit.svg" /><span>Relatório<br /> Pendente</span></li>
+            <li><img src="images/edit.svg" /><span>Relatório<br /> enviado</span></li>
+          </ul>
+          {{#each ambassador_screenings}}
+          <div class="col-md-4 session-edit-box">
+            <h2 class="film-thumb-title red">{{title}}</h2>
+            <p>{{place_name}} <br/>{{city}} - {{uf}}, {{format_date date}} às {{format_time date}}</p>
+            <div class="session-edit-actions">
+              <a href="upload/{{film_press_kit}}"><span class="square_button"><img src="images/download.svg"/></span></a>
+              <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a>
+              <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
+              <a href="report/{{_id}}"><span class="square_button">R</span></a>
+            </div>
+          </div>
+          {{/each}}
         </div>
       </div>
     </div>
   </div>
   {{>footer}}
-</template>
+  </template>
