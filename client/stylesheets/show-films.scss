@@ -133,6 +133,20 @@
 
 .film-detail-buttons {
   text-align: right;
+  margin-bottom: 2rem;
+
+  @media (max-width: 650px) {
+    .btn {
+      font-size: .8em;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .poster-wrapper {
+    text-align: center;
+    margin-bottom: 1em;
+  }
 }
 
 .film-graphs {
@@ -175,6 +189,15 @@
         line-height: 3.8em;
         margin-right: 1em;
       }
+    }
+  }
+
+  @media (max-width: 650px) {
+    display: block;
+
+    &__box {
+      width: 100%;
+      margin-bottom: 3rem;
     }
   }
 }

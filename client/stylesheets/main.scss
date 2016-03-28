@@ -129,6 +129,10 @@ li{
 }
 #contact img{
   width:75%;
+
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
 .full{
   width: 100%;
