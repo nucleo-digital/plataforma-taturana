@@ -20,6 +20,33 @@
   &:nth-child(2n + 1) {
     clear: both;
   }
+
+  dl {
+    margin: 0;
+    padding: 0;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.2);
+    dt, dd {
+      border-width: 1px 0 0 0;
+      border-style: solid;
+      border-color: rgba(255, 255, 255, 0.2);
+      padding: 0.9em 0;
+      border-collapse: collapse;
+      color: #fff;
+    }
+    dt {
+      width: 100px;
+      text-align: right;
+      float: left;
+      clear: left;
+    }
+    dd {
+      margin: 0 0 0 100px;
+      padding-left: 0.9em;
+      text-align: left;
+    }
+  }
 }
 .film-basic-info {
   margin-bottom: 16px;

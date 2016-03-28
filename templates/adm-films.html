@@ -24,12 +24,12 @@
                 <div class="col-md-12">
                   <div class="form-group col-md-12">
                     <label class="control-label" for="sequence_number">Ordenação</label>
-                    <input type="text" name="sequence_number" value="{{sequence_number}}" class="form-control">
+                    <input type="text" name="sequence_number" id="sequence_number" value="{{sequence_number}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="status">Qual a categoria deste filme?{{data}}</label>
-                    <select name="status" value="{{status}}" class="form-control no-radius">
+                    <select name="status" id="status" value="{{status}}" class="form-control no-radius">
                       <option>Difusão</option>
                       <option>Oculto</option>
                       <option>Portfolio</option>
@@ -42,18 +42,19 @@
                       <button class="btn btn-change-poster">Alterar cartaz</button>
                       <input type="hidden" name="poster_path" value="{{posterPath}}"/>
                     {{else}}
+                      {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
                       {{> upload_bootstrap contentType='images' multiple=false formData=posterData}}
                       <span class="help-block with-errors"></span>
                     {{/if}}
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="title">Titulo do filme</label>
-                    <input type="text" name="title" value="{{title}}" class="form-control">
+                    <input type="text" name="title" id="title" value="{{title}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="synopsis">Sinopse</label>
-                    <textarea name="synopsis" value="{{synopsis}}" rows="5" class="form-control"></textarea>
+                    <textarea name="synopsis" id="synopsis" value="{{synopsis}}" rows="5" class="form-control"></textarea>
                     <span class="help-block with-errors"></span>
                   </div>
                 </div>
@@ -61,37 +62,37 @@
                   <h3>DADOS DO FILME</h3>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="year">Ano</label>
-                    <input type="text" name="year" value="{{year}}" class="form-control">
+                    <input type="text" name="year" id="year" value="{{year}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="genre">Gênero</label>
-                    <input type="text" name="genre" value="{{genre}}" class="form-control">
+                    <input type="text" name="genre" id="genre" value="{{genre}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="length">Duração</label>
-                    <input type="text" name="length" value="{{length}}" class="form-control">
+                    <input type="text" name="length" id="length" value="{{length}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="country">País</label>
-                    <input type="text" name="country" value="{{country}}" class="form-control">
+                    <input type="text" name="country" id="country" value="{{country}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="director">Diretor</label>
-                    <input type="text" name="director" value="{{director}}" class="form-control">
+                    <input type="text" name="director" id="director" value="{{director}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
                     <label class="control-label" for="production_company">Produtora</label>
-                    <input type="text" name="production_company" value="{{production_company}}" class="form-control">
+                    <input type="text" name="production_company" id="production_company" value="{{production_company}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label class="control-label" for="status">Classificação Indicativa</label>
-                    <select name="age_rating" value="{{age_rating}}" class="form-control no-radius">
+                    <label class="control-label" for="age_rating">Classificação Indicativa</label>
+                    <select name="age_rating" id="age_rating" value="{{age_rating}}" class="form-control no-radius">
                       <option>Livre</option>
                       <option>10 anos</option>
                       <option>12 anos</option>
@@ -102,20 +103,21 @@
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="technical_information">Ficha técnica (Quebras de linha serão mostradas na página)</label>
-                    <textarea type="text" name="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
+                    <textarea type="text" name="technical_information" id="technical_information" value="{{technical_information}}" rows="5" class="form-control"></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="trailer_url">Trailer</label>
-                    <input type="text" name="trailer_url" value="{{trailer_url}}" class="form-control">
+                    <input type="text" name="trailer_url" id="trailer_url" value="{{trailer_url}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
                     {{#if press_kit_path}}
                       <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
-                      <input type="hidden" name="press_kit_path" value="{{press_kit_path}}"/>
+                      <input type="hidden" name="press_kit_path" id="press_kit_path" value="{{press_kit_path}}"/>
                     {{else}}
+                      {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
                       {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
                     <span class="help-block with-errors"></span>
                     {{/if}}
@@ -127,8 +129,9 @@
                     <label class="control-label" for="poster_thumb_path">Imagem para home (360x370)</label>
                     {{#if poster_thumb_path}}
                       <img src="/upload/{{poster_home_path}}" class="adm-thumb" />
-                      <input type="hidden" name="poster_home_path" value="{{poster_home_path}}"/>
+                      <input type="hidden" name="poster_home_path" id="poster_home_path" value="{{poster_home_path}}"/>
                     {{else}}
+                      {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
                       {{> upload_bootstrap contentType='images' multiple=false formData=posterHomeData}}
                       <span class="help-block with-errors"></span>
                     {{/if}}
@@ -138,27 +141,27 @@
                   <h3>REDES SOCIAIS</h3>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="site">Site</label>
-                    <input type="text" name="site" value="{{site}}" class="form-control">
+                    <input type="text" name="site" id="site" value="{{site}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="facebook">Facebook</label>
-                    <input type="text" name="facebook" value="{{facebook}}" class="form-control">
+                    <input type="text" name="facebook" id="facebook" value="{{facebook}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="twitter">Twitter</label>
-                    <input type="text" name="twitter" value="{{twitter}}" class="form-control">
+                    <input type="text" name="twitter" id="twitter" value="{{twitter}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="instagram">Instagram</label>
-                    <input type="text" name="instagram" value="{{instagram}}" class="form-control">
+                    <input type="text" name="instagram" id="instagram" value="{{instagram}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
                     <label class="control-label" for="youtube">Youtube</label>
-                    <input type="text" name="youtube" value="{{youtube}}" class="form-control">
+                    <input type="text" name="youtube" id="youtube" value="{{youtube}}" class="form-control">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>

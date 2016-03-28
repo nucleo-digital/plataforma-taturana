@@ -6,7 +6,8 @@
 				<h1 class="home-text">Democratizamos o cinema brasileiro</h1>
         <div class="col-md-10 col-xs-12 center-block float-none">
           <p class="home-items">Leve um filme para a sua organização, centro cultural, coletivo, cineclube, escola ou qualquer outro lugar de interesse público!</p>
-          <img src="images/ilustracao-passos.png" class="img-responsive center-block divider" />
+          {{! TODO: Quebre a imagem em três e separe os alt texts corretamente }}
+          <img src="images/ilustracao-passos.png" class="img-responsive center-block divider" alt="1: CADASTRE-SE como embaixador e entre para a rede de exibidores!; 2: ESCOLHA UM FILME para exibidr e debater no seu espaço!; 3: CONTE COMO FOI a experiência, e contribua para a construção dessa rede cultural!"/>
     </div>
 			</div>
 		</div>
@@ -27,16 +28,37 @@
 
 <template name="homeCarousel">
   <div id="carousel" class="col-md-12">
+    {{! TODO: tem um bug no carrossel. Como todos os itens do carrossel são
+        exibidos no código o screen reader le todos eles e não só os que
+        estão sendo exibidos. Tbm qdo vc passa o mouse sobre o item, ele
+        sempre le o primeiro da fila, "filha da india" e nunca o que está
+        selecionado, é preciso esconder eles dos leitores qdo não estiverem
+        aparecendo na tela, mas eu não consegui sem zoar o carrossel.
+        A navegação via teclado também fica totalmente comprometida. Se você
+        esta vendo o quarto item na tela e começa a navegar com os tabs, você
+        acaba passando por todos os itens e pior, só vai ouvir "Mais informacões link" e
+        "Ver todos os filmes link", mas não sabe qual filme está sendo visto.
+        Eu dei uma tapa no "Mais informações" adicionando um `title`. }}
     {{#each disseminate}}
       <div>
         <div class="col-md-4 carousel-box background-light-red reset-div">
-          <img src="/upload/{{poster_home_path}}" class="img-responsive center-block">
+          <img src="/upload/{{poster_home_path}}" class="img-responsive center-block" alt="">
         </div>
         <div class="col-md-4 carousel-box background-dark-red">
+          {{#if title_pt }}
+          <h5 class="title" >{{title_pt}}</h5>
+          {{else}}
           <h5 class="title">{{title}}</h5>
+          {{/if}}
           <p class="synopsis max-lines">{{shortsynopsis}}</p>
         </div>
         <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
+          {{! TODO: mudar esses H5 e paragrafo para algo como definition lists,
+              isso fica horrivel num leitor de tela, ex:
+
+              "Cabeçalho nivel 5: 1483 sessões realizadas"
+
+              Resolvi não tocar nisso por que não envolve questões de layout com cliente }}
           {{#if inventory }}
             {{#with inventory}}
             <div class="col-md-6 numbers div-border">
@@ -54,7 +76,7 @@
             {{/with}}
           {{/if}}
           <div class="col-md-12 button-bar">
-            <a type="submit" href="/film/{{_id}}" class="btn btn-sm">MAIS INFORMAÇÕES</a>
+            <a type="submit" href="/film/{{_id}}" class="btn btn-sm" title="Mais informações sobre o filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}.">MAIS INFORMAÇÕES</a>
             <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
           </div>
         </div>

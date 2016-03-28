@@ -1,23 +1,23 @@
 <template name="nav">
-	<nav class="navbar navbar-fixed-top">
+	<nav class="navbar navbar-fixed-top" title="Navegação">
 	  	<div class="container">
 	  		<div class="row">
 	  			<div class="col-md-4">
-				  	<ul class="nav navbar-nav">
+				  	<ol class="nav navbar-nav">
 				      <li><a href="/">HOME</a></li>
 				      <li><a href="/films">FILMES</a></li>
 				      <li><a href="/screenings">AGENDA</a></li>
 				      <!-- {{#if currentUser}}<li><a href="/ambassador">EMBAIXADOR</a></li>{{/if}} -->
-				    </ul>
+				    </ol>
 				  </div>
 				  <div id="top-menu-logo" class="col-md-4">
 				  </div>
 				  <div class="col-md-4">
-					  <ul class="nav navbar-nav navbar-left pull-right">
+					  <ol class="nav navbar-nav navbar-left pull-right">
               {{#if currentUser}}
                 <li class="avatar-menu">
                   <div class="userDroplet-avatar">
-                    <img src="{{avatarPath}}" class="full" />
+                    <img src="{{avatarPath}}" class="full" alt="Menu do usuário"/>
                   </div>
                 </li>
                 <li><a href="/contact">CONTATO</a></li>
@@ -27,7 +27,7 @@
                 <li><a href="/login">LOGIN</a></li>
                 <li><a href="/contact">CONTATO</a></li>
               {{/if}}
-				    </ul>
+				    </ol>
 				  </div>
 			  </div>
 	    </div>
