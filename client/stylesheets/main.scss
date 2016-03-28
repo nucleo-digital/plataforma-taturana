@@ -75,6 +75,10 @@ a.btn, button{
 
 #home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
   padding-top:10em;
+
+  @media (max-width: 830px) {
+    padding-top: 19em;
+  }
 }
 
 .bg-wrapper {

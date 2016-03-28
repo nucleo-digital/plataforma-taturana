@@ -1,23 +1,24 @@
 <template name="nav">
   <header id="header">
-    <div class="container">
-      <nav>
-        <ul class="menu">
-          <li><a href="/">HOME</a></li>
-          <li><a href="/films">FILMES</a></li>
-          <li><a href="/screenings">AGENDA</a></li>
-          {{#if currentUser}}
-            <li class="avatar-menu menu-right">
-              <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})"></div>
-              {{>logout}}
-            </li>
-            <li class="menu-right"><a href="/contact">CONTATO</a></li>
-          {{else}}
-            <li class="menu-right"><a href="/register">CADASTRE-SE</a></li>
-            <li class="menu-right"><a href="/login">LOGIN</a></li>
-            <li class="menu-right"><a href="/contact">CONTATO</a></li>
-          {{/if}}
-        </ul>
+    <div class="header-bg-wrapper">
+      <nav id="top-menu">
+        <div class="container">
+          <ul class="menu">
+            <li class="menu-left"><a href="/">HOME</a></li>
+            <li class="menu-left"><a href="/films">FILMES</a></li>
+            <li class="menu-left"><a href="/screenings">AGENDA</a></li>
+            <li><a href="/contact">CONTATO</a></li>
+            {{#if currentUser}}
+              <li class="avatar-menu">
+                <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})"></div>
+                {{>logout}}
+              </li>
+            {{else}}
+              <li><a href="/register">CADASTRE-SE</a></li>
+              <li><a href="/login">LOGIN</a></li>
+            {{/if}}
+          </ul>
+        </div>
       </nav>
 
       <div id="logo"></div>
