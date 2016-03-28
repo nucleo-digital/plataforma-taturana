@@ -1,29 +1,49 @@
-#top-menu-logo{
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100%;
+  background: url("images/top-menu-background.png") center top no-repeat transparent;
+  background-size: auto 100%;
+  min-height: 7.8125rem;
+}
+
+.menu {
+  list-style: none;
+  padding-left: 0;
+
+  > li {
+    display: inline-block;
+    line-height: 4.625rem;
+
+    &.menu-right {
+      float: right;
+    }
+
+    > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+    }
+  }
+}
+
+#dropdown-submenu {
+  position: absolute;
+  right: 13px;
+  padding-left: 0;
+  list-style: none;
+  width: 300px;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 33.33%;
   background: url("images/top-menu-logo.png") center top no-repeat;
   background-size: 90% auto;
+  margin-left: -15.5%;
   height: 11em;
-}
-.navbar{
-  background: url("images/top-menu-background.png") center top no-repeat;
-  background-size: 100% auto;
-}
-.navbar-nav a, .navbar-nav a:hover{
-  color: #fff;
-  background: none !important;
-  margin-top: 10px;
-}
-
-.navbar-left {
-  > li {
-    float: right;
-  }
-
-  .avatar-menu {
-    margin-right: 22px;
-  }
-
-  .submenu {
-    width: 300px;
-    clear: both;
-  }
 }

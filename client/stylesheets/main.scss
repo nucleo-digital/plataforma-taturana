@@ -1,11 +1,8 @@
-@import "/{casimcdaniels:breakpoint}/_breakpoint";
 @import '{reywood:bootstrap3-sass}/bootstrap';
-@import 'films';
-@import 'nav';
-@import 'home';
 
 // Variables
 $large: 980px;
+$medium: 600px;
 
 body{
 	font-family: Roboto;

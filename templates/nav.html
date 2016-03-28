@@ -1,35 +1,26 @@
 <template name="nav">
-	<nav class="navbar navbar-fixed-top">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="col-md-4">
-				  	<ul class="nav navbar-nav">
-				      <li><a href="/">HOME</a></li>
-				      <li><a href="/films">FILMES</a></li>
-				      <li><a href="/screenings">AGENDA</a></li>
-				      <!-- {{#if currentUser}}<li><a href="/ambassador">EMBAIXADOR</a></li>{{/if}} -->
-				    </ul>
-				  </div>
-				  <div id="top-menu-logo" class="col-md-4">
-				  </div>
-				  <div class="col-md-4">
-					  <ul class="nav navbar-nav navbar-left pull-right">
-              {{#if currentUser}}
-                <li class="avatar-menu">
-                  <div class="userDroplet-avatar">
-                    <img src="{{avatarPath}}" class="full" />
-                  </div>
-                </li>
-                <li><a href="/contact">CONTATO</a></li>
-                {{>logout}}
-              {{else}}
-                <li><a href="/register">CADASTRE-SE</a></li>
-                <li><a href="/login">LOGIN</a></li>
-                <li><a href="/contact">CONTATO</a></li>
-              {{/if}}
-				    </ul>
-				  </div>
-			  </div>
-	    </div>
-	</nav>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <ul class="menu">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/films">FILMES</a></li>
+          <li><a href="/screenings">AGENDA</a></li>
+          {{#if currentUser}}
+            <li class="avatar-menu menu-right">
+              <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})"></div>
+              {{>logout}}
+            </li>
+            <li class="menu-right"><a href="/contact">CONTATO</a></li>
+          {{else}}
+            <li class="menu-right"><a href="/register">CADASTRE-SE</a></li>
+            <li class="menu-right"><a href="/login">LOGIN</a></li>
+            <li class="menu-right"><a href="/contact">CONTATO</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+
+      <div id="logo"></div>
+    </div>
+  </header>
 </template>
