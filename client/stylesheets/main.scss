@@ -64,6 +64,11 @@ select:not([multiple]) {
   background-image: url("images/select-arrow.png");
   background-size: 30px;
 }
+
+select::-ms-expand{
+  display:none;
+}
+
 a.btn, button{
   margin-top: 1em;
   background-color: #df4944;
