@@ -28,6 +28,12 @@
 <template name="homeCarousel">
   <div id="carousel" class="col-md-12">
     {{#each disseminate}}
+      {{> homeCarouselItem}}
+    {{/each}}
+  </div>
+  </template>
+
+  <template name="homeCarouselItem">
       <div>
         <div class="col-md-4 carousel-box background-light-red reset-div">
           <img src="/upload/{{poster_home_path}}" class="img-responsive center-block">
@@ -59,6 +65,4 @@
           </div>
         </div>
       </div>
-    {{/each}}
-  </div>
-</template>
+  </template>
