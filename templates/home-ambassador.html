@@ -9,14 +9,14 @@
         <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 adm-list-films">
           {{#each disseminate}}
-            <a href="/new-screening/{{_id}}">
-              <div class="col-md-3">
+            <div class="col-md-3">
+              <a href="/new-screening/{{_id}}">
                 <img src="/upload/{{poster_path}}" class="full" />
                 <h2 class="film-thumb-title">{{title}}</h2>
-              </div>
-            </a>
+              </a>
+            </div>
           {{/each}}
         </div>
       </div>
