@@ -31,6 +31,11 @@ footer .col-md-7:nth-child(even){
 
   img {
     width: 170px !important;
-    height: 102px;
+    height: 150px;
+  }
+
+  &-description {
+    position: relative;
+    top: -27px;
   }
 }
