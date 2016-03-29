@@ -11,7 +11,7 @@
   }
 }
 #report, #edit-screening{
-  padding-top: 10em;
+  padding-top: 19em;
 }
 .address-box{
   background-color:#df4944;
@@ -81,6 +81,12 @@
 
     img {
       margin-right: 1rem;
+    }
+  }
+
+  @media (max-width: 830px) {
+    li {
+      margin-bottom: 2rem;
     }
   }
 }
