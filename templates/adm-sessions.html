@@ -11,7 +11,7 @@
           <div class="row noLeftMargin">
             <div class="col-md-4">
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="state-selector">Estado</label>
                     <select class="form-control" name="state-selector" id="st-selector">
                       <option value="">Selecione</option>
@@ -35,7 +35,7 @@
               <div class="col-md-8">
                   <label>Selecione um mês</label>
                 <div class="datepicker-container">
-                    <div class="btn-group">
+                    <div class="btn-group form-group">
                         <button type="button" class="btn btn-datepicker" data-month="0">Jan</button>
                         <button type="button" class="btn btn-datepicker" data-month="1">Fev</button>
                         <button type="button" class="btn btn-datepicker" data-month="2">Mar</button>
@@ -55,26 +55,30 @@
           </div>
 
 
-          <div class="row  leftMarginHack">
-            <div class="form-group col-md-4">
-              <label for="filmSelector">Filme</label>
-              <select class="form-control" name="filmSelector" id="film-selector">
-                <option value="">Selecione</option>
-                {{#each films}}
-                  <option>{{title}}</option>
-                {{/each}}
-              </select>
+          <div class="row leftMarginHack">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="filmSelector">Filme</label>
+                <select class="form-control" name="filmSelector" id="film-selector">
+                  <option value="">Selecione</option>
+                  {{#each films}}
+                    <option>{{title}}</option>
+                  {{/each}}
+                </select>
+              </div>
             </div>
           </div>
           <div class="row  leftMarginHack">
-            <div class="form-group col-md-4">
-              <label for="ambassador-selector">Embaixador</label>
-              <select class="form-control" name="ambassador-selector" id="ambassador-selector">
-                <option value="">Selecione</option>
-                {{#each ambassador_options films}}
-                  <option value="{{_id}}">{{profile.name}}</option>
-                {{/each}}
-              </select>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="ambassador-selector">Embaixador</label>
+                <select class="form-control" name="ambassador-selector" id="ambassador-selector">
+                  <option value="">Selecione</option>
+                  {{#each ambassador_options films}}
+                    <option value="{{_id}}">{{profile.name}}</option>
+                  {{/each}}
+                </select>
+              </div>
             </div>
           </div>
         </div>
