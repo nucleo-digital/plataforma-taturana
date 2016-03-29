@@ -23,6 +23,16 @@ $grey: #aaa;
       }
     }
   }
+
+  @media (max-width: 830px) {
+    .adm-links {
+      padding-left: 0;
+    }
+
+    h1 {
+      margin-left: 0;
+    }
+  }
 }
 
 #adm {
@@ -36,6 +46,12 @@ $grey: #aaa;
 }
 
 #adm-films {
+  @media (max-width: 830px) {
+    .films-list {
+      padding-left: 0;
+    }
+  }
+
   .nav-tabs {
     margin-top: 30px;
     border-bottom: solid 1px $red;
@@ -76,6 +92,12 @@ $grey: #aaa;
 }
 
 #adm-ambassadors {
+  @media (max-width: 830px) {
+    .ambassadors-list {
+      padding-left: 0;
+    }
+  }
+
   .filters {
     border: solid 1px $red;
     border-radius: 5px;

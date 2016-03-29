@@ -1,7 +1,8 @@
 @import '{reywood:bootstrap3-sass}/bootstrap';
-@import 'films';
-@import 'nav';
-@import 'home';
+
+// Variables
+$large: 980px;
+$medium: 600px;
 
 body{
 	font-family: Roboto;
@@ -63,6 +64,11 @@ select:not([multiple]) {
   background-image: url("images/select-arrow.png");
   background-size: 30px;
 }
+
+select::-ms-expand{
+  display:none;
+}
+
 a.btn, button{
   margin-top: 1em;
   background-color: #df4944;
@@ -74,6 +80,10 @@ a.btn, button{
 
 #home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
   padding-top:10em;
+
+  @media (max-width: 830px) {
+    padding-top: 19em;
+  }
 }
 
 .bg-wrapper {
@@ -124,6 +134,10 @@ li{
 }
 #contact img{
   width:75%;
+
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
 .full{
   width: 100%;

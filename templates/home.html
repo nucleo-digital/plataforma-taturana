@@ -40,6 +40,12 @@
         "Ver todos os filmes link", mas não sabe qual filme está sendo visto.
         Eu dei uma tapa no "Mais informações" adicionando um `title`. }}
     {{#each disseminate}}
+      {{> homeCarouselItem}}
+    {{/each}}
+  </div>
+  </template>
+
+  <template name="homeCarouselItem">
       <div>
         <div class="col-md-4 carousel-box background-light-red reset-div">
           <img src="/upload/{{poster_home_path}}" class="img-responsive center-block" alt="">
@@ -81,6 +87,4 @@
           </div>
         </div>
       </div>
-    {{/each}}
-  </div>
-</template>
+  </template>

@@ -12,6 +12,8 @@
     border-radius: 50px;
     z-index: 99999;
     overflow: hidden;
+    background: no-repeat center center;
+    background-size: cover;
 }
 
 #dropletMenu{
@@ -22,9 +24,8 @@
 }
 
 #dropletMenu li{
-    height: 35px;
-    margin-top: 15px;
-    border-bottom: solid 1px white;
+  padding: 4px 0;
+  border-bottom: solid 1px white;
 }
 
 #dropletMenu li:last-child{

@@ -12,7 +12,7 @@
           <a href="/screenings" class="btn btn-lg">VER AGENDA DE EXIBIÇÃO</a>
         </div>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-12 data-row reset-div">
       {{! TODO: queria tbm usar uma definition list aqui, mas sem usar várias
           DLs não consigo o mesmo efeito da tabela, e ficaria horrivel no screen reader:
           "Lista com 1 elemento: Genêro: Documentário ... Lista com 1 elemento..." }}
@@ -34,7 +34,7 @@
         </table>
       </div>
       <div class="col-md-12 data-row reset-div">
-        <div class="col-md-4">
+        <div class="col-md-4 poster-wrapper">
           <img class="thumb-poster" src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}">
         </div>
         <div class="col-md-4">
@@ -42,7 +42,7 @@
         </div>
         {{#if tibr}}
           <div class="col-md-4">
-            <h3 class="red">INFORMAÇÕES TÉCNICAS</h3>
+            <h5 class="red">INFORMAÇÕES TÉCNICAS</h5>
             <div class="row box">
               <div class="col-md-12">
                 {{{ tibr }}}

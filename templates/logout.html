@@ -1,21 +1,24 @@
 <template name="logout">
-  <li class="submenu">
-  <div class="userDroplet-container dropletInvisible">
-  <div class="arrow-up"></div>
-  <ul id="dropletMenu" class="list-unstyled">
-    {{#if isAdmin }}
-      <li><a href="/adm">Home Administrador</a></li>
-    {{else}}
-      <li><a href="/ambassador">Embaixador</a></li>
-    {{/if}}
-    <li><a href="/ambassador-edit">Minhas Informações</a></li>
-    <li><a class="logout-ambassador" href="#">Sair</a></li>
+  <ul id="dropdown-submenu">
+    <li class="submenu">
+    <div class="userDroplet-container dropletInvisible">
+    <div class="arrow-up"></div>
+    <ul id="dropletMenu" class="list-unstyled">
+      {{#if isAdmin }}
+        <li><a href="/adm">Home Administrador</a></li>
+      {{else}}
+        <li><a href="/ambassador">Embaixador</a></li>
+      {{/if}}
+      <li><a href="/ambassador-edit">Minhas Informações</a></li>
+      <li><a class="logout-ambassador" href="#">Sair</a></li>
+    </ul>
+    </div>
+    </li>
   </ul>
-  </div>
-  </li>
 
 <script>
-  $('.userDroplet-avatar').click(function(){
+  $('.userDroplet-avatar').click(function(event){
+      event.preventDefault();
       $('.userDroplet-container').toggleClass('dropletInvisible');
   });
 </script>

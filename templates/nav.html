@@ -1,35 +1,27 @@
 <template name="nav">
-	<nav class="navbar navbar-fixed-top" title="Navegação">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="col-md-4">
-				  	<ol class="nav navbar-nav">
-				      <li><a href="/">HOME</a></li>
-				      <li><a href="/films">FILMES</a></li>
-				      <li><a href="/screenings">AGENDA</a></li>
-				      <!-- {{#if currentUser}}<li><a href="/ambassador">EMBAIXADOR</a></li>{{/if}} -->
-				    </ol>
-				  </div>
-				  <div id="top-menu-logo" class="col-md-4">
-				  </div>
-				  <div class="col-md-4">
-					  <ol class="nav navbar-nav navbar-left pull-right">
-              {{#if currentUser}}
-                <li class="avatar-menu">
-                  <div class="userDroplet-avatar">
-                    <img src="{{avatarPath}}" class="full" alt="Menu do usuário"/>
-                  </div>
-                </li>
-                <li><a href="/contact">CONTATO</a></li>
+  <header id="header">
+    <div class="header-bg-wrapper">
+      <nav id="top-menu">
+        <div class="container">
+          <ul class="menu">
+            <li class="menu-left"><a href="/">HOME</a></li>
+            <li class="menu-left"><a href="/films">FILMES</a></li>
+            <li class="menu-left"><a href="/screenings">AGENDA</a></li>
+            <li><a href="/contact">CONTATO</a></li>
+            {{#if currentUser}}
+              <li class="avatar-menu">
+                <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})"></div>
                 {{>logout}}
-              {{else}}
-                <li><a href="/register">CADASTRE-SE</a></li>
-                <li><a href="/login">LOGIN</a></li>
-                <li><a href="/contact">CONTATO</a></li>
-              {{/if}}
-				    </ol>
-				  </div>
-			  </div>
-	    </div>
-	</nav>
+              </li>
+            {{else}}
+              <li><a href="/register">CADASTRE-SE</a></li>
+              <li><a href="/login">LOGIN</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </nav>
+
+      <div id="logo"></div>
+    </div>
+  </header>
 </template>
