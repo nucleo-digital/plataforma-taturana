@@ -80,6 +80,12 @@
   padding: 5px;
   padding-left: 25px;
   padding-right: 25px;
+
+  @media(max-width: 600px) {
+    width: 100%;
+    display: block;
+    border-right: 1px solid darkgrey;
+  }
 }
 
 #screeningDetails-movieSpecs li:last-child, #screeningDetails-productionSpecs li:last-child{
