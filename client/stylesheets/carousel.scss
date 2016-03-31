@@ -27,6 +27,10 @@
 .carousel-box{
 	height:25em;
 	margin-top:2em;
+
+  @media(max-width: 600px) {
+    height: auto;
+  }
 }
 .icon-box{
 	height: 60%;
