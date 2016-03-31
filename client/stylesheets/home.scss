@@ -10,11 +10,13 @@
   display: table;
   position: relative;
   overflow: hidden;
+
   @media (max-width: 992px){
   	height: 400px;
   }
+
   @media (max-width: 600px){
-  	height: 300px;
+    height: auto;
   	display: block;
   }
 }

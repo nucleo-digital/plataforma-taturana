@@ -57,6 +57,16 @@
     display: flex;
     justify-content: center;
     margin-top: 12px;
+    flex-wrap: wrap;
+
+    > li {
+      line-height: 1;
+      height: auto;
+
+      &.avatar-menu {
+        top: -9px;
+      }
+    }
   }
 }
 
@@ -68,6 +78,14 @@
   width: 300px;
   z-index: 100;
   text-align: left;
+
+  @media (max-width: 830px) {
+    width: 180px;
+
+    li {
+      padding: 10px 0;
+    }
+  }
 }
 
 #logo {

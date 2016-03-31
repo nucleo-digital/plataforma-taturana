@@ -35,14 +35,14 @@
 
   <template name="homeCarouselItem">
       <div>
-        <div class="col-md-4 carousel-box background-light-red reset-div">
+        <div class="col-md-4 carousel-box background-light-red reset-div carousel-poster">
           <img src="/upload/{{poster_home_path}}" class="img-responsive center-block">
         </div>
-        <div class="col-md-4 carousel-box background-dark-red">
+        <div class="col-md-4 carousel-box background-dark-red carousel-synopsis">
           <h5 class="title">{{title}}</h5>
           <p class="synopsis max-lines">{{shortsynopsis}}</p>
         </div>
-        <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
+        <div class="col-md-4 carousel-box background-light-red center-btn reset-div carousel-inventory">
           {{#if inventory }}
             {{#with inventory}}
             <div class="col-md-6 numbers div-border">
