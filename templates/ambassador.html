@@ -54,7 +54,7 @@ Templates:
           <div class="col-md-3 reset-div">
             <label class="control-label" for="avatar_path">Avatar</label>
             {{#if currentUser.profile.avatar_path}}
-              <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" />
+              <img src="/upload/{{currentUser.profile.avatar_path}}" class="full" alt="Avatar" />
               <input type="hidden" name="avatar_path" value="{{currentUser.profile.avatar_path}}"/>
             {{else}}
               {{> upload_bootstrap contentType='images' multiple=false formData=avatarData}}
@@ -78,7 +78,7 @@ Templates:
                 <h2 class="film-thumb-title red">{{city}} - {{uf}}</h2>
                 <p>{{place_name}} <br/>{{street}}, {{number}} - {{zone}}</p>
                 <!-- <a href="edit-screening/{{_id}}"><span class="square_button"><img src="images/edit.svg"/></span></a> -->
-                <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg"/></span></a>
+                <a href="#" class="destroy"><span class="square_button"><img src="images/delete.svg" alt="Deletar"/></span></a>
               </div>
             {{/each}}
           </div>
@@ -92,17 +92,17 @@ Templates:
 <template name="ambassadorFormFields">
   <div class="form-group col-md-12">
     <label class="control-label" for="name">Nome completo<span class="red">*</span></label>
-    <input type="text" name="name" value="{{currentUser.profile.name}}" class="form-control" required>
+    <input type="text" name="name" id="name" value="{{currentUser.profile.name}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-6">
     <label class="control-label" for="email">E-mail<span class="red">*</span></label>
-    <input type="email" name="email" value="{{user_email}}" class="form-control email" required>
+    <input type="email" name="email" id="email" value="{{user_email}}" class="form-control email" required>
     <span class="help-block with-errors"></span>
   </div>
   <div class="form-group col-md-6">
     <label class="control-label" for="email-validation">Repita seu e-mail<span class="red">*</span></label>
-    <input type="email" data-match=".email" name="email-validation" value="{{user_email}}" class="form-control email-validation" data-match-error="Ops, verifique se digitou corretamente." required>
+    <input type="email" data-match=".email" name="email-validation" id="email-validation" value="{{user_email}}" class="form-control email-validation" data-match-error="Ops, verifique se digitou corretamente." required>
     <div class="help-block with-errors"></div>
   </div>
   {{#if showPassword}}
@@ -110,32 +110,32 @@ Templates:
   {{/if}}
   <div class="form-group col-md-5">
     <label class="control-label" for="cell_phone">Telefone celular<span class="red">*</span></label>
-    <input type="text" name="cell_phone" value="{{currentUser.profile.cell_phone}}" class="form-control" required>
+    <input type="text" name="cell_phone" id="cell_phone" value="{{currentUser.profile.cell_phone}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-5">
     <label class="control-label" for="phone">Telefone fixo<span class="red">*</span></label>
-    <input type="text" name="phone" value="{{currentUser.profile.phone}}" class="form-control" required>
+    <input type="text" name="phone" id="phone" value="{{currentUser.profile.phone}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="cpf">CPF<span class="red">*</span></label>
-    <input type="text" name="cpf" value="{{currentUser.profile.cpf}}" class="form-control" required>
+    <input type="text" name="cpf" id="cpf" value="{{currentUser.profile.cpf}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-5">
     <label class="control-label" for="country">País<span class="red">*</span></label>
-    <input type="text" name="country" value="{{currentUser.profile.country}}" class="form-control" required>
+    <input type="text" name="country" id="country" value="{{currentUser.profile.country}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-5">
     <label class="control-label" for="city">Cidade<span class="red">*</span></label>
-    <input type="text" name="city" value="{{currentUser.profile.city}}" class="form-control" required>
+    <input type="text" name="city" id="city" value="{{currentUser.profile.city}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-2">
     <label class="control-label" for="uf">UF<span class="red">*</span></label>
-     <select name="uf" value="{{currentUser.profile.uf}}" class="form-control no-radius">
+     <select name="uf" id="uf" value="{{currentUser.profile.uf}}" class="form-control no-radius">
       {{#each ufs}}
         <option>{{this}}</option>
       {{/each}}
@@ -143,12 +143,12 @@ Templates:
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="institution">Você faz parte de alguma instituição, coletivo ou grupo?<span class="red">*</span></label>
-    <input type="text" name="institution" value="{{currentUser.profile.institution}}" class="form-control" required>
+    <input type="text" name="institution" id="institution" value="{{currentUser.profile.institution}}" class="form-control" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="category">Qual a sua área de atuação?</label>
-    <select name="category" class="form-control no-radius" value="{{currentUser.profile.category}}">
+    <select name="category" id="category" class="form-control no-radius" value="{{currentUser.profile.category}}">
       {{#each categories}}
         <option>{{name}}</option>
       {{/each}}
@@ -156,7 +156,7 @@ Templates:
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="subcategory">Com quais temáticas vocês trabalham?</label>
-    <select name="subcategory"  value="{{currentUser.profile.subcategory}}" class="form-control">
+    <select name="subcategory" id="subcategory"  value="{{currentUser.profile.subcategory}}" class="form-control">
       {{#each subcategories}}
         <option>{{name}}</option>
       {{/each}}
@@ -166,12 +166,12 @@ Templates:
 <template name="password">
   <div class="form-group col-md-5">
     <label class="control-label" for="password">Senha<span class="red">*</span></label>
-    <input type="password" data-minlength="8" name="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
+    <input type="password" data-minlength="8" name="password" id="password" class="form-control password" data-error="Verifique se digitou 8 caracteres" required>
     <div class="help-block with-errors"></div>
   </div>
   <div class="form-group col-md-5">
     <label class="control-label" for="password-validation">Repita a senha<span class="red">*</span></label>
-    <input type="password" data-match=".password" data-minlength="8" name="password-validation" class="form-control password-validation" data-match-error="Ops, verifique se digitou corretamente." data-error="Verifique se digitou 8 caracteres" required>
+    <input type="password" data-match=".password" data-minlength="8" name="password-validation" id="password-validation" class="form-control password-validation" data-match-error="Ops, verifique se digitou corretamente." data-error="Verifique se digitou 8 caracteres" required>
     <div class="help-block with-errors"></div>
   </div>
 </template>

@@ -1,21 +1,23 @@
 <template name="nav">
   <header id="header">
     <div class="header-bg-wrapper">
-      <nav id="top-menu">
+      <nav id="top-menu" role="navigation">
         <div class="container">
           <ul class="menu">
-            <li class="menu-left"><a href="/">HOME</a></li>
-            <li class="menu-left"><a href="/films">FILMES</a></li>
-            <li class="menu-left"><a href="/screenings">AGENDA</a></li>
-            <li><a href="/contact">CONTATO</a></li>
+            <li class="menu-left" aria-controls="st1"><a href="/">HOME</a></li>
+            <li class="menu-left" aria-controls="st1"><a href="/films">FILMES</a></li>
+            <li class="menu-left" aria-controls="st1"><a href="/screenings">AGENDA</a></li>
+            <li aria-controls="st1"><a href="/contact">CONTATO</a></li>
             {{#if currentUser}}
-              <li class="avatar-menu">
-                <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})"></div>
+              <li class="avatar-menu" aria-controls="st1">
+                <div class="userDroplet-avatar" style="background-image: url({{avatarPath}})">
+                  <a href="." id="dropdown-link" aria-haspopup="true" aria-owns="dropdown-submenu" aria-controls="dropdown-submenu" aria-expanded="false" title="Menu do usuário" ></a>
+                </div>
                 {{>logout}}
               </li>
             {{else}}
-              <li><a href="/register">CADASTRE-SE</a></li>
-              <li><a href="/login">LOGIN</a></li>
+              <li aria-controls="st1"><a href="/register">CADASTRE-SE</a></li>
+              <li aria-controls="st1"><a href="/login">LOGIN</a></li>
             {{/if}}
           </ul>
         </div>
