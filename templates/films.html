@@ -14,29 +14,47 @@
 <template name="film">
   <div class="col-md-6 col-md-6 film-box">
     <div class="col-md-6">
-      <img src="/upload/{{poster_path}}">
+      <img src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}">
     </div>
     <div class="col-md-6">
-      <h3>{{title}}</h3>
-      <table class="white-table film-basic-info">
+      <h3>{{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}</h3>
+      {{! TODO: Foi feita uma pequena mudança aqui escondendo a tabela e usando
+          uma definition list pois ouvir "Documentário 90 WG Filme" é muito
+          estranho. Fiz a alteração pq o layout ia ficar mto parecido,
+          impacto minimo. A tabela está comentada abaixo. }}
+      <dl>
+        <dt style="">Genêro:</dt>
+        <dd>{{genre}}</dd>
+        {{#if length}}
+        <dt style="">Minutos:</dt>
+        <dd>{{length}}</dd>
+        {{/if}}
+        <dt style="">Produzido por:</dt>
+        <dd>{{production_company}}</dd>
+      </dl>
+<!--       <table class="white-table film-basic-info">
         <tr>
+          <th style="display: none;">Genêro</th>
           <td>{{genre}}</td>
         </tr>
         {{#if length}}
           <tr>
-            <td>{{length}}</td>
+            <th style="display: none;">Tempo</th>
+            <td title="{{length}} minutos">{{length}}</td>
           </tr>
         {{/if}}
         {{#if production_company}}
           <tr>
+            <th style="display: none;">Produzido por</th>
             <td>{{production_company}}</td>
           </tr>
         {{/if}}
-      </table>
+      </table> -->
     </div>
     <div class="col-md-12">
+
       <p>{{shortsynopsis}}</p>
-      <a class="btn btn-lg center-block" href="/film/{{_id}}">VER DETALHES DO FILME</a>
+      <a class="btn btn-lg center-block" href="/film/{{_id}}" title="Ver detalhes do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}">VER DETALHES DO FILME</a>
     </div>
   </div>
 </template>

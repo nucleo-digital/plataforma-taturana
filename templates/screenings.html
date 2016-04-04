@@ -8,7 +8,7 @@
         <div class="col-md-4">
 
           <div class="form-group col-md-5">
-            <label for="state-selector">Estado</label>
+            <label for="st-selector">Estado</label>
             <select class="form-control" name="state-selector" id="st-selector">
               <option value="">Selecione</option>
               {{#each states_options films}}
@@ -50,7 +50,7 @@
 
         <div class="col-md-12">
           <div class="form-group col-md-3">
-            <label for="filmSelector">Filme</label>
+            <label for="film-selector">Filme</label>
             <select class="form-control" name="filmSelector" id="film-selector">
               <option value="">Selecione</option>
               {{#each films}}
@@ -69,11 +69,11 @@
                 <div id="screeningDetails-movieInfo">
 
                   <div class="col-md-3">
-                    <img class="screening-film-poster" src="/upload/{{poster_path}}"/>
+                    <img class="screening-film-poster" src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}" />
                   </div>
 
                   <div class="col-md-9" style="padding-left: 0px">
-                    <h1>{{title}}</h1>
+                    <h1>{{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}</h1>
                   </div>
 
                   <div class="col-md-9">
@@ -101,10 +101,10 @@
                     {{#each future_screenings}}
                       <li class="screeningItem col-md-12">
                         <div class="col-md-1" style="text-align: right">
-                          <img src="images/calendar.svg">
+                          <img src="images/calendar.svg" alt="">
                         </div>
                         <div class="col-md-2">
-                          <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
+                          <h5 class="screeningTime">{{format_date date}} {{format_time date}}</h5>
                         </div>
                         <div class="col-md-5">
                           <p class="screeningDetails">
