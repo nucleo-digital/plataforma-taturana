@@ -13,6 +13,9 @@
         </div>
       </div>
       <div class="col-md-12 data-row reset-div">
+      {{! TODO: queria tbm usar uma definition list aqui, mas sem usar várias
+          DLs não consigo o mesmo efeito da tabela, e ficaria horrivel no screen reader:
+          "Lista com 1 elemento: Genêro: Documentário ... Lista com 1 elemento..." }}
         <table class="white-table">
           <tr>
             <td>{{genre}}</td>
@@ -32,7 +35,7 @@
       </div>
       <div class="col-md-12 data-row reset-div">
         <div class="col-md-4 poster-wrapper">
-          <img class="thumb-poster" src="/upload/{{poster_path}}">
+          <img class="thumb-poster" src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}">
         </div>
         <div class="col-md-4">
           <p>{{synopsis}}</p>
@@ -60,7 +63,7 @@
             {{/if}}
 
             {{#each linklist}}
-              <td><a href="{{link}}"><img src="/images/{{name}}.svg"></a></td>
+              <td><a href="{{link}}"><img src="/images/{{name}}.svg" alt="{{name}}"></a></td>
             {{/each}}
           </tr>
         </table>
@@ -72,9 +75,9 @@
             <div class="film-graphs__box">
               <h3>Dados da Difusão</h3>
               <dl>
-                <dt><!-- TODO adicionar ícone --></dt>
+                <dt>{{! TODO adicionar ícone }}</dt>
                 <dd>{{viewers}} espectadores totais em {{sessions}} sessões</dd>
-                <dt><!-- TODO adicionar ícone --></dt>
+                <dt>{{! TODO adicionar ícone }}</dt>
                 <dd>{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
               </dl>
             </div>
