@@ -87,7 +87,15 @@
 
 .ct-chart {
   position: relative;
-  height: 250px;
+  min-height: 280px;
+  overflow: hidden;
+
+  &-donut {
+    position: absolute;
+    top: 0;
+    left: -20%;
+    height: 280px !important;
+  }
 
 }
 
@@ -117,6 +125,7 @@
   position: relative;
   z-index: 10;
   list-style: none;
+  font-size: .8em;
 
   li {
       position: relative;
@@ -139,12 +148,15 @@
   }
 
   &.ct-legend-inside {
-      position: absolute;
+      position: relative;
       top: 0;
-      right: 0;
+      left: 330px;
+      padding: 0;
+      width: 220px;
+
   }
 
-  $ct-series-colors: #d70206, #f05b4f, #f4c63d, #d17905, #453d3f, #59922b, #0544d3, #6b0392, #f05b4f, #dda458, #eacf7d, #86797d, #b2c326, #6188e2, #a748ca;
+  $ct-series-colors: #d70206, #f05b4f, #f4c63d, #d17905, #453d3f, #59922b, #0544d3, #6b0392, #f05b4f, #dda458, #eacf7d, #86797d, #b2c326, #6188e2, #a748ca, #680000, #688800, #6800aa, #2b00aa, #002baa;
 
   @for $i from 0 to length($ct-series-colors) {
     .ct-series-#{$i}:before {
@@ -153,6 +165,12 @@
     }
   }
 }
+
+.ct-series-p { stroke:  #680000 }
+.ct-series-q { stroke:  #688800 }
+.ct-series-r { stroke:  #6800aa }
+.ct-series-s { stroke:  #2b00aa }
+.ct-series-r { stroke:  #002baa }
 
 .film-detail-buttons {
   text-align: right;
@@ -189,10 +207,13 @@
     dl {
       margin-top: 2.6em;
       font-size: 1.5em;
+      border: 0 !important;
     }
 
     dd {
       margin-bottom: 1em;
+      color: white !important;
+      border: 0;
     }
 
     ul {
