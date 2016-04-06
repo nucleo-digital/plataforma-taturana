@@ -107,23 +107,22 @@
               <p>{{cities}} municipios alcançados</p>
             </div>
           </div>
-          {{#if categories }}
-          aaa
-            <div class="col-md-12 data-row">
-              <h3>Sobre os embaixadores</h3>
-              <div class="film-graphs">
-                <div class="col-md-6">
-                  <div id="institution-type-chart" class="ct-chart"></div>
-                  <p>Perfil das instituições dos embaixadores</p>
-                </div>
-                <div class="col-md-6">
-                  <div id="institution-area-chart" class="ct-chart"></div>
-                  <p>Áreas de atuação dos embaixadores</p>
-                </div>
+        {{/with}}
+        {{#if has_categories inventory.categories}}
+          <div class="col-md-12 data-row">
+            <h3>Sobre os embaixadores</h3>
+            <div class="film-graphs">
+              <div class="col-md-6">
+                <div id="institution-type-chart" class="ct-chart"></div>
+                <p>Perfil das instituições dos embaixadores</p>
+              </div>
+              <div class="col-md-6">
+                <div id="institution-area-chart" class="ct-chart"></div>
+                <p>Áreas de atuação dos embaixadores</p>
               </div>
             </div>
-          {{/if}}
-        {{/with}}
+          </div>
+        {{/if}}
       {{/unless}}
 
       {{#if slideshow}}
