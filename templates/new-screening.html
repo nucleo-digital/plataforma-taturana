@@ -38,45 +38,46 @@
     </div>
     <div class="col-md-12">
       <div class="col-md-6 data-row reset-div">
-        <div class="help-block with-errors form-errors"></div>
+       
         <form id="new-screening-form">
           <div class="col-md-12">
             <h3>ENDEREÇO</h3>
             <div class="form-group col-md-12">
+              <div class="help-block with-errors red form-errors"></div>
               <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
               <label class="control-label" for="place_name">Nome do local<span class="red">*</span></label>
               <input type="text" name="place_name" id="place_name" value="{{address.place_name}}" class="form-control" required>
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-12">
               <label class="control-label" for="cep">CEP</label>
               <input type="text" name="cep" id="cep" value="{{address.cep}}" class="form-control">
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-8">
               <label class="control-label" for="street">Rua<span class="red">*</span></label>
               <input type="text" name="street" id="street" value="{{address.street}}" class="form-control" required>
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label" for="number">Número<span class="red">*</span></label>
               <input type="text" name="number" id="number" value="{{address.number}}" class="form-control" required>
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label" for="complement">Complemento</label>
               <input type="text" name="complement" id="complement" value="{{address.complement}}" class="form-control">
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-8">
               <label class="control-label" for="zone">Bairro</label>
               <input type="text" name="zone" id="zone" value="{{address.zone}}" class="form-control">
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-5">
               <label class="control-label" for="city">Cidade<span class="red">*</span></label>
               <input type="text" name="city" id="city" value="{{address.city}}" class="form-control" required>
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="form-group col-md-2">
               <label class="control-label" for="uf">UF<span class="red">*</span></label>
@@ -91,7 +92,7 @@
             <div class="form-group col-md-5">
               <label class="control-label" for="s_country">País<span class="red">*</span></label>
               <input type="text" name="s_country" id="s_country" value="{{address.s_country}}" class="form-control" required>
-              <div class="help-block with-errors"></div>
+              <div class="help-block with-errors red"></div>
             </div>
             <div class="col-md-8 reset-div checkbox">
               <label>
@@ -105,12 +106,12 @@
               <div class="form-group col-md-4">
                 <label class="control-label sub-label" for="date">Dia<span class="red">*</span></label>
                 <input type="text" name="date" id="date" value="{{date}}" class="form-control" required>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors red"></div>
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label sub-label" for="time">Horário<span class="red">*</span></label>
                 <input type="text" name="time" id="time" value="{{time}}" class="timepicker form-control" required>
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors red"></div>
               </div>
               <div class="col-md-12 reset-div">
                 <p class="sub-label red">Você nos diz quando e onde fará a exibição e ajudamos a divulgá-la!</p>
@@ -139,7 +140,7 @@
               <div class="form-group col-md-12">
                 <label class="control-label" for="activity_theme">Esta atividade tem um tema?</label>
                 <input type="text" name="activity_theme" id="activity_theme" value="{{activity_theme}}" class="form-control">
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors red"></div>
               </div>
               <div class="col-md-12 reset-div checkbox">
                 <label>
@@ -150,12 +151,12 @@
               <div class="form-group col-md-12">
                 <label class="control-label" for="quorum_expectation">Quantas pessoas você projeta que irão assistir ao filme?</label>
                 <input type="text" name="quorum_expectation" id="quorum_expectation" value="{{quorum_expectation}}" class="form-control">
-                <div class="help-block with-errors"></div>
+                <div class="help-block with-errors red"></div>
               </div>
               <div class="form-group col-md-12">
                 <label class="control-label" for="comments">Quer contar algo mais sobre a atividade ou fazer algum comentário?</label>
                 <textarea name="comments" id="comments" value="{{comments}}" rows="5" class="form-control"></textarea>
-                <span class="help-block with-errors"></span>
+                <span class="help-block with-errors red"></span>
               </div>
               <div class="form-group col-md-12">
                 <p>Termo de compromisso<span class="red">*</span></p>
@@ -165,12 +166,12 @@
                     <input type="checkbox" name="accept_terms" required>Li e aceito os termos.
                   </label>
                 </div>
-                <span class="help-block with-errors"></span>
+                <span class="help-block with-errors red"></span>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <button class="btn btn-lg" id="btn-send">Enviar</button>
+                <button class="btn btn-lg" id="btn-send" type="submit" value="Register">Enviar</button>
                 <button class="btn btn-lg" id="btn-save">Salvar como rascunho</button>
               </div>
             </div>
