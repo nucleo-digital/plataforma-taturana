@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="480" viewWidth="873" ai:appVersion="16.0.0.682" ATE:version="1.0.0" flm:version="1.0.0" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008">
+  <Library/>
+  <Group blendMode="normal" d:layerType="page" d:pageHeight="480" d:pageWidth="873" d:type="layer" d:userLabel="Artboard 1">
+    <Group d:type="layer" d:userLabel="Layer 1">
+      <RichText x="186.842" y="81.1304" columnCount="1" textAlign="left" tabStops="S36 S72 S108 S144 S180 S216 S252 S288 S324 S360 S396 S432 S468" fontFamily="Calibri" fontSize="200" kerning="on" color="#CCCCCC" whiteSpaceCollapse="preserve" ai:aa="2" ai:seqID="1">
+        <content><p fontFamily="Calibri"><span fontFamily="Calibri">HIATO</span></p></content>
+      </RichText>
+      <RichText x="225.316" y="257.695" columnCount="1" textAlign="left" tabStops="S36 S72 S108 S144 S180 S216 S252 S288 S324 S360 S396" fontFamily="Calibri" fontSize="72" kerning="on" color="#B3B3B3" whiteSpaceCollapse="preserve" ai:aa="2" ai:seqID="2">
+        <content><p fontFamily="Calibri"><span fontFamily="Calibri">17, 24 e 31/03</span><br/></p></content>
+      </RichText>
+      <RichText x="198.493" y="337.74" columnCount="1" textAlign="left" tabStops="S36 S72 S108 S144 S180 S216 S252 S288 S324 S360 S396 S432 S468" fontFamily="Calibri" fontSize="48" kerning="on" color="#B3B3B3" whiteSpaceCollapse="preserve" ai:aa="2" ai:seqID="3">
+        <content><p fontFamily="Calibri"><span fontFamily="Calibri">20h Sala Álvaro Moreyra</span></p></content>
+      </RichText>
+    </Group>
+  </Group>
+  <Private>
+      <d:FontMap>
+        <d:Map fontFamily="Calibri" fontStyle="normal" fontWeight="normal" postScriptName="Calibri"/>
+      </d:FontMap>
+    </Private>
+  </Graphic>
