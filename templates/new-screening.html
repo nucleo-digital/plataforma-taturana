@@ -98,7 +98,7 @@
               <label class="control-label" for="uf">UF<span class="red">*</span></label>
                <select name="uf" id="uf" class="form-control no-radius">
                 {{#each ufs}}
-                <option id="{{this}}" {{is_selected this}}>
+                <option id="{{this}}" {{isSelected uf}}>
                   {{this}}
                 </option>
                 {{/each}}
@@ -140,15 +140,10 @@
                 <label class="control-label" for="activity">Haverá alguma atividade antes ou depois da exibição?</label>
                 <p class="sub-label red">Um filme é sempre um bom ponto de partida para uma conversa! Aproveite a sessão para trocar ideias com o público presente! Convidar pessoas para mediar e trazer mais conteúdo para a discussão pode ajudar a esquentar o bate-papo!</p>
                 <div class="col-md-8 reset-div">
-                  <select name="activity" id="activity" value="{{activity}}" class="form-control no-radius">
-                    <option value="">Selecione</option>
-                    <option>Abertura</option>
-                    <option>Bate-papo</option>
-                    <option>Encerramento</option>
-                    <option>Vivência</option>
-                    <option>Debate</option>
-                    <option>Jogo</option>
-                    <option>Aula</option>
+                  <select name="activity" id="activity" class="form-control no-radius">
+                    {{#each returnSelectOptions 'ACTIVITY' activity}}
+                      <option value="{{name}}" {{status}}>{{name}}</option>
+                    {{/each}}
                   </select>
                 </div>
               </div>
