@@ -38,3 +38,4 @@ aramk:requirejs
 mspi:chartistlegend
 momentjs:moment
 casimcdaniels:breakpoint
+summernote:standalone

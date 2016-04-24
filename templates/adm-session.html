@@ -14,19 +14,25 @@
             <dt>Endereço:</dt>
             <dd>
               {{street}}, {{number}} {{complement}}<br />
-              {{cep}} {{zone}} - {{city}}/{{state}}<br />
+              {{cep}} {{zone}} - {{city}}/{{uf}}<br />
               {{s_country}}
             </dd>
             <dt>Data:</dt>
             <dd>{{format_date date}} - {{format_time date}}</dd>
+            <dt>Evento publico:</dt>
+            <dd>{{public_event}}</dd>
             <dt>Expectativa:</dt>
             <dd>{{quorum_expectation}}</dd>
             <dt>Atividade:</dt>
             <dd>{{activity}}</dd>
-            <dt>Tema da atividade</dt>
+            <dt>Tema da atividade:</dt>
             <dd>{{activity_theme}}</dd>
             <dt>Comentários:</dt>
-            <dd>{{Comments}}</dd>
+            <dd>{{comments}}</dd>
+            <dt>Participação da equipe:</dt>
+            <dd>{{public_event}}</dd>
+            <dt>Aceita termos:</dt>
+            <dd>{{accept_terms}}</dd>
             <dt>Embaixador:</dt>
             {{#with user user_id}}
             <dd><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></dd>

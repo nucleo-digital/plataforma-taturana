@@ -135,9 +135,9 @@ Templates:
   </div>
   <div class="form-group col-md-2">
     <label class="control-label" for="uf">UF<span class="red">*</span></label>
-     <select name="uf" id="uf" value="{{currentUser.profile.uf}}" class="form-control no-radius">
+     <select name="uf" id="uf" class="form-control no-radius">
       {{#each ufs}}
-        <option>{{this}}</option>
+        <option value="{{this}}" {{isChecked currentUser.profile.uf}}>{{this}}</option>
       {{/each}}
     </select>
   </div>
@@ -148,17 +148,17 @@ Templates:
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="category">Qual a sua área de atuação?</label>
-    <select name="category" id="category" class="form-control no-radius" value="{{currentUser.profile.category}}">
+    <select name="category" id="category" class="form-control no-radius">
       {{#each categories}}
-        <option>{{name}}</option>
+        <option value="{{this}}" {{isChecked currentUser.profile.category}}>{{this}}</option>
       {{/each}}
     </select>
   </div>
   <div class="form-group col-md-10">
     <label class="control-label" for="subcategory">Com quais temáticas vocês trabalham?</label>
-    <select name="subcategory" id="subcategory"  value="{{currentUser.profile.subcategory}}" class="form-control">
+    <select name="subcategory" id="subcategory" class="form-control">
       {{#each subcategories}}
-        <option>{{name}}</option>
+        <option value="{{this}}" {{isChecked currentUser.profile.subcategory}}>{{this}}</option>
       {{/each}}
     </select>
   </div>
