@@ -163,4 +163,32 @@ Meteor.startup(function () {
   Accounts.urls.resetPassword = function(token) {
     return Meteor.absoluteUrl('reset-password/' + token);
   };
+
+
+  // Creating Slugs in Bulk for Existing Films
+  var count, docs;
+
+  docs = Films.find({
+    slug: {
+      $exists: false
+    }
+  }, {
+    limit: 50
+  });
+
+  count = 0;
+
+  docs.forEach(function(doc) {
+    Films.update({
+      _id: doc._id
+    }, {
+      $set: {
+        fake: ''
+      }
+    });
+    return count += 1;
+  });
+  return console.log('Update slugs for ' + count + ' Films.');
+
+
 });
