@@ -2,9 +2,9 @@ Meteor.methods({
   sendEmail: function (text) {
     this.unblock();
     Email.send({
-      to: '',
+      to: 'taturanamobi@gmail.com',
       from: '',
-      subject: '',
+      subject: 'Contato Site',
       text: text
     });
   },
