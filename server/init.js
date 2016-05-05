@@ -56,6 +56,7 @@ Meteor.methods({
   },
   addScreening: function(film_id, new_screening){
     Films.update(film_id, {$push: {screening: new_screening}});
+    return new_screening._id;
   },
   updateScreening: function(f_screening){
     var film = Films.by_screening_id(f_screening._id),
