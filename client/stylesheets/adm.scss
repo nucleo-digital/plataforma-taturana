@@ -133,3 +133,15 @@ $grey: #aaa;
     }
   }
 }
+
+#adm-sessions {
+  .filters {
+    margin-top: 25px;
+    .division {
+      width: 100%;
+      background: $red;
+      height: 2px;
+      maring: 10px;
+    }
+  }
+}
