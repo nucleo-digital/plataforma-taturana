@@ -62,10 +62,43 @@
                 <select class="form-control" name="filmSelector" id="film-selector">
                   <option value="">Selecione</option>
                   {{#each films}}
-                    <option>{{title}}</option>
+                  <option>{{title}}</option>
                   {{/each}}
                 </select>
               </div>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <div class="col-sm-2">
+                    <input type="checkbox" name="teamParticipation" id="team-selector" />
+                  </div>
+                  <label class="col-sm-10 control-label" for="teamParticipation">Participação da equipe</label>
+                </div>
+                <div class="form-group col-md-6">
+                  <div class="col-sm-2">
+                    <input type="checkbox" name="publicEvent" id="public-event" />
+                  </div>
+                  <label class="col-sm-10 control-label" for="publicEvent">Aberta ao público</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+
+                  <div class="col-sm-2">
+                    <input type="checkbox" name="comment" id="comment" />
+                  </div>
+                  <label class="col-sm-10 control-label" for="comment">Comentarios? </label>
+                </div>
+                <div class="form-group col-md-6">
+                  <div class="col-sm-2">
+                    <input type="checkbox" name="pendingReport" id="pendingReport" />
+                  </div>
+                  <label class="col-sm-10 control-label" for="pendingReport">Tem relatórios pendentes? </label>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="row  leftMarginHack">
@@ -99,20 +132,23 @@
                   {{#each future_screenings}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
-                        {{! FIXME imagem? }}
-                        <img src="http://placehold.it/20x20">
+                        {{ #if report_description }}
+                        <img src="/images/icon-complete.png">
+                        {{ else }}
+                        <img src="/images/icon-report-pending.png">
+                        {{/if}}
                       </div>
                       <div class="col-md-2">
                         <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
                       </div>
                       <div class="col-md-5">
-                        <p class="screeningDetails">
+                        <p  class="screeningDetails">
                           <strong>{{place_name}}</strong>
                           <br>
                           {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
                         </p>
                       </div>
-                      <a class="btn" href="/adm/session/{{_id._str}}">Visualizar</a>
+                      <a class="btn" href="/adm/session/{{_id}}">Visualizar</a>
                       {{#if draft}}
                         <button class="btn btn-unset-draft" data-session-id="{{_id}}">Desmarcar como rascunho</button>
                       {{else}}
