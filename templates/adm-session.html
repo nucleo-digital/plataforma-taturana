@@ -37,6 +37,10 @@
             {{#with user user_id}}
             <dd><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></dd>
             {{/with}}
+            {{#if real_quorum }}
+            <dt>Relatório:</dt>
+            <dd><a href="/adm/report/{{_id}}">[ Ver Relatório ]</a></dd>
+            {{/if}}
           </dl>
         </div>
       </div>
