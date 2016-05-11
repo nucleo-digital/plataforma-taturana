@@ -126,10 +126,14 @@
                   {{#each future_screenings}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
+                        {{ #if oldSession date }}
                         {{ #if real_quorum }}
                         <img src="/images/icon-complete.png">
                         {{ else }}
                         <img src="/images/icon-report-pending.png">
+                        {{/if}}
+                        {{ else }}
+                        <img src="/images/calendar.svg">
                         {{/if}}
                       </div>
                       <div class="col-md-2">
