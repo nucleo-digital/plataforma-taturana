@@ -1,11 +1,11 @@
 Meteor.methods({
-  sendEmail: function (text) {
+  sendEmail: function (pidgeon) {
     this.unblock();
     Email.send({
-      to: 'taturanamobi@gmail.com',
-      from: '',
-      subject: 'Contato Site',
-      text: text
+      to: pidgeon.to,
+      from: pidgeon.from,
+      subject: pidgeon.subject,
+      text: pidgeon.content
     });
   },
 
