@@ -1,11 +1,14 @@
 Meteor.methods({
-  sendEmail: function (pidgeon) {
+  sendEmail: function (pidgeon, template) {
     this.unblock();
+
+    SSR.compileTemplate(template, Assets.getText(template));
+
     Email.send({
       to: pidgeon.to,
       from: pidgeon.from,
       subject: pidgeon.subject,
-      text: pidgeon.content
+      html: SSR.render(template, pidgeon)
     });
   },
 
