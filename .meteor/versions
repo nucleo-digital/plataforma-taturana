@@ -90,6 +90,7 @@ reload@1.1.4
 retry@1.0.4
 reywood:bootstrap3-sass@3.3.5_2
 routepolicy@1.0.6
+rzymek:moment-locale-pt-br@2.12.0
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
