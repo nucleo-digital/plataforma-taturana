@@ -1,3 +1,11 @@
+FutureTasks = new Meteor.Collection('future_tasks');
+
+// Envia as notifações
+function sendNotify(notify, template) {
+  Meteor.call('sendEmail', notify, template);
+  console.log("Mail Sent!!!");
+}
+
 Meteor.methods({
   sendEmail: function (pidgeon, template) {
     this.unblock();
@@ -46,6 +54,25 @@ Meteor.methods({
         }
       });
     }
+  },
+
+  insertTask: function(detail) {
+    return FutureTasks.insert(detail);
+  },
+  scheduleTask: function(id, content, template) {
+    SyncedCron.add({
+      name: id,
+      schedule: function(parser) {
+	return parser.recur().on(content.when).fullDate();
+      },
+      job: function() {
+        sendNotify(content, template);
+	FutureTasks.remove(id);
+	SyncedCron.remove(id);
+	return id;
+      }
+    });
+    console.log("Mail scheduled!");
   },
   removeFilm: function (id) {
     Films.remove(id);
@@ -107,6 +134,8 @@ Meteor.methods({
 });
 
 Meteor.startup(function () {
+
+  SyncedCron.start();
 
   Meteor.publish("films",function(){
     return Films.find({});
