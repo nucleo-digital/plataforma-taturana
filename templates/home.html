@@ -56,7 +56,7 @@
           {{else}}
           <h5 class="title">{{title}}</h5>
           {{/if}}
-          <p class="synopsis max-lines">{{shortsynopsis}}</p>
+          <p class="synopsis max-lines">{{{shortsynopsis}}}</p>
         </div>
         <div class="col-md-4 carousel-box background-light-red center-btn reset-div">
           {{! TODO: mudar esses H5 e paragrafo para algo como definition lists,
@@ -82,7 +82,7 @@
             {{/with}}
           {{/if}}
           <div class="col-md-12 button-bar">
-            <a type="submit" href="/film/{{_id}}" class="btn btn-sm" title="Mais informações sobre o filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}.">MAIS INFORMAÇÕES</a>
+            <a type="submit" href="/film/{{slug}}" class="btn btn-sm" title="Mais informações sobre o filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}.">MAIS INFORMAÇÕES</a>
             <a type="submit" href="/films" class="btn btn-sm">VER TODOS FILMES</a>
           </div>
         </div>
