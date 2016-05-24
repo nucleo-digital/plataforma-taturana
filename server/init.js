@@ -1,11 +1,30 @@
+FutureTasks = new Meteor.Collection('future_tasks');
+
+// Envia as notifações
+function sendNotify(notify, template) {
+  Meteor.call('sendEmail', notify, template);
+}
+
+function missingReport(content, template) {
+  report = Films.return_screening(content.screening_id);
+  if (report.real_quorum) {
+    return Meteor.call('sendEmail', content, template);
+  } else {
+    return false;
+  }
+}
+
 Meteor.methods({
-  sendEmail: function (text) {
+  sendEmail: function (pidgeon, template) {
     this.unblock();
+
+    SSR.compileTemplate(template, Assets.getText(template));
+
     Email.send({
-      to: '',
-      from: '',
-      subject: '',
-      text: text
+      to: pidgeon.to,
+      from: pidgeon.from,
+      subject: pidgeon.subject,
+      html: SSR.render(template, pidgeon)
     });
   },
 
@@ -44,6 +63,40 @@ Meteor.methods({
       });
     }
   },
+
+  insertTask: function(detail) {
+    return FutureTasks.insert(detail);
+  },
+  scheduleNotify: function(id, content, template) {
+    SyncedCron.add({
+      name: content.subject,
+      schedule: function(parser) {
+	return parser.recur().on(content.when).fullDate();
+      },
+      job: function() {
+        sendNotify(content, template);
+	FutureTasks.remove(id);
+	SyncedCron.remove(id);
+	return id;
+      }
+    });
+  },
+
+  verifyReport: function(id, content, template) {
+    SyncedCron.add({
+      name: content.subject,
+      schedule: function(parser) {
+	return parser.recur().on(content.when).fullDate();
+      },
+      job: function() {
+        missingReport(content, template);
+	FutureTasks.remove(id);
+	SyncedCron.remove(id);
+	return id;
+      }
+    });
+  },
+
   removeFilm: function (id) {
     Films.remove(id);
   },
@@ -56,6 +109,7 @@ Meteor.methods({
   },
   addScreening: function(film_id, new_screening){
     Films.update(film_id, {$push: {screening: new_screening}});
+    return new_screening._id;
   },
   updateScreening: function(f_screening){
     var film = Films.by_screening_id(f_screening._id),
@@ -103,6 +157,8 @@ Meteor.methods({
 });
 
 Meteor.startup(function () {
+
+  SyncedCron.start();
 
   Meteor.publish("films",function(){
     return Films.find({});
@@ -163,4 +219,32 @@ Meteor.startup(function () {
   Accounts.urls.resetPassword = function(token) {
     return Meteor.absoluteUrl('reset-password/' + token);
   };
+
+
+  // Creating Slugs in Bulk for Existing Films
+  var count, docs;
+
+  docs = Films.find({
+    slug: {
+      $exists: false
+    }
+  }, {
+    limit: 50
+  });
+
+  count = 0;
+
+  docs.forEach(function(doc) {
+    Films.update({
+      _id: doc._id
+    }, {
+      $set: {
+        fake: ''
+      }
+    });
+    return count += 1;
+  });
+  return console.log('Update slugs for ' + count + ' Films.');
+
+
 });

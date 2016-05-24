@@ -62,22 +62,49 @@
                 <select class="form-control" name="filmSelector" id="film-selector">
                   <option value="">Selecione</option>
                   {{#each films}}
-                    <option>{{title}}</option>
+                  <option>{{title}}</option>
                   {{/each}}
                 </select>
               </div>
-            </div>
-          </div>
-          <div class="row  leftMarginHack">
-            <div class="col-md-4">
               <div class="form-group">
                 <label for="ambassador-selector">Embaixador</label>
                 <select class="form-control" name="ambassador-selector" id="ambassador-selector">
                   <option value="">Selecione</option>
                   {{#each ambassador_options films}}
-                    <option value="{{_id}}">{{profile.name}}</option>
+                  <option value="{{_id}}">{{profile.name}}</option>
                   {{/each}}
                 </select>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="filters">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="col-sm-2">
+                      <input type="checkbox" name="teamParticipation" id="team-selector" />
+                    </div>
+                    <label for="teamParticipation">Participação da equipe</label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="col-sm-2">
+                      <input type="checkbox" name="publicEvent" id="public-event" />
+                    </div>
+                    <label for="publicEvent">Aberta ao público</label>
+                  </div>
+                  <span class="col-md-12 division"></span>
+                  <div class="col-md-6">
+                    <div class="col-sm-2">
+                      <input type="checkbox" name="comment" id="comment" />
+                    </div>
+                    <label for="comment">Comentarios? </label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="col-sm-2">
+                      <input type="checkbox" name="pendingReport" id="pendingReport" />
+                    </div>
+                    <label for="pendingReport">Tem relatórios pendentes? </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -99,20 +126,31 @@
                   {{#each future_screenings}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
-                        {{! FIXME imagem? }}
-                        <img src="http://placehold.it/20x20">
+                        {{ #if oldSession date }}
+                        {{ #if real_quorum }}
+                        <img src="/images/icon-complete.png">
+                        {{ else }}
+                        <img src="/images/icon-report-pending.png">
+                        {{/if}}
+                        {{ else }}
+                        <img src="/images/calendar.svg">
+                        {{/if}}
                       </div>
                       <div class="col-md-2">
                         <p class="screeningTime">{{format_date date}} {{format_time date}}</p>
                       </div>
                       <div class="col-md-5">
-                        <p class="screeningDetails">
+                        <p  class="screeningDetails">
                           <strong>{{place_name}}</strong>
                           <br>
                           {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
+                          <br><br>
+                          <strong>{{get_name user_id}}</strong>
+                          <br>
+                          {{get_email user_id}}
                         </p>
                       </div>
-                      <a class="btn" href="/adm/session/{{_id._str}}">Visualizar</a>
+                      <a class="btn" href="/adm/session/{{_id}}">Visualizar</a>
                       {{#if draft}}
                         <button class="btn btn-unset-draft" data-session-id="{{_id}}">Desmarcar como rascunho</button>
                       {{else}}
