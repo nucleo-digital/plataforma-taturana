@@ -3,7 +3,15 @@ FutureTasks = new Meteor.Collection('future_tasks');
 // Envia as notifações
 function sendNotify(notify, template) {
   Meteor.call('sendEmail', notify, template);
-  console.log("Mail Sent!!!");
+}
+
+function missingReport(content, template) {
+  report = Films.return_screening(content.screening_id);
+  if (report.real_quorum) {
+    return Meteor.call('sendEmail', content, template);
+  } else {
+    return false;
+  }
 }
 
 Meteor.methods({
@@ -59,9 +67,9 @@ Meteor.methods({
   insertTask: function(detail) {
     return FutureTasks.insert(detail);
   },
-  scheduleTask: function(id, content, template) {
+  scheduleNotify: function(id, content, template) {
     SyncedCron.add({
-      name: id,
+      name: content.subject,
       schedule: function(parser) {
 	return parser.recur().on(content.when).fullDate();
       },
@@ -72,8 +80,23 @@ Meteor.methods({
 	return id;
       }
     });
-    console.log("Mail scheduled!");
   },
+
+  verifyReport: function(id, content, template) {
+    SyncedCron.add({
+      name: content.subject,
+      schedule: function(parser) {
+	return parser.recur().on(content.when).fullDate();
+      },
+      job: function() {
+        missingReport(content, template);
+	FutureTasks.remove(id);
+	SyncedCron.remove(id);
+	return id;
+      }
+    });
+  },
+
   removeFilm: function (id) {
     Films.remove(id);
   },
