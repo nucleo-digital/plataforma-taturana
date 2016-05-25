@@ -28,6 +28,8 @@
   }
   & .col-md-4{
     margin-bottom: 5em;
+    display: flex;
+    min-height: 145px;
   }
 }
 #ambassador-edit{
