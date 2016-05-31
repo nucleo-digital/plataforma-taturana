@@ -55,6 +55,7 @@
           </div>
         {{/if}}
       </div>
+
       <div class="col-md-8 data-row">
         <table class="white-table">
           <tr>
@@ -72,20 +73,19 @@
           </tr>
         </table>
       </div>
+
       <div class="film-graphs">
         {{#unless is_portfolio }}
         {{#with inventory}}
         <div class="col-md-12 data-row film-graphs">
-          <div class="film-graphs__box">
+          <div class="col-md-6 reset-div film-graphs__box">
             <h3>Dados da Difusão</h3>
             <dl>
-              <dt>{{! TODO adicionar ícone }}</dt>
-              <dd>{{viewers}} espectadores totais em {{sessions}} sessões</dd>
-              <dt>{{! TODO adicionar ícone }}</dt>
-              <dd>{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
+              <dd><img src="/images/eye.svg" alt="">{{viewers}} espectadores totais em {{sessions}} sessões</dd>
+              <dd><img src="/images/icon-calendar.png" alt="">{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
             </dl>
           </div>
-          <div class="film-graphs__box">
+          <div class="col-md-6 reset-div film-graphs__box">
             <h3>Em quantos estados</h3>
             <ul>
               {{#each states}}
@@ -99,13 +99,13 @@
         {{#with inventory}}
         {{! Mostrar gráficos }}
         <div class="col-md-12 data-row film-graphs">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h3>Dados da Difusão</h3>
             <div id="viewers-chart" class="ct-chart"></div>
             <p>{{viewers}} espectadores totais em {{scheduled_sessions}} sessões</p>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h3>Em quais regiões</h3>
             <div id="zone-chart" class="ct-chart"></div>
             <p>{{cities_total}} municipios alcançados</p>
@@ -116,11 +116,11 @@
         <div class="col-md-12 data-row">
           <h3>Sobre os embaixadores</h3>
           <div class="film-graphs">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div id="institution-type-chart" class="ct-chart"></div>
               <p>Perfil das instituições dos embaixadores</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div id="institution-area-chart" class="ct-chart"></div>
               <p>Áreas de atuação dos embaixadores</p>
             </div>

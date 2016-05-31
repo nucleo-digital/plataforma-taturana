@@ -87,14 +87,15 @@
 
 .ct-chart {
   position: relative;
-  min-height: 280px;
+  min-height: 230px;
   overflow: hidden;
 
   &-donut {
     position: absolute;
     top: 0;
-    left: -20%;
+    top: -15%;
     height: 280px !important;
+    display: inline-block;
   }
 
 }
@@ -150,7 +151,7 @@
   &.ct-legend-inside {
       position: relative;
       top: 0;
-      left: 330px;
+      left: 260px;
       padding: 0;
       width: 220px;
 
@@ -192,17 +193,22 @@
 
 .film-graphs {
   color: #FFF;
-  display: none;
+  
   justify-content: space-between;
   margin-bottom:3em;
 
   p {
     color: #CCC;
     text-align: center;
+    margin-bottom:35px;
   }
 
   &__box {
     width: 50%;
+
+    img {
+      margin-right: 1em;
+    }
 
     dl {
       margin-top: 2.6em;
@@ -212,8 +218,11 @@
 
     dd {
       margin-bottom: 1em;
-      color: white !important;
+      color: rgba(255, 255, 255, 0.5) !important;
       border: 0;
+      border-style: none !important;
+      font-size: 0.8em;
+      font-weight: 300;
     }
 
     ul {
