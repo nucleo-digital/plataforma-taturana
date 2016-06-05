@@ -76,6 +76,7 @@
 
       <div class="film-graphs">
         {{#unless is_portfolio }}
+        <p>é portfolio</p>
         {{#with inventory}}
         <div class="col-md-12 data-row film-graphs">
           <div class="col-md-6 reset-div film-graphs__box">
@@ -98,14 +99,13 @@
         {{else}}
         {{#with inventory}}
         {{! Mostrar gráficos }}
-        <div class="col-md-12 data-row film-graphs">
-          <div class="col-md-5">
+        <div class="col-md-12 data-row">
+          <div class="col-md-5 film-graphs">
             <h3>Dados da Difusão</h3>
             <div id="viewers-chart" class="ct-chart"></div>
             <p>{{viewers}} espectadores totais em {{scheduled_sessions}} sessões</p>
           </div>
-
-          <div class="col-md-5">
+          <div class="col-md-5 film-graphs">
             <h3>Em quais regiões</h3>
             <div id="zone-chart" class="ct-chart"></div>
             <p>{{cities_total}} municipios alcançados</p>
