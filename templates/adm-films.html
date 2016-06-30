@@ -123,12 +123,15 @@
                 </div>
                 <div class="col-md-12">
                   <h3>IMAGENS</h3>
+
+
+
                   <div class="form-group col-md-12">
                     <label class="control-label" for="poster_home_path">Imagem para home (360x370)</label>
                     {{#if homePath}}
                       <img src="/upload/{{homePath}}" class="adm-thumb destroy-img" />
                       <button class="btn btn-change-home">Alterar cartaz</button>
-                      <input type="hidden" name="poster_home_path" id="poster_home_path" value="{{poster_home_path}}"/>
+                      <input type="hidden" name="poster_home_path" id="poster_home_path" value="{{homePath}}"/>
                     {{else}}
                       {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
                       {{> upload_bootstrap contentType='images' multiple=false formData=posterHomeData}}
@@ -136,6 +139,8 @@
                     {{/if}}
                   </div>
                 </div>
+
+
                 <div class="col-md-12">
                   <h3>REDES SOCIAIS</h3>
                   <div class="form-group col-md-12">

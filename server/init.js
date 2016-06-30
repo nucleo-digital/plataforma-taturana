@@ -35,6 +35,7 @@ Meteor.methods({
     if (f_id === undefined || f_id === '') {
       Films.insert(film);
     } else {
+      console.log(film.poster_home_path);
       Films.update(f_id, {
         $set: {
           sequence_number: film.sequence_number,
