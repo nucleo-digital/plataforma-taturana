@@ -1,6 +1,6 @@
 Meteor.startup(function() {
-  $('html').attr("xml:lang", "pt-br")
-  $('html').attr("lang", "pt-br")
+  $('html').attr("xml:lang", "pt-br");
+  $('html').attr("lang", "pt-br");
   require(['chartist-plugin-legend']);
 
   Uploader.finished = function(index, fileInfo, body) {
