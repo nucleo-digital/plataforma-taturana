@@ -7,6 +7,7 @@
 
       <div class="col-md-8 col-md-offset-1">
         <h1>Embaixador</h1>
+        <p><strong>Criado em:</strong> {{format_date createdAt}} - {{format_time createdAt}}</p>
         <p><strong>Emails:</strong></p>
         {{#each emails}}
           <p>{{address}}</p>
