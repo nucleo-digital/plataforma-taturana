@@ -8,56 +8,53 @@
       <div class="col-md-8 col-md-offset-1">
         <div class="row">
           <h1>Sessões</h1>
-          <div class="row noLeftMargin">
-            <div class="col-md-4">
-
-                <div class="form-group col-md-4">
-                    <label for="state-selector">Estado</label>
-                    <select class="form-control" name="state-selector" id="st-selector">
-                      <option value="">Selecione</option>
-                      {{#each states_options films}}
-                        <option>{{this}}</option>
-                      {{/each}}
-                    </select>
+          <div class="row noLeftMargin">   
+            <div class="col-md-12">
+              <h4>Listagem</h4>
+              <div class="btn-group form-group">
+                <input id="list-all" type="checkbox" name="list-all"/>
+                <label for="list-all">Todas as sessões existentes</label>
+                
+                <label>Por mês</label>
+                <div class="datepicker-container">
+                  <div class="btn-group form-group">
+                    <button type="button" class="btn btn-datepicker" data-month="01">Jan</button>
+                    <button type="button" class="btn btn-datepicker" data-month="02">Fev</button>
+                    <button type="button" class="btn btn-datepicker" data-month="03">Mar</button>
+                    <button type="button" class="btn btn-datepicker" data-month="04">Abr</button>
+                    <button type="button" class="btn btn-datepicker" data-month="05">Mai</button>
+                    <button type="button" class="btn btn-datepicker" data-month="06">Jun</button>
+                    <button type="button" class="btn btn-datepicker" data-month="07">Jul</button>
+                    <button type="button" class="btn btn-datepicker" data-month="08">Ago</button>
+                    <button type="button" class="btn btn-datepicker" data-month="09">Set</button>
+                    <button type="button" class="btn btn-datepicker" data-month="10">Out</button>
+                    <button type="button" class="btn btn-datepicker" data-month="11">Nov</button>
+                    <button type="button" class="btn btn-datepicker" data-month="12">Dez</button>
+                  </div>
                 </div>
-
-                 <div class="form-group col-md-8">
-                  <label for="city-selector">Cidade</label>
-                  <select class="form-control" name="city-selector" id="city-selector">
-                      <option value="">Selecione</option>
-                      {{#each cities_options films}}
-                        <option>{{this}}</option>
-                      {{/each}}
-                  </select>
               </div>
             </div>
 
-              <div class="col-md-8">
-                  <label>Selecione um mês</label>
-                <div class="datepicker-container">
-                    <div class="btn-group form-group">
-                        <button type="button" class="btn btn-datepicker" data-month="1">Jan</button>
-                        <button type="button" class="btn btn-datepicker" data-month="2">Fev</button>
-                        <button type="button" class="btn btn-datepicker" data-month="3">Mar</button>
-                        <button type="button" class="btn btn-datepicker" data-month="4">Abr</button>
-                        <button type="button" class="btn btn-datepicker" data-month="5">Mai</button>
-                        <button type="button" class="btn btn-datepicker" data-month="6">Jun</button>
-                        <button type="button" class="btn btn-datepicker" data-month="7">Jul</button>
-                        <button type="button" class="btn btn-datepicker" data-month="8">Ago</button>
-                        <button type="button" class="btn btn-datepicker" data-month="9">Set</button>
-                        <button type="button" class="btn btn-datepicker" data-month="10">Out</button>
-                        <button type="button" class="btn btn-datepicker" data-month="11">Nov</button>
-                        <button type="button" class="btn btn-datepicker" data-month="12">Dez</button>
-                    </div>
-                </div>
+            <div class="col-md-12">
+              <div class="form-group col-md-2">
+                <label for="state-selector">Estado</label>
+                <select class="form-control" name="state-selector" id="st-selector">
+                  <option value="">Selecione</option>
+                  {{#each states_options films}}
+                    <option>{{this}}</option>
+                  {{/each}}
+                </select>
               </div>
-
-          </div>
-
-
-          <div class="row leftMarginHack">
-            <div class="col-md-4">
-              <div class="form-group">
+              <div class="form-group col-md-3">
+                <label for="city-selector">Cidade</label>
+                <select class="form-control" name="city-selector" id="city-selector">
+                    <option value="">Selecione</option>
+                    {{#each cities_options films}}
+                      <option>{{this}}</option>
+                    {{/each}}
+                </select>
+              </div>
+              <div class="form-group col-md-3">
                 <label for="filmSelector">Filme</label>
                 <select class="form-control" name="filmSelector" id="film-selector">
                   <option value="">Selecione</option>
@@ -66,7 +63,7 @@
                   {{/each}}
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group col-md-3">
                 <label for="ambassador-selector">Embaixador</label>
                 <select class="form-control" name="ambassador-selector" id="ambassador-selector">
                   <option value="">Selecione</option>
@@ -76,6 +73,7 @@
                 </select>
               </div>
             </div>
+
             <div class="col-md-8">
               <div class="filters">
                 <div class="row">
@@ -123,7 +121,7 @@
 
                 <div class="col-md-9" style="padding-left: 0px">
                   <ul id="screeningList" class="list-unstyled">
-                  {{#each future_screenings}}
+                  {{#each filtered_screenings}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
                         {{ #if oldSession date }}

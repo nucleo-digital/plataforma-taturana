@@ -19,7 +19,7 @@
                       <select name="category" id="category" class="form-control no-radius">
                         <option> </option>
                         {{#each categories }}
-                        <option>{{name}}</option>
+                        <option>{{this}}</option>
                         {{/each}}
                       </select>
                     </div>
@@ -30,7 +30,7 @@
                       <select name="subcategory" id="subcategory" class="form-control no-radius">
                         <option> </option>
                         {{#each subcategories }}
-                          <option>{{name}}</option>
+                          <option>{{this}}</option>
                         {{/each}}
                       </select>
                     </div>
@@ -42,6 +42,28 @@
                         <option> </option>
                         {{#each films }}
                           <option>{{title}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="filmDisplayed">Município: </label>
+                    <div class="col-sm-8">
+                      <select name="city" id="filmDisplayed" class="form-control no-radius">
+                        <option> </option>
+                        {{#each get_place_data 'city' }}
+                          <option>{{this}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="filmDisplayed">UF: </label>
+                    <div class="col-sm-8">
+                      <select name="uf" id="filmDisplayed" class="form-control no-radius">
+                        <option> </option>
+                        {{#each get_place_data 'uf' }}
+                          <option>{{this}}</option>
                         {{/each}}
                       </select>
                     </div>
