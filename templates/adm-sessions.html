@@ -67,29 +67,35 @@
               </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="filters">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="col-sm-2">
                       <input type="checkbox" name="teamParticipation" id="team-selector" />
                     </div>
                     <label for="teamParticipation">Participação da equipe</label>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="col-sm-2">
                       <input type="checkbox" name="publicEvent" id="public-event" />
                     </div>
                     <label for="publicEvent">Aberta ao público</label>
                   </div>
+                  <div class="col-md-4">
+                    <div class="col-sm-2">
+                      <input type="checkbox" name="creationDate" id="creation-date" />
+                    </div>
+                    <label for="creationDate">Ordenar por data de criação</label>
+                  </div>
                   <span class="col-md-12 division"></span>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="col-sm-2">
                       <input type="checkbox" name="comment" id="comment" />
                     </div>
                     <label for="comment">Comentarios? </label>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="col-sm-2">
                       <input type="checkbox" name="pendingReport" id="pendingReport" />
                     </div>
@@ -110,6 +116,7 @@
                 <div class="col-md-3">
                   <h1>{{title}}</h1>
                   <img class="screening-film-poster" src="/upload/{{poster_path}}"/>
+                  <button class="csv-export btn pull-left">Exportar CSV</button>
                 </div>
 
                 <div class="col-md-9" style="padding-left: 0px">
