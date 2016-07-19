@@ -166,7 +166,7 @@ Meteor.startup(function () {
   });
 
   Meteor.publish("ambassadors", function () {
-    return Meteor.users.find({}, {fields: {emails: 1, profile: 1, addresses: 1 }});
+    return Meteor.users.find({}, {fields: {createdAt:1, emails: 1, profile: 1, addresses: 1 }});
   });
 
   var name = "admin"
