@@ -35,7 +35,6 @@ Meteor.methods({
     if (f_id === undefined || f_id === '') {
       Films.insert(film);
     } else {
-      console.log(film.poster_home_path);
       Films.update(f_id, {
         $set: {
           sequence_number: film.sequence_number,
@@ -118,7 +117,9 @@ Meteor.methods({
 
     for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
+        f_screening.user_id = screenings[i].user_id;
         screenings.splice(i,1,f_screening);
+
       }
     }
     Films.update({_id: film._id}, {$set: { screening: screenings }});
