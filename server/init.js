@@ -14,6 +14,7 @@ function missingReport(content, template) {
   }
 }
 
+
 Meteor.methods({
   sendEmail: function (pidgeon, template) {
     this.unblock();
@@ -44,6 +45,8 @@ Meteor.methods({
           poster_path: film.poster_path,
           poster_thumb_path: film.poster_thumb_path,
           poster_home_path: film.poster_home_path,
+          link_for_download: film.link_for_download,
+          password_for_download: film.password_for_download,
           trailer_url: film.trailer_url,
           press_kit_path: film.press_kit_path,
           genre: film.genre,
@@ -71,13 +74,13 @@ Meteor.methods({
     SyncedCron.add({
       name: content.subject,
       schedule: function(parser) {
-	return parser.recur().on(content.when).fullDate();
+	      return parser.recur().on(content.when).fullDate();
       },
       job: function() {
         sendNotify(content, template);
-	FutureTasks.remove(id);
-	SyncedCron.remove(id);
-	return id;
+	      FutureTasks.remove(id);
+	      SyncedCron.remove(id);
+	      return id;
       }
     });
   },
@@ -86,13 +89,13 @@ Meteor.methods({
     SyncedCron.add({
       name: content.subject,
       schedule: function(parser) {
-	return parser.recur().on(content.when).fullDate();
+	     return parser.recur().on(content.when).fullDate();
       },
       job: function() {
         missingReport(content, template);
-	FutureTasks.remove(id);
-	SyncedCron.remove(id);
-	return id;
+	      FutureTasks.remove(id);
+	      SyncedCron.remove(id);
+	      return id;
       }
     });
   },

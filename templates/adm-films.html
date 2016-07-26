@@ -110,22 +110,28 @@
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group col-md-12">
-                    <label class="control-label" for="press_kit_path">Material de divulgação (.zip/.rar)</label>
-                    {{#if press_kit_path}}
-                      <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
-                      <input type="hidden" name="press_kit_path" id="press_kit_path" value="{{press_kit_path}}"/>
-                    {{else}}
-                      {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
-                      {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
-                    <span class="help-block with-errors"></span>
-                    {{/if}}
+                    <label class="control-label" for="link_for_download">Link para download</label>
+                    <input type="text" name="link_for_download" id="link_for_download" value="{{link_for_download}}" class="form-control">
+                    <div class="help-block with-errors"></div>
+                    <label class="control-label" for="password_for_download">Senha para download</label>
+                    <input type="text" name="password_for_download" id="password_for_download" value="{{password_for_download}}" class="form-control">
+                    <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <h3>MATERIAL DE DIVULGAÇÃO (.zip/.rar)</h3>
+                  {{#if press_kit_path}}
+                    <a href="/upload/{{press_kit_path}}" class="" >Ver material cadastrado</a>
+                    <input type="hidden" name="press_kit_path" id="press_kit_path" value="{{press_kit_path}}"/>
+                  {{else}}
+                    {{! Erro no WCAG aqui por causa de como é renderizado o upload_bootstrap }}
+                    {{> upload_bootstrap contentType='files' multiple=false formData=pressKitData}}
+                  <span class="help-block with-errors"></span>
+                  {{/if}}
+                </div>
+                
+                <div class="col-md-12">
                   <h3>IMAGENS</h3>
-
-
-
                   <div class="form-group col-md-12">
                     <label class="control-label" for="poster_home_path">Imagem para home (360x370)</label>
                     {{#if homePath}}
