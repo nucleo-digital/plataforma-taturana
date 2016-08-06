@@ -14,7 +14,6 @@ function missingReport(content, template) {
   }
 }
 
-
 Meteor.methods({
   sendEmail: function (pidgeon, template) {
     this.unblock();
@@ -67,35 +66,35 @@ Meteor.methods({
     }
   },
 
-  insertTask: function(detail) {
+  insertTask: function (detail) {
     return FutureTasks.insert(detail);
   },
-  scheduleNotify: function(id, content, template) {
+  scheduleNotify: function (id, content, template) {
     SyncedCron.add({
       name: content.subject,
-      schedule: function(parser) {
-	      return parser.recur().on(content.when).fullDate();
+      schedule: function (parser) {
+        return parser.recur().on(content.when).fullDate();
       },
-      job: function() {
+      job: function () {
         sendNotify(content, template);
-	      FutureTasks.remove(id);
-	      SyncedCron.remove(id);
-	      return id;
+        FutureTasks.remove(id);
+        SyncedCron.remove(id);
+        return id;
       }
     });
   },
 
-  verifyReport: function(id, content, template) {
+  verifyReport: function (id, content, template) {
     SyncedCron.add({
       name: content.subject,
-      schedule: function(parser) {
-	     return parser.recur().on(content.when).fullDate();
+      schedule: function (parser) {
+        return parser.recur().on(content.when).fullDate();
       },
-      job: function() {
+      job: function () {
         missingReport(content, template);
-	      FutureTasks.remove(id);
-	      SyncedCron.remove(id);
-	      return id;
+        FutureTasks.remove(id);
+        SyncedCron.remove(id);
+        return id;
       }
     });
   },
@@ -103,61 +102,115 @@ Meteor.methods({
   removeFilm: function (id) {
     Films.remove(id);
   },
-  addToSlideshow: function(id, image) {
-    Films.update(id, {$push: {slideshow: image}});
+  addToSlideshow: function (id, image) {
+    Films.update(id, {
+      $push: {
+        slideshow: image
+      }
+    });
   },
   removeFromSlideshow: function (id, src) {
     var image = Films.get_image_by_src(id, src);
-    Films.update(id, {$pull: {slideshow: image}});
+    Films.update(id, {
+      $pull: {
+        slideshow: image
+      }
+    });
   },
-  addScreening: function(film_id, new_screening){
-    Films.update(film_id, {$push: {screening: new_screening}});
+  addScreening: function (film_id, new_screening) {
+    Films.update(film_id, {
+      $push: {
+        screening: new_screening
+      }
+    });
     return new_screening._id;
   },
-  updateScreening: function(f_screening){
-    var film = Films.by_screening_id(f_screening._id),
-        screenings = film["screening"];
+  updateScreening: function (f_screening) {
+    console.log("f_screening");
+    console.log(f_screening);
+    var film = Films.by_screening_id(f_screening._id);
+    console.log("film:");
+    console.log(film);
+    var screenings = film["screening"];
 
     for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
         f_screening.user_id = screenings[i].user_id;
-        screenings.splice(i,1,f_screening);
+        screenings.splice(i, 1, f_screening);
 
       }
     }
-    Films.update({_id: film._id}, {$set: { screening: screenings }});
+    Films.update({
+      _id: film._id
+    }, {
+      $set: {
+        screening: screenings
+      }
+    });
   },
-  setScreeningDraftStatus: function(id, status) {
+  setScreeningDraftStatus: function (id, status) {
     var film = Films.by_screening_id(id),
-        screenings = film["screening"];
+      screenings = film["screening"];
 
-    _.each(screenings, function(screening, i) {
+    _.each(screenings, function (screening, i) {
       if (screening._id == id) {
         screenings[i].draft = status;
       }
     })
 
-    Films.update({_id: film._id}, {$set: { screening: screenings }});
+    Films.update({
+      _id: film._id
+    }, {
+      $set: {
+        screening: screenings
+      }
+    });
   },
   removeScreening: function (screening_id) {
     var film = Films.by_screening_id(screening_id);
     var f_screening = Films.return_screening(screening_id);
-    Films.update({_id: film._id}, {$pull: {screening: f_screening}});
+    Films.update({
+      _id: film._id
+    }, {
+      $pull: {
+        screening: f_screening
+      }
+    });
   },
-  addAddress: function(user_id, new_address){
-    Meteor.users.update(user_id, {$push: {addresses: new_address}});
+  addAddress: function (user_id, new_address) {
+    Meteor.users.update(user_id, {
+      $push: {
+        addresses: new_address
+      }
+    });
   },
-  removeAddress: function(user_id, address){
-    Meteor.users.update(user_id, {$pull: {addresses: address}});
+  removeAddress: function (user_id, address) {
+    Meteor.users.update(user_id, {
+      $pull: {
+        addresses: address
+      }
+    });
   },
-  updateUser:function(profile, email){
+  updateUser: function (profile, email) {
     user = Meteor.user();
 
     // Mantem o role do usuário
     profile.roles = user.profile.roles || ['ambassador'];
 
-    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile": profile}});
-    Meteor.users.update({_id: Meteor.userId()}, {$set: {'emails.0.address': email}});
+    Meteor.users.update({
+      _id: Meteor.userId()
+    }, {
+      $set: {
+        "profile": profile
+      }
+    });
+    Meteor.users.update({
+      _id: Meteor.userId()
+    }, {
+      $set: {
+        'emails.0.address': email
+      }
+    });
   }
 });
 
@@ -165,43 +218,51 @@ Meteor.startup(function () {
 
   SyncedCron.start();
 
-  Meteor.publish("films",function(){
+  Meteor.publish("films", function () {
     return Films.find({});
   });
 
   Meteor.publish("ambassadors", function () {
-    return Meteor.users.find({}, {fields: {createdAt:1, emails: 1, profile: 1, addresses: 1 }});
+    return Meteor.users.find({}, {
+      fields: {
+        createdAt: 1,
+        emails: 1,
+        profile: 1,
+        addresses: 1
+      }
+    });
   });
 
   var name = "admin"
   var email = "admin@plataforma.taturana.com.br"
   var password = "12345678";
 
-  if(Meteor.users.find({'emails.address':email}).count()===0){
-      console.log("Creating user admin");
-      Accounts.createUser({
-        email: email,
-        password: password,
-        profile : {
-          roles:['admin'],
-          name: name
-        }
-      });
+  if (Meteor.users.find({
+      'emails.address': email
+    }).count() === 0) {
+    console.log("Creating user admin");
+    Accounts.createUser({
+      email: email,
+      password: password,
+      profile: {
+        roles: ['admin'],
+        name: name
+      }
+    });
   }
 
   UploadServer.init({
     tmpDir: process.env.PWD + '/uploads/tmp',
     uploadDir: process.env.PWD + '/uploads/',
     checkCreateDirectories: true,
-    getDirectory: function(fileInfo, formData) {
+    getDirectory: function (fileInfo, formData) {
       return formData.contentType;
     },
-    getFileName: function(fileInfo, formData) {
+    getFileName: function (fileInfo, formData) {
       var name = fileInfo.name.replace(/\s/g, '');
       return formData.file_type + name;
     },
-    finished: function(fileInfo, formFields) {
-    },
+    finished: function (fileInfo, formFields) {},
     cacheTime: 100,
     mimeTypes: {
       "xml": "application/xml",
@@ -213,15 +274,13 @@ Meteor.startup(function () {
   Accounts.emailTemplates.siteName = "Taturana Mobilização Social";
   Accounts.emailTemplates.from = "Taturana<admin@plataforma.taturana.com.br>";
   Accounts.emailTemplates.resetPassword.subject = function (user) {
-      return "[Taturana] Esqueci minha senha";
+    return "[Taturana] Esqueci minha senha";
   };
   Accounts.emailTemplates.resetPassword.text = function (user, url) {
-     return "Olá,\n\n"
-       + " Para resetar sua senha, acesse o link abaixo:\n"
-       + url;
+    return "Olá,\n\n" + " Para resetar sua senha, acesse o link abaixo:\n" + url;
   };
 
-  Accounts.urls.resetPassword = function(token) {
+  Accounts.urls.resetPassword = function (token) {
     return Meteor.absoluteUrl('reset-password/' + token);
   };
 
@@ -239,7 +298,7 @@ Meteor.startup(function () {
 
   count = 0;
 
-  docs.forEach(function(doc) {
+  docs.forEach(function (doc) {
     Films.update({
       _id: doc._id
     }, {

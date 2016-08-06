@@ -166,9 +166,9 @@
             <div class="col-md-12">
               <div class="form-group col-md-6">
                 {{#if is_draft}}
-                  <button class="btn btn-lg" id="btn-send" type="submit" value="Register">Agendar</button>
+                  <button class="btn btn-lg" id="btn-send" type="submit">Agendar</button>
                 {{/if}}
-                <button class="btn btn-lg" type="submit">Atualizar</button>
+                <button class="btn btn-lg" id="btn-save" type="submit" data-status="{{is_draft}}">Atualizar</button>
               </div>
             </div>
           </form>
