@@ -47,9 +47,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label" for="filmDisplayed">Município: </label>
+                    <label class="col-sm-4 control-label" for="city">Município: </label>
                     <div class="col-sm-8">
-                      <select name="city" id="filmDisplayed" class="form-control no-radius">
+                      <select name="city" id="city" class="form-control no-radius">
                         <option> </option>
                         {{#each get_place_data 'city' }}
                           <option>{{this}}</option>
@@ -58,9 +58,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-4 control-label" for="filmDisplayed">UF: </label>
+                    <label class="col-sm-4 control-label" for="uf">UF: </label>
                     <div class="col-sm-8">
-                      <select name="uf" id="filmDisplayed" class="form-control no-radius">
+                      <select name="uf" id="uf" class="form-control no-radius">
                         <option> </option>
                         {{#each get_place_data 'uf' }}
                           <option>{{this}}</option>
