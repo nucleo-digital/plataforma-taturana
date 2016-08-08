@@ -14,6 +14,16 @@ function missingReport(content, template) {
   }
 }
 
+function removeNotifications(scr_id) {
+  var scr_tasks = FutureTasks.find({
+    screening_id: scr_id
+  }).fetch();
+
+  _.each(scr_tasks, function (task) {
+    FutureTasks.remove(task._id);
+  });
+}
+
 Meteor.methods({
   sendEmail: function (pidgeon, template) {
     this.unblock();
@@ -126,11 +136,8 @@ Meteor.methods({
     return new_screening._id;
   },
   updateScreening: function (f_screening) {
-    console.log("f_screening");
-    console.log(f_screening);
+    var status = f_screening.status;
     var film = Films.by_screening_id(f_screening._id);
-    console.log("film:");
-    console.log(film);
     var screenings = film["screening"];
 
     for (i = 0; i < screenings.length; i++) {
@@ -147,6 +154,9 @@ Meteor.methods({
         screening: screenings
       }
     });
+    if (status == 'admin-draft' || status == true) {
+      removeNotifications(f_screening._id);
+    }
   },
   setScreeningDraftStatus: function (id, status) {
     var film = Films.by_screening_id(id),
@@ -165,6 +175,10 @@ Meteor.methods({
         screening: screenings
       }
     });
+
+    if (status == 'admin-draft' || status == true) {
+      removeNotifications(id);
+    }
   },
   removeScreening: function (screening_id) {
     var film = Films.by_screening_id(screening_id);
@@ -176,6 +190,7 @@ Meteor.methods({
         screening: f_screening
       }
     });
+    removeNotifications(screening_id);
   },
   addAddress: function (user_id, new_address) {
     Meteor.users.update(user_id, {
