@@ -16,7 +16,7 @@
             <input type="hidden" name="_id" value="{{screening._id}}"/>
             <input type="hidden" name="user_id" value="{{currentUser._id}}"/>
             <label class="control-label" for="real_quorum">Quantas pessoas viram o filme neste sessão?</label>
-            <input type="text" name="real_quorum" value="{{screening.real_quorum}}" class="form-control" required>
+            <input type="number" min="0" name="real_quorum" value="{{screening.real_quorum}}" class="form-control" required>
             <div class="help-block with-errors"></div>
           </div>
           <div class="form-group col-md-12">
