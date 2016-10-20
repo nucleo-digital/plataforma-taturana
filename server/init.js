@@ -128,6 +128,8 @@ Meteor.methods({
     });
   },
   addScreening: function (film_id, new_screening) {
+    new_screening.created_at = new Date();
+
     Films.update(film_id, {
       $push: {
         screening: new_screening
