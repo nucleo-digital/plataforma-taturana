@@ -27,7 +27,6 @@
                 </div> 
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="form-group col-md-2">
                 <label for="state-selector">Estado</label>
@@ -42,9 +41,7 @@
                 <label for="city-selector">Cidade</label>
                 <select class="form-control" name="city-selector" id="city-selector">
                     <option value="">Selecione</option>
-                    {{#each cities_options films}}
-                      <option>{{this}}</option>
-                    {{/each}}
+                    <option>{{this}}</option>
                 </select>
               </div>
               <div class="form-group col-md-3">
@@ -66,7 +63,6 @@
                 </select>
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="filters">
                 <div class="row">
@@ -106,9 +102,9 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row leftMarginHack">
+      </div>  
 
+      <div class="row leftMarginHack">
         {{#each filtered_films}}
           <div class="col-md-12" id="screeningDetails-container">
               <div id="screeningDetails-movieInfo">
@@ -121,17 +117,17 @@
 
                 <div class="col-md-9" style="padding-left: 0px">
                   <ul id="screeningList" class="list-unstyled">
-                  {{#each filtered_screenings}}
+                  {{#each screening}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
                         {{ #if oldSession date }}
-                        {{ #if real_quorum }}
-                        <img src="/images/icon-complete.png">
+                            {{ #if real_quorum }}
+                            <img src="/images/icon-complete.png">
+                            {{ else }}
+                            <img src="/images/icon-report-pending.png">
+                            {{/if}}
                         {{ else }}
-                        <img src="/images/icon-report-pending.png">
-                        {{/if}}
-                        {{ else }}
-                        <img src="/images/calendar.svg">
+                            <img src="/images/calendar.svg">
                         {{/if}}
                       </div>
                       <div class="col-md-2">
