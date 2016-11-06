@@ -32,8 +32,8 @@
                 <label for="state-selector">Estado</label>
                 <select class="form-control" name="state-selector" id="st-selector">
                   <option value="">Selecione</option>
-                  {{#each states_options films}}
-                    <option>{{this}}</option>
+                  {{#each states_options}}
+                    <option>{{abbr}}</option>
                   {{/each}}
                 </select>
               </div>
@@ -41,7 +41,9 @@
                 <label for="city-selector">Cidade</label>
                 <select class="form-control" name="city-selector" id="city-selector">
                     <option value="">Selecione</option>
-                    <option>{{this}}</option>
+                    {{#each cities_options}}
+                    <option value="{{name}}">{{name}} ({{state}})</option>
+                    {{/each}}
                 </select>
               </div>
               <div class="form-group col-md-3">
@@ -58,7 +60,7 @@
                 <select class="form-control" name="ambassador-selector" id="ambassador-selector">
                   <option value="">Selecione</option>
                   {{#each ambassador_options films}}
-                  <option value="{{id}}">{{name}}</option>
+                  <option value="{{_id}}">{{profile.name}}</option>
                   {{/each}}
                 </select>
               </div>
@@ -117,16 +119,16 @@
 
                 <div class="col-md-9" style="padding-left: 0px">
                   <ul id="screeningList" class="list-unstyled">
-                  {{#each screening}}
+                  {{#each screenings}}
                     <li class="screeningItem col-md-12">
                       <div class="col-md-1" style="text-align: right">
-                        {{ #if oldSession date }}
-                            {{ #if real_quorum }}
+                        {{#if oldSession date}}
+                            {{#if real_quorum}}
                             <img src="/images/icon-complete.png">
-                            {{ else }}
+                            {{else}}
                             <img src="/images/icon-report-pending.png">
                             {{/if}}
-                        {{ else }}
+                        {{else}}
                             <img src="/images/calendar.svg">
                         {{/if}}
                       </div>

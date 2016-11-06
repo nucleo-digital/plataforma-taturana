@@ -250,6 +250,14 @@ Meteor.startup(function () {
     });
   });
 
+  Meteor.publish("states", function() {
+    return States.find({});
+  });
+
+  Meteor.publish("cities", function() {
+    return Cities.find({});
+  });
+
   UploadServer.init({
     tmpDir: process.env.PWD + '/uploads/tmp',
     uploadDir: process.env.PWD + '/uploads/',
