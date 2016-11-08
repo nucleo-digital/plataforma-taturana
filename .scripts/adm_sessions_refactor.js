@@ -28,7 +28,7 @@ db.films.createIndex({name: 1}, {name: "films__name", background: 1});
 db.films.createIndex(
   {"screening.city": 1, "screening.uf": 1, "screening.date": 1,
    "screening.team_member": 1, "screening.public_event": 1, "screening.comments": 1,
-   "screening.real_quorum": 1, "screening.user_id": 1, "screening.created_at", "title": 1},
+   "screening.real_quorum": 1, "screening.user_id": 1, "screening.created_at": 1, "title": 1},
   {name: "films__screenings", background: 1}
 );
 
