@@ -1,11 +1,144 @@
 /*****************************************************************************
-*                                                                            * 
+*                                                                            *
 *  This script create few indexes in the database, also create collections   *
 *  for cities and states and run over all sessions to update has_session     *
 *  flags.                                                                    *
 *                                                                            *
 *****************************************************************************/
 
+function slug(s, opt) {
+  /**
+   * Create a web friendly URL slug from a string.
+   *
+   * Requires XRegExp (http://xregexp.com) with unicode add-ons for UTF-8 support.
+   *
+   * Although supported, transliteration is discouraged because
+   *     1) most web browsers support UTF-8 characters in URLs
+   *     2) transliteration causes a loss of information
+   *
+   * @author Sean Murphy <sean@iamseanmurphy.com>
+   * @copyright Copyright 2012 Sean Murphy. All rights reserved.
+   * @license http://creativecommons.org/publicdomain/zero/1.0/
+   *
+   * @param string s
+   * @param object opt
+   * @return string
+   */
+    s = String(s);
+    opt = Object(opt);
+
+    var defaults = {
+        'delimiter': '-',
+        'limit': undefined,
+        'lowercase': true,
+        'replacements': {},
+        'transliterate': (typeof(XRegExp) === 'undefined') ? true : false
+    };
+
+    // Merge options
+    for (var k in defaults) {
+        if (!opt.hasOwnProperty(k)) {
+            opt[k] = defaults[k];
+        }
+    }
+
+    var char_map = {
+        // Latin
+        'À': 'A', 'Á': 'A', 'Â': 'A', 'Ã': 'A', 'Ä': 'A', 'Å': 'A', 'Æ': 'AE', 'Ç': 'C',
+        'È': 'E', 'É': 'E', 'Ê': 'E', 'Ë': 'E', 'Ì': 'I', 'Í': 'I', 'Î': 'I', 'Ï': 'I',
+        'Ð': 'D', 'Ñ': 'N', 'Ò': 'O', 'Ó': 'O', 'Ô': 'O', 'Õ': 'O', 'Ö': 'O', 'Ő': 'O',
+        'Ø': 'O', 'Ù': 'U', 'Ú': 'U', 'Û': 'U', 'Ü': 'U', 'Ű': 'U', 'Ý': 'Y', 'Þ': 'TH',
+        'ß': 'ss',
+        'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a', 'æ': 'ae', 'ç': 'c',
+        'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e', 'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+        'ð': 'd', 'ñ': 'n', 'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o', 'ő': 'o',
+        'ø': 'o', 'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u', 'ű': 'u', 'ý': 'y', 'þ': 'th',
+        'ÿ': 'y',
+
+        // Latin symbols
+        '©': '(c)',
+
+        // Greek
+        'Α': 'A', 'Β': 'B', 'Γ': 'G', 'Δ': 'D', 'Ε': 'E', 'Ζ': 'Z', 'Η': 'H', 'Θ': '8',
+        'Ι': 'I', 'Κ': 'K', 'Λ': 'L', 'Μ': 'M', 'Ν': 'N', 'Ξ': '3', 'Ο': 'O', 'Π': 'P',
+        'Ρ': 'R', 'Σ': 'S', 'Τ': 'T', 'Υ': 'Y', 'Φ': 'F', 'Χ': 'X', 'Ψ': 'PS', 'Ω': 'W',
+        'Ά': 'A', 'Έ': 'E', 'Ί': 'I', 'Ό': 'O', 'Ύ': 'Y', 'Ή': 'H', 'Ώ': 'W', 'Ϊ': 'I',
+        'Ϋ': 'Y',
+        'α': 'a', 'β': 'b', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'ζ': 'z', 'η': 'h', 'θ': '8',
+        'ι': 'i', 'κ': 'k', 'λ': 'l', 'μ': 'm', 'ν': 'n', 'ξ': '3', 'ο': 'o', 'π': 'p',
+        'ρ': 'r', 'σ': 's', 'τ': 't', 'υ': 'y', 'φ': 'f', 'χ': 'x', 'ψ': 'ps', 'ω': 'w',
+        'ά': 'a', 'έ': 'e', 'ί': 'i', 'ό': 'o', 'ύ': 'y', 'ή': 'h', 'ώ': 'w', 'ς': 's',
+        'ϊ': 'i', 'ΰ': 'y', 'ϋ': 'y', 'ΐ': 'i',
+
+        // Turkish
+        'Ş': 'S', 'İ': 'I', 'Ç': 'C', 'Ü': 'U', 'Ö': 'O', 'Ğ': 'G',
+        'ş': 's', 'ı': 'i', 'ç': 'c', 'ü': 'u', 'ö': 'o', 'ğ': 'g',
+
+        // Russian
+        'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'Yo', 'Ж': 'Zh',
+        'З': 'Z', 'И': 'I', 'Й': 'J', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O',
+        'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'H', 'Ц': 'C',
+        'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Sh', 'Ъ': '', 'Ы': 'Y', 'Ь': '', 'Э': 'E', 'Ю': 'Yu',
+        'Я': 'Ya',
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
+        'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+        'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c',
+        'ч': 'ch', 'ш': 'sh', 'щ': 'sh', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu',
+        'я': 'ya',
+
+        // Ukrainian
+        'Є': 'Ye', 'І': 'I', 'Ї': 'Yi', 'Ґ': 'G',
+        'є': 'ye', 'і': 'i', 'ї': 'yi', 'ґ': 'g',
+
+        // Czech
+        'Č': 'C', 'Ď': 'D', 'Ě': 'E', 'Ň': 'N', 'Ř': 'R', 'Š': 'S', 'Ť': 'T', 'Ů': 'U',
+        'Ž': 'Z',
+        'č': 'c', 'ď': 'd', 'ě': 'e', 'ň': 'n', 'ř': 'r', 'š': 's', 'ť': 't', 'ů': 'u',
+        'ž': 'z',
+
+        // Polish
+        'Ą': 'A', 'Ć': 'C', 'Ę': 'e', 'Ł': 'L', 'Ń': 'N', 'Ó': 'o', 'Ś': 'S', 'Ź': 'Z',
+        'Ż': 'Z',
+        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z',
+        'ż': 'z',
+
+        // Latvian
+        'Ā': 'A', 'Č': 'C', 'Ē': 'E', 'Ģ': 'G', 'Ī': 'i', 'Ķ': 'k', 'Ļ': 'L', 'Ņ': 'N',
+        'Š': 'S', 'Ū': 'u', 'Ž': 'Z',
+        'ā': 'a', 'č': 'c', 'ē': 'e', 'ģ': 'g', 'ī': 'i', 'ķ': 'k', 'ļ': 'l', 'ņ': 'n',
+        'š': 's', 'ū': 'u', 'ž': 'z',
+
+        // accents
+        "'": "-", '"': '-', '`': '-', '´': '-', '\^': '-'
+    };
+
+    // Make custom replacements
+    for (var k in opt.replacements) {
+        s = s.replace(RegExp(k, 'g'), opt.replacements[k]);
+    }
+
+    // Transliterate characters to ASCII
+    if (opt.transliterate) {
+        for (var k in char_map) {
+            s = s.replace(RegExp(k, 'g'), char_map[k]);
+        }
+    }
+
+    // Replace non-alphanumeric characters with our delimiter
+    var alnum = (typeof(XRegExp) === 'undefined') ? RegExp('[^a-z0-9]+', 'ig') : XRegExp('[^\\p{L}\\p{N}]+', 'ig');
+    s = s.replace(alnum, opt.delimiter);
+
+    // Remove duplicate delimiters
+    s = s.replace(RegExp('[' + opt.delimiter + ']{2,}', 'g'), opt.delimiter);
+
+    // Truncate slug to max. characters
+    s = s.substring(0, opt.limit);
+
+    // Remove delimiter from ends
+    s = s.replace(RegExp('(^' + opt.delimiter + '|' + opt.delimiter + '$)', 'g'), '');
+
+    return opt.lowercase ? s.toLowerCase() : s;
+}
 
 function toTitleCase(str) {
     return str.replace(
@@ -18,7 +151,7 @@ function toTitleCase(str) {
 conn = new Mongo("localhost:3001");
 db = conn.getDB("meteor");
 
-// get ambassadors like that: 
+// get ambassadors like that:
 // db.users.find({'profile.roles': 'ambassador'}, {'profile.name': 1}).sort({'profile.name': 1})
 db.users.createIndex({"profile.roles": 1}, {name: "users__roles", background: 1});
 
@@ -1664,13 +1797,13 @@ db.cities.insertMany([
   {"has_screenings":false,"state":"MG","name":"Delfim Moreira"},
   {"has_screenings":false,"state":"MG","name":"Delfinópolis"},
   {"has_screenings":false,"state":"MG","name":"Delta"},
-  {"has_screenings":false,"state":"MG","name":"Descoberto"},
   {"has_screenings":false,"state":"MG","name":"Desterro de Entre Rios"},
   {"has_screenings":false,"state":"MG","name":"Desterro do Melo"},
   {"has_screenings":false,"state":"MG","name":"Diamantina"},
   {"has_screenings":false,"state":"MG","name":"Diogo de Vasconcelos"},
   {"has_screenings":false,"state":"MG","name":"Dionísio"},
   {"has_screenings":false,"state":"MG","name":"Divinésia"},
+  {"has_screenings":false,"state":"MG","name":"Descoberto"},
   {"has_screenings":false,"state":"MG","name":"Divino"},
   {"has_screenings":false,"state":"MG","name":"Divino das Laranjeiras"},
   {"has_screenings":false,"state":"MG","name":"Divinolândia de Minas"},
@@ -5653,9 +5786,24 @@ db.cities.insertMany([
   {"has_screenings":false,"state":"TO","name":"Wanderlândia"},
   {"has_screenings":false,"state":"TO","name":"Xambioá"}
 ]);
-
 print("Inserted " + db.cities.count() + " cities.")
 
+db.states.update({}, {$set: {country: 'Brasil'}}, {upsert: false, multi: true});
+db.cities.update({}, {$set: {country: 'Brasil'}}, {upsert: false, multi: true});
+db.states.find().forEach(function(obj) {
+  res = db.states.update(
+    {_id: obj._id},
+    {$set: {slug: slug(obj.abbr + " " + obj.country)}}
+  )
+})
+print("Slugified states.")
+db.cities.find().forEach(function(obj) {
+  db.cities.update(
+    {_id: obj._id},
+    {$set: {slug: slug(obj.name + " " + obj.state + " " + obj.country)}}
+  )
+})
+print("Slugified cities")
 // Now we iterate over films and sessions and populate the states and cities flags.
 // we will store bad cities names in bad_cities collection.
 try {
@@ -5669,50 +5817,54 @@ all_films.forEach(function(film) {
   // normalize film.title
   film.title = film.title.trim();
   db.films.findOneAndUpdate({_id: film._id}, {$set: {title: film.title}});
-  
+
   // update states and cities collection
   film.screening && film.screening.forEach(function(screening) {
 
     // normalize address fields for screening
     normalized = {
-      state: screening.uf.trim().toUpperCase(),
+      state: screening.uf.length == 2 ? screening.uf.trim().toUpperCase() : toTitleCase(screening.uf.trim()),
       city: toTitleCase(screening.city.trim().toLowerCase()),
+      country: toTitleCase(screening.s_country || 'Brasil'),
       street: screening.street.trim()
     }
 
     // update screening with normalized fields if needed
-    if (normalized.state != screening.state || normalized.city != screening.city || normalized.street != screening.street) {
+    if (normalized.state != screening.uf ||
+          normalized.city != screening.city ||
+          normalized.street != screening.street ||
+          normalized.country != screening.s_country) {
       db.films.findOneAndUpdate(
-        {screening:{$elemMatch:{_id: screening._id}}}, 
+        {screening:{$elemMatch:{_id: screening._id}}},
         {$set: normalized}
       );
       // set attributes to screening object just to use it instead normalized :)
       screening.uf = normalized.state
       screening.city = normalized.city
       screening.street = normalized.street
+      screening.s_country = normalized.country
       print("Normalized screening " + screening._id)
     }
-      
+
     // update states collection
     db.states.findOneAndUpdate(
-      {abbr: screening.uf, has_screenings: false},
+      {abbr: screening.uf, has_screenings: false, country:screening.s_country},
       {$set: {has_screenings: true}}
     );
-    
+
     // update cities collection
     city = db.cities.findOneAndUpdate(
-      {has_screenings: false, state: screening.uf, name: screening.city},
-      {$set: {has_screenings: true}}, 
-      {returnNewDocument: true}
+      {has_screenings: false, state: screening.uf, name: screening.city, country: screening.s_country},
+      {$set: {has_screenings: true}}
     );
 
-    // if given city wasn't found in cities collection it probably has wrong name, but 
-    // also can be new city... let's add it to bad_cities collection to check later
-    if (!city && !db.cities.count({state: screening.uf, name: screening.city}, {limit: 1})) {
-      bad_city = db.bad_cities.insertOne({state: screening.uf, name: screening.city});
-      print("Bad city inserted: ")
-      printjson(db.bad_cities.findOne({state: screening.uf, name: screening.city}))
-    }
+    // // if given city wasn't found in cities collection it probably has wrong name, but
+    // // also can be new city... let's add it to bad_cities collection to check later
+    // if (!city && !db.bad_cities.count({state: screening.uf, name: screening.city, country: screening.s_country}, {limit: 1})) {
+    //   bad_city = db.bad_cities.insertOne({state: screening.uf, name: screening.city, country: screening.s_country});
+    //   print("Bad city inserted: ")
+    //   printjson(db.bad_cities.findOne({state: screening.uf, name: screening.city, country: screening.s_country}))
+    // }
   })
-  
+
 })
