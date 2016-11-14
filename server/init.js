@@ -135,6 +135,10 @@ Meteor.methods({
         screening: new_screening
       }
     });
+    States.setHasScreenings(new_screening.s_country, new_screening.uf);
+    Cities.setHasScreenings(
+      new_screening.s_country, new_screening.uf, new_screening.city
+    );
     return new_screening._id;
   },
   updateScreening: function (f_screening) {
@@ -159,6 +163,10 @@ Meteor.methods({
     if (status == 'admin-draft' || status == true) {
       removeNotifications(f_screening._id);
     }
+    States.setHasScreenings(f_screening.s_country, f_screening.uf);
+    Cities.setHasScreenings(
+      f_screening.s_country, f_screening.uf, f_screening.city
+    );
   },
   setScreeningDraftStatus: function (id, status) {
     var film = Films.by_screening_id(id),
