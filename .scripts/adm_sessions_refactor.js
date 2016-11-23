@@ -177,7 +177,7 @@ try {
   console.debug(err);
 }
 db.createCollection('states');
-db.states.insertMany([
+db.states.insert([
   {"has_screenings": false, "abbr": "AC"},
   {"has_screenings": false, "abbr": "AL"},
   {"has_screenings": false, "abbr": "AP"},
@@ -215,7 +215,7 @@ try {
 db.createCollection("cities");
 db.cities.createIndex({has_screenings: -1}, {name: 'cities__has_screenings', background: 1});
 db.cities.createIndex({'state': 1, 'name': 1}, {unique: 1, name: 'cities__state__name', background: 1});
-db.cities.insertMany([
+db.cities.insert([
   {"has_screenings":false,"state":"AC","name":"Acrelândia"},
   {"has_screenings":false,"state":"AC","name":"Assis Brasil"},
   {"has_screenings":false,"state":"AC","name":"Brasiléia"},
@@ -5811,12 +5811,16 @@ try {
 } catch(err) {
   console.debug(err)
 }
+var counter = 0;
 db.createCollection('bad_cities');
 all_films = db.films.find({});
 all_films.forEach(function(film) {
   // normalize film.title
   film.title = film.title.trim();
-  db.films.findOneAndUpdate({_id: film._id}, {$set: {title: film.title}});
+  db.films.update(
+    {$elemMatch: {_id: film._id}},
+    {$set: {title: film.title}}
+  );
 
   // update states and cities collection
   film.screening && film.screening.forEach(function(screening) {
@@ -5834,7 +5838,7 @@ all_films.forEach(function(film) {
           normalized.city != screening.city ||
           normalized.street != screening.street ||
           normalized.country != screening.s_country) {
-      db.films.findOneAndUpdate(
+      db.films.update(
         {screening:{$elemMatch:{_id: screening._id}}},
         {$set: normalized}
       );
@@ -5843,18 +5847,19 @@ all_films.forEach(function(film) {
       screening.city = normalized.city
       screening.street = normalized.street
       screening.s_country = normalized.country
-      print("Normalized screening " + screening._id)
+      // print("Normalized screening " + screening._id)
+      counter += 1
     }
 
     // update states collection
-    db.states.findOneAndUpdate(
-      {abbr: screening.uf, has_screenings: false, country:screening.s_country},
+    db.states.update(
+      {$elemMatch: {abbr: screening.uf, has_screenings: false, country:screening.s_country}},
       {$set: {has_screenings: true}}
     );
 
     // update cities collection
-    city = db.cities.findOneAndUpdate(
-      {has_screenings: false, state: screening.uf, name: screening.city, country: screening.s_country},
+    city = db.cities.update(
+      {$elemMatch: {has_screenings: false, state: screening.uf, name: screening.city, country: screening.s_country}},
       {$set: {has_screenings: true}}
     );
 
@@ -5866,5 +5871,5 @@ all_films.forEach(function(film) {
     //   printjson(db.bad_cities.findOne({state: screening.uf, name: screening.city, country: screening.s_country}))
     // }
   })
-
 })
+print("Normalized " + counter + " screenings.");

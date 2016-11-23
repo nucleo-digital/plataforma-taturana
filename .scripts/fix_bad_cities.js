@@ -350,7 +350,7 @@ bad_cities_fix.forEach(function(entry, index) {
       {$pull: {screening: {city: original.city, uf: original.uf}}},
       {multi: true}
     );
-    if (res.nModified > 0) { counter_deleted += res.nModified }
+    if (res && res.nModified > 0) { counter_deleted += res.nModified }
   } else if (fix) {
     _fix = {}
     for (var attr in fix) {
@@ -369,7 +369,7 @@ bad_cities_fix.forEach(function(entry, index) {
       {$set: _fix},
       {multi: true}
     );
-    if (res.nModified > 0) { counter_manual_fix += res.nModified }
+    if (res && res.nModified > 0) { counter_manual_fix += res.nModified }
   }
 });
 db.films.find().forEach(function(film) {
@@ -384,7 +384,7 @@ db.films.find().forEach(function(film) {
                 'screening.$.uf': city_obj.state,
                 'screening.$.city': city_obj.name,}}
       );
-      if (res.nModified > 0) {counter_autoscan += res.nModified}
+      if (res && res.nModified > 0) {counter_autoscan += res.nModified}
     }
   });
 });
@@ -402,7 +402,7 @@ bad_cities_fix.forEach(function(entry, index) {
       {$set: fix},
       {multi:true}
     )
-    if (res.nModified > 0) { counter_guessing += res.nModified }
+    if (res && res.nModified > 0) { counter_guessing += res.nModified }
   }
 })
 db.films.find().forEach(function(film) {
@@ -417,7 +417,7 @@ db.films.find().forEach(function(film) {
                 'screening.$.uf': city_obj.state,
                 'screening.$.city': city_obj.name,}}
       );
-      if (res.nModified > 0) {counter_auto_guess += res.nModified}
+      if (res && res.nModified > 0) {counter_auto_guess += res.nModified}
     }
   });
 });
