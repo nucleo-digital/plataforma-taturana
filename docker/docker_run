@@ -1,0 +1,18 @@
+#!/bin/bash
+if [[ ! -e /opt/plataforma-taturana ]]
+then
+	echo "You must link or clone plataforma-taturana into /opt/plataforma-taturana to run the image."
+	exit 1
+fi
+docker stop taturana &>/dev/null
+docker rm taturana &>/dev/null
+docker run -i -t -d --restart always --name taturana \
+	-v /opt/plataforma-taturana:/home/dev/plataforma-taturana \
+	--user 1000 \
+	--add-host dev.taturanamobi.com.br:127.0.0.1 \
+	--publish 1022:22 \
+	--publish 3050:3000 \
+	taturana
+docker ps |head -n1
+docker ps |grep taturana
+echo "You can log in with 'docker exec -ti taturana bash'."

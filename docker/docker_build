@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ ! -e $HOME/.ssh/taturana_key.pub ]]
+then
+	echo "You must link your ssh key pub key to $HOME/.ssh/taturana_key.pub so image can build."
+	exit 1
+fi
+cp $HOME/.ssh/taturana_key.pub .
+docker build -f Dockerfile -t taturana .
+echo "You may want to run docker_run script now."
