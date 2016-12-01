@@ -148,8 +148,8 @@ function toTitleCase(str) {
     );
 }
 
-conn = new Mongo("localhost:3001");
-db = conn.getDB("meteor");
+conn = new Mongo("localhost");
+db = conn.getDB("taturanamobi");
 
 // get ambassadors like that:
 // db.users.find({'profile.roles': 'ambassador'}, {'profile.name': 1}).sort({'profile.name': 1})
@@ -5818,7 +5818,7 @@ all_films.forEach(function(film) {
   // normalize film.title
   film.title = film.title.trim();
   db.films.update(
-    {$elemMatch: {_id: film._id}},
+    {_id: film._id},
     {$set: {title: film.title}}
   );
 
@@ -5853,15 +5853,16 @@ all_films.forEach(function(film) {
 
     // update states collection
     db.states.update(
-      {$elemMatch: {abbr: screening.uf, has_screenings: false, country:screening.s_country}},
+      {abbr: screening.uf, has_screenings: false, country:screening.s_country},
       {$set: {has_screenings: true}}
     );
 
     // update cities collection
     city = db.cities.update(
-      {$elemMatch: {has_screenings: false, state: screening.uf, name: screening.city, country: screening.s_country}},
+      {has_screenings: false, state: screening.uf, name: screening.city, country: screening.s_country},
       {$set: {has_screenings: true}}
     );
+    print(city)
 
     // // if given city wasn't found in cities collection it probably has wrong name, but
     // // also can be new city... let's add it to bad_cities collection to check later
