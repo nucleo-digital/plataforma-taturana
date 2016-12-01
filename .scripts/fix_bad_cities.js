@@ -321,6 +321,7 @@ bad_cities_fix = [
   [{"uf":"SP","city":"SÃO JOÃO DE IARCEMA","country":"BRASIL"}, {"uf":"SP","city":"São João de Iracema","country":"BRASIL"}],
   [{"uf":"SP","city":"São Paulo  SP.","country":"Brasil"}, {"uf":"SP","city":"São Paulo","country":"Brasil"}],
   [{"uf":"MG","city":"BH","country":"Brasil"}, {"uf":"MG","city":"Belo Horizonte","country":"Brasil"}],
+  [{"uf":"AM","city":"São Paulo de Olivença","country":"Brasil"}, {"uf":"SP","city":"São Paulo","country":"Brasil"}],
 ]
 var counter_deleted = 0,
     counter_manual_fix = 0,
@@ -362,7 +363,6 @@ bad_cities_fix.forEach(function(entry, index) {
         }
       }
     }
-    print(JSON.stringify({uf: original.uf, city: original.city, s_country: original.country}) + " PARA " + JSON.stringify(_fix));
     res = db.films.update(
       {screening: {$elemMatch: {uf: original.uf,
                                 city: original.city,
@@ -370,6 +370,7 @@ bad_cities_fix.forEach(function(entry, index) {
       {$set: _fix},
       {multi: true}
     );
+    print(JSON.stringify({uf: original.uf, city: original.city, s_country: original.country}) + " PARA " + JSON.stringify(_fix) + " :: " + JSON.stringify(res));
     if (res && res.nModified > 0) { counter_manual_fix += res.nModified }
   }
 });
@@ -414,7 +415,7 @@ db.films.find().forEach(function(film) {
     if (city_obj) {
       // update screening with correct name
       // print(JSON.stringify({country:screening.s_country, uf: screening.uf, city:screening.city}) + " PARA " + JSON.stringify({'screening.$.s_country': city_obj.country, 'screening.$.uf': city_obj.state, 'screening.$.city': city_obj.name,}));
-      print(_slug + " PARA " + city_obj.slug)
+      print("AUTO GUESS :: " + _slug + " PARA " + city_obj.slug)
       res = db.films.update(
         {screening:{$elemMatch:{_id: screening._id}}},
         {$set: {'screening.$.s_country': city_obj.country,
