@@ -148,9 +148,6 @@ function toTitleCase(str) {
     );
 }
 
-conn = new Mongo("localhost");
-db = conn.getDB("taturanamobi");
-
 // get ambassadors like that:
 // db.users.find({'profile.roles': 'ambassador'}, {'profile.name': 1}).sort({'profile.name': 1})
 db.users.createIndex({"profile.roles": 1}, {name: "users__roles", background: 1});
