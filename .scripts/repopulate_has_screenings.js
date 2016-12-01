@@ -161,5 +161,13 @@ db.films.find().sort({slug:1}).forEach(function(film) {
     if (!res.nMatched) {
         print(_slug + " :: " + JSON.stringify(res));
     }
+    var _slug = slug(screening.uf + " " + screening.s_country);
+    res = db.states.update(
+      {slug: _slug},
+      {$set: {has_screenings:true}}
+    );
+    if (!res.nMatched) {
+        print(_slug + " :: " + JSON.stringify(res));
+    }
   })
 })
