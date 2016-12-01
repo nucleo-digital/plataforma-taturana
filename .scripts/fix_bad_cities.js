@@ -362,6 +362,7 @@ bad_cities_fix.forEach(function(entry, index) {
         }
       }
     }
+    print(JSON.stringify({uf: original.uf, city: original.city, s_country: original.country}) + " PARA " + JSON.stringify(_fix));
     res = db.films.update(
       {screening: {$elemMatch: {uf: original.uf,
                                 city: original.city,
@@ -378,6 +379,7 @@ db.films.find().forEach(function(film) {
     city_obj = db.cities.findOne({slug:_slug})
     if (city_obj) {
       // update screening with correct name
+      print(JSON.stringify({country:screening.s_country, uf: screening.uf, city:screening.city}) + " PARA " + JSON.stringify({'screening.$.s_country': city_obj.country, 'screening.$.uf': city_obj.state, 'screening.$.city': city_obj.name,}));
       res = db.films.update(
         {screening:{$elemMatch:{_id: screening._id}}},
         {$set: {'screening.$.s_country': city_obj.country,
@@ -408,9 +410,11 @@ bad_cities_fix.forEach(function(entry, index) {
 db.films.find().forEach(function(film) {
   film.screening && film.screening.forEach(function(screening) {
     _slug = slug(screening.city)
-    city_obj = db.cities.findOne({slug: {$regex: ".*" + _slug + ".*-.*-.*"}})
+    city_obj = db.cities.findOne({slug: {$regex: _slug + "-(ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se)-[a-z]*"}})
     if (city_obj) {
       // update screening with correct name
+      // print(JSON.stringify({country:screening.s_country, uf: screening.uf, city:screening.city}) + " PARA " + JSON.stringify({'screening.$.s_country': city_obj.country, 'screening.$.uf': city_obj.state, 'screening.$.city': city_obj.name,}));
+      print(_slug + " PARA " + city_obj.slug)
       res = db.films.update(
         {screening:{$elemMatch:{_id: screening._id}}},
         {$set: {'screening.$.s_country': city_obj.country,
@@ -428,5 +432,4 @@ print("Deleted: " + counter_deleted);
 print("Manually fixed: " + counter_manual_fix);
 print("Updated by auto scan: " + counter_autoscan);
 print("Guess from bad_cities: " + counter_guessing);
-print("Guess from screening cities: "+ counter_auto_guess);
-
+print("Guess from screening cities: " + counter_auto_guess);
