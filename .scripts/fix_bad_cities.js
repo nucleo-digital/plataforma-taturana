@@ -411,8 +411,10 @@ bad_cities_fix.forEach(function(entry, index) {
 db.films.find().forEach(function(film) {
   film.screening && film.screening.forEach(function(screening) {
     _slug = slug(screening.city)
-    city_obj = db.cities.findOne({slug: {$regex: _slug + "-(ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se)-[a-z]*"}})
-    if (city_obj) {
+    cities = db.cities.find({slug: {$regex: _slug + "-(ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se)-[a-z]*"}})
+    print(cities)
+    if (cities.count() == 1) {
+      city_obj = cities[0]
       // update screening with correct name
       // print(JSON.stringify({country:screening.s_country, uf: screening.uf, city:screening.city}) + " PARA " + JSON.stringify({'screening.$.s_country': city_obj.country, 'screening.$.uf': city_obj.state, 'screening.$.city': city_obj.name,}));
       print("AUTO GUESS :: " + _slug + " PARA " + city_obj.slug)
