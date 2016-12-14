@@ -151,6 +151,7 @@ db.films.find().forEach(function (film) {
     entries.push([
         screening._id, screening.created_at, screening.date, screening.s_country, screening.uf, screening.city, city_obj !== null, film.title
     ].join(csv_delimiter))
+    // print('[{"_id": "' + screening._id + '"},{"uf": "' + screening.uf + '", "city": "' + screening.city + '", "s_country": "' + screening.s_country + '"}],');
   });
 });
 
