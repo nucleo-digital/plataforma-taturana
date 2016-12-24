@@ -182,7 +182,7 @@ csv.forEach(function (line) {
     // update the screening
     db.films.update(
         {screening: {$elemMatch: {_id: screeningId}}},
-        {s_country: country, uf: uf, city: city}
+        {$set: {'screening.$.s_country': country, 'screening.$.uf': uf, 'screening.$.city': city}}
     )
     // print("Screening " + screeningId + " updated!");
 });
