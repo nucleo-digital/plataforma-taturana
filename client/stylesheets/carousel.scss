@@ -1,4 +1,7 @@
 #carousel{
+  height: 350px;
+  overflow: hidden;
+
   & .synopsis{
     font-size: 0.9em;
     font-weight: 200;
@@ -60,13 +63,13 @@
   }
 }
 .slick-next{
-  right: 18px;
+  right: 25px;
   &:before {
 	  content: "\e901";
 	}
 }
 .slick-prev{
-  left: -7px;
+  left: 0;
   &:before {
   	content: "\e900";
   }
