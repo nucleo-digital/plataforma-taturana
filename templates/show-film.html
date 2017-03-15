@@ -1,4 +1,6 @@
+
 <template name="showFilm">
+{{# unless is_oculto}}
   {{>nav}}
   <div id="show-film">
     <div class="container">
@@ -146,4 +148,5 @@
     </div>
   </div>
   {{>footer}}
+{{/unless}}
 </template>
