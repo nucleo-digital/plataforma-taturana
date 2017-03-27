@@ -1,4 +1,3 @@
-
 <template name="showFilm">
 {{# unless is_oculto}}
   {{>nav}}
@@ -77,16 +76,26 @@
       </div>
 
       <div class="film-graphs">
-        {{#unless is_portfolio }}
         {{#with inventory}}
         <div class="col-md-12 data-row film-graphs">
           <div class="col-md-6 reset-div film-graphs__box">
-            <h3>Dados da Difusão</h3>
+            <h3>{{#if is_difusao_portfolio film}}Números da mobilização{{else}}Dados da Difusão{{/if}}</h3>
             <dl>
-              <dd><img src="/images/eye.svg" alt="">{{viewers}} espectadores totais em {{sessions}} sessões</dd>
-              <dd><img src="/images/icon-calendar.png" alt="">{{sessions}} sessões realizadas de {{scheduled_sessions}} programadas</dd>
+              <dd class="{{hideIfNotDifusaoPortfolio film}}"><div id="viewers-chart" class="ct-chart"></div></dd>
+              <dd><img src="/images/eye.svg" alt="">{{viewers_from_reports}} espectadores em {{sessions_with_reports}} sessões com relatório de impacto</dd>
+              <dd><img src="/images/icon-calendar.png" alt="">{{past_sessions}} sessões realizadas</dd>
+              {{#unless is_only_portfolio film}}
+              <dd><img src="/images/icon-calendar.png" alt="">{{future_sessions}} sessões programadas (confira a agenda!)</dd>
+              {{/unless}}
             </dl>
           </div>
+          {{#if is_difusao_portfolio film }}
+          <div class="col-md-6 film-graphs">
+            <h3>Em quais regiões</h3>
+            <div class="ct-chart {{hideIfNotDifusaoPortfolio film}}" id="zone-chart"></div>
+            <p>{{cities_total}} municipios alcançados</p>
+          </div>
+          {{else}}
           <div class="col-md-6 reset-div film-graphs__box">
             <h3>Em quantos estados</h3>
             <ul>
@@ -95,40 +104,26 @@
               {{/each}}
             </ul>
           </div>
+          {{/if}}
         </div>
-        {{/with}}
-        {{else}}
-        {{#with inventory}}
-        {{! Mostrar gráficos }}
-        <div class="col-md-12 data-row">
-          <div class="col-md-5 film-graphs">
-            <h3>Dados da Difusão</h3>
-            <div id="viewers-chart" class="ct-chart"></div>
-            <p>{{viewers}} espectadores totais em {{scheduled_sessions}} sessões</p>
-          </div>
-          <div class="col-md-5 film-graphs">
-            <h3>Em quais regiões</h3>
-            <div id="zone-chart" class="ct-chart"></div>
-            <p>{{cities_total}} municipios alcançados</p>
-          </div>
-        </div>
-        {{/with}}
-        {{#if has_categories inventory.categories}}
-        <div class="col-md-12 data-row">
-          <h3>Sobre os embaixadores</h3>
-          <div class="film-graphs">
-            <div class="col-md-5">
-              <div id="institution-type-chart" class="ct-chart"></div>
-              <p>Perfil das instituições dos embaixadores</p>
-            </div>
-            <div class="col-md-5">
-              <div id="institution-area-chart" class="ct-chart"></div>
-              <p>Áreas de atuação dos embaixadores</p>
+        {{# if is_difusao_portfolio film}}
+          {{# if has_categories categories}}
+          <div class="col-md-12 data-row">
+            <h3>Sobre os embaixadores</h3>
+            <div class="film-graphs">
+              <div class="col-md-6">
+                <div id="institution-type-chart" class="ct-chart"></div>
+                <p>Perfil das instituições dos embaixadores</p>
+              </div>
+              <div class="col-md-6">
+                <div id="institution-area-chart" class="ct-chart"></div>
+                <p>Áreas de atuação dos embaixadores</p>
+              </div>
             </div>
           </div>
-        </div>
+          {{/if}}
         {{/if}}
-        {{/unless}}
+      {{/with}}
       </div>
       {{#if slideshow}}
         <div class="col-md-12 data-row">
