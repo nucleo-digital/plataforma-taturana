@@ -4,20 +4,41 @@
   left: 0;
   z-index: 2000;
   width: 100%;
-  height: 70px;
-  background: url("images/top-menu-background.png") center bottom no-repeat transparent;
-  padding-bottom: .8rem;
+  height: 160px;
+  background: url("images/80_dark_bg.png") 0 0 repeat;
+  background: black;
 
   .header-bg-wrapper {
-    background-color: #df4944;
-    height: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff695c+0,da7fff+51,4caaff+100 */
+    background: rgb(255,105,92); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmNjk1YyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iI2RhN2ZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0Y2FhZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(left, rgba(255,105,92,1) 0%, rgba(218,127,255,1) 51%, rgba(76,170,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,105,92,1)), color-stop(51%,rgba(218,127,255,1)), color-stop(100%,rgba(76,170,255,1))); /* Chrome4-9,Safari4-5 */
+    background: -webkit-linear-gradient(left, rgba(255,105,92,1) 0%,rgba(218,127,255,1) 51%,rgba(76,170,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: -o-linear-gradient(left, rgba(255,105,92,1) 0%,rgba(218,127,255,1) 51%,rgba(76,170,255,1) 100%); /* Opera 11.10-11.50 */
+    background: -ms-linear-gradient(left, rgba(255,105,92,1) 0%,rgba(218,127,255,1) 51%,rgba(76,170,255,1) 100%); /* IE10 preview */
+    background: linear-gradient(to right, rgba(255,105,92,1) 0%,rgba(218,127,255,1) 51%,rgba(76,170,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff695c', endColorstr='#4caaff',GradientType=1 ); /* IE6-8 */
+
+    padding-bottom: .8rem;
+    height: 55px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+
   }
 
   @media (max-width: 830px) {
     height: 160px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1150px) {
+    .container {
+      width: 1170px;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
     .container {
       width: 98%;
     }
@@ -26,15 +47,31 @@
 
 .menu {
   list-style: none;
-  padding-left: 0;
   text-align: right;
-  margin-bottom: 0;
-  height: 60px;
+  font-family: "helveticaneuebold", "HelveticaNeueBold", "Helvetica Neue Bold", "Helvetica Neue", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+
+  // height: 4.286em;
+  padding: 0;
+  margin-left: 55px;
+  margin-right: 55px;
+  margin-top: 41px;
+  // margin-right: 1.72w em;
+  // margin-bottom: 0;
 
   > li {
     display: inline-block;
     height: 100%;
     line-height: 3.2;
+    padding: 10px 15px;
+
+    &:first-child {
+      padding: 10px 15px 10px 0;
+    }
+    &:last-child {
+      padding: 10px 0 10px 15px;
+    }
 
     &.menu-left {
       float: left;
@@ -49,7 +86,6 @@
     > a {
       position: relative;
       display: block;
-      padding: 10px 15px;
     }
   }
 
@@ -90,18 +126,22 @@
 
 #logo {
   position: absolute;
-  top: 0;
-  left: 50%;
+  top: 28px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 115px;
   width: 335px;
-  background: url("images/top-menu-logo.png") center top no-repeat;
-  background-size: 100% auto;
-  margin-left: -182px;
-  height: 146px;
+
+  background: url("images/taturana_logo.png") center top no-repeat;
+  background-size: 100%;
 
   @media (max-width: 830px) {
     top: 95px;
     width: 320px;
     height: 10em;
-    margin-left: -160px;
+    // margin-left: -160px;
   }
 }

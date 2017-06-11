@@ -7,8 +7,23 @@ $medium: 600px;
 body{
 	font-family: Roboto;
   font-weight: 400;
-  background: #232e4d url("images/triangles-background.png") repeat-y;
-  background-size: 100% auto;
+  // background: #232e4d url("images/triangles-background.png") repeat-y;
+  // background-size: 100% auto;
+  // background: url("images/home-background.jpg") center 20px no-repeat rgba(0, 0, 0, 0.9);
+  background-image: url("images/home-background.jpg");
+  background-color: #0d0d0d;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% -60px;
+  background-size: 100%;
+
+  @media (min-width: 1300px) {
+    background-position: 50% 15px;
+  }
+
+  @media (min-width: 1900px) {
+    background-position: 50% -60px;
+  }
 }
 .reset-div{
   padding:0;
@@ -79,23 +94,31 @@ a.btn, button{
 }
 
 #home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
-  padding-top:10em;
+  padding-top:19em;
 
   @media (max-width: 830px) {
     padding-top: 19em;
   }
 }
 
+#home {
+  padding-top: 275px;
+  @media (min-width: 1300px) {
+  }
+  @media (min-width: 1900px) {
+  }
+}
+
 .bg-wrapper {
-  background: url("images/bg-default.jpg") center top no-repeat;
-  background-size: 100% auto;
-  min-height: 880px;
+  // background: url("images/bg-default.jpg") center top no-repeat;
+  // background-size: 100% auto;
+  // min-height: 880px;
 }
 
 #contact {
-  background: url("images/bg-contact.jpg") center top no-repeat;
-  background-size: 100% auto;
-  min-height: 880px;
+  // background: url("images/bg-contact.jpg") center top no-repeat;
+  // background-size: 100% auto;
+  // min-height: 880px;
 }
 
 .image-description{
