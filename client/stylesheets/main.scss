@@ -24,6 +24,10 @@ body{
   @media (min-width: 1900px) {
     background-position: 50% -60px;
   }
+
+  @media (max-width: 583px) {
+    background-size: inherit;
+  }
 }
 .reset-div{
   padding:0;

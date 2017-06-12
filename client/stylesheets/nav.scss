@@ -25,6 +25,10 @@
     height: 55px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 
+    @media (max-width: 583px) {
+      height: 90px;
+    }
+
   }
 
   @media (max-width: 830px) {
@@ -94,6 +98,8 @@
     justify-content: center;
     margin-top: 12px;
     flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
 
     > li {
       line-height: 1;
