@@ -1,7 +1,8 @@
 .userDroplet-container{
-    background-color: #df4944;
+    background-color: rgba(20,20,20, 0.8);
     margin-top: 3em;
     border-radius: 3px;
+    border: 2px solid rgba(50,50,50, 0.8);
 }
 .userDroplet-avatar{
     width: 40px;
@@ -21,13 +22,14 @@
       height: 100%;
       display: block;
     }
+    border: 2px solid rgba(50,50,50, 0.8);
 }
 
 #dropletMenu{
-    margin-top: 25px;
+    // margin-top: 25px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 10px;
+    // padding-top: 10px;
 }
 
 #dropletMenu li{
@@ -44,8 +46,8 @@
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 11px solid #df4944;
-  margin-top: -10px;
+  border-bottom: 15px solid rgba(50,50,50, 0.8);
+  margin-top: -17px;
   float: right;
   margin-right: 28px;
 }
