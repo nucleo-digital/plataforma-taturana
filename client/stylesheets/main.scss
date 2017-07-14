@@ -14,9 +14,10 @@ $medium: 600px;
     background-color: #0e0e0e;
     background-repeat: no-repeat;
     // background-attachment: fixed;
-    background-size: 1440px;
-    background-position: -149px -136px;
+    background-size: 1300px;
+    background-position: -73px -60px;
     position: absolute;
+    z-index: -1000;
 
     @media (min-width: 768px) {
       height: 1000px;
@@ -114,10 +115,10 @@ a.btn, button{
 }
 
 #home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
-  padding-top:19em;
+  padding-top:15em;
 
   @media (max-width: 830px) {
-    padding-top: 19em;
+    padding-top: 15em;
   }
 }
 

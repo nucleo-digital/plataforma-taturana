@@ -1,131 +1,133 @@
 <template name="screenings">
   {{>nav}}
-  <div id="agenda" class="bg-wrapper">
-  <div class="container">
-    <h3 class="">AGENDA DE EXIBIÇÕES</h3>
-    <p class="section-description">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
-      <div class="row">
-        <div class="col-md-4">
+  <div id="container-bg" class="container">
+    <div id="agenda" class="bg-wrapper">
+    <div class="container">
+      <h3 class="">AGENDA DE EXIBIÇÕES</h3>
+      <p class="section-description">As exibições são sempre gratuitas e seguidas de roda de conversa ou outra atividade. É só chegar!</p>
+        <div class="row">
+          <div class="col-md-4">
 
-          <div class="form-group col-md-5">
-            <label for="st-selector">Estado</label>
-            <select class="form-control" name="state-selector" id="st-selector">
-              <option value="">Selecione</option>
-              {{#each states_options films}}
-                <option>{{this}}</option>
-              {{/each}}
-            </select>
-          </div>
-
-          <div class="form-group col-md-7">
-            <label for="city-selector">Cidade</label>
-            <select class="form-control" name="city-selector" id="city-selector">
+            <div class="form-group col-md-5">
+              <label for="st-selector">Estado</label>
+              <select class="form-control" name="state-selector" id="st-selector">
                 <option value="">Selecione</option>
-                {{#each cities_options films}}
+                {{#each states_options films}}
                   <option>{{this}}</option>
                 {{/each}}
-            </select>
-          </div>
-        </div>
+              </select>
+            </div>
 
-        <div class="col-md-8">
-          <label>Selecione um mês</label>
-          <div class="datepicker-container">
-            <div class="btn-group form-group">
-              <button type="button" class="btn btn-datepicker" data-month="1">Jan</button>
-              <button type="button" class="btn btn-datepicker" data-month="2">Fev</button>
-              <button type="button" class="btn btn-datepicker" data-month="3">Mar</button>
-              <button type="button" class="btn btn-datepicker" data-month="4">Abr</button>
-              <button type="button" class="btn btn-datepicker" data-month="5">Mai</button>
-              <button type="button" class="btn btn-datepicker" data-month="6">Jun</button>
-              <button type="button" class="btn btn-datepicker" data-month="7">Jul</button>
-              <button type="button" class="btn btn-datepicker" data-month="8">Ago</button>
-              <button type="button" class="btn btn-datepicker" data-month="9">Set</button>
-              <button type="button" class="btn btn-datepicker" data-month="10">Out</button>
-              <button type="button" class="btn btn-datepicker" data-month="11">Nov</button>
-              <button type="button" class="btn btn-datepicker" data-month="12">Dez</button>
+            <div class="form-group col-md-7">
+              <label for="city-selector">Cidade</label>
+              <select class="form-control" name="city-selector" id="city-selector">
+                  <option value="">Selecione</option>
+                  {{#each cities_options films}}
+                    <option>{{this}}</option>
+                  {{/each}}
+              </select>
             </div>
           </div>
+
+          <div class="col-md-8">
+            <label>Selecione um mês</label>
+            <div class="datepicker-container">
+              <div class="btn-group form-group">
+                <button type="button" class="btn btn-datepicker" data-month="1">Jan</button>
+                <button type="button" class="btn btn-datepicker" data-month="2">Fev</button>
+                <button type="button" class="btn btn-datepicker" data-month="3">Mar</button>
+                <button type="button" class="btn btn-datepicker" data-month="4">Abr</button>
+                <button type="button" class="btn btn-datepicker" data-month="5">Mai</button>
+                <button type="button" class="btn btn-datepicker" data-month="6">Jun</button>
+                <button type="button" class="btn btn-datepicker" data-month="7">Jul</button>
+                <button type="button" class="btn btn-datepicker" data-month="8">Ago</button>
+                <button type="button" class="btn btn-datepicker" data-month="9">Set</button>
+                <button type="button" class="btn btn-datepicker" data-month="10">Out</button>
+                <button type="button" class="btn btn-datepicker" data-month="11">Nov</button>
+                <button type="button" class="btn btn-datepicker" data-month="12">Dez</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label for="film-selector">Filme</label>
+              <select class="form-control" name="filmSelector" id="film-selector">
+                <option value="">Selecione</option>
+                {{#each films}}
+                  <option>{{title}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
         </div>
 
-        <div class="col-md-12">
-          <div class="form-group col-md-3">
-            <label for="film-selector">Filme</label>
-            <select class="form-control" name="filmSelector" id="film-selector">
-              <option value="">Selecione</option>
-              {{#each films}}
-                <option>{{title}}</option>
-              {{/each}}
-            </select>
+          <div class="row leftMarginHack">
+
+            {{#each filtered_films}}
+              <div class="col-md-12" id="screeningDetails-container">
+                  <div id="screeningDetails-movieInfo">
+
+                    <div class="col-md-3">
+                      <img class="screening-film-poster" src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}" />
+                    </div>
+
+                    <div class="col-md-9" style="padding-left: 0px">
+                      <h1>{{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}</h1>
+                    </div>
+
+                    <div class="col-md-9">
+                      <ul class="list-inline" id="screeningDetails-movieSpecs">
+                        <li>{{genre}}</li>
+                        <li>{{year}}</li>
+                        <li>{{length}}</li>
+                        <li>{{country}}</li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-9">
+                      <ul class="list-inline" id="screeningDetails-productionSpecs">
+                        <li>{{director}}</li>
+                        <li>{{production_company}}</li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-9">
+                      <p>{{{shortsynopsis}}}</p>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <ul id="screeningList" class="list-unstyled">
+                      {{#each future_screenings}}
+                        <li class="screeningItem col-md-12">
+                          <div class="col-md-1" style="text-align: right">
+                            <img src="images/calendar.svg" alt="">
+                          </div>
+                          <div class="col-md-2">
+                            <h5 class="screeningTime">{{format_date date}} {{format_time date}}</h5>
+                          </div>
+                          <div class="col-md-5">
+                            <p class="screeningDetails">
+                              <strong>{{place_name}}</strong>
+                              <br>
+                              {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
+                            </p>
+                          </div>
+                        </li>
+                      {{/each}}
+                    </ul>
+
+
+                  </div>
+                  <!--<a class="col-md-4 col-md-offset-4" id="loadMoreContainer">
+                    MAIS SESSÕES
+                  </a>-->
+              </div>
+            {{/each}}
           </div>
         </div>
-
-      </div>
-
-        <div class="row leftMarginHack">
-
-          {{#each filtered_films}}
-            <div class="col-md-12" id="screeningDetails-container">
-                <div id="screeningDetails-movieInfo">
-
-                  <div class="col-md-3">
-                    <img class="screening-film-poster" src="/upload/{{poster_path}}" alt="Cartaz do filme {{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}" />
-                  </div>
-
-                  <div class="col-md-9" style="padding-left: 0px">
-                    <h1>{{#if title_pt }}{{title_pt}}{{else}}{{title}}{{/if}}</h1>
-                  </div>
-
-                  <div class="col-md-9">
-                    <ul class="list-inline" id="screeningDetails-movieSpecs">
-                      <li>{{genre}}</li>
-                      <li>{{year}}</li>
-                      <li>{{length}}</li>
-                      <li>{{country}}</li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-9">
-                    <ul class="list-inline" id="screeningDetails-productionSpecs">
-                      <li>{{director}}</li>
-                      <li>{{production_company}}</li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-9">
-                    <p>{{{shortsynopsis}}}</p>
-                  </div>
-
-                  <div class="clearfix"></div>
-                  <ul id="screeningList" class="list-unstyled">
-                    {{#each future_screenings}}
-                      <li class="screeningItem col-md-12">
-                        <div class="col-md-1" style="text-align: right">
-                          <img src="images/calendar.svg" alt="">
-                        </div>
-                        <div class="col-md-2">
-                          <h5 class="screeningTime">{{format_date date}} {{format_time date}}</h5>
-                        </div>
-                        <div class="col-md-5">
-                          <p class="screeningDetails">
-                            <strong>{{place_name}}</strong>
-                            <br>
-                            {{street}} {{number}} {{complement}}, {{zone}} - {{city}} - {{uf}}
-                          </p>
-                        </div>
-                      </li>
-                    {{/each}}
-                  </ul>
-
-
-                </div>
-                <!--<a class="col-md-4 col-md-offset-4" id="loadMoreContainer">
-                  MAIS SESSÕES
-                </a>-->
-            </div>
-          {{/each}}
-        </div>
-      </div>
+    </div>
   </div>
   {{>footer}}
 </template>

@@ -1,29 +1,32 @@
 <template name="admAmbassador">
   {{>nav}}
-  <div class="bg-wrapper">
-    <div id="adm-ambassador" class="container adm">
+  <div id="container-bg" class="container">
 
-      {{>admSidebar page="ambassadors"}}
+    <div class="bg-wrapper">
+      <div id="adm-ambassador" class="container adm">
 
-      <div class="col-md-8 col-md-offset-1">
-        <h1>Embaixador</h1>
-        <p><strong>Criado em:</strong> {{format_date createdAt}} - {{format_time createdAt}}</p>
-        <p><strong>Emails:</strong></p>
-        {{#each emails}}
-          <p>{{address}}</p>
-        {{/each}}
-        <br />
-        {{#with profile}}
-          <p><strong>Nome:</strong> {{name}}</p>
-          <p><strong>Telefone celular:</strong> {{cell_phone}}</p>
-          <p><strong>Telefone fixo:</strong> {{phone}}</p>
-          <p><strong>País:</strong> {{country}}</p>
-          <p><strong>Cidade:</strong> {{city}}</p>
-          <p><strong>Estado:</strong> {{uf}}</p>
-          <p><strong>Instituição/Coletivo/Grupo:</strong> {{institution}}</p>
-          <p><strong>Área de atuação:</strong> {{category}}</p>
-          <p><strong>Temáticas:</strong> {{subcategory}}</p>
-        {{/with}}
+        {{>admSidebar page="ambassadors"}}
+
+        <div class="col-md-8 col-md-offset-1">
+          <h1>Embaixador</h1>
+          <p><strong>Criado em:</strong> {{format_date createdAt}} - {{format_time createdAt}}</p>
+          <p><strong>Emails:</strong></p>
+          {{#each emails}}
+            <p>{{address}}</p>
+          {{/each}}
+          <br />
+          {{#with profile}}
+            <p><strong>Nome:</strong> {{name}}</p>
+            <p><strong>Telefone celular:</strong> {{cell_phone}}</p>
+            <p><strong>Telefone fixo:</strong> {{phone}}</p>
+            <p><strong>País:</strong> {{country}}</p>
+            <p><strong>Cidade:</strong> {{city}}</p>
+            <p><strong>Estado:</strong> {{uf}}</p>
+            <p><strong>Instituição/Coletivo/Grupo:</strong> {{institution}}</p>
+            <p><strong>Área de atuação:</strong> {{category}}</p>
+            <p><strong>Temáticas:</strong> {{subcategory}}</p>
+          {{/with}}
+        </div>
       </div>
     </div>
   </div>
