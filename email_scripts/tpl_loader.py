@@ -8,7 +8,7 @@ import jinja2
 from jinja2 import Environment, PackageLoader
 
 ENV = Environment(
-    loader=PackageLoader('email_scripts', 'templates'),
+    loader=PackageLoader('email_scripts', '.templates'),
     autoescape=True
 )
 

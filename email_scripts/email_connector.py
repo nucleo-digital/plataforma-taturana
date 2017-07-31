@@ -51,6 +51,7 @@ def parse_and_send(server, _from, to, subject, template, context,
                    headers=None):
     _context = BASE_CONTEXT.copy()
     _context.update(context)
+    subject = subject.format(**context)
     _context['subject'] = subject
     text = get_template(template).render(**_context)
     return send_email(server, _from, to, subject, text, headers=headers)
@@ -75,6 +76,8 @@ def strip_html(html):
 
 def send_email(server, _from, to, subject, html, headers=None):
     text = strip_html(html)
+    # print(text)
+    # return True
     msg = MIMEMultipart('alternative')
     msg['Subject'] = Header(subject, 'utf-8')
     msg['From'] = _from

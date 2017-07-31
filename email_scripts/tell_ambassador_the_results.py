@@ -4,7 +4,7 @@ from __future__ import (
     absolute_import, division, print_function, unicode_literals
 )
 """
-Deve ser disparado 12 hrs após a confirmação do agendamento.
+Result of screening to ambassador, sent 3 months after screening.
 """
 
 import sys
@@ -16,33 +16,33 @@ from email_scripts import const
 from email_scripts.mongo_connector import get_conn
 from email_scripts.email_connector import parse_and_send, get_smtp_conn
 
-SUBJECT = u"Você tem uma sessão agendada!"
-TPL_NAME = "confirm_scheduling.html"
+SUBJECT = u"Sua contribuição na difusão social do {movie[title]}."
+TPL_NAME = "tell_ambassador_the_results.html"
 
 def filter_and_send():
     cli, db = get_conn()
     films = db['films']
     users = db['users']
     now = datetime.now()
-    end = now - timedelta(hours=12)
-    start = end - timedelta(minutes=5)
+    start = now - timedelta(days=90)
+    start = start.replace(hour=0, minute=0, second=0, microsecond=0)
+    end = start + timedelta(days=1, microseconds=-1)
     query = films.find({
-        "screening.created_at": {"$gte": start, "$lt": end}
+        "screening.date": {"$gte": start, "$lt": end}
     })
-    print("now:   {}".format(now))
-    print("start: {}".format(start))
-    print("end:   {}".format(end))
+    print("now:      {}".format(now))
+    print("start:    {}".format(start))
+    print("end:      {}".format(end))
     server = None
     for film in query:
-        print()
         for screening in film['screening']:
-            created_at = screening.get('created_at', None)
-            if created_at and created_at >= start and created_at < end:
-                print("{} :: {}".format(film['title'], created_at))
+            date = screening.get('date', None)
+            if date and date >= start and date < end:
                 if not server:
                     server = get_smtp_conn()
                 ambassador = \
                     users.find_one({"_id": screening['user_id']})
+                print("{} :: {} :: {} :: {}".format(screening['_id'], screening['date'], film['title'], screening['place_name']))
                 parse_and_send(
                     server=server,
                     _from=const.FROM,

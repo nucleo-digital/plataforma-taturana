@@ -1,0 +1,7 @@
+{% extends "base_template.html" %}
+{% block text %}
+<p>{{ambassador.profile.name}}, nós agradecemos a sua parceria na difusão social do {{movie.title}}.</p>
+<p>Veja os números e resultados da difusão do filme: <a href="{{absoluteurl}}film/{{movie.slug}}">{{absoluteurl}}film/{{movie.slug}}</a></p>
+<p>Na nossa plataforma ({{absoluteurl}}/films) você pode acessar outros filmes em difusão e te convidamos para novas parcerias no futuro!</p>
+<p>Obrigada.<br>Equipe Taturana</p>
+{% endblock %}
