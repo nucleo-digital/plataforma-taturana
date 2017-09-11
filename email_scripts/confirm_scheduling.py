@@ -59,7 +59,7 @@ def filter_and_send():
             if not created_at or not screening_date:
                 continue  # too old screening
 
-            if created_at and created_at >= start and created_at < end:
+            if created_at >= start and created_at < end:
 
                 delta = screening_date - created_at
 
@@ -73,12 +73,6 @@ def filter_and_send():
                     days = 10
                     found['>=10'] += 1
 
-                ambassador = \
-                    users.find_one({"_id": screening['user_id']})
-
-                if not server:
-                    server = get_smtp_conn()
-
                 print(
                     "FOUND => days: {days} :: created: {created_at} :: screening date"
                     ": {screening_date} :: {film}".format(
@@ -88,6 +82,12 @@ def filter_and_send():
                         days=days
                     )
                 )
+
+                if not server:
+                    server = get_smtp_conn()
+
+                ambassador = \
+                    users.find_one({"_id": screening['user_id']})
 
                 parse_and_send(
                     server=server,

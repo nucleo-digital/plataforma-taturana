@@ -2,6 +2,7 @@
 {% block text %}
 <p>Oi, {{ambassador.profile.name}},</p>
 <p>Como estão os preparativos para a sua sessão do {{movie.title}} no dia {{screening.date.strftime("%d/%m/%Y")}}? A sessão está confirmada?</p>
-<p>Por favor, confira se todas as informações sobre a sessão estão corretas. Se houver qualquer alteração, você pode editar a sessão na sua própria página na plataforma: <a href="{{absoluteurl}}ambassador">{{absoluteurl}}ambassador</a></p>
-<p>Abraços,<br>Equipe Taturana</p>
+<p>Por favor, confira se todas as informações sobre a sessão estão corretas. Se houver qualquer alteração, você pode editar a sessão na sua própria página na plataforma: <a href="{{absoluteurl}}ambassador">{{absoluteurl|replace('http://', '')}}ambassador</a></p>
+<p>Abraços,</p>
+<p>Equipe Taturana</p>
 {% endblock %}
