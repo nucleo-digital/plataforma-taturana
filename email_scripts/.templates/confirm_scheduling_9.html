@@ -1,0 +1,10 @@
+{% extends "base_template.html" %}
+{% block text %}
+<p>Oi, {{ambassador.profile.name}}, tudo bem?</p>
+<p>Obrigada pelo seu interesse em integrar a rede de exibidores pela Taturana (<a href="https://www.facebook.com/taturanamobi">www.facebook.com/taturanamobi</a>)! A sessão do filme {{movie.title}} foi agendada para o dia {{screening.date.strftime("%d/%m/%Y")}}, por tanto, não temos muito tempo até lá. A sessão vai acontecer mesmo nessa data? Caso não, você pode editar a sessão na sua própria página na plataforma:<br><a href="{{absoluteurl}}ambassador">{{absoluteurl|replace('http://', '')}}ambassador</a><p>
+<p>Se é isso mesmo, vamos nessa! Na própria plataforma, você pode editar a data e horário de sua sessão e ainda baixar todo o material de divulgação do filme: release, cartaz e fotos. Esses materiais podem ser usados para criar convites e outras peças de divulgação.</p>
+<p>O filme será enviado em até dois dias por meio de um link para download. Então, fica de olho na sua caixa de e-mail nos próximos dias.</p>
+<p>Reforço a importância de vocês enviarem logo após a exibição o número de pessoas que assistiu ao filme, um breve relato da atividade e algumas fotos. Essas informações serão utilizadas por nós nesse processo de mobilização social sobre o tema do filme.</p>
+<p>Abraços,</p>
+<p>Equipe Taturana.</p>
+{% endblock %}
