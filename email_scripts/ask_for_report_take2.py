@@ -23,7 +23,9 @@ def filter_and_send():
     cli, db = get_conn()
     films = db['films']
     users = db['users']
-    now = datetime.now()
+    # cron take some seconds to call the script so we replace here to 0
+    now = datetime.now().replace(second=0, microsecond=0)
+    
     start = now - timedelta(days=7)
     start = start.replace(hour=0, minute=0, second=0, microsecond=0)
     end = start + timedelta(days=1, microseconds=-1)
@@ -39,8 +41,6 @@ def filter_and_send():
         for screening in film['screening']:
             date = screening.get('date', None)
             report = screening.get('report_description', None)
-            # if screening['_id'] == '24b912df51966d8b9f452cbe':
-            #     import ipdb; ipdb.set_trace()
             if date and date >= start and date < end and report:
                 if not server:
                     server = get_smtp_conn()
@@ -61,4 +61,23 @@ def filter_and_send():
                 )
 
 if __name__ == '__main__':
+    import os
+    from freezegun import freeze_time
+    from datetime import datetime
+
+    freezer = None
+    try:
+        fake_date = datetime.strptime(
+            os.environ.get('FAKE_DATE'), '%Y%m%d%H%M%S'
+        )
+    except:
+        fake_date = None
+
+    if fake_date:
+        freezer = freeze_time(fake_date)
+        freezer.start()
+
     filter_and_send()
+
+    if freezer:
+        freezer.stop()

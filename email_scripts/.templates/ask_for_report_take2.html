@@ -1,8 +1,10 @@
 {% extends "base_template.html" %}
 {% block text %}
+<p>Oi, {{ambassador.profile.name}}, tudo bem?</p>
 <p>Vimos que você ainda não preencheu o relato da sessão {{movie.title}} em {{screening.date.strftime("%d/%m/%Y")}}.</p>
-<p>O seu relato é super importante para que possamos consolidar as informações sobre a difusão social do filme. Nos basta saber o número aproximado de pessoas que participaram da sessão e algumas palavras sobre o bate-papo.</p>
+<p>Esta etapa é super importante para que possamos consolidar as informações sobre o impacto social do filme. É fácil: precisamos apenas saber o número aproximado de pessoas que participaram da sessão e algumas palavras sobre o bate-papo.</p>
 <p>Vamos lá?<br>
 - http://taturanamobi.com.br/ambassador</p>
-<p>Obrigada.<br>Equipe Taturana</p>
+<p>Obrigada.</p>
+<p>Equipe Taturana</p>
 {% endblock %}

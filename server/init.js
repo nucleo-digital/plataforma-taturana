@@ -36,6 +36,7 @@ Meteor.methods({
       subject: pidgeon.subject,
       html: SSR.render(template, pidgeon)
     });
+
   },
 
   updateOrCreateFilm: function (film) {

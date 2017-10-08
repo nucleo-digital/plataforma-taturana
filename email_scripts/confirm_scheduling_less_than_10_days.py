@@ -40,6 +40,7 @@ def filter_and_send():
 
     # myprint("DEBUG >= 10 dias, should find ELENA created at 2017-08-31 11:49:11")
     # now = datetime(2017, 8, 31, 23, 50, 0)
+    # now = datetime(2017, 9, 21, 2, 0, 0)
 
     # myprint("DEBUG >= 4 e <= 9, should find ELENA created at 2017-09-03 14:03:40")
     # now = datetime(2017, 9, 4, 2, 3, 45)
@@ -47,7 +48,7 @@ def filter_and_send():
     # myprint("DEBUG <= 3 dias, should find ELENA created at 2017-07-04 15:39:07")
     # now = datetime(2017, 7, 5, 3, 40)
 
-    end = now - timedelta(hours=12)
+    end = now
     start = end - timedelta(minutes=5)
     query = films.find({
         "screening.created_at": {"$gte": start, "$lt": end}
@@ -57,7 +58,7 @@ def filter_and_send():
         .format(start, end)
     )
 
-    found = {'<=3': 0, '>3 and <=9': 0, '>=10': 0}
+    found = {'<=3': 0, '>3 and <=9': 0}
     server = None
 
     for film in query:
@@ -72,11 +73,14 @@ def filter_and_send():
 
                 delta = screening_date - created_at
 
-                if delta.total_seconds() <= T9:
-                    continue
-
-                days = 10
-                found['>=10'] += 1
+                if delta.total_seconds() <= T3:
+                    days = 3
+                    found['<=3'] += 1
+                elif delta.total_seconds() <= T9:
+                    days = 9
+                    found['>3 and <=9'] += 1
+                else:
+                    myprint("Film {} should not be here!".format(film['title']))
 
                 myprint(
                     "FOUND => days: {days} :: created: {created_at} :: screening date"

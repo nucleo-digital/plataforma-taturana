@@ -4,8 +4,7 @@ from __future__ import (
     absolute_import, division, unicode_literals
 )
 """
-Deve ser disparado 12 hrs após a confirmação do agendamento.
-Agende para rodar de 5 em 5 minutos.
+Send the movie link. Happens 7 days before section.
 """
 
 import sys
@@ -19,18 +18,17 @@ from email_scripts.email_connector import parse_and_send, get_smtp_conn
 from email_scripts.utils import myprint
 from smartencoding import smart_unicode_with_ignore
 
-SUBJECT = "Você tem uma sessão agendada!"
-TPL_NAME = "confirm_scheduling_{}.html"
+SUBJECT = "Download do filme {movie[title]}."
+TPL_NAME = "send_the_movie_{}.html"
 
-T3 = timedelta(
-    days=3, hours=23, minutes=59, seconds=59, microseconds=99999
+T4 = timedelta(
+    days=4  #, hours=23, minutes=59, seconds=59, microseconds=99999
 ).total_seconds()
 T9 = timedelta(
     days=9, hours=23, minutes=59, seconds=59, microseconds=99999
 ).total_seconds()
 
-
-def filter_and_send():
+def filter_and_send_9_days():
     from datetime import datetime
     cli, db = get_conn()
     films = db['films']
@@ -38,26 +36,20 @@ def filter_and_send():
     # cron take some seconds to call the script so we replace here to 0
     now = datetime.now().replace(second=0, microsecond=0)
 
-    # myprint("DEBUG >= 10 dias, should find ELENA created at 2017-08-31 11:49:11")
-    # now = datetime(2017, 8, 31, 23, 50, 0)
-
     # myprint("DEBUG >= 4 e <= 9, should find ELENA created at 2017-09-03 14:03:40")
-    # now = datetime(2017, 9, 4, 2, 3, 45)
+    # now = datetime(2017, 9, 5, 14, 0, 0)
 
-    # myprint("DEBUG <= 3 dias, should find ELENA created at 2017-07-04 15:39:07")
-    # now = datetime(2017, 7, 5, 3, 40)
-
-    end = now - timedelta(hours=12)
-    start = end - timedelta(minutes=5)
+    start = now - timedelta(days=2)
+    end = start + timedelta(minutes=5)
     query = films.find({
-        "screening.created_at": {"$gte": start, "$lt": end}
+        "screening.date": {"$gte": start, "$lt": end}
     })
     myprint(
         "Getting screenings from {:%Y-%m-%d %H:%M:%S} to {:%Y-%m-%d %H:%M:%S}."
         .format(start, end)
     )
 
-    found = {'<=3': 0, '>3 and <=9': 0, '>=10': 0}
+    found = 0
     server = None
 
     for film in query:
@@ -66,27 +58,12 @@ def filter_and_send():
             screening_date = screening.get('date', None)
 
             if not created_at or not screening_date:
-                continue  # too old screening
-
+                continue # too old screening
             if created_at >= start and created_at < end:
-
                 delta = screening_date - created_at
 
-                if delta.total_seconds() <= T9:
+                if delta.total_seconds() < T4 or delta.total_seconds() > T9:
                     continue
-
-                days = 10
-                found['>=10'] += 1
-
-                myprint(
-                    "FOUND => days: {days} :: created: {created_at} :: screening date"
-                    ": {screening_date} :: {film}".format(
-                        film=smart_unicode_with_ignore(film['title']),
-                        created_at=created_at.strftime("%Y-%m-%d %H:%M:%S"),
-                        screening_date=screening_date.strftime("%Y-%m-%d %H:%M:%S"),
-                        days=days
-                    )
-                )
 
                 if not server:
                     server = get_smtp_conn()
@@ -94,22 +71,25 @@ def filter_and_send():
                 ambassador = \
                     users.find_one({"_id": screening['user_id']})
 
+                myprint("{} :: {} :: {}".format(
+                    created_at, screening_date,
+                    smart_unicode_with_ignore(film['title'])
+                ))
+
                 parse_and_send(
                     server=server,
                     _from=const.FROM,
                     to=ambassador['emails'][0]['address'],
                     subject=SUBJECT,
-                    template=TPL_NAME.format(days),
+                    template=TPL_NAME.format(9),
                     context={
                         'ambassador': ambassador,
                         'movie': film,
                         'screening': screening
                     }
                 )
-
-    myprint("Mails sent:")
-    for k, v in found.items():
-        myprint("{}: {}".format(k, v))
+                found += 1
+    myprint("Mails sent: {}".format(found))
 
 if __name__ == '__main__':
     import os
@@ -128,7 +108,7 @@ if __name__ == '__main__':
         freezer = freeze_time(fake_date)
         freezer.start()
 
-    filter_and_send()
+    filter_and_send_9_days()
 
     if freezer:
         freezer.stop()
