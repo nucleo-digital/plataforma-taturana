@@ -1,112 +1,115 @@
 <template name="admAmbassadors">
   {{>nav}}
-  <div class="bg-wrapper">
-    <div id="adm-ambassadors" class="container adm">
+  <div id="container-bg" class="container">
 
-      {{>admSidebar page="ambassadors"}}
+    <div class="bg-wrapper">
+      <div id="adm-ambassadors" class="container adm">
 
-      <div class="col-md-8 col-md-offset-1">
-        <div class="row filters">
-          <div class="filters-header">Filtrar por:</div>
+        {{>admSidebar page="ambassadors"}}
 
-          <form id="ambassadors-filters" class="form-horizontal">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label" for="category">Área de Atuação: </label>
-                    <div class="col-sm-8">
-                      <select name="category" id="category" class="form-control no-radius">
-                        <option> </option>
-                        {{#each categories }}
-                        <option>{{this}}</option>
-                        {{/each}}
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label" for="subcategory">Temática: </label>
-                    <div class="col-sm-8">
-                      <select name="subcategory" id="subcategory" class="form-control no-radius">
-                        <option> </option>
-                        {{#each subcategories }}
+        <div class="col-md-8 col-md-offset-1">
+          <div class="row filters">
+            <div class="filters-header">Filtrar por:</div>
+
+            <form id="ambassadors-filters" class="form-horizontal">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="category">Área de Atuação: </label>
+                      <div class="col-sm-8">
+                        <select name="category" id="category" class="form-control no-radius">
+                          <option> </option>
+                          {{#each categories }}
                           <option>{{this}}</option>
-                        {{/each}}
-                      </select>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="subcategory">Temática: </label>
+                      <div class="col-sm-8">
+                        <select name="subcategory" id="subcategory" class="form-control no-radius">
+                          <option> </option>
+                          {{#each subcategories }}
+                            <option>{{this}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="filmDisplayed">Exibiu o filme: </label>
+                      <div class="col-sm-8">
+                        <select name="filmDisplayed" id="filmDisplayed" class="form-control no-radius">
+                          <option> </option>
+                          {{#each films }}
+                            <option>{{title}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="city">Município: </label>
+                      <div class="col-sm-8">
+                        <select name="city" id="city" class="form-control no-radius">
+                          <option> </option>
+                          {{#each get_place_data 'city' }}
+                            <option>{{this}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="uf">UF: </label>
+                      <div class="col-sm-8">
+                        <select name="uf" id="uf" class="form-control no-radius">
+                          <option> </option>
+                          {{#each get_place_data 'uf' }}
+                            <option>{{this}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label" for="filmDisplayed">Exibiu o filme: </label>
-                    <div class="col-sm-8">
-                      <select name="filmDisplayed" id="filmDisplayed" class="form-control no-radius">
-                        <option> </option>
-                        {{#each films }}
-                          <option>{{title}}</option>
-                        {{/each}}
-                      </select>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="form-group">
+                      <label class="col-sm-10 control-label" for="noScreenings">Nunca agendou uma sessão? </label>
+                      <div class="col-sm-2">
+                        <input type="checkbox" name="noScreenings" id="noScreenings" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label" for="city">Município: </label>
-                    <div class="col-sm-8">
-                      <select name="city" id="city" class="form-control no-radius">
-                        <option> </option>
-                        {{#each get_place_data 'city' }}
-                          <option>{{this}}</option>
-                        {{/each}}
-                      </select>
+                    <div class="form-group">
+                      <label class="col-sm-10 control-label" for="pendingReport">Tem relatórios pendentes? </label>
+                      <div class="col-sm-2">
+                        <input type="checkbox" name="pendingReport" id="pendingReport" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-4 control-label" for="uf">UF: </label>
-                    <div class="col-sm-8">
-                      <select name="uf" id="uf" class="form-control no-radius">
-                        <option> </option>
-                        {{#each get_place_data 'uf' }}
-                          <option>{{this}}</option>
-                        {{/each}}
-                      </select>
+                    <div class="form-group">
+                      <label class="col-sm-10 control-label" for="teamMember">Pediu participação da equipe? </label>
+                      <div class="col-sm-2">
+                        <input type="checkbox" name="teamMember" id="teamMember" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="form-group">
-                    <label class="col-sm-10 control-label" for="noScreenings">Nunca agendou uma sessão? </label>
-                    <div class="col-sm-2">
-                      <input type="checkbox" name="noScreenings" id="noScreenings" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-10 control-label" for="pendingReport">Tem relatórios pendentes? </label>
-                    <div class="col-sm-2">
-                      <input type="checkbox" name="pendingReport" id="pendingReport" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-10 control-label" for="teamMember">Pediu participação da equipe? </label>
-                    <div class="col-sm-2">
-                      <input type="checkbox" name="teamMember" id="teamMember" />
-                    </div>
-                  </div>
-                </div>
+
+              <div class="row">
+                <button type="submit" class="btn pull-right">Filtrar</button>
+                <button class="csv-export btn pull-left">Exportar CSV</button>
               </div>
-            </div>
+            </form>
+          </div>
 
-            <div class="row">
-              <button type="submit" class="btn pull-right">Filtrar</button>
-              <button class="csv-export btn pull-left">Exportar CSV</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="row">
-          <ul class="ambassadors-list">
-            {{#each ambassadors }}
-            <li><strong><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></strong> <a class="pull-right" href="mailto: {{firstAddress emails}}">{{firstAddress emails}}</a></li>
-            {{/each}}
-          </ul>
+          <div class="row">
+            <ul class="ambassadors-list">
+              {{#each ambassadors }}
+              <li><strong><a href="/adm/ambassador/{{_id}}">{{profile.name}}</a></strong> <a class="pull-right" href="mailto: {{firstAddress emails}}">{{firstAddress emails}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

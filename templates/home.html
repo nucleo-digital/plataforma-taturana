@@ -6,31 +6,33 @@
 <div style="position: absolute;width: 84px;height: 15px;background: blue;top: 55px;left: 84px;z-index: 3000;">&nbsp;</div>
 <div style="position: absolute;width: 84px;height: 15px;background: orange;top: 70px;left: 0;z-index: 3000;">&nbsp;</div>
 <div style="position: absolute;width: 45px;height: 17px;background: orange;top: 40px;right: : 73px;z-index: 2000;">&nbsp;</div> -->
-	{{>nav}}
-	<section id="home">
-		<div class="container">
-			<div class="col-md-12 col-sm-12 col-xs-12 home-text-box">
-				<h1 class="home-text">Seja cinema, liberte um filme</h1>
-        <div class="col-md-11 col-xs-12 center-block float-none">
-          <p class="home-items">Organize uma sessão coletiva em seu espaço e fortaleça os circuitos alternativos da #RedeDeExibidoresTaturana pela democratização do acesso ao cinema!</p>
-          {{! TODO: Quebre a imagem em três e separe os alt texts corretamente }}
-          <img src="images/ilustracao-passos.png" class="img-responsive center-block divider" alt="1: CADASTRE-SE como embaixador e entre para a rede de exibidores!; 2: ESCOLHA UM FILME para exibidr e debater no seu espaço!; 3: CONTE COMO FOI a experiência, e contribua para a construção dessa rede cultural!"/>
-    </div>
-			</div>
-		</div>
-	</section>
-	<section id="home-carousel">
-	  <div class="container">
-	  	<div class="col-md-7 col-xs-12 center-block float-none">
-	  		<h2 class="home-headers box">Escolha um filme:</h2>
-	  	</div>
-	    {{>homeCarousel}}
-      <div class="col-md-12 center-btn">
-        <a href="/register" class="btn btn-lg">FAÇA PARTE DESSA REDE</a>
+  {{>nav}}
+  <div id="container-bg" class="container">
+    <section id="home">
+      <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12 home-text-box">
+          <h1 class="home-text">Seja cinema, liberte um filme</h1>
+          <div class="col-md-11 col-xs-12 center-block float-none">
+            <p class="home-items">Organize uma sessão coletiva em seu espaço e fortaleça os circuitos alternativos da #RedeDeExibidoresTaturana pela democratização do acesso ao cinema!</p>
+            {{! TODO: Quebre a imagem em três e separe os alt texts corretamente }}
+            <img src="images/ilustracao-passos.png" class="img-responsive center-block divider" alt="1: CADASTRE-SE como embaixador e entre para a rede de exibidores!; 2: ESCOLHA UM FILME para exibidr e debater no seu espaço!; 3: CONTE COMO FOI a experiência, e contribua para a construção dessa rede cultural!"/>
       </div>
-	  </div>
-  </section>
-	{{>footer}}
+        </div>
+      </div>
+    </section>
+    <section id="home-carousel">
+      <div class="container">
+        <div class="col-md-7 col-xs-12 center-block float-none">
+          <h2 class="home-headers box">Escolha um filme:</h2>
+        </div>
+        {{>homeCarousel}}
+        <div class="col-md-12 center-btn">
+          <a href="/register" class="btn btn-lg">FAÇA PARTE DESSA REDE</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  {{>footer}}
 </template>
 
 <template name="homeCarousel">

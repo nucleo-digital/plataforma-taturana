@@ -5,6 +5,8 @@ footer{
   min-height: 226px;
   margin-top: 5em;
 
+  clear: both;
+
   @media(max-width: 600px) {
     padding-bottom: 20px;
   }

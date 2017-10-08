@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{subject}}</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/EmailMessage">
+    <table>
+      <tr>
+        <td width="600">
+          <table width="100%" style="border: 1px solid #eee;">
+            <tr>
+              <td style="background: #232E4D; text-align: center; padding: 10px;">
+                <img src="{{absoluteurl}}images/logo-email.png"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">
+              {% block text %}{% endblock %}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

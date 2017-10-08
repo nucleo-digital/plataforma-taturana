@@ -1,24 +1,26 @@
 <template name="admReports">
   {{>nav}}
-  <div class="bg-wrapper">
-    <div id="adm-reports" class="container adm">
+  <div id="container-bg" class="container">
+    <div class="bg-wrapper">
+      <div id="adm-reports" class="container adm">
 
-      {{>admSidebar page="films"}}
+        {{>admSidebar page="films"}}
 
-      <div class="col-md-8 col-md-offset-1">
-        <div class="row">
-          <h1>Relatórios</h1>
-          <ul class="films-list">
-          {{#each reports}}
-            <li>
-              <strong>{{date}} {{time}} {{place_name}}</strong>
-              <span class="actions">
-                <a href="/adm/report/{{_id}}">[ Ver Relatório ]</a>
-              </span>
-            </li>
+        <div class="col-md-8 col-md-offset-1">
+          <div class="row">
+            <h1>Relatórios</h1>
+            <ul class="films-list">
+            {{#each reports}}
+              <li>
+                <strong>{{date}} {{time}} {{place_name}}</strong>
+                <span class="actions">
+                  <a href="/adm/report/{{_id}}">[ Ver Relatório ]</a>
+                </span>
+              </li>
 
-          {{/each}}
-          </ul>
+            {{/each}}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

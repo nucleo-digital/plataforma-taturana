@@ -1,16 +1,17 @@
 <template name="adm">
   {{>nav}}
-  <div class="bg-wrapper">
-    <div id="adm" class="container adm">
-      <div class="row">
-        {{>admSidebar page=""}}
+  <div id="container-bg" class="container">
+    <div class="bg-wrapper">
+      <div id="adm" class="container adm">
+        <div class="row">
+          {{>admSidebar page=""}}
 
-        <div class="col-md-9">
-          <h2 class="adm-hello">Bem-vindo à seção administrativa!<br />Selecione uma opção ao lado.</h2>
+          <div class="col-md-9">
+            <h2 class="adm-hello">Bem-vindo à seção administrativa!<br />Selecione uma opção ao lado.</h2>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   {{>footer}}
 </template>

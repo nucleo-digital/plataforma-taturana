@@ -1,0 +1,8 @@
+{% extends "base_template.html" %}
+{% block text %}
+<p>{{ambassador.profile.name}}, esperamos que a sessão do {{movie.title}} no dia {{screening.date.strftime("%d/%m/%Y")}}? tenha sido um sucesso!</p>
+<p>Queremos saber mais sobre como foi! Você pode incluir essas informações na sua página na plataforma: <a href="{{absoluteurl}}ambassador">{{absoluteurl}}ambassador</a></p>
+<p>Elas são muito importantes para nos ajudar a construir a rede de impacto do filme!</p>
+<p>Aguardamos, ansiosos,</p>
+<p>Equipe Taturana</p>
+{% endblock %}

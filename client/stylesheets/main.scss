@@ -4,29 +4,46 @@
 $large: 980px;
 $medium: 600px;
 
+#container-bg {
+  position: relative;
+  background: transparent;
+}
+#container-bg::before {
+    content: " ";
+    background-image: url("images/home-background.jpg");
+    background-color: #0e0e0e;
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    background-size: 1300px;
+    background-position: -73px -60px;
+    position: absolute;
+    z-index: -1000;
+
+    @media (min-width: 768px) {
+      height: 1000px;
+      width: 100%;
+    }
+    @media (max-width: 1199px) {
+      background-position: -127px -42px;
+      background-size: 1199px;
+    }
+    @media (max-width: 992px) {
+      background-position: -132px 40px;
+      background-size: 992px;
+    }
+    @media (max-width: 768px) {
+      background-position: -132px 40px;
+      background-size: 992px;
+    }
+}
+
 body{
 	font-family: Roboto;
   font-weight: 400;
-  // background: #232e4d url("images/triangles-background.png") repeat-y;
-  // background-size: 100% auto;
-  // background: url("images/home-background.jpg") center 20px no-repeat rgba(0, 0, 0, 0.9);
-  background-image: url("images/home-background.jpg");
   background-color: #0e0e0e;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% -60px;
-  background-size: 100%;
-
-  @media (min-width: 1300px) {
-    background-position: 50% 15px;
-  }
-
-  @media (min-width: 1900px) {
-    background-position: 50% -60px;
-  }
 
   @media (max-width: 583px) {
-    background-size: inherit2w;
+    background-size: inherit;
   }
 }
 .reset-div{
@@ -98,10 +115,10 @@ a.btn, button{
 }
 
 #home, #ambassador-registration, #films, #agenda, #contact, #about, #show-film {
-  padding-top:19em;
+  padding-top:15em;
 
   @media (max-width: 830px) {
-    padding-top: 19em;
+    padding-top: 15em;
   }
 }
 

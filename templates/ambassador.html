@@ -3,26 +3,26 @@ Templates:
 - Register
 - Ambassador Edit
 -->
-
-
 <template name="register">
   {{>nav}}
-  <div id="ambassador-registration">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 pull-right register-form">
-          <h1>CADASTRE-SE</h1>
-          <div class="help-block with-errors form-errors"></div>
-          <form class="new-ambassador" temdata-toggle="validator">
-            {{>ambassadorFormFields}}
-            <div class="form-group col-md-6">
-              <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-6 register-info">
-          <h1 style="margin-bottom:1em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
-          <img src="images/register-steps.png" style="margin-bottom:2em" class=" center-block red">
+  <div id="container-bg" class="container">
+    <div id="ambassador-registration">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 pull-right register-form">
+            <h1>CADASTRE-SE</h1>
+            <div class="help-block with-errors form-errors"></div>
+            <form class="new-ambassador" temdata-toggle="validator">
+              {{>ambassadorFormFields}}
+              <div class="form-group col-md-6">
+                <button class="btn btn-lg btn-block" type="submit" value="Register">Enviar</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6 register-info">
+            <h1 style="margin-bottom:1em">O QUE VOCÊ PODE <br/> FAZER COMO EMBAIXADOR</h1>
+            <img src="images/register-steps.png" style="margin-bottom:2em" class=" center-block red">
+          </div>
         </div>
       </div>
     </div>
