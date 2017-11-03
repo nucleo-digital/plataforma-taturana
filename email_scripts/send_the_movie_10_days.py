@@ -36,7 +36,7 @@ def filter_and_send_10_days():
     # myprint("DEBUG >= 10 dias, should find ELENA session 2017-09-14T15:00:00Z")
     # now = datetime(2017, 9, 7, 15, 0, 0)
 
-    start = now + timedelta(days=7)
+    start = now - timedelta(days=7)
     end = start + timedelta(minutes=5)
     query = films.find({
         "screening.date": {"$gte": start, "$lt": end}
@@ -70,8 +70,9 @@ def filter_and_send_10_days():
                 ambassador = \
                     users.find_one({"_id": screening['user_id']})
 
-                myprint("{} :: {} :: {}".format(
+                myprint("{} :: {} :: {} :: {}".format(
                     created_at, screening_date,
+                    ambassador,
                     smart_unicode_with_ignore(film['title'])
                 ))
 
