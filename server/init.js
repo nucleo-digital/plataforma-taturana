@@ -147,9 +147,13 @@ Meteor.methods({
     var film = Films.by_screening_id(f_screening._id);
     var screenings = film["screening"];
 
+    // fix this when have time, there is better ways to update an obj inside a
+    // document array
     for (i = 0; i < screenings.length; i++) {
       if (screenings[i]._id == f_screening._id) {
+        f_screening.created_at = screenings[i].created_at;
         f_screening.user_id = screenings[i].user_id;
+        f_screening.updated_at = new Date();
         screenings.splice(i, 1, f_screening);
 
       }
@@ -164,10 +168,11 @@ Meteor.methods({
     if (status == 'admin-draft' || status == true) {
       removeNotifications(f_screening._id);
     }
-    States.usetHasScreenings(f_screening.s_country, f_screening.uf);
-    Cities.usetHasScreenings(
+    States.unsetHasScreenings(f_screening.s_country, f_screening.uf);
+    Cities.unsetHasScreenings(
       f_screening.s_country, f_screening.uf, f_screening.city
     );
+
     States.setHasScreenings(f_screening.s_country, f_screening.uf);
     Cities.setHasScreenings(
       f_screening.s_country, f_screening.uf, f_screening.city
