@@ -48,7 +48,7 @@ def filter_and_send_9_days():
     #     "_id" : "487852f4b13f70fc87f53281"
     # }
 
-    start = now - timedelta(days=2)
+    start = now + timedelta(days=2)
     end = start + timedelta(minutes=5)
     query = films.find({
         "screening.date": {"$gte": start, "$lt": end}
@@ -67,6 +67,10 @@ def filter_and_send_9_days():
         #     print("Start", start)
         #     print("End", end)
         for screening in film['screening']:
+
+            if screening.get('user_id') != 'kwoicbbJMkKvF6dSR':
+                continue
+
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
