@@ -51,6 +51,7 @@ def filter_and_send_10_days():
 
     for film in query:
         for screening in film['screening']:
+
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
@@ -63,15 +64,16 @@ def filter_and_send_10_days():
 
                 if delta.total_seconds() < T10:
                     continue  # this method proccess only with 10 or more days of delta
-
+                
                 if not server:
                     server = get_smtp_conn()
 
                 ambassador = \
                     users.find_one({"_id": screening['user_id']})
 
-                myprint("{} :: {} :: {}".format(
+                myprint("{} :: {} :: {} :: {}".format(
                     created_at, screening_date,
+                    ambassador,
                     smart_unicode_with_ignore(film['title'])
                 ))
 

@@ -16,6 +16,7 @@ from email_scripts import const
 from email_scripts.config_loader import get_conf
 from email_scripts.tpl_loader import get_template
 from email_scripts.utils import myprint
+# from email_scripts.error_tracker import client
 
 from smartencoding import smart_unicode_with_ignore
 
@@ -24,6 +25,33 @@ Charset.add_charset('utf-8', Charset.QP, Charset.QP, 'utf-8')
 BASE_CONTEXT = {
     'absoluteurl': const.ABSOLUTE_URL,
 }
+
+# def log_send_email_to_db(method):
+#     def logger(server, _from, to, subject, html, headers=None):
+#         exc_msg = ''
+#         indent = ''
+#         try:
+#             result = method(server, _from, to, subject, html, tag, headers=headers)
+#         except Exception as exc:
+#             client.captureException()
+#             indent = client.get_indent()
+#         finally:
+#             cli, db = get_conn()
+#             log = db['email_logging']
+#
+#             log.insert_one({
+#                 'caller': log_info['caller'],
+#                 'movie': log_info['movie_id'],
+#                 'screening': {
+#                     'id': log_info['screening_id'],
+#                     ''
+#                 },
+#                 'screening'
+#                 'to': to,
+#                 'subject': subject,
+#                 ''
+#             })
+
 
 def split_smtp_uri(uri):
     params = re.search(
@@ -77,12 +105,16 @@ def strip_html(html):
 def send_email(server, _from, to, subject, html, headers=None):
     conf = get_conf()['email']
     text = strip_html(html)
-
-    if conf["emails_for_real"]:
+    test_email = os.environ.get('TEST_EMAIL', None)
+    if conf["emails_for_real"] and test_email is None:
         to = [to]
         subject = "{}".format(subject)
     else:
-        to = conf["debug_emails"]
+
+        if test_email:
+            to = [test_email]
+        else:
+            to = conf["debug_emails"]
         subject = "(TESTE) {}".format(subject)
     for _to in to:
         msg = MIMEMultipart('alternative')

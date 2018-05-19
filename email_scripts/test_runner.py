@@ -15,15 +15,15 @@ from subprocess import Popen
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 CMDS = map(lambda s: s.format(BASE_PATH), [
-    "{}/run_scripts.sh confirm_scheduling",
-    "{}/run_scripts.sh confirm_scheduling_less_than_10_days",
-    "{}/run_scripts.sh confirm_screening_date",
+    #"{}/run_scripts.sh confirm_scheduling",
+    #"{}/run_scripts.sh confirm_scheduling_less_than_10_days",
+    #"{}/run_scripts.sh confirm_screening_date",
     "{}/run_scripts.sh send_the_movie_10_days",
     "{}/run_scripts.sh send_the_movie_9_days",
     "{}/run_scripts.sh send_the_movie_3_days",
-    "{}/run_scripts.sh ask_for_report",
-    "{}/run_scripts.sh ask_for_report_take_2",
-    "{}/run_scripts.sh tell_ambassador_the_results",
+    #"{}/run_scripts.sh ask_for_report",
+    #"{}/run_scripts.sh ask_for_report_take_2",
+    #"{}/run_scripts.sh tell_ambassador_the_results",
 ])
 
 DTSTART = datetime.strptime(os.environ['DTSTART'], '%Y%m%d%H%M%S')

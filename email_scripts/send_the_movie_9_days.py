@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+    # -*- coding: UTF-8 -*-
 
 from __future__ import (
     absolute_import, division, unicode_literals
@@ -32,14 +32,23 @@ def filter_and_send_9_days():
     from datetime import datetime
     cli, db = get_conn()
     films = db['films']
+    # {
     users = db['users']
     # cron take some seconds to call the script so we replace here to 0
     now = datetime.now().replace(second=0, microsecond=0)
-
     # myprint("DEBUG >= 4 e <= 9, should find ELENA created at 2017-09-03 14:03:40")
     # now = datetime(2017, 9, 5, 14, 0, 0)
 
-    start = now - timedelta(days=2)
+    # Dates are in UTC
+    # "_id" : "GiWtfWAaDXjNRfjtc",
+    # "title" : "Realidade Visceral",
+    #     "date" : ISODate("2017-11-02T11:00:00.000Z"),
+    #     "created_at" : ISODate("2017-10-26T06:22:12.349Z"),
+    #     "user_id" : "io9RPivt6s9TpSMpg",
+    #     "_id" : "487852f4b13f70fc87f53281"
+    # }
+
+    start = now + timedelta(days=2)
     end = start + timedelta(minutes=5)
     query = films.find({
         "screening.date": {"$gte": start, "$lt": end}
@@ -53,13 +62,20 @@ def filter_and_send_9_days():
     server = None
 
     for film in query:
+        # if u'Visceral' in film['title']:
+        #     print("Now", now)
+        #     print("Start", start)
+        #     print("End", end)
         for screening in film['screening']:
+
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
             if not created_at or not screening_date:
                 continue # too old screening
-            if created_at >= start and created_at < end:
+
+            if screening_date and screening_date >= start and screening_date < end:
+
                 delta = screening_date - created_at
 
                 if delta.total_seconds() < T4 or delta.total_seconds() > T9:
@@ -71,8 +87,9 @@ def filter_and_send_9_days():
                 ambassador = \
                     users.find_one({"_id": screening['user_id']})
 
-                myprint("{} :: {} :: {}".format(
+                myprint("{} :: {} :: {} :: {}".format(
                     created_at, screening_date,
+                    ambassador,
                     smart_unicode_with_ignore(film['title'])
                 ))
 

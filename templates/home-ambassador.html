@@ -45,6 +45,7 @@
           <h1 class="section-title-lg">ORGANIZE UMA SESSÃO</h1>
           <p class="section-description">Escolha o filme para o qual deseja organizar uma sessão:</p>
           {{#each disseminate}}
+            <!-- {{sequence_number}} | {{#if title_pt}}{{title_pt}}{{else}}{{title}}{{/if}} | {{poster_path}} -->
             <div class="col-md-3">
               <a href="/new-screening/{{slug}}">
                 <img src="/upload/{{poster_path}}" class="full" alt="Cartaz do filme {{#if title_pt}}{{title_pt}}{{else}}{{title}}{{/if}}" />

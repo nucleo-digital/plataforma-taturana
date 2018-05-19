@@ -30,9 +30,9 @@ def get_conf(fname=None):
                 'name': conf.get('db', 'name')
             }
         }
-    except:
+    except Exception as exc:
         raise ValueError(
-            "Can't load conf file at {}".format(fname)
+            "Can't load conf file at {}. Error was: {}".format(fname, exc)
         )
 
 

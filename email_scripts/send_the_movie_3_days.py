@@ -36,7 +36,7 @@ def filter_and_send_3_days():
     # myprint("DEBUG <= 3, should find ELENA created at 2017-07-04 15:39:07")
     # now = datetime(2017, 7, 5, 15, 35, 0)
 
-    start = now - timedelta(days=1)
+    start = now + timedelta(days=1)
     end = start + timedelta(minutes=5)
     query = films.find({
         "screening.date": {"$gte": start, "$lt": end}
@@ -51,13 +51,15 @@ def filter_and_send_3_days():
 
     for film in query:
         for screening in film['screening']:
+
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
             if not created_at or not screening_date:
                 continue # too old screening
 
-            if created_at and created_at >= start and created_at < end:
+            if screening_date and screening_date >= start and screening_date < end:
+
                 delta = screening_date - created_at
 
                 if delta.total_seconds() > T3:
