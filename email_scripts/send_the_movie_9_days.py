@@ -68,18 +68,14 @@ def filter_and_send_9_days():
         #     print("End", end)
         for screening in film['screening']:
 
-            if screening.get('user_id') != 'kwoicbbJMkKvF6dSR':
-                continue
-
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
             if not created_at or not screening_date:
                 continue # too old screening
-            # if screening['user_id'] == u'io9RPivt6s9TpSMpg':
-            #     import ipdb; ipdb.set_trace()
 
-            if created_at >= start and created_at < end:
+            if screening_date and screening_date >= start and screening_date < end:
+
                 delta = screening_date - created_at
 
                 if delta.total_seconds() < T4 or delta.total_seconds() > T9:

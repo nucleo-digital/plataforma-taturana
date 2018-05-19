@@ -52,9 +52,6 @@ def filter_and_send_10_days():
     for film in query:
         for screening in film['screening']:
 
-            if screening.get('user_id') != 'kwoicbbJMkKvF6dSR':
-                continue
-
             created_at = screening.get('created_at', None)
             screening_date = screening.get('date', None)
 
@@ -67,7 +64,7 @@ def filter_and_send_10_days():
 
                 if delta.total_seconds() < T10:
                     continue  # this method proccess only with 10 or more days of delta
-
+                
                 if not server:
                     server = get_smtp_conn()
 

@@ -4,3 +4,4 @@ Jinja2
 python-dateutil
 smartencoding
 pymongo
+raven>=6.6.0

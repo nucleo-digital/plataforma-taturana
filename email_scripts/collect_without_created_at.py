@@ -31,8 +31,7 @@ def run_report():
     for film in query:
         # import ipdb; ipdb.set_trace()
         for screening in film.get('screening', []):
-            if screening.get('user_id') != 'kwoicbbJMkKvF6dSR':
-                continue
+
             try:
                 created_at = screening.get('created_at', None)
                 screening_date = screening.get('date', None)
